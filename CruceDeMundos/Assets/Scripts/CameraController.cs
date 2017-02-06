@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour {
 			cam.orthographicSize = 12;
 		} else {
 			gameObject.transform.position = new Vector3 (55, -19, -1);
-			cam.orthographicSize = 40;
+			cam.orthographicSize = 48;
 		}
 	}
 

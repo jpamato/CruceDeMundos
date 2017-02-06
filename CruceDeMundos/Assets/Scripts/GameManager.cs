@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour {
 		ACTIVE,
 		MAP,
 		DIALOG,
-		ENDING,
+		WIN,
+		LOSE,
 		ENDED
 	}
 

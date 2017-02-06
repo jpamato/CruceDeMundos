@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BulletBehavior : MonoBehaviour {
 
-	public float speed = 10;
+	public float speed = 50;
 	public int damage;
 	public GameObject target;
 	public Vector3 startPosition;

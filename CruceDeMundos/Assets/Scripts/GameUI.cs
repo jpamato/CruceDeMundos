@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour {
 
-	ResourcesProgress resourcesProgress;
+	public ResourcesProgress resourcesProgress;
 
 	public GameObject ingameUI;
 	public GameObject levelBanner;
@@ -13,6 +13,9 @@ public class GameUI : MonoBehaviour {
 	public GameObject tools;
 	public GameObject dialog;
 	public GameObject startLevelBanner;
+	public GameObject winLevelBanner;
+	public GameObject timeOutBanner;
+	public GameObject toolsLoseBanner;
 
 	public Text objective1;
 	public Text objective2;
@@ -22,6 +25,7 @@ public class GameUI : MonoBehaviour {
 		levelNro.text = Data.Instance.playerData.level+"";
 
 		LevelData.Level level = Data.Instance.levelData.levels.Find (x => x.number == Data.Instance.playerData.level);
+		resourcesProgress.OnRefreshResources (Data.Instance.playerData.resources);
 
 		//Debug.Log (level.number);
 
@@ -40,6 +44,10 @@ public class GameUI : MonoBehaviour {
 
 		Events.StartGame += StartGame;
 
+		Events.OnObjectiveDone += OnObjectiveDone;
+		Events.OnTimeOut += OnTimeOut;
+		Events.OnToolsLose += OnToolsLose;
+
 	}
 
 	void OnDestroy(){
@@ -48,6 +56,13 @@ public class GameUI : MonoBehaviour {
 		Events.GameTools -= GameTools;
 		Events.GameHint -= GameHint;
 		Events.GameActive -= GameActive;
+		Events.GameDialog -= GameDialog;
+
+		Events.StartGame -= StartGame;
+
+		Events.OnObjectiveDone -= OnObjectiveDone;
+		Events.OnTimeOut -= OnTimeOut;
+		Events.OnToolsLose -= OnToolsLose;
 	}
 
 	void GameIntro(){		
@@ -93,6 +108,23 @@ public class GameUI : MonoBehaviour {
 		startLevelBanner.SetActive (false);
 		Events.GameActive ();
 		Game.Instance.gameManager.state = GameManager.states.ACTIVE;
+	}
+
+	void OnObjectiveDone(){
+		ingameUI.SetActive (false);
+		winLevelBanner.SetActive (true);
+		Game.Instance.gameManager.state = GameManager.states.WIN;
+		//Invoke ("HideStarGame", 1);
+	}
+
+	void OnTimeOut(){
+		ingameUI.SetActive (false);
+		timeOutBanner.SetActive (true);
+	}
+
+	void OnToolsLose(){
+		ingameUI.SetActive (false);
+		toolsLoseBanner.SetActive (true);
 	}
 	
 	// Update is called once per frame

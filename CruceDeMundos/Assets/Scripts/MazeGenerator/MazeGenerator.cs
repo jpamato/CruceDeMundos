@@ -204,14 +204,23 @@ public class MazeGenerator : MonoBehaviour
 
 			if (N ["Maze"] [i] ["wallOut"] != null) {
 				Renderer r = null;
-				if ((N ["Maze"] [i] ["wallOut"]as string).Equals("north"))
+				if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("north")) {
 					r = visualCellInst._North.GetComponent<Renderer> ();
-				else if ((N ["Maze"] [i] ["wallOut"]as string).Equals("east"))					
+					visualCellInst._North.gameObject.AddComponent<OnObjectiveCollider> ();
+					visualCellInst._North.gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;
+				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("east")) {
 					r = visualCellInst._East.GetComponent<Renderer> ();
-				else if ((N ["Maze"] [i] ["wallOut"]as string).Equals("south"))
+					visualCellInst._East.gameObject.AddComponent<OnObjectiveCollider> ();
+					visualCellInst._East.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
+				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("south")) {
 					r = visualCellInst._South.GetComponent<Renderer> ();
-				else if ((N ["Maze"] [i] ["wallOut"]as string).Equals("west"))
+					visualCellInst._South.gameObject.AddComponent<OnObjectiveCollider> ();
+					visualCellInst._South.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
+				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("west")) {
 					r = visualCellInst._West.GetComponent<Renderer> ();
+					visualCellInst._West.gameObject.AddComponent<OnObjectiveCollider> ();
+					visualCellInst._West.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
+				}
 
 				r.material = wallOut;
 			}

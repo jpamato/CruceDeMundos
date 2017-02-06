@@ -18,6 +18,10 @@ public static class Events {
 
 	public static System.Action StartGame = delegate { };
 
+	public static System.Action OnObjectiveDone = delegate { };
+	public static System.Action OnTimeOut = delegate { };
+	public static System.Action OnToolsLose = delegate { };
+
 	public static System.Action DialogDone = delegate { };
  
 	public static System.Action ResetCharacterCollider = delegate { };
