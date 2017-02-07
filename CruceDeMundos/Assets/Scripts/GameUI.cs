@@ -24,13 +24,12 @@ public class GameUI : MonoBehaviour {
 	void Start () {
 		levelNro.text = Data.Instance.playerData.level+"";
 
-		LevelData.Level level = Data.Instance.levelData.levels.Find (x => x.number == Data.Instance.playerData.level);
 		resourcesProgress.OnRefreshResources (Data.Instance.playerData.resources);
 
 		//Debug.Log (level.number);
 
-		objective1.text = level.objective1;
-		objective2.text = level.objective2;
+		objective1.text = Game.Instance.levelManager.leveldata.objective1;
+		objective2.text = Game.Instance.levelManager.leveldata.objective2;
 
 		ingameUI.SetActive (false);
 		levelBanner.SetActive (false);

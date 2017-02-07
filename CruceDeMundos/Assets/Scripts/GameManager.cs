@@ -84,12 +84,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnObstacleDestroy(string tag){		
-		if (tag == "FIRE") {
+		/*if (tag == "FIRE") {
 			fires--;
 			if (fires <= 0) {
 				Game.Instance.dialogManager.UnlockDialog ("Mork", 1, 4);
 			}
-		}
+		}*/
 	}
 	
 	// Update is called once per frame

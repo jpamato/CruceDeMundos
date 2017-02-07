@@ -15,8 +15,28 @@ public class LevelData : MonoBehaviour {
 	[Serializable]
 	public class Level
 	{
-		public int number;
+		public int levelNumber;
 		public string objective1;
 		public string objective2;
+		public int fireNumber;
+		public int portalNumber;
+		public int pollutionNumber;
+		public List<ObstacleObjective> obstacleObjectives;
+		public List<DialogUnlock> dialogsUnlock;
+	}
+
+	[Serializable]
+	public class ObstacleObjective
+	{
+		public string tag;
+		public int number;
+	}
+
+	[Serializable]
+	public class DialogUnlock
+	{		
+		public string characterName;
+		public int goTo;
+		public List<ObstacleObjective> obstacleObjectives;
 	}
 }

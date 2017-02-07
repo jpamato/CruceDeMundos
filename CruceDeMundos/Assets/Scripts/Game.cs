@@ -9,6 +9,7 @@ public class Game : MonoBehaviour {
 	public GameManager gameManager;
 	public DialogManager dialogManager;
 	public CharacterManager characterManager;
+	public LevelManager levelManager;
 
 	public enum states
 	{
@@ -46,6 +47,7 @@ public class Game : MonoBehaviour {
 		gameManager = GetComponent<GameManager>();
 		//gameManager.Init();
 		dialogManager = GetComponent<DialogManager>();
+		levelManager = GetComponent<LevelManager>();
 
 		/*ui.Init();
 		OnGamePaused(false);*/
