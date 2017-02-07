@@ -120,11 +120,13 @@ public class GameUI : MonoBehaviour {
 	void OnTimeOut(){
 		ingameUI.SetActive (false);
 		timeOutBanner.SetActive (true);
+		Game.Instance.gameManager.state = GameManager.states.LOSE;
 	}
 
 	void OnToolsLose(){
 		ingameUI.SetActive (false);
 		toolsLoseBanner.SetActive (true);
+		Game.Instance.gameManager.state = GameManager.states.LOSE;
 	}
 	
 	// Update is called once per frame

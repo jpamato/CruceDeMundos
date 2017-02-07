@@ -37,6 +37,7 @@ public class BulletBehavior : MonoBehaviour {
 				power -= Mathf.Max(damage*0.01f, 0);
 				// 4
 				if (power <= 0) {
+					Events.OnObstacleDestroy (target.gameObject.tag);
 					Destroy(target);
 					//gameManager.Gold += 50;
 				}

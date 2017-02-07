@@ -38,12 +38,7 @@ public class DialogManager : MonoBehaviour {
 		levelInfo = character.levelsInfo.Find (x => x.level == level);
 
 		if (levelInfo == null) {
-			levelInfo = new DialogData.DialogCharacter.LevelInfo ();
-			levelInfo.level = level;
-			levelInfo.emoval = 0;
-			levelInfo.goTo = 0;
-
-			character.levelsInfo.Add (levelInfo);
+			levelInfo = AddNewLevelInfo (character, level);
 		}
 
 		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
@@ -58,9 +53,16 @@ public class DialogManager : MonoBehaviour {
 		}
 	}
 
-	public void ReplySelect(int index){
-		Debug.Log (index);
-		Debug.Log (mood.replies [index].emoVal);
+	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level){
+		DialogData.DialogCharacter.LevelInfo levelInfo = new DialogData.DialogCharacter.LevelInfo ();
+		levelInfo.level = level;
+		levelInfo.emoval = 0;
+		levelInfo.goTo = 0;
+		character.levelsInfo.Add (levelInfo);
+		return levelInfo;
+	}
+
+	public void ReplySelect(int index){		
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -69,10 +71,24 @@ public class DialogManager : MonoBehaviour {
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = false;
 		}
 
+		if (mood.replies [index].resources > 0) {
+			Data.Instance.playerData.resources += mood.replies [index].resources;
+			Events.OnRefreshResources (Data.Instance.playerData.resources);
+		}
+
 		if (mood.replies [index].exit)
 			Events.DialogDone ();
 		else
 			LoadDialog (character.name);
 
+	}
+
+	public void UnlockDialog(string characterName, int level, int goTo){
+		character = Array.Find(Data.Instance.dialogData.dialogCharacters, p => p.name == characterName);
+		levelInfo = character.levelsInfo.Find (x => x.level == level);
+		if (levelInfo == null) {
+			levelInfo = AddNewLevelInfo (character, level);
+		}
+		levelInfo.goTo = goTo;
 	}
 }

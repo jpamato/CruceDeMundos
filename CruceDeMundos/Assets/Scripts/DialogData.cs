@@ -38,6 +38,19 @@ public class DialogData : MonoBehaviour {
 			public int emoval;
 			public int goTo;
 		}
+
+		public void ResetLevel(int level){
+			LevelInfo l = levelsInfo.Find (x => x.level == level);
+			if (l != null) {
+				l.emoval = 0;
+				l.goTo = 0;
+			}
+		}
+	}
+
+	public void ResetAllAtLevel(int level){
+		foreach (DialogCharacter dch in dialogCharacters)
+			dch.ResetLevel (level);
 	}
 
 	IEnumerator Import(string file){
@@ -72,6 +85,10 @@ public class DialogData : MonoBehaviour {
 					d.dialogTree [i].moods [j].replies [k].exit = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["exit"].AsBool;
 					d.dialogTree [i].moods [j].replies [k].goTo = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["goTo"].AsInt;
 					d.dialogTree [i].moods [j].replies [k].text = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["text"];
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"] != null)
+						d.dialogTree [i].moods [j].replies [k].resources = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"].AsInt;
+					else
+						d.dialogTree [i].moods [j].replies [k].resources = 0;
 				}
 			}
 		}
@@ -118,6 +135,7 @@ public class DialogData : MonoBehaviour {
 			public bool exit;
 			public int goTo;
 			public string text;
+			public int resources;
 		}
 
 	}

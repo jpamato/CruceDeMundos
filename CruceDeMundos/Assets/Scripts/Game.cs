@@ -71,10 +71,12 @@ public class Game : MonoBehaviour {
 		state = states.PAUSED;       
 	}
 
-	void OnGameRestart()
-	{
-		Data.Instance.LoadLevel("04_Game"); 
+	public void OnGameRestart()
+	{	
 		OnGamePaused(false);
+		Data.Instance.dialogData.ResetAllAtLevel (1);
+		Data.Instance.LoadLevel("Proto"); 
+
 	}
 	void OnGamePaused(bool paused)
 	{

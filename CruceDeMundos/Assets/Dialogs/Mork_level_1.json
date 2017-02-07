@@ -77,17 +77,17 @@
 				{ 	"mood":"negative",
 					"prompt":"Creo que no te lo mereces... pero me liberaste de los incendios. Te dare estos recursos.",
 					replies:[
-						{emoVal:0,exit:true,goTo:5,text:"ok"}]
+						{emoVal:0,exit:true,goTo:5,text:"ok",resources:50}]
 				}
 				{	"mood":"neutral",
 					"prompt":"Muy bien, has logrado ayudarme... así que ahora te ayudaré con estos recursos.",
 					replies:[						
-						{emoVal:0,exit:true,goTo:5,text:"Bueno, gracias"}]
+						{emoVal:0,exit:true,goTo:5,text:"Bueno, gracias",resources:50}]
 				}
 				{ 	"mood":"positive",
 					"prompt":"¡Excelente! toma estos recursos, ¡te los has ganado!",
 					replies:[						
-						{emoVal:1,exit:true,goTo:5,text:"¡muchas gracias!"}]
+						{emoVal:1,exit:true,goTo:5,text:"¡muchas gracias!",resources:50}]
 				}
 			]
 		},
