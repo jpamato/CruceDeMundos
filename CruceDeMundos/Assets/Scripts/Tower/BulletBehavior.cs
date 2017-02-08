@@ -12,14 +12,10 @@ public class BulletBehavior : MonoBehaviour {
 	private float distance;
 	private float startTime;
 
-	private GameManagerBehavior gameManager;
-
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
 		distance = Vector3.Distance (startPosition, targetPosition);
-		GameObject gm = GameObject.Find("GameManager");
-		//gameManager = gm.GetComponent<GameManagerBehavior>();
 	}
 	
 	// Update is called once per frame
@@ -31,8 +27,9 @@ public class BulletBehavior : MonoBehaviour {
 		// 2 
 		if (gameObject.transform.position.Equals(targetPosition)) {
 			if (target != null) {
+				
 				// 3
-				SpriteRenderer sprite = target.GetComponent<SpriteRenderer>();
+				SpriteRenderer sprite = target.GetComponent<ObstacleData>().CurrentLevel.visualization.GetComponent<SpriteRenderer>();
 				float power = sprite.color.a;
 				power -= Mathf.Max(damage*0.01f, 0);
 				// 4

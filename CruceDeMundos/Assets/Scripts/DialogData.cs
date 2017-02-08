@@ -14,8 +14,14 @@ public class DialogData : MonoBehaviour {
 
 	void Start () {
 		dialogs = new List<Dialog> ();
+		#if UNITY_EDITOR
+			DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_WIN
+			DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_OSX
+			DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName+PATH);
+		#endif
 
-		DirectoryInfo dir = new DirectoryInfo(Application.dataPath+PATH);
 		FileInfo[] info = dir.GetFiles("*.json");
 		foreach (FileInfo f in info) {
 			StartCoroutine(Import(f.FullName));
