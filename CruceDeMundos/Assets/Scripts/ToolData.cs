@@ -14,6 +14,7 @@ public class ToolData : MonoBehaviour {
 	}
 
 	public List<ToolLevel> levels;
+	public PlayerData.ToolName toolType;
 
 	private ToolLevel currentLevel;
 

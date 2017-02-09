@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class CharShop : MonoBehaviour {
 
@@ -57,6 +58,9 @@ public class CharShop : MonoBehaviour {
 			Data.Instance.playerData.resources += lastCost;
 
 			Events.OnRefreshResources (Data.Instance.playerData.resources);
+
+			int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
+			Game.Instance.toolsManager.toolstype [index] = shI.toolName;
 
 			lastSelected = itemN;
 		}

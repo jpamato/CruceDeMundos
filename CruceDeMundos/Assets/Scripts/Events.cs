@@ -26,4 +26,7 @@ public static class Events {
 	public static System.Action DialogDone = delegate { };
  
 	public static System.Action ResetCharacterCollider = delegate { };
+
+	public static System.Action<int, PlayerData.ToolName> OnChargeCollect = delegate { };
+
 }
