@@ -76,13 +76,11 @@ public class ObstacleDamage : MonoBehaviour {
 		Transform healthBarTransform = target.transform.parent.FindChild("HealthBar");
 		HealthBar healthBar = 
 			healthBarTransform.gameObject.GetComponent<HealthBar>();
-		healthBar.currentHealth -= Mathf.Max(obstacleData.CurrentLevel.damage, 0);
+		healthBar.currentHealth = Mathf.Max(healthBar.currentHealth-obstacleData.CurrentLevel.damage, 0);
 		// 4
 		if (healthBar.currentHealth <= 0) {			
 			Destroy(target);
-			Game.Instance.gameManager.tools -= 1;
-			if (Game.Instance.gameManager.tools <= 0)
-				Events.OnToolsLose ();
+			Game.Instance.levelManager.ToolLose ();
 		}
 	}
 }

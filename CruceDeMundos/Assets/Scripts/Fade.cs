@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Fade : MonoBehaviour
 {
@@ -46,9 +47,11 @@ public class Fade : MonoBehaviour
 		}
 		
 		if (m_LevelName != "")
-			Application.LoadLevel(m_LevelName);
+			SceneManager.LoadScene(m_LevelName);
+			//Application.LoadLevel(m_LevelName);
 		else
-			Application.LoadLevel(m_LevelIndex);     
+			SceneManager.LoadScene(m_LevelIndex);
+			//Application.LoadLevel(m_LevelIndex);     
 		while (t > 0f)
 		{
 			yield return new WaitForEndOfFrame();

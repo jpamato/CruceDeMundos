@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour {
 	public List<LevelData.ObstacleObjective> obstacleObjectives;
 	public List<LevelData.DialogUnlock> dialogsUnlock;
 
+	public int tools;
+
 	// Use this for initialization
 	void Awake () {
 		leveldata = Data.Instance.levelData.levels.Find (x => x.levelNumber == Data.Instance.playerData.level);
@@ -35,6 +37,8 @@ public class LevelManager : MonoBehaviour {
 			}
 			dialogsUnlock.Add (dU);
 		}
+
+		tools = Data.Instance.playerData.toolsNumber;
 	}
 
 	void Start () {		
@@ -58,8 +62,7 @@ public class LevelManager : MonoBehaviour {
 				if (oObjective.number <= 0) {
 					obstacleObjectives.Remove (oObjective);
 					if (obstacleObjectives.Count == 0)
-						obj2_Done = true;
-					//Game.Instance.dialogManager.UnlockDialog ("Mork", 1, 4);
+						obj2_Done = true;					
 				}
 			}
 		}
@@ -76,5 +79,11 @@ public class LevelManager : MonoBehaviour {
 					}
 				}
 			}
+	}
+
+	public void ToolLose(){
+		tools--;
+		if (tools <= 0)
+			Events.OnToolsLose ();
 	}
 }

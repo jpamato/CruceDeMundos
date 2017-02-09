@@ -73,20 +73,28 @@ public class ShootObstacle : MonoBehaviour {
 	}
 
 	void Shoot(Collider2D target) {
-		GameObject bulletPrefab = toolData.CurrentLevel.bullet;
-		// 1 
-		Vector3 startPosition = gameObject.transform.position;
-		Vector3 targetPosition = target.transform.position;
-		startPosition.z = bulletPrefab.transform.position.z;
-		targetPosition.z = bulletPrefab.transform.position.z;
 
-		// 2 
-		GameObject newBullet = (GameObject)Instantiate (bulletPrefab);
-		newBullet.transform.position = startPosition;
-		BulletBehavior bulletComp = newBullet.GetComponent<BulletBehavior>();
-		bulletComp.target = target.gameObject;
-		bulletComp.startPosition = startPosition;
-		bulletComp.targetPosition = targetPosition;
+		Transform healthBarTransform = transform.parent.FindChild("HealthBar");
+		HealthBar healthBar = healthBarTransform.gameObject.GetComponent<HealthBar>();
+
+		if(healthBar.currentHealth>=toolData.CurrentLevel.fireLoss){
+			GameObject bulletPrefab = toolData.CurrentLevel.bullet;
+			// 1 
+			Vector3 startPosition = gameObject.transform.position;
+			Vector3 targetPosition = target.transform.position;
+			startPosition.z = bulletPrefab.transform.position.z;
+			targetPosition.z = bulletPrefab.transform.position.z;
+
+			// 2 
+			GameObject newBullet = (GameObject)Instantiate (bulletPrefab);
+			newBullet.transform.position = startPosition;
+			BulletBehavior bulletComp = newBullet.GetComponent<BulletBehavior>();
+			bulletComp.target = target.gameObject;
+			bulletComp.startPosition = startPosition;
+			bulletComp.targetPosition = targetPosition;
+						
+			healthBar.currentHealth = Mathf.Max(healthBar.currentHealth-toolData.CurrentLevel.fireLoss, 0);
+		}
 
 		// 3 
 		/*Animator animator = 

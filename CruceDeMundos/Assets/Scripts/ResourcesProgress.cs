@@ -17,4 +17,8 @@ public class ResourcesProgress : MonoBehaviour {
 	{		
 		label.text = "#" + resources.ToString();
 	}
+
+	void OnEnable(){
+		label.text = "#" + Data.Instance.playerData.resources;
+	}
 }

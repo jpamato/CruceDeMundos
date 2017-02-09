@@ -3,11 +3,9 @@ using System.Collections;
 using System;
 
 public class GameManager : MonoBehaviour {
-
-	public int resources;
+	
 	public float time;
 	public int tools;
-	public int fires;
 
 	public states state;
 	public enum states
@@ -30,7 +28,6 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		state = states.INTRO;
 		Events.DialogDone += DialogDone;
-		Events.OnObstacleDestroy += OnObstacleDestroy;
 		Events.OnRefreshResources (Data.Instance.playerData.resources);
 
 		Invoke ("Intro", 1);
@@ -38,7 +35,6 @@ public class GameManager : MonoBehaviour {
 
 	void OnDestroy(){
 		Events.DialogDone -= DialogDone;
-		Events.OnObstacleDestroy -= OnObstacleDestroy;
 	}
 
 	void Intro(){		
@@ -81,15 +77,6 @@ public class GameManager : MonoBehaviour {
 			state = states.MAP;
 			Events.GameMap();
 		}
-	}
-
-	void OnObstacleDestroy(string tag){		
-		/*if (tag == "FIRE") {
-			fires--;
-			if (fires <= 0) {
-				Game.Instance.dialogManager.UnlockDialog ("Mork", 1, 4);
-			}
-		}*/
 	}
 	
 	// Update is called once per frame

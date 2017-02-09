@@ -10,6 +10,7 @@ public class ToolData : MonoBehaviour {
 		public GameObject visualization;
 		public GameObject bullet;
 		public float fireRate;
+		public float fireLoss;
 	}
 
 	public List<ToolLevel> levels;
@@ -68,6 +69,22 @@ public class ToolData : MonoBehaviour {
 		int currentLevelIndex = levels.IndexOf(currentLevel);
 		if (currentLevelIndex < levels.Count - 1) {
 			CurrentLevel = levels[currentLevelIndex + 1];
+		}
+	}
+
+	public void SetLevel(int currentLevelIndex){	
+		if (currentLevelIndex > 0) {
+			currentLevel = levels [currentLevelIndex];
+			GameObject levelVisualization = levels [currentLevelIndex].visualization;
+			for (int i = 0; i < levels.Count; i++) {
+				if (levelVisualization != null) {
+					if (i == currentLevelIndex) {
+						levels [i].visualization.SetActive (true);
+					} else {
+						levels [i].visualization.SetActive (false);
+					}
+				}
+			}
 		}
 	}
 }
