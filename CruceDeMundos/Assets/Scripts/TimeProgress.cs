@@ -6,7 +6,7 @@ public class TimeProgress : MonoBehaviour {
 
 	public Text label;
 
-	float time;
+	public float time;
 	void Start () {
 		time = Game.Instance.gameManager.time;
 	}

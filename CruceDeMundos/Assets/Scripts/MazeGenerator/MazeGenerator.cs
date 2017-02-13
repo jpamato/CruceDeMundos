@@ -10,6 +10,7 @@ public class MazeGenerator : MonoBehaviour
 	public Material wallIn,wallOut;
 
     public int _width, _height;
+	public int blockWidth, blockHeight;
 	float step = 3f;
 
     public VisualCell visualCellPrefab;
@@ -46,10 +47,21 @@ public class MazeGenerator : MonoBehaviour
 
             for(int j = 0; j < _height; j++)
             {
-
-                cells[i, j] = new Cell(false, false, false, false, false);
-                cells[i, j].xPos = i;
-                cells[i, j].yPos = j;
+				if (blockWidth>0 && blockHeight>0){
+					if (i % (blockWidth * 2) < blockWidth && j % (blockHeight * 2) < blockHeight) {
+						cells [i, j] = new Cell (true, true, true, true, true);
+						cells [i, j].xPos = i;
+						cells [i, j].yPos = j;
+					}else {
+						cells [i, j] = new Cell (false, false, false, false, false);
+						cells [i, j].xPos = i;
+						cells [i, j].yPos = j;
+					}
+				} else {
+					cells [i, j] = new Cell (false, false, false, false, false);
+					cells [i, j].xPos = i;
+					cells [i, j].yPos = j;
+				}
             }
         }
         RandomCell();
@@ -61,9 +73,12 @@ public class MazeGenerator : MonoBehaviour
     {
         //Recupere une position X et Y aleatoire
         _randomCellPos = new Vector2((int)UnityEngine.Random.Range(0, _width), (int)UnityEngine.Random.Range(0, _height));
-
+		Cell currentCell = cells[(int)_randomCellPos.x, (int)_randomCellPos.y];
+		if (currentCell._visited == false)
         //Lance la fonction GenerateMaze avec la positions X et Y aleatoire.
-        GenerateMaze((int)_randomCellPos.x, (int)_randomCellPos.y); 
+        GenerateMaze ((int)_randomCellPos.x, (int)_randomCellPos.y);
+		else
+			RandomCell ();
     }
 
     void GenerateMaze (int x, int y)
