@@ -5,7 +5,7 @@ public class OnObjectiveCollider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;	
 	}
 	
 	// Update is called once per frame

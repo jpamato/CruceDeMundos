@@ -9,28 +9,32 @@ public class MazeGenerator : MonoBehaviour
     
 	public Material wallIn,wallOut;
 
-    public int _width, _height; //Largeur et hauteur du labyrinthe.
-	public float step = 3f;
+    public int _width, _height;
+	float step = 3f;
 
-    public VisualCell visualCellPrefab; // Prefab qui sert de modèle à l'instanciation.
+    public VisualCell visualCellPrefab;
 
-    public Cell[,] cells; //Tableau de cellules a deux dimensions.
+    public Cell[,] cells;
 
 	public GameObject player;
 
     private Vector2 _randomCellPos; //Position de la cellule aleatoire qui va commencer la generation.
-    private VisualCell visualCellInst; // Contient la copie du prefab de l'instanciation.
+    private VisualCell visualCellInst;
 
-    private List<CellAndRelativePosition> neighbors; //Liste des cellules voisines
+    private List<CellAndRelativePosition> neighbors;
+
+	private List<VisualCell> visualCells;
     
 	public bool saveJson = true;
 	public string jsonName = "maze03";
 
     void Start ()
     {
-		cells = new Cell[_width, _height]; //Initialisation du tableau de cellules
+		step = visualCellPrefab.transform.localScale.x;
+		cells = new Cell[_width, _height];
+		visualCells = new List<VisualCell> ();
 		if(saveJson)
-			Init(); //Lance la fonction Init
+			Init(); 
 		else
 			Import (jsonName);        
     }
@@ -48,9 +52,9 @@ public class MazeGenerator : MonoBehaviour
                 cells[i, j].yPos = j;
             }
         }
-        RandomCell(); //Lance la fonction RandomCell
+        RandomCell();
 
-        InitVisualCell(); //Lance l'instantiation des cellules visuel
+        InitVisualCell();
     }
 
     void RandomCell ()
@@ -207,19 +211,15 @@ public class MazeGenerator : MonoBehaviour
 				if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("north")) {
 					r = visualCellInst._North.GetComponent<Renderer> ();
 					visualCellInst._North.gameObject.AddComponent<OnObjectiveCollider> ();
-					visualCellInst._North.gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;
 				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("east")) {
 					r = visualCellInst._East.GetComponent<Renderer> ();
 					visualCellInst._East.gameObject.AddComponent<OnObjectiveCollider> ();
-					visualCellInst._East.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
 				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("south")) {
 					r = visualCellInst._South.GetComponent<Renderer> ();
 					visualCellInst._South.gameObject.AddComponent<OnObjectiveCollider> ();
-					visualCellInst._South.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
 				} else if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("west")) {
 					r = visualCellInst._West.GetComponent<Renderer> ();
 					visualCellInst._West.gameObject.AddComponent<OnObjectiveCollider> ();
-					visualCellInst._West.gameObject.AddComponent<BoxCollider2D> ().isTrigger = true;
 				}
 
 				r.material = wallOut;
@@ -245,7 +245,13 @@ public class MazeGenerator : MonoBehaviour
             visualCellInst._East.gameObject.SetActive(!cell._East);
             visualCellInst._West.gameObject.SetActive(!cell._West);
 
+			visualCellInst.northState = cell._North ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+			visualCellInst.southState = cell._South ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+			visualCellInst.eastState = cell._East ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+			visualCellInst.westState = cell._West ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+
             visualCellInst.transform.name = cell.xPos.ToString() + "_" + cell.yPos.ToString();
+			visualCells.Add (visualCellInst);
 
 			//Debug.Log (cell.xPos.ToString () + "_" + cell.zPos.ToString ()+": Norte: "+cell._North+": Este: "+cell._Est+": Sur: "+cell._South+": Oeste: "+cell._West);
 
@@ -276,5 +282,46 @@ public class MazeGenerator : MonoBehaviour
 		#endif
 
     }
-    
+
+	public void SaveJson(){
+		string json = "{Maze:[";
+		// Initialise mes cellules visuel et detruit les murs en fonction des cellules virtuel
+		int index=0;
+		foreach(VisualCell visualCellInst in gameObject.GetComponentsInChildren<VisualCell>())
+		{
+			//Debug.Log (cell.xPos.ToString () + "_" + cell.zPos.ToString ()+": Norte: "+cell._North+": Este: "+cell._Est+": Sur: "+cell._South+": Oeste: "+cell._West);
+
+			json += "\n{id:"+ visualCellInst.transform.name + ",";
+			/*json += "north:" + cell._North+",";
+			json += "east:" + cell._East+",";
+			json += "south:" + cell._South+",";
+			json += "west:" + cell._West+"}";*/
+
+			if(index<cells.Length-1)
+				json += ",";
+
+			index++;
+		}
+		json += "]}";
+
+		//Debug.Log(json);
+
+
+		if(saveJson)
+			using (FileStream fs = new FileStream("Assets/Resources/Maze/"+jsonName+".json", FileMode.Create)){
+				using (StreamWriter writer = new StreamWriter(fs)){
+					writer.Write(json);
+				}
+			}
+	}
+ 
+	public void RandomizeMaze(){
+		if (saveJson) {
+			foreach (VisualCell vc in visualCells)
+				Destroy (vc.gameObject);
+			visualCells.Clear ();
+			cells = new Cell[_width, _height];
+			Init ();
+		}
+	}
 }
