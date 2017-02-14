@@ -27,6 +27,7 @@ public class MazeGenerator : MonoBehaviour
 	private List<VisualCell> visualCells;
     
 	public bool saveJson = true;
+	public bool importJson = true;
 	public string jsonName = "maze03";
 
     void Start ()
@@ -34,7 +35,7 @@ public class MazeGenerator : MonoBehaviour
 		step = visualCellPrefab.transform.localScale.x;
 		cells = new Cell[_width, _height];
 		visualCells = new List<VisualCell> ();
-		if(saveJson)
+		if(!importJson)
 			Init(); 
 		else
 			Import (jsonName);        
@@ -163,48 +164,129 @@ public class MazeGenerator : MonoBehaviour
 			int xPos = int.Parse (s [0]);
 			int yPos = int.Parse (s [1]);
 
-			visualCellInst = Instantiate(visualCellPrefab, new Vector3(xPos * step, _height * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
+			visualCellInst = Instantiate (visualCellPrefab, new Vector3 (xPos * step, _height * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
 			visualCellInst.transform.parent = transform;
-			if (N ["Maze"] [i] ["north"]+""== ("fire")) {
+			if (N ["Maze"] [i] ["north"] + "" == "FIRE") {
 				visualCellInst._North.gameObject.SetActive (true);
 				visualCellInst._North.FindChild ("fire").gameObject.SetActive (true);
-			}else if (N ["Maze"] [i] ["north"]+""== ("portal")) {
+				visualCellInst.northState = VisualCell.WallState.FIRE;
+			} else if (N ["Maze"] [i] ["north"] + "" == "PORTAL") {
 				visualCellInst._North.gameObject.SetActive (true);
 				visualCellInst._North.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst.northState = VisualCell.WallState.PORTAL;
+			} else if (N ["Maze"] [i] ["north"] + "" == "IN") { 
+				player.transform.position = visualCellInst.transform.position;
+				Renderer r = visualCellInst._North.GetComponent<Renderer> ();
+				r.material = wallIn;
+				visualCellInst.isFirst = true;
+				visualCellInst.northState = VisualCell.WallState.IN;
+			} else if (N ["Maze"] [i] ["north"] + "" == "OUT") { 				
+				Renderer r = visualCellInst._North.GetComponent<Renderer> ();
+				r.material = wallOut;
+				visualCellInst._North.gameObject.AddComponent<OnObjectiveCollider> ();
+				visualCellInst.northState = VisualCell.WallState.OUT;
+			} else if (N ["Maze"] [i] ["north"] + "" == "SOLID") { 				
+				visualCellInst._North.gameObject.SetActive (true);
+				visualCellInst.northState = VisualCell.WallState.SOLID;
+			} else if (N ["Maze"] [i] ["north"] + "" == "INVISIBLE") { 				
+				visualCellInst._North.gameObject.SetActive (false);
+				visualCellInst.northState = VisualCell.WallState.INVISIBLE;
 			} else {
 				visualCellInst._North.gameObject.SetActive (!N ["Maze"] [i] ["north"].AsBool);
+				visualCellInst.northState = N ["Maze"] [i] ["north"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
 			}
-			if (N ["Maze"] [i] ["south"]+""== ("fire")) {
+
+			if (N ["Maze"] [i] ["south"] + "" == "FIRE") {
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst._South.FindChild ("fire").gameObject.SetActive (true);
-			}else if (N ["Maze"] [i] ["south"]+""== ("portal")) {
+				visualCellInst.southState = VisualCell.WallState.FIRE;
+			} else if (N ["Maze"] [i] ["south"] + "" == "PORTAL") {
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst._South.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst.southState = VisualCell.WallState.PORTAL;
+			}else if (N ["Maze"] [i] ["south"] + "" == "IN") { 
+				player.transform.position = visualCellInst.transform.position;
+				Renderer r = visualCellInst._South.GetComponent<Renderer> ();
+				r.material = wallIn;
+				visualCellInst.isFirst = true;
+				visualCellInst.southState = VisualCell.WallState.IN;
+			} else if (N ["Maze"] [i] ["south"] + "" == "OUT") { 				
+				Renderer r = visualCellInst._South.GetComponent<Renderer> ();
+				r.material = wallOut;
+				visualCellInst._South.gameObject.AddComponent<OnObjectiveCollider> ();
+				visualCellInst.southState = VisualCell.WallState.OUT;
+			} else if (N ["Maze"] [i] ["south"] + "" == "SOLID") { 				
+				visualCellInst._South.gameObject.SetActive (true);
+				visualCellInst.southState = VisualCell.WallState.SOLID;
+			} else if (N ["Maze"] [i] ["south"] + "" == "INVISIBLE") { 				
+				visualCellInst._South.gameObject.SetActive (false);
+				visualCellInst.southState = VisualCell.WallState.INVISIBLE;
 			} else {
 				visualCellInst._South.gameObject.SetActive (!N ["Maze"] [i] ["south"].AsBool);
+				visualCellInst.southState = N ["Maze"] [i] ["south"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
 			}
 			
-			if (N ["Maze"] [i] ["east"]+""=="fire") {				
+			if (N ["Maze"] [i] ["east"] + "" == "FIRE") {				
 				visualCellInst._East.gameObject.SetActive (true);
 				visualCellInst._East.FindChild ("fire").gameObject.SetActive (true);
-			} else if (N ["Maze"] [i] ["east"]+""=="portal") {				
+				visualCellInst.eastState = VisualCell.WallState.FIRE;
+			} else if (N ["Maze"] [i] ["east"] + "" == "PORTAL") {				
 				visualCellInst._East.gameObject.SetActive (true);
 				visualCellInst._East.FindChild ("portal").gameObject.SetActive (true);
-			}else {				
+				visualCellInst.eastState = VisualCell.WallState.PORTAL;
+			}else if (N ["Maze"] [i] ["east"] + "" == "IN") { 
+				player.transform.position = visualCellInst.transform.position;
+				Renderer r = visualCellInst._East.GetComponent<Renderer> ();
+				r.material = wallIn;
+				visualCellInst.isFirst = true;
+				visualCellInst.eastState = VisualCell.WallState.IN;
+			} else if (N ["Maze"] [i] ["east"] + "" == "OUT") { 				
+				Renderer r = visualCellInst._East.GetComponent<Renderer> ();
+				r.material = wallOut;
+				visualCellInst._East.gameObject.AddComponent<OnObjectiveCollider> ();
+				visualCellInst.eastState = VisualCell.WallState.OUT;
+			} else if (N ["Maze"] [i] ["east"] + "" == "SOLID") { 				
+				visualCellInst._East.gameObject.SetActive (true);
+				visualCellInst.eastState = VisualCell.WallState.SOLID;
+			} else if (N ["Maze"] [i] ["east"] + "" == "INVISIBLE") { 				
+				visualCellInst._East.gameObject.SetActive (false);
+				visualCellInst.eastState = VisualCell.WallState.INVISIBLE;
+			} else {				
 				visualCellInst._East.gameObject.SetActive (!N ["Maze"] [i] ["east"].AsBool);
+				visualCellInst.eastState = N ["Maze"] [i] ["east"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
 			}
 
-			if (N ["Maze"] [i] ["west"]+""== ("fire")) {
+			if (N ["Maze"] [i] ["west"] + "" == "FIRE") {
 				visualCellInst._West.gameObject.SetActive (true);
 				visualCellInst._West.FindChild ("fire").gameObject.SetActive (true);
-			} else if (N ["Maze"] [i] ["west"]+""== ("portal")) {
+				visualCellInst.westState = VisualCell.WallState.FIRE;
+			} else if (N ["Maze"] [i] ["west"] + "" == "PORTAL") {
 				visualCellInst._West.gameObject.SetActive (true);
 				visualCellInst._West.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst.westState = VisualCell.WallState.PORTAL;
+			}else if (N ["Maze"] [i] ["west"] + "" == "IN") { 
+				player.transform.position = visualCellInst.transform.position;
+				Renderer r = visualCellInst._West.GetComponent<Renderer> ();
+				r.material = wallIn;
+				visualCellInst.isFirst = true;
+				visualCellInst.westState = VisualCell.WallState.IN;
+			}else if (N ["Maze"] [i] ["west"] + "" == "OUT") { 				
+				Renderer r = visualCellInst._West.GetComponent<Renderer> ();
+				r.material = wallOut;
+				visualCellInst._West.gameObject.AddComponent<OnObjectiveCollider> ();
+				visualCellInst.westState = VisualCell.WallState.OUT;
+			} else if (N ["Maze"] [i] ["west"] + "" == "SOLID") { 				
+				visualCellInst._West.gameObject.SetActive (true);
+				visualCellInst.westState = VisualCell.WallState.SOLID;
+			} else if (N ["Maze"] [i] ["west"] + "" == "INVISIBLE") { 				
+				visualCellInst._West.gameObject.SetActive (false);
+				visualCellInst.westState = VisualCell.WallState.INVISIBLE;
 			} else {
 				visualCellInst._West.gameObject.SetActive (!N ["Maze"] [i] ["west"].AsBool);
+				visualCellInst.westState = N ["Maze"] [i] ["west"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
 			}
 
-			if (N ["Maze"] [i] ["wallIn"] != null) {
+			/*if (N ["Maze"] [i] ["wallIn"] != null) {
 				//Debug.Log (player.transform.position+" -  "+visualCellInst.transform.position);
 				player.transform.position = visualCellInst.transform.position;
 				Renderer r = null;
@@ -219,9 +301,9 @@ public class MazeGenerator : MonoBehaviour
 
 				r.material = wallIn;
 				visualCellInst.isFirst = true;
-			}
+			}*/
 
-			if (N ["Maze"] [i] ["wallOut"] != null) {
+			/*if (N ["Maze"] [i] ["wallOut"] != null) {
 				Renderer r = null;
 				if ((N ["Maze"] [i] ["wallOut"]as string).Equals ("north")) {
 					r = visualCellInst._North.GetComponent<Renderer> ();
@@ -238,9 +320,10 @@ public class MazeGenerator : MonoBehaviour
 				}
 
 				r.material = wallOut;
-			}
+			}*/
 
 			visualCellInst.transform.name = N ["Maze"] [i] ["id"];
+			visualCells.Add (visualCellInst);
 		}
 		Data.Instance.freeTrail = true;
 	}	
@@ -302,15 +385,15 @@ public class MazeGenerator : MonoBehaviour
 		string json = "{Maze:[";
 		// Initialise mes cellules visuel et detruit les murs en fonction des cellules virtuel
 		int index=0;
-		foreach(VisualCell visualCellInst in gameObject.GetComponentsInChildren<VisualCell>())
+		foreach(VisualCell visualCellInst in visualCells)
 		{
-			//Debug.Log (cell.xPos.ToString () + "_" + cell.zPos.ToString ()+": Norte: "+cell._North+": Este: "+cell._Est+": Sur: "+cell._South+": Oeste: "+cell._West);
+			//Debug.Log (visualCellInst.name);
 
 			json += "\n{id:"+ visualCellInst.transform.name + ",";
-			/*json += "north:" + cell._North+",";
-			json += "east:" + cell._East+",";
-			json += "south:" + cell._South+",";
-			json += "west:" + cell._West+"}";*/
+			json += "north:" + visualCellInst.northState.ToString() +",";
+			json += "east:" + visualCellInst.eastState.ToString()+",";
+			json += "south:" + visualCellInst.southState.ToString()+",";
+			json += "west:" + visualCellInst.westState.ToString()+"}";
 
 			if(index<cells.Length-1)
 				json += ",";
@@ -319,24 +402,24 @@ public class MazeGenerator : MonoBehaviour
 		}
 		json += "]}";
 
-		//Debug.Log(json);
+		Debug.Log(json);
 
 
-		if(saveJson)
-			using (FileStream fs = new FileStream("Assets/Resources/Maze/"+jsonName+".json", FileMode.Create)){
-				using (StreamWriter writer = new StreamWriter(fs)){
-					writer.Write(json);
-				}
+		using (FileStream fs = new FileStream("Assets/Resources/Maze/"+jsonName+".json", FileMode.Create)){
+			using (StreamWriter writer = new StreamWriter(fs)){
+				writer.Write(json);
 			}
+		}
+		#if UNITY_EDITOR
+		UnityEditor.AssetDatabase.Refresh ();
+		#endif
 	}
  
-	public void RandomizeMaze(){
-		if (saveJson) {
-			foreach (VisualCell vc in visualCells)
-				Destroy (vc.gameObject);
-			visualCells.Clear ();
-			cells = new Cell[_width, _height];
-			Init ();
-		}
+	public void RandomizeMaze(){		
+		foreach (VisualCell vc in visualCells)
+			Destroy (vc.gameObject);
+		visualCells.Clear ();
+		cells = new Cell[_width, _height];
+		Init ();
 	}
 }
