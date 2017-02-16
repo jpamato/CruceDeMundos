@@ -11,6 +11,7 @@ public class Game : MonoBehaviour {
 	public CharacterManager characterManager;
 	public LevelManager levelManager;
 	public ToolsManager toolsManager;
+	public PathFinder pathfinder;
 
 	public enum states
 	{
@@ -50,6 +51,7 @@ public class Game : MonoBehaviour {
 		dialogManager = GetComponent<DialogManager>();
 		levelManager = GetComponent<LevelManager>();
 		toolsManager = GetComponent<ToolsManager>();
+		pathfinder = GetComponent<PathFinder>();
 
 		/*ui.Init();
 		OnGamePaused(false);*/

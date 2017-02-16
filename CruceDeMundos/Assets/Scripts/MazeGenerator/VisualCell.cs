@@ -59,9 +59,11 @@ public class VisualCell : MonoBehaviour
 			if (next == cameFrom) {
 				gameObject.GetComponent<Renderer> ().material.color = Color.white;
 				visited = false;
+				Events.OnNewCell ();
 			} else {
 				gameObject.GetComponent<Renderer> ().material.color = Color.red;
 				visited = true;
+				Events.OnNewCell ();
 			}
 			enter = false;
 		}
@@ -152,7 +154,7 @@ public class VisualCell : MonoBehaviour
 			}
 		} else if (source.gameObject.name.Equals ("North")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) + 1));
+			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) - 1));
 			if (parent != null) {
 				return parent.transform.Find ("South");
 			} else {
@@ -160,7 +162,7 @@ public class VisualCell : MonoBehaviour
 			}
 		} else if (source.gameObject.name.Equals ("South")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) - 1));
+			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) + 1));
 			if (parent != null) {
 				return parent.transform.Find ("North");
 			} else {

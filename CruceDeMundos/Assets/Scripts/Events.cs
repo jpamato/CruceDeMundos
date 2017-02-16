@@ -29,4 +29,6 @@ public static class Events {
 
 	public static System.Action<int, PlayerData.ToolName> OnChargeCollect = delegate { };
 
+
+	public static System.Action OnNewCell = delegate { };
 }

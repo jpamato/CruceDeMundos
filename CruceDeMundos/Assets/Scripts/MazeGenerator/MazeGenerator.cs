@@ -188,7 +188,8 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["north"] + "" == "SOLID") { 				
 				visualCellInst._North.gameObject.SetActive (true);
 				visualCellInst.northState = VisualCell.WallState.SOLID;
-			} else if (N ["Maze"] [i] ["north"] + "" == "INVISIBLE") { 				
+			} else if (N ["Maze"] [i] ["north"] + "" == "INVISIBLE") { 	
+				AddPathPoint (visualCellInst._North);
 				visualCellInst._North.gameObject.SetActive (false);
 				visualCellInst.northState = VisualCell.WallState.INVISIBLE;
 			} else {
@@ -218,7 +219,8 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["south"] + "" == "SOLID") { 				
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.SOLID;
-			} else if (N ["Maze"] [i] ["south"] + "" == "INVISIBLE") { 				
+			} else if (N ["Maze"] [i] ["south"] + "" == "INVISIBLE") { 	
+				AddPathPoint (visualCellInst._South);
 				visualCellInst._South.gameObject.SetActive (false);
 				visualCellInst.southState = VisualCell.WallState.INVISIBLE;
 			} else {
@@ -248,7 +250,8 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["east"] + "" == "SOLID") { 				
 				visualCellInst._East.gameObject.SetActive (true);
 				visualCellInst.eastState = VisualCell.WallState.SOLID;
-			} else if (N ["Maze"] [i] ["east"] + "" == "INVISIBLE") { 				
+			} else if (N ["Maze"] [i] ["east"] + "" == "INVISIBLE") { 
+				AddPathPoint (visualCellInst._East);
 				visualCellInst._East.gameObject.SetActive (false);
 				visualCellInst.eastState = VisualCell.WallState.INVISIBLE;
 			} else {				
@@ -278,7 +281,8 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["west"] + "" == "SOLID") { 				
 				visualCellInst._West.gameObject.SetActive (true);
 				visualCellInst.westState = VisualCell.WallState.SOLID;
-			} else if (N ["Maze"] [i] ["west"] + "" == "INVISIBLE") { 				
+			} else if (N ["Maze"] [i] ["west"] + "" == "INVISIBLE") { 
+				AddPathPoint (visualCellInst._West);
 				visualCellInst._West.gameObject.SetActive (false);
 				visualCellInst.westState = VisualCell.WallState.INVISIBLE;
 			} else {
@@ -421,5 +425,10 @@ public class MazeGenerator : MonoBehaviour
 		visualCells.Clear ();
 		cells = new Cell[_width, _height];
 		Init ();
+	}
+
+void AddPathPoint(Transform t){
+		//Instantiate(point,t.transform.position,Quaternion.Euler(Vector3.zero));
+		Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
 	}
 }
