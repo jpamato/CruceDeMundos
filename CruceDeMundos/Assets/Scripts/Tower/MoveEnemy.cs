@@ -8,7 +8,7 @@ public class MoveEnemy : MonoBehaviour {
 
 	void Awake () {
 		rb = GetComponent<Rigidbody2D> ();
-		Data.Instance.freeTrail = true;
+		Game.Instance.traceManager.freeTrail = true;
 	}
 	
 	// Update is called once per frame

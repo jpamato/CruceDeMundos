@@ -13,9 +13,6 @@ public class Data : MonoBehaviour
 	public DialogData dialogData;
 	public LevelData levelData;
 
-	public VisualCell lastCell;
-	public bool freeTrail = true;
-
 	private Fade fade;
 
     public static Data Instance

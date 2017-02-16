@@ -32,16 +32,16 @@ public class VisualCell : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other) {		
 		if (other.tag == "Player") {
-			if (!enter && Data.Instance.freeTrail) {
+			if (!enter && Game.Instance.traceManager.freeTrail) {
 				enter = true;
 
-				if (Data.Instance.lastCell != null) {
-						Data.Instance.lastCell.MakeTrail (this);
-						if(!visited)cameFrom = Data.Instance.lastCell;						
+				if (Game.Instance.traceManager.lastCell != null) {
+						Game.Instance.traceManager.lastCell.MakeTrail (this);
+						if(!visited)cameFrom = Game.Instance.traceManager.lastCell;						
 				}
 
-				Data.Instance.lastCell = this;
-				if(!isFirst)Data.Instance.freeTrail = false;
+				Game.Instance.traceManager.lastCell = this;
+				if(!isFirst)Game.Instance.traceManager.freeTrail = false;
 				//Debug.Log ("Free trail: false - " + gameObject.name + " - " + Time.frameCount);
 			}
 		}
@@ -49,7 +49,7 @@ public class VisualCell : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.tag == "Player") {
-			Data.Instance.freeTrail = true;
+			Game.Instance.traceManager.freeTrail = true;
 			//Debug.Log ("Free trail: true - " + gameObject.name + " - " + Time.frameCount);
 		}
 	}

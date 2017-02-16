@@ -12,6 +12,7 @@ public class Game : MonoBehaviour {
 	public LevelManager levelManager;
 	public ToolsManager toolsManager;
 	public PathFinder pathfinder;
+	public TraceManager traceManager;
 
 	public enum states
 	{
@@ -52,6 +53,7 @@ public class Game : MonoBehaviour {
 		levelManager = GetComponent<LevelManager>();
 		toolsManager = GetComponent<ToolsManager>();
 		pathfinder = GetComponent<PathFinder>();
+		traceManager = GetComponent<TraceManager> ();
 
 		/*ui.Init();
 		OnGamePaused(false);*/

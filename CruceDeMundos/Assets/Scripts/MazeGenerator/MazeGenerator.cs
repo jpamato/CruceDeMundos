@@ -329,7 +329,7 @@ public class MazeGenerator : MonoBehaviour
 			visualCellInst.transform.name = N ["Maze"] [i] ["id"];
 			visualCells.Add (visualCellInst);
 		}
-		Data.Instance.freeTrail = true;
+		Game.Instance.traceManager.freeTrail = true;
 	}	
 
     void InitVisualCell ()
