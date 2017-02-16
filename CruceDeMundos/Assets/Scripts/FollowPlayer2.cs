@@ -14,13 +14,11 @@ public class FollowPlayer2 : MonoBehaviour {
 	public float distance2target = 10f;
 
 	bool lost = false;
-
 	int nextPoint = 0;
-	BoxCollider2D spriteCollider;
+
 
 	void Start () {				
 		Events.OnNewCell += OnNewCell;
-		spriteCollider = sprite.GetComponent<BoxCollider2D> ();
 	}
 
 	void OnDestroy(){
@@ -31,12 +29,7 @@ public class FollowPlayer2 : MonoBehaviour {
 	void Update () {
 		float movementDistance = moveSpeed * Time.deltaTime;
 		Vector3 vectorToTarget = player.transform.position - transform.position;
-		if (vectorToTarget.magnitude > moveDistance && (vectorToTarget.magnitude < maxMoveDistance || lost)) {			
-			
-			/*if(vectorToTarget.magnitude > maxMoveDistance )
-				transform.position = Vector3.MoveTowards(transform.position, GetNextPoint(), movementDistance);
-			else
-				transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementDistance);*/
+		if (vectorToTarget.magnitude > moveDistance && (vectorToTarget.magnitude < maxMoveDistance || lost)) {		
 
 			Vector3 direction = Vector3.zero;
 			if (lost) {
@@ -50,7 +43,7 @@ public class FollowPlayer2 : MonoBehaviour {
 					nextPoint = 0;
 					//Data.Instance.lastPointIndex = nextPoint;
 					lost = false;
-					Debug.Log ("NO Lost");
+					//Debug.Log ("NO Lost");
 					Game.Instance.pathfinder.TraceReset ();
 				}
 
@@ -68,21 +61,14 @@ public class FollowPlayer2 : MonoBehaviour {
 
 		} else if (vectorToTarget.magnitude > maxMoveDistance && !lost) {			
 			lost = true;
-			Debug.Log ("Lost");
+			//Debug.Log ("Lost");
 		}else if(vectorToTarget.magnitude <= moveDistance && lost){
 			lost = false;
-			Debug.Log ("NO Lost");
+			//Debug.Log ("NO Lost");
 			Game.Instance.pathfinder.TraceReset ();
 			nextPoint = 0;
 		}
 
-		/*Debug.Log (Mathf.Atan2 (direction.y, direction.x));
-		gameObject.transform.rotation = Quaternion.AngleAxis(
-			Mathf.Atan2 (direction.y, direction.x) * 360 / Mathf.PI,
-			new Vector3 (0, 0, 1));*/
-
-
-		
 	}
 
 	void OnNewCell(){
@@ -125,26 +111,4 @@ public class FollowPlayer2 : MonoBehaviour {
 		float distSource2Target = sourcet2TargetDir.sqrMagnitude;
 		return distPoint2Target < distSource2Target * 0.9f;
 	}
-
-	void OnCollisionEnter (Collision col)
-	{
-		//Debug.Log (col.gameObject.name);
-		Debug.Log ("ACA");
-
-	}
-
-	/*void OnTriggerEnter2D (Collider2D other) {		
-		if (!lost && (other.name == "East" || other.name == "West" || other.name == "North" || other.name == "South")) {
-			//lost = true;
-			if(other.gameObject.activeSelf)
-				Debug.Log (other.name+" - "+other.transform.parent.gameObject.name);
-			//Debug.Log("lost: "+lost);
-
-		}
-	}*/
-
-	/*void OnTriggerExit2D (Collider2D other) {
-		lost = false;
-		Debug.Log("lost: "+lost);
-	}*/
 }
