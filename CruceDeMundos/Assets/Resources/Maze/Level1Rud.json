@@ -2,7 +2,7 @@
 {id:0_0,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_1,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_2,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:SOLID},
-{id:0_3,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
+{id:0_3,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:INVISIBLE},
 {id:0_4,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:SOLID},
 {id:0_5,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_6,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
@@ -18,7 +18,7 @@
 {id:1_7,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:1_8,north:SOLID,east:SOLID,south:SOLID,west:INVISIBLE},
 {id:2_0,north:SOLID,east:SOLID,south:INVISIBLE,west:INVISIBLE},
-{id:2_1,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},
+{id:2_1,north:INVISIBLE,east:PORTAL,south:SOLID,west:INVISIBLE},
 {id:2_2,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},
 {id:2_3,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:2_4,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
@@ -140,6 +140,6 @@
 {id:15_3,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
 {id:15_4,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},
 {id:15_5,north:SOLID,east:SOLID,south:INVISIBLE,west:INVISIBLE},
-{id:15_6,north:SOLID,east:SOLID,south:INVISIBLE,west:INVISIBLE},
-{id:15_7,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:INVISIBLE},
-{id:15_8,north:INVISIBLE,east:SOLID,south:SOLID,west:SOLID},]}
+{id:15_6,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:INVISIBLE},
+{id:15_7,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:INVISIBLE},
+{id:15_8,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:SOLID},]}
