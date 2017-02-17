@@ -6,7 +6,7 @@ public class MovePlayer : MonoBehaviour {
 	public float speed=10f;
 	Rigidbody2D rb;
 
-	void Awake () {
+	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		Game.Instance.traceManager.freeTrail = true;
 	}

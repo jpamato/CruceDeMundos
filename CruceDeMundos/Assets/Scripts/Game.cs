@@ -36,7 +36,7 @@ public class Game : MonoBehaviour {
 	}
 	void Awake () {
 		mInstance = this;
-
+		traceManager = GetComponent<TraceManager> ();
 	}
 	void Start  ()
 	{
@@ -53,7 +53,7 @@ public class Game : MonoBehaviour {
 		levelManager = GetComponent<LevelManager>();
 		toolsManager = GetComponent<ToolsManager>();
 		pathfinder = GetComponent<PathFinder>();
-		traceManager = GetComponent<TraceManager> ();
+
 
 		/*ui.Init();
 		OnGamePaused(false);*/

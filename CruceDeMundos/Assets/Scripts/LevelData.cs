@@ -23,6 +23,7 @@ public class LevelData : MonoBehaviour {
 		public int pollutionNumber;
 		public List<ObstacleObjective> obstacleObjectives;
 		public List<DialogUnlock> dialogsUnlock;
+		public GameObject levelObjects;
 	}
 
 	[Serializable]
