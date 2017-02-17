@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CameraController : MonoBehaviour {
 
@@ -9,13 +10,23 @@ public class CameraController : MonoBehaviour {
 	private Camera cam;
 
 	public bool zoom = true;
+	public Zoom zoomIn;
+	public Zoom zoomOut;
+
+	[Serializable]
+	public class Zoom
+	{
+		public float camSize;
+		public Vector3 camPos;
+	}
 
 	// Use this for initialization
 	void Start () 
 	{
 		//Calculate and store the offset value by getting the distance between the player's position and camera's position.
-		offset = transform.position - player.transform.position;
 		cam = gameObject.GetComponent<Camera> ();
+		CamZoom(true);
+		offset = transform.position - player.transform.position;
 		CamZoom (false);
 		Events.GameActive += GameActive;
 		Events.GameMap += GameMap;
@@ -42,11 +53,16 @@ public class CameraController : MonoBehaviour {
 	public void CamZoom(bool z){
 		zoom = z;
 		if (zoom) {
-			gameObject.transform.position = new Vector3 (0, 0, -1);
-			cam.orthographicSize = 12;
+			/*gameObject.transform.position = new Vector3 (0, 0, -1);
+			cam.orthographicSize = 12;*/
+			gameObject.transform.position = zoomIn.camPos;
+			cam.orthographicSize = zoomIn.camSize;
+
 		} else {
-			gameObject.transform.position = new Vector3 (55, -19, -1);
-			cam.orthographicSize = 48;
+			/*gameObject.transform.position = new Vector3 (55, -19, -1);
+			cam.orthographicSize = 48;*/
+			gameObject.transform.position = zoomOut.camPos;
+			cam.orthographicSize = zoomOut.camSize;
 		}
 	}
 

@@ -8,11 +8,19 @@ public class CharShop : MonoBehaviour {
 	public GameObject friend;
 	public int firstChoice;
 	public GameObject[] itemButtons;
+	public GameObject[] toolColumn;
 		
 	int lastSelected = -1;
 
 	// Use this for initialization
 	void Start () {
+		for (int i = 0; i < toolColumn.Length; i++) {
+			if (i < Data.Instance.playerData.toolsNumber)
+				toolColumn [i].SetActive (true);
+			else
+				toolColumn [i].SetActive (false);
+		}
+			
 		Invoke ("Init", 0.1f);
 	}
 

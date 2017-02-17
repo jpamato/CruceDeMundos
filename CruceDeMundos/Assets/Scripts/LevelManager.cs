@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 
+	public GameObject container;
+	public CameraController camControl;
+
 	public LevelData.Level leveldata;
 	public bool obj2_Done = false;
 
@@ -39,6 +42,14 @@ public class LevelManager : MonoBehaviour {
 		}
 
 		tools = Data.Instance.playerData.toolsNumber;
+
+		camControl.zoomIn = leveldata.zoomIn;
+		camControl.zoomOut = leveldata.zoomOut;
+		Instantiate (leveldata.levelObjects, container.transform);
+
+		MazeGenerator mz = container.GetComponentInChildren<MazeGenerator> ();
+		mz.visualCellPrefab = leveldata.labCell;
+		mz.jsonName = leveldata.layoutJson;
 	}
 
 	void Start () {		

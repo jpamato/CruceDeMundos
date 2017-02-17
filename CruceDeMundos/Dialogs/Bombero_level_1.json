@@ -1,0 +1,41 @@
+﻿{
+	name:"Bombero",
+	level:1,
+	type:"et",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"prompt":"Hola chicos, ¿qué hacen por acá? Hay un incendio muy peligroso, no se puede pasar",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"Hola, estamos ayudando a la Dra Grimberg a cerrar los portales interdimensionales."}]
+				}
+			]
+		},
+		{index:1,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Ah ¡perfecto! Justo allí en la próxima cuadra hay uno de esos portales, ¿pueden cerrarlo?",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"Por supuesto que si"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"prompt":"¡Excelente! Lleven este matafuegos, lo van a necesitar",
+					replies:[{emoVal:-1,exit:true,goTo:3,text:"SALIR"}]
+				}				
+			]
+		},
+
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Muchas gracias muchachos, ¡cuidense!",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
+				}				
+			]
+		}		
+
+	]
+}

@@ -329,7 +329,7 @@ public class MazeGenerator : MonoBehaviour
 			visualCellInst.transform.name = N ["Maze"] [i] ["id"];
 			visualCells.Add (visualCellInst);
 		}
-		Game.Instance.traceManager.freeTrail = true;
+	if(Game.Instance!=null)Game.Instance.traceManager.freeTrail = true;
 	}	
 
     void InitVisualCell ()
@@ -429,6 +429,6 @@ public class MazeGenerator : MonoBehaviour
 
 void AddPathPoint(Transform t){
 		//Instantiate(point,t.transform.position,Quaternion.Euler(Vector3.zero));
-		Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
+		if(Game.Instance!=null)Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
 	}
 }

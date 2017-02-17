@@ -57,11 +57,11 @@ public class VisualCell : MonoBehaviour
 	public void MakeTrail(VisualCell next){
 		if (enter) {			
 			if (next == cameFrom) {
-				gameObject.GetComponent<Renderer> ().material.color = Color.white;
+				gameObject.GetComponent<Renderer> ().material.color = new Color(0,0,0,0);
 				visited = false;
 				Events.OnNewCell ();
 			} else {
-				gameObject.GetComponent<Renderer> ().material.color = Color.red;
+				gameObject.GetComponent<Renderer> ().material.color = new Color(0,255,0,0.2f);
 				visited = true;
 				Events.OnNewCell ();
 			}

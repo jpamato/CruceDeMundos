@@ -107,7 +107,8 @@ public class DialogData : MonoBehaviour {
 		public enum dType
 		{
 			ET,
-			HINT
+			HINT,
+			HUMAN
 		}
 		public string name;
 		public int level;
@@ -161,7 +162,9 @@ public class DialogData : MonoBehaviour {
 		if(s.Equals("et"))
 			return Dialog.dType.ET;
 		else if(s.Equals("hint"))
-			return Dialog.dType.HINT;		
+			return Dialog.dType.HINT;
+		else if(s.Equals("human"))
+			return Dialog.dType.HUMAN;
 		else
 			return Dialog.dType.ET;
 	}

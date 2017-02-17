@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 
 	public void Hint(){
 		state = states.HINT;
-		Game.Instance.dialogManager.LoadDialog ("Dr Grimberg");
+		Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
 		Events.GameHint ();
 	}
 

@@ -18,12 +18,17 @@ public class LevelData : MonoBehaviour {
 		public int levelNumber;
 		public string objective1;
 		public string objective2;
+		public bool isVsTime;
 		public int fireNumber;
 		public int portalNumber;
 		public int pollutionNumber;
 		public List<ObstacleObjective> obstacleObjectives;
 		public List<DialogUnlock> dialogsUnlock;
 		public GameObject levelObjects;
+		public CameraController.Zoom zoomIn;
+		public CameraController.Zoom zoomOut;
+		public string layoutJson;
+		public VisualCell labCell;
 	}
 
 	[Serializable]
