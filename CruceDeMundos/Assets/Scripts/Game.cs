@@ -82,8 +82,12 @@ public class Game : MonoBehaviour {
 	public void OnGameRestart()
 	{	
 		OnGamePaused(false);
-		Data.Instance.dialogData.ResetAllAtLevel (1);
-		Data.Instance.LoadLevel("Proto"); 
+		Data.Instance.playerData.level++;
+		if (Data.Instance.playerData.level > 2) {
+			Data.Instance.dialogData.ResetAllAtLevel (1);
+			Data.Instance.playerData.level = 1;
+		}
+		Data.Instance.LoadLevel("Game"); 
 
 	}
 	void OnGamePaused(bool paused)

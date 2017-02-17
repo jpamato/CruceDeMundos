@@ -30,6 +30,7 @@ public class LevelData : MonoBehaviour {
 		public CameraController.Zoom zoomOut;
 		public string layoutJson;
 		public VisualCell labCell;
+		public int resourceWin;
 	}
 
 	[Serializable]

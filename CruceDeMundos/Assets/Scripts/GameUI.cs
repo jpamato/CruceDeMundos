@@ -112,6 +112,8 @@ public class GameUI : MonoBehaviour {
 	void OnObjectiveDone(){
 		ingameUI.SetActive (false);
 		winLevelBanner.SetActive (true);
+		Data.Instance.playerData.resources += Game.Instance.levelManager.leveldata.resourceWin;
+		Events.OnRefreshResources (Data.Instance.playerData.resources);
 		Game.Instance.gameManager.state = GameManager.states.WIN;
 		//Invoke ("HideStarGame", 1);
 	}
