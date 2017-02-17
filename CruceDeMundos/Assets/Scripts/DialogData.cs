@@ -95,6 +95,27 @@ public class DialogData : MonoBehaviour {
 						d.dialogTree [i].moods [j].replies [k].resources = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"].AsInt;
 					else
 						d.dialogTree [i].moods [j].replies [k].resources = 0;
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["fireCharge"] != null)
+						d.dialogTree [i].moods [j].replies [k].fireCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["fireCharge"].AsInt;
+					else
+						d.dialogTree [i].moods [j].replies [k].fireCharge = 0;
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["portalCharge"] != null)
+						d.dialogTree [i].moods [j].replies [k].portalCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["portalCharge"].AsInt;
+					else
+						d.dialogTree [i].moods [j].replies [k].portalCharge = 0;
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["pollutionCharge"] != null)
+						d.dialogTree [i].moods [j].replies [k].pollutionCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["pollutionCharge"].AsInt;
+					else
+							d.dialogTree [i].moods [j].replies [k].pollutionCharge = 0;
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["tool"] != null) {
+						d.dialogTree [i].moods [j].replies [k].tool = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["tool"];
+					} else {
+						d.dialogTree [i].moods [j].replies [k].tool = "";
+					}
 				}
 			}
 		}
@@ -143,6 +164,10 @@ public class DialogData : MonoBehaviour {
 			public int goTo;
 			public string text;
 			public int resources;
+			public int fireCharge;
+			public int portalCharge;
+			public int pollutionCharge;
+			public string tool;
 		}
 
 	}

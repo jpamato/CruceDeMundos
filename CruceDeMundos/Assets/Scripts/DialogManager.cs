@@ -76,6 +76,29 @@ public class DialogManager : MonoBehaviour {
 			Events.OnRefreshResources (Data.Instance.playerData.resources);
 		}
 
+		if (mood.replies [index].fireCharge > 0) 
+			Events.OnChargeCollect(mood.replies [index].fireCharge, PlayerData.ToolName.Matafuegos);
+		if (mood.replies [index].portalCharge > 0) 
+			Events.OnChargeCollect(mood.replies [index].portalCharge, PlayerData.ToolName.Restaurador);
+		/*if (mood.replies [index].pollutionCharge > 0) 
+			Events.OnChargeCollect(mood.replies [index].pollutionCharge, PlayerData.ToolName.A);*/
+
+		if (mood.replies [index].tool != "") {
+			if(mood.replies [index].tool.Equals(PlayerData.ToolName.Matafuegos.ToString()))
+				Events.OnAddTool(PlayerData.ToolName.Matafuegos);
+			else if(mood.replies [index].tool.Equals(PlayerData.ToolName.Restaurador.ToString()))
+				Events.OnAddTool(PlayerData.ToolName.Restaurador);
+		}
+
+		if (!mood.replies [index].tool.Equals("")) {
+			if(mood.replies [index].tool.Equals(PlayerData.ToolName.Matafuegos.ToString())){
+
+			}else if(mood.replies [index].tool.Equals(PlayerData.ToolName.Restaurador.ToString())){
+
+			}
+		}
+		
+
 		if (mood.replies [index].exit)
 			Events.DialogDone ();
 		else

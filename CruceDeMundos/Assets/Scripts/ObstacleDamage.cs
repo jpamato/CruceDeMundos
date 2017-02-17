@@ -57,9 +57,11 @@ public class ObstacleDamage : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		// 2
 		if (other.gameObject.tag.Equals(tType.ToString())) {
-			toolsInRange.Add(other.gameObject);
-			ToolDestructionDelegate del = other.gameObject.GetComponent<ToolDestructionDelegate>();
-			del.toolDelegate += OnObstacleDestroy;
+			if (Game.Instance.toolsManager.CanDamage (other.gameObject.tag)) {
+				toolsInRange.Add (other.gameObject);
+				ToolDestructionDelegate del = other.gameObject.GetComponent<ToolDestructionDelegate> ();
+				del.toolDelegate += OnObstacleDestroy;
+			}
 		}
 	}
 	// 3

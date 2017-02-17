@@ -20,8 +20,8 @@ public class CharShop : MonoBehaviour {
 			else
 				toolColumn [i].SetActive (false);
 		}
-			
-		Invoke ("Init", 0.1f);
+		if(firstChoice>-1)
+			Invoke ("Init", 0.1f);
 	}
 
 	void Init(){
@@ -51,12 +51,15 @@ public class CharShop : MonoBehaviour {
 			if (!tool.gameObject.activeSelf) {
 				//System.Enum.GetValues (PlayerData.ToolName.Matafuegos);
 				string[] ttypes = System.Enum.GetNames(typeof(PlayerData.ToolName));
-				for(int i=0;i<ttypes.Length;i++){
-					if (ttypes[i].Equals (shI.toolName.ToString ()))
+				for (int i = 0; i < ttypes.Length; i++) {
+					if (ttypes [i].Equals (shI.toolName.ToString ())) {
 						tool.gameObject.SetActive (true);
-					else
-						friend.transform.FindChild (ttypes[i]).gameObject.SetActive (false);
+						friend.transform.FindChild ("HealthBar").gameObject.SetActive (true);
+						friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
+					} else {
+						friend.transform.FindChild (ttypes [i]).gameObject.SetActive (false);
 					}
+				}
 			}
 			ToolData td = tool.GetComponent<ToolData> ();
 			td.CurrentLevel = td.levels [shI.level];			
@@ -67,8 +70,11 @@ public class CharShop : MonoBehaviour {
 
 			Events.OnRefreshResources (Data.Instance.playerData.resources);
 
-			int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
-			Game.Instance.toolsManager.toolstype [index] = shI.toolName;
+			/*int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
+			Game.Instance.toolsManager.toolstype [index] = shI.toolName;*/
+
+			ToolsManager.FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
+			ft.toolName = shI.toolName.ToString ();			
 
 			lastSelected = itemN;
 		}

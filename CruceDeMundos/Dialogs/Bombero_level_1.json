@@ -23,7 +23,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"prompt":"¡Excelente! Lleven este matafuegos, lo van a necesitar",
-					replies:[{emoVal:-1,exit:true,goTo:3,text:"SALIR"}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR",tool:"Matafuegos"}]
 				}				
 			]
 		},

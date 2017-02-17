@@ -19,6 +19,7 @@ public class LevelData : MonoBehaviour {
 		public string objective1;
 		public string objective2;
 		public bool isVsTime;
+		public float timeOut;
 		public int fireNumber;
 		public int portalNumber;
 		public int pollutionNumber;
