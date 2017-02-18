@@ -74,7 +74,8 @@ public class CharShop : MonoBehaviour {
 			Game.Instance.toolsManager.toolstype [index] = shI.toolName;*/
 
 			ToolsManager.FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
-			ft.toolName = shI.toolName.ToString ();			
+			ft.toolName = shI.toolName.ToString ();
+			ft.hasCharge = true;
 
 			lastSelected = itemN;
 		}
