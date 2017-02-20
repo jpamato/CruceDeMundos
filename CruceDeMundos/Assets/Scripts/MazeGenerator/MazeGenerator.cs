@@ -243,8 +243,8 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.isFirst = true;
 				visualCellInst.eastState = VisualCell.WallState.IN;
 			} else if (N ["Maze"] [i] ["east"] + "" == "OUT") { 				
-				Renderer r = visualCellInst._East.GetComponent<Renderer> ();
-				r.material = wallOut;
+				//Renderer r = visualCellInst._East.GetComponent<Renderer> ();
+				//r.material = wallOut;
 				visualCellInst._East.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.eastState = VisualCell.WallState.OUT;
 			} else if (N ["Maze"] [i] ["east"] + "" == "SOLID") { 				
@@ -269,8 +269,8 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.westState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["west"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
-				Renderer r = visualCellInst._West.GetComponent<Renderer> ();
-				r.material = wallIn;
+				//Renderer r = visualCellInst._West.GetComponent<Renderer> ();
+				//r.material = wallIn;
 				visualCellInst.isFirst = true;
 				visualCellInst.westState = VisualCell.WallState.IN;
 			}else if (N ["Maze"] [i] ["west"] + "" == "OUT") { 				
