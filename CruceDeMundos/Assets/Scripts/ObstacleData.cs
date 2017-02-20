@@ -15,9 +15,11 @@ public class ObstacleData : MonoBehaviour {
 
 	private ObstacleLevel currentLevel;
 
+	private Animation anim;
+
 	// Use this for initialization
 	void Start () {
-
+		anim = GetComponent<Animation> ();
 	}
 
 	// Update is called once per frame
@@ -68,5 +70,19 @@ public class ObstacleData : MonoBehaviour {
 		if (currentLevelIndex < levels.Count - 1) {
 			CurrentLevel = levels[currentLevelIndex + 1];
 		}
+	}
+
+	public bool RecibeDamage(float val){
+		/*Debug.Log (anim ["vortex"].time + "+" +val);
+		anim["vortex"].time = val*0.1f+anim["vortex"].time;
+		anim["vortex"].speed = 1.0f;
+		anim.Play("vortex");
+		if (anim ["vortex"].time > 60f) {
+			return true;
+		} else {
+			return false;
+		}*/
+		Debug.Log (anim ["vortex"].speed);
+		return false;
 	}
 }

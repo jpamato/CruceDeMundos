@@ -29,7 +29,7 @@ public class BulletBehavior : MonoBehaviour {
 			if (target != null) {
 				
 				// 3
-				SpriteRenderer sprite = target.GetComponent<ObstacleData>().CurrentLevel.visualization.GetComponent<SpriteRenderer>();
+				SpriteRenderer sprite = target.GetComponent<ObstacleData>().CurrentLevel.visualization.GetComponentInChildren<SpriteRenderer>();
 				float power = sprite.color.a;
 				power -= Mathf.Max(damage*0.01f, 0);
 				// 4
@@ -39,6 +39,11 @@ public class BulletBehavior : MonoBehaviour {
 					//gameManager.Gold += 50;
 				}
 				sprite.color = new Color(sprite.color.r,sprite.color.g,sprite.color.b,power);
+
+				/*if(target.GetComponent<ObstacleData>().RecibeDamage(damage)){
+					Events.OnObstacleDestroy (target.gameObject.tag);
+					Destroy(target);
+				}*/
 			}
 			Destroy(gameObject);
 		}
