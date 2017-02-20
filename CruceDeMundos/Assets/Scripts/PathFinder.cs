@@ -32,5 +32,10 @@ public class PathFinder : MonoBehaviour {
 		lastTrace = copy;*/
 
 		lastTrace.RemoveRange (0, lastTrace.Count - traceCant);
+
+		/*lastTrace.Clear ();
+		lastTrace.Add (pos);
+		lastTrace.Add (pos);
+		lastTrace.Add (pos);*/
 	}
 }

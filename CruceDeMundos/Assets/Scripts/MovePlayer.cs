@@ -4,6 +4,7 @@ using System.Collections;
 public class MovePlayer : MonoBehaviour {
 
 	public float speed=10f;
+	public bool moving;
 	Rigidbody2D rb;
 
 	void Start () {
@@ -13,9 +14,14 @@ public class MovePlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Game.Instance.gameManager.state==GameManager.states.ACTIVE){
+		if (Game.Instance.gameManager.state == GameManager.states.ACTIVE) {
 			float moveHorizontal = Input.GetAxis ("Horizontal");
 			float moveVertical = Input.GetAxis ("Vertical");
+
+			if (moveHorizontal != 0 || moveVertical != 0)
+				moving = true;
+			else
+				moving = false;
 
 			Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0f);
 			RotateIntoMoveDirection (moveHorizontal, moveVertical);
