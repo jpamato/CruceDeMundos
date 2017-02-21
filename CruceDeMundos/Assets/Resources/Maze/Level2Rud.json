@@ -1,4 +1,5 @@
-{Maze:[
+{height:12,
+Maze:[
 {id:0_0,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_1,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_2,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:SOLID},

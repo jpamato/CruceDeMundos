@@ -9,17 +9,21 @@ public class ObstacleData : MonoBehaviour {
 		public GameObject visualization;
 		public int damage;
 		public float fireRate;
+		public int health;
 	}
 
 	public List<ObstacleLevel> levels;
 
 	private ObstacleLevel currentLevel;
 
-	private Animation anim;
+	private AnimSteps animSteps;
 
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animation> ();
+		animSteps = GetComponent<AnimSteps> ();
+		if (animSteps == null) {
+			animSteps = currentLevel.visualization.GetComponent<AnimSteps> ();
+		}
 	}
 
 	// Update is called once per frame
@@ -82,7 +86,17 @@ public class ObstacleData : MonoBehaviour {
 		} else {
 			return false;
 		}*/
-		Debug.Log (anim ["vortex"].speed);
+		/*Debug.Log (anim ["vortex"].speed);
+		anim ["vortex"].speed = 0.1f;
+		anim.Play("vortex");*/
+
+		/*foreach (AnimationState state in anim) {
+			Debug.Log (state.name);
+		}*/
+
+		currentLevel.health -= 1;
+	animSteps.SetNextStep (currentLevel.health);
+
 		return false;
 	}
 }

@@ -1,4 +1,5 @@
-{Maze:[
+{height:20,
+Maze:[
 {id:0_0,north:False,east:True,south:True,west:False},
 {id:0_1,north:True,east:False,south:False,west:False},
 {id:0_2,north:False,east:True,south:True,west:False},

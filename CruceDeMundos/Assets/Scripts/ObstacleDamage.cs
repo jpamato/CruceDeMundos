@@ -42,10 +42,10 @@ public class ObstacleDamage : MonoBehaviour {
 			if (Time.time - lastShotTime > obstacleData.CurrentLevel.fireRate) {				
 				Shoot(target);
 				lastShotTime = Time.time;
-				field.color = new Color (field.color.r, field.color.g, field.color.b, 1f);
+				//field.color = new Color (field.color.r, field.color.g, field.color.b, 1f);
 			}
 		} else {
-			field.color = new Color (field.color.r, field.color.g, field.color.b, 0.0f);
+			//field.color = new Color (field.color.r, field.color.g, field.color.b, 0.0f);
 		}
 	}
 

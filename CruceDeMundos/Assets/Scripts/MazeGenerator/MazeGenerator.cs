@@ -35,10 +35,10 @@ public class MazeGenerator : MonoBehaviour
 		step = visualCellPrefab.transform.localScale.x;
 		cells = new Cell[_width, _height];
 		visualCells = new List<VisualCell> ();
-		if(!importJson)
-			Init(); 
+		if (!importJson) 			
+			Init (); 
 		else
-			Import (jsonName);        
+			Import (jsonName);		
     }
 
     void Init ()
@@ -164,7 +164,7 @@ public class MazeGenerator : MonoBehaviour
 			int xPos = int.Parse (s [0]);
 			int yPos = int.Parse (s [1]);
 
-			visualCellInst = Instantiate (visualCellPrefab, new Vector3 (xPos * step, _height * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
+			visualCellInst = Instantiate (visualCellPrefab, new Vector3 (xPos * step, N ["height"].AsInt * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
 			visualCellInst.transform.parent = transform;
 			if (N ["Maze"] [i] ["north"] + "" == "FIRE") {
 				visualCellInst._North.gameObject.SetActive (true);
@@ -386,7 +386,7 @@ public class MazeGenerator : MonoBehaviour
     }
 
 	public void SaveJson(){
-		string json = "{Maze:[";
+	string json = "{height:"+_height+"\nMaze:[";
 		// Initialise mes cellules visuel et detruit les murs en fonction des cellules virtuel
 		int index=0;
 		foreach(VisualCell visualCellInst in visualCells)
