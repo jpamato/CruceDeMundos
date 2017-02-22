@@ -40,9 +40,12 @@ public class BulletBehavior : MonoBehaviour {
 				}
 				sprite.color = new Color(sprite.color.r,sprite.color.g,sprite.color.b,power);*/
 
-				if(target.GetComponent<ObstacleData>().RecibeDamage(damage)){
+				if (target.GetComponent<ObstacleData> ().RecibeDamage (damage)) {
+					target.transform.Find ("hit").GetComponent<ParticleSystem> ().Play ();
 					Events.OnObstacleDestroy (target.gameObject.tag);
 					//Destroy(target);
+				} else {
+					target.transform.Find ("hit").GetComponent<ParticleSystem> ().Play ();
 				}
 			}
 			Destroy(gameObject);

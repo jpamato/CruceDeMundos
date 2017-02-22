@@ -16,11 +16,14 @@ public class ShootObstacle : MonoBehaviour {
 	private float lastShotTime;
 	private ToolData toolData;
 
+	private GameObject tool;
+
 	// Use this for initialization
 	void Start() {
 		obstaclesInRange = new List<GameObject>();
 		lastShotTime = Time.time;
 		toolData = gameObject.GetComponentInChildren<ToolData> ();
+		tool = gameObject.GetComponent<ToolData> ().CurrentLevel.visualization;
 	}
 
 	// Update is called once per frame
@@ -38,14 +41,16 @@ public class ShootObstacle : MonoBehaviour {
 		// 2
 		if (target != null) {
 			if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
-				Shoot(target.GetComponent<Collider2D>());
+				Shoot (target.GetComponent<Collider2D> ());
 				lastShotTime = Time.time;
 			}
 			// 3
-			Vector3 direction = gameObject.transform.position - target.transform.position;
-			gameObject.transform.rotation = Quaternion.AngleAxis(
-				Mathf.Atan2 (direction.y, direction.x) * 180 / Mathf.PI,
+			Vector3 direction = tool.transform.position - target.transform.position;
+			tool.transform.rotation = Quaternion.AngleAxis (90f +
+			Mathf.Atan2 (direction.y, direction.x) * 180 / Mathf.PI,
 				new Vector3 (0, 0, 1));
+		} else {
+			tool.transform.localRotation = Quaternion.Euler (Vector3.zero);
 		}
 	}
 
@@ -77,7 +82,7 @@ public class ShootObstacle : MonoBehaviour {
 		Transform healthBarTransform = transform.parent.FindChild("HealthBar");
 		HealthBar healthBar = healthBarTransform.gameObject.GetComponent<HealthBar>();
 
-		if(healthBar.currentHealth>=toolData.CurrentLevel.fireLoss){
+		if(healthBar.currentHealth>=toolData.CurrentLevel.fireLoss && target.gameObject.GetComponent<ObstacleData>().CurrentLevel.health>0){
 			GameObject bulletPrefab = toolData.CurrentLevel.bullet;
 			// 1 
 			Vector3 startPosition = gameObject.transform.position;
