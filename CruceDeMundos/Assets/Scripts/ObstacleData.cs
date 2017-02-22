@@ -95,7 +95,7 @@ public class ObstacleData : MonoBehaviour {
 		}*/
 
 		currentLevel.health -= 1;
-	animSteps.SetNextStep (currentLevel.health);
+		animSteps.SetNextStep (currentLevel.health);
 
 		return false;
 	}

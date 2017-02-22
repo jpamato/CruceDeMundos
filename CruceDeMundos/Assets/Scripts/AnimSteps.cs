@@ -9,7 +9,7 @@ public class AnimSteps : MonoBehaviour {
 	public GameObject toDestroy;
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animation> ();	
+		anim = GetComponent<Animation> ();
 	}
 	
 	// Update is called once per frame

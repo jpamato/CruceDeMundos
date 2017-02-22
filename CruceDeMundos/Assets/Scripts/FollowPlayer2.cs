@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FollowPlayer2 : MonoBehaviour {
 
 	public GameObject player;
-	public GameObject sprite;
+	public GameObject avatar;
 	public float moveSpeed = 10f;
 	public float rotationSpeed = 10f;
 	public float moveDistance = 2f;
@@ -20,9 +20,13 @@ public class FollowPlayer2 : MonoBehaviour {
 	public float vel;
 	MovePlayer movePlayer;
 
+	bool moving;
+	Animator animator;
+
 	void Start () {				
 		Events.OnNewCell += OnNewCell;
 		movePlayer = player.GetComponent<MovePlayer> ();
+		animator = avatar.GetComponent<Animator> ();
 	}
 
 	void OnDestroy(){
@@ -34,7 +38,10 @@ public class FollowPlayer2 : MonoBehaviour {
 		float movementDistance = moveSpeed * Time.deltaTime;
 		Vector3 vectorToTarget = player.transform.position - transform.position;
 		if (vectorToTarget.magnitude > moveDistance && (vectorToTarget.magnitude < maxMoveDistance || lost)) {		
-
+			if (!moving) {
+				moving = true;
+				animator.Play ("start");
+			}
 			Vector3 direction = Vector3.zero;
 			if (lost) {
 				movementDistance *= 1.5f;
@@ -59,12 +66,12 @@ public class FollowPlayer2 : MonoBehaviour {
 			}
 
 			if (direction != Vector3.zero)
-				sprite.transform.rotation = Quaternion.Slerp (sprite.transform.rotation, 
-					Quaternion.FromToRotation (Vector3.left, direction), 
+				avatar.transform.rotation = Quaternion.Slerp (avatar.transform.rotation, 
+					Quaternion.FromToRotation (Vector3.up, direction), 
 					rotationSpeed * Time.deltaTime);
-			sprite.transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, sprite.transform.rotation.eulerAngles.z));
+			avatar.transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, avatar.transform.rotation.eulerAngles.z));
 
-			vel = (transform.position - lastPos).magnitude / Time.deltaTime;
+
 			if (!lost){
 				if (movePlayer.moving && vel < moveSpeed * 0.8f) {
 					lost = true;
@@ -88,6 +95,14 @@ public class FollowPlayer2 : MonoBehaviour {
 				nextPoint = Game.Instance.pathfinder.lastTrace.Count - 1;
 			}
 		}
+		vel = (transform.position - lastPos).magnitude / Time.deltaTime;
+		if(vel==0f){
+			if (moving) {
+				moving = false;
+				animator.Play ("stop");
+			}
+		}
+
 		lastPos = transform.position;
 	}
 
