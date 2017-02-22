@@ -34,7 +34,7 @@ public class ObstacleDamage : MonoBehaviour {
 			if (distance < minimalObstacleDistance) {
 				target = obstacle;
 				minimalObstacleDistance = distance;
-				field.color = new Color (field.color.r, field.color.g, field.color.b, 0.1f);
+				//field.color = new Color (field.color.r, field.color.g, field.color.b, 0.1f);
 			}
 		}
 		// 2
@@ -56,8 +56,8 @@ public class ObstacleDamage : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		// 2
-		if (other.gameObject.tag.Equals(tType.ToString())) {
-			if (Game.Instance.toolsManager.CanDamage (other.gameObject.tag)) {
+		if (other.gameObject.tag.Equals(tType.ToString())) {			
+			if (Game.Instance.toolsManager.CanDamage (gameObject.tag)) {
 				toolsInRange.Add (other.gameObject);
 				ToolDestructionDelegate del = other.gameObject.GetComponent<ToolDestructionDelegate> ();
 				del.toolDelegate += OnObstacleDestroy;
@@ -80,7 +80,8 @@ public class ObstacleDamage : MonoBehaviour {
 			healthBarTransform.gameObject.GetComponent<HealthBar>();
 		healthBar.currentHealth = Mathf.Max(healthBar.currentHealth-obstacleData.CurrentLevel.damage, 0);
 		// 4
-		if (healthBar.currentHealth <= 0) {			
+		if (healthBar.currentHealth <= 0) {
+			Game.Instance.toolsManager.SetFriendEmpty (target.transform.parent.gameObject);
 			Destroy(target);
 			Game.Instance.levelManager.ToolLose ();
 		}

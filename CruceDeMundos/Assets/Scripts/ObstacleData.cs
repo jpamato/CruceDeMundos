@@ -77,26 +77,11 @@ public class ObstacleData : MonoBehaviour {
 	}
 
 	public bool RecibeDamage(float val){
-		/*Debug.Log (anim ["vortex"].time + "+" +val);
-		anim["vortex"].time = val*0.1f+anim["vortex"].time;
-		anim["vortex"].speed = 1.0f;
-		anim.Play("vortex");
-		if (anim ["vortex"].time > 60f) {
-			return true;
-		} else {
-			return false;
-		}*/
-		/*Debug.Log (anim ["vortex"].speed);
-		anim ["vortex"].speed = 0.1f;
-		anim.Play("vortex");*/
-
-		/*foreach (AnimationState state in anim) {
-			Debug.Log (state.name);
-		}*/
-
 		currentLevel.health -= 1;
 		animSteps.SetNextStep (currentLevel.health);
-
-		return false;
+		if (currentLevel.health <= 0)
+			return true;
+		else
+			return false;
 	}
 }

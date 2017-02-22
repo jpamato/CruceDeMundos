@@ -42,7 +42,7 @@ public class BulletBehavior : MonoBehaviour {
 
 				if(target.GetComponent<ObstacleData>().RecibeDamage(damage)){
 					Events.OnObstacleDestroy (target.gameObject.tag);
-					Destroy(target);
+					//Destroy(target);
 				}
 			}
 			Destroy(gameObject);

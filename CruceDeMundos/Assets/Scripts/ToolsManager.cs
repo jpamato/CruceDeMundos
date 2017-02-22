@@ -51,7 +51,7 @@ public class ToolsManager : MonoBehaviour {
 		}
 	}
 
-	void SetFriendEmpty(GameObject f){
+	public void SetFriendEmpty(GameObject f){
 		FriendTool ft = Array.Find (friendsTools, p => p.friend == f);
 		ft.hasCharge = false;
 		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.IndexOf (ShootObstacle.obstacleType.FIRE.ToString()) == -1)
@@ -61,6 +61,7 @@ public class ToolsManager : MonoBehaviour {
 	}
 
 	public bool CanDamage(string tag){
+		Debug.Log ("TAG: "+tag);
 		if (damagingObstacles.Count > 0) {
 			return damagingObstacles.Contains (tag);
 		} else {
