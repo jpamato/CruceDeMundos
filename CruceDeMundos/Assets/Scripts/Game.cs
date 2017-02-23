@@ -86,6 +86,8 @@ public class Game : MonoBehaviour {
 		if (Data.Instance.playerData.level > 2) {
 			Data.Instance.dialogData.ResetAllAtLevel (1);
 			Data.Instance.playerData.level = 1;
+			Data.Instance.playerData.resources = 50;
+			Data.Instance.playerData.toolsNumber = 1;
 		}
 		Data.Instance.LoadLevel("Game"); 
 
