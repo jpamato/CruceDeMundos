@@ -176,8 +176,8 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.northState = VisualCell.WallState.PORTAL;
 			} else if (N ["Maze"] [i] ["north"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
-				/*Renderer r = visualCellInst._North.GetComponent<Renderer> ();
-				r.material = wallIn;i*/
+				visualCellInst._North.Find("tronWall").gameObject.SetActive(false);
+
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("South").gameObject.SetActive (true);
@@ -187,6 +187,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["north"] + "" == "OUT") { 				
 				/*Renderer r = visualCellInst._North.GetComponent<Renderer> ();
 				r.material = wallOut;*/
+				visualCellInst._North.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("North").gameObject.SetActive (true);
@@ -216,7 +217,7 @@ public class MazeGenerator : MonoBehaviour
 				player.transform.position = visualCellInst.transform.position;
 				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
 				r.material = wallIn;*/
-
+				visualCellInst._South.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("North").gameObject.SetActive (true);
@@ -226,6 +227,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["south"] + "" == "OUT") { 				
 				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
 				r.material = wallOut;*/
+				visualCellInst._South.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("South").gameObject.SetActive (true);
@@ -256,6 +258,7 @@ public class MazeGenerator : MonoBehaviour
 				player.transform.position = visualCellInst.transform.position;
 				/*Renderer r = visualCellInst._East.GetComponent<Renderer> ();
 				r.material = wallIn;*/
+				visualCellInst._East.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("West").gameObject.SetActive (true);
@@ -265,7 +268,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["east"] + "" == "OUT") { 				
 				//Renderer r = visualCellInst._East.GetComponent<Renderer> ();
 				//r.material = wallOut;
-
+				visualCellInst._East.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("East").gameObject.SetActive (true);
@@ -296,7 +299,7 @@ public class MazeGenerator : MonoBehaviour
 				player.transform.position = visualCellInst.transform.position;
 				//Renderer r = visualCellInst._West.GetComponent<Renderer> ();
 				//r.material = wallIn;
-
+				visualCellInst._West.Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("East").gameObject.SetActive (true);
@@ -306,6 +309,7 @@ public class MazeGenerator : MonoBehaviour
 			}else if (N ["Maze"] [i] ["west"] + "" == "OUT") { 				
 				/*Renderer r = visualCellInst._West.GetComponent<Renderer> ();
 				r.material = wallOut;*/
+				visualCellInst._West.Find("tronWall").Find("tronWall").gameObject.SetActive(false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("West").gameObject.SetActive (true);
