@@ -44,14 +44,17 @@ public class ToolsManager : MonoBehaviour {
 			tool.gameObject.SetActive (true);
 			ft.friend.transform.FindChild ("HealthBar").gameObject.SetActive (true);
 			ft.friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
-			ft.toolName = tType.ToString ();
-			ft.hasCharge = true;
+			SetTool (ft, tType.ToString ());
 			Data.Instance.playerData.toolsNumber++;
 		}
 	}
 
 	public void SetFriendTool(GameObject friend, string toolName){
 		FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
+		SetTool (ft, toolName);
+	}
+
+	void SetTool(FriendTool ft, string toolName){
 		ft.toolName = toolName;
 		ft.hasCharge = true;
 		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.Contains(ShootObstacle.obstacleType.FIRE.ToString()))

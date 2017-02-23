@@ -176,13 +176,20 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.northState = VisualCell.WallState.PORTAL;
 			} else if (N ["Maze"] [i] ["north"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
-				Renderer r = visualCellInst._North.GetComponent<Renderer> ();
-				r.material = wallIn;
+				/*Renderer r = visualCellInst._North.GetComponent<Renderer> ();
+				r.material = wallIn;i*/
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("South").gameObject.SetActive (true);
+
 				visualCellInst.isFirst = true;
 				visualCellInst.northState = VisualCell.WallState.IN;
 			} else if (N ["Maze"] [i] ["north"] + "" == "OUT") { 				
-				Renderer r = visualCellInst._North.GetComponent<Renderer> ();
-				r.material = wallOut;
+				/*Renderer r = visualCellInst._North.GetComponent<Renderer> ();
+				r.material = wallOut;*/
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("North").gameObject.SetActive (true);
 				visualCellInst._North.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.northState = VisualCell.WallState.OUT;
 			} else if (N ["Maze"] [i] ["north"] + "" == "SOLID") { 				
@@ -207,13 +214,22 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.southState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["south"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
-				Renderer r = visualCellInst._South.GetComponent<Renderer> ();
-				r.material = wallIn;
+				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
+				r.material = wallIn;*/
+
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("North").gameObject.SetActive (true);
+
 				visualCellInst.isFirst = true;
 				visualCellInst.southState = VisualCell.WallState.IN;
 			} else if (N ["Maze"] [i] ["south"] + "" == "OUT") { 				
-				Renderer r = visualCellInst._South.GetComponent<Renderer> ();
-				r.material = wallOut;
+				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
+				r.material = wallOut;*/
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("South").gameObject.SetActive (true);
+
 				visualCellInst._South.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.southState = VisualCell.WallState.OUT;
 			} else if (N ["Maze"] [i] ["south"] + "" == "SOLID") { 				
@@ -238,13 +254,22 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst.eastState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["east"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
-				Renderer r = visualCellInst._East.GetComponent<Renderer> ();
-				r.material = wallIn;
+				/*Renderer r = visualCellInst._East.GetComponent<Renderer> ();
+				r.material = wallIn;*/
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("West").gameObject.SetActive (true);
+
 				visualCellInst.isFirst = true;
 				visualCellInst.eastState = VisualCell.WallState.IN;
 			} else if (N ["Maze"] [i] ["east"] + "" == "OUT") { 				
 				//Renderer r = visualCellInst._East.GetComponent<Renderer> ();
 				//r.material = wallOut;
+
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("East").gameObject.SetActive (true);
+
 				visualCellInst._East.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.eastState = VisualCell.WallState.OUT;
 			} else if (N ["Maze"] [i] ["east"] + "" == "SOLID") { 				
@@ -271,11 +296,20 @@ public class MazeGenerator : MonoBehaviour
 				player.transform.position = visualCellInst.transform.position;
 				//Renderer r = visualCellInst._West.GetComponent<Renderer> ();
 				//r.material = wallIn;
+
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("East").gameObject.SetActive (true);
+
 				visualCellInst.isFirst = true;
 				visualCellInst.westState = VisualCell.WallState.IN;
 			}else if (N ["Maze"] [i] ["west"] + "" == "OUT") { 				
-				Renderer r = visualCellInst._West.GetComponent<Renderer> ();
-				r.material = wallOut;
+				/*Renderer r = visualCellInst._West.GetComponent<Renderer> ();
+				r.material = wallOut;*/
+				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
+				exit.SetActive (true);
+				exit.transform.Find ("West").gameObject.SetActive (true);
+
 				visualCellInst._West.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.westState = VisualCell.WallState.OUT;
 			} else if (N ["Maze"] [i] ["west"] + "" == "SOLID") { 				
@@ -429,6 +463,6 @@ public class MazeGenerator : MonoBehaviour
 
 void AddPathPoint(Transform t){
 		//Instantiate(point,t.transform.position,Quaternion.Euler(Vector3.zero));
-		if(Game.Instance!=null)Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
+		//if(Game.Instance!=null)Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
 	}
 }

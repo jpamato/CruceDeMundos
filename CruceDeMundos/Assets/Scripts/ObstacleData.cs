@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class ObstacleData : MonoBehaviour {
 
+	public float colliderScaleFactor = 3;
+
 	[System.Serializable]
 	public class ObstacleLevel {		
 		public GameObject visualization;
@@ -15,15 +17,24 @@ public class ObstacleData : MonoBehaviour {
 	public List<ObstacleLevel> levels;
 
 	private ObstacleLevel currentLevel;
+	private CircleCollider2D obCollider;
 
 	private AnimSteps animSteps;
 
 	// Use this for initialization
+
+	void Awake(){
+		obCollider = GetComponent<CircleCollider2D> ();
+		CurrentLevel = levels[0];
+	}
+
 	void Start () {
 		animSteps = GetComponent<AnimSteps> ();
 		if (animSteps == null) {
 			animSteps = currentLevel.visualization.GetComponent<AnimSteps> ();
 		}
+
+
 	}
 
 	// Update is called once per frame
@@ -32,7 +43,7 @@ public class ObstacleData : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		CurrentLevel = levels[0];
+		
 	}
 
 	//1
@@ -51,6 +62,7 @@ public class ObstacleData : MonoBehaviour {
 				if (levelVisualization != null) {
 					if (i == currentLevelIndex) {
 						levels[i].visualization.SetActive(true);
+						obCollider.radius = colliderScaleFactor * levels [i].visualization.transform.lossyScale.x;
 					} else {
 						levels[i].visualization.SetActive(false);
 					}

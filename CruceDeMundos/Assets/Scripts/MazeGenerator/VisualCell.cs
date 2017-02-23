@@ -115,11 +115,17 @@ public class VisualCell : MonoBehaviour
 
 	void MakeIn(Transform wall){
 		wall.gameObject.SetActive (true);
+		GameObject exit = wall.parent.Find ("exit").gameObject;
+		exit.SetActive (true);
+		exit.transform.Find (wall.name).gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = false;
 	}
 
 	void MakeOut(Transform wall){
 		wall.gameObject.SetActive (true);
+		GameObject exit = wall.parent.Find ("exit").gameObject;
+		exit.SetActive (true);
+		exit.transform.Find (wall.name).gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = false;
 	}
 
