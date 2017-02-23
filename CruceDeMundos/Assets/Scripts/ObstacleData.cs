@@ -16,7 +16,7 @@ public class ObstacleData : MonoBehaviour {
 
 	public List<ObstacleLevel> levels;
 
-	private ObstacleLevel currentLevel;
+	public ObstacleLevel currentLevel;
 	private CircleCollider2D obCollider;
 
 	private AnimSteps animSteps;

@@ -42,16 +42,23 @@ public class ShootObstacle : MonoBehaviour {
 		}
 		// 2
 		if (target != null) {
-			if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
-				Shoot (target.GetComponent<Collider2D> ());
-				lastShotTime = Time.time;
-				shooting = true;
+			
+			if (target.gameObject.GetComponent<ObstacleData> ().CurrentLevel.health > 0) {
+				if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
+					Shoot (target.GetComponent<Collider2D> ());
+					lastShotTime = Time.time;
+					shooting = true;
+				}
+			} else {
+				shooting = false;
 			}
 			// 3
 			Vector3 direction = tool.transform.position - target.transform.position;
 			tool.transform.rotation = Quaternion.AngleAxis (90f +
 			Mathf.Atan2 (direction.y, direction.x) * 180 / Mathf.PI,
 				new Vector3 (0, 0, 1));
+
+
 		} else {
 			tool.transform.localRotation = Quaternion.Euler (Vector3.zero);
 			shooting = false;
@@ -85,8 +92,8 @@ public class ShootObstacle : MonoBehaviour {
 
 		Transform healthBarTransform = transform.parent.FindChild("HealthBar");
 		HealthBar healthBar = healthBarTransform.gameObject.GetComponent<HealthBar>();
-
-		if(healthBar.currentHealth>=toolData.CurrentLevel.fireLoss && target.gameObject.GetComponent<ObstacleData>().CurrentLevel.health>0){
+		if (healthBar.currentHealth >= toolData.CurrentLevel.fireLoss) {
+			shooting = true;
 			GameObject bulletPrefab = toolData.CurrentLevel.bullet;
 			// 1 
 			Vector3 startPosition = gameObject.transform.position;
@@ -97,12 +104,12 @@ public class ShootObstacle : MonoBehaviour {
 			// 2 
 			GameObject newBullet = (GameObject)Instantiate (bulletPrefab);
 			newBullet.transform.position = startPosition;
-			BulletBehavior bulletComp = newBullet.GetComponent<BulletBehavior>();
+			BulletBehavior bulletComp = newBullet.GetComponent<BulletBehavior> ();
 			bulletComp.target = target.gameObject;
 			bulletComp.startPosition = startPosition;
 			bulletComp.targetPosition = targetPosition;
 						
-			healthBar.currentHealth = Mathf.Max(healthBar.currentHealth-toolData.CurrentLevel.fireLoss, 0);
+			healthBar.currentHealth = Mathf.Max (healthBar.currentHealth - toolData.CurrentLevel.fireLoss, 0);
 
 			if (healthBar.currentHealth == 0)
 				Game.Instance.toolsManager.SetFriendEmpty (transform.parent.gameObject);
