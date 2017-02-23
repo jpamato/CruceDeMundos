@@ -42,6 +42,8 @@ public class CharShop : MonoBehaviour {
 
 		if(Data.Instance.playerData.resources-shI.val+lastCost>=0){
 		
+			Game.Instance.toolsManager.SetFriendEmpty (friend);
+
 			foreach (GameObject item in itemButtons) 
 				item.GetComponent<Button> ().targetGraphic.color = Color.green;
 			
@@ -73,9 +75,7 @@ public class CharShop : MonoBehaviour {
 			/*int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
 			Game.Instance.toolsManager.toolstype [index] = shI.toolName;*/
 
-			ToolsManager.FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
-			ft.toolName = shI.toolName.ToString ();
-			ft.hasCharge = true;
+			Game.Instance.toolsManager.SetFriendTool (friend, shI.toolName.ToString ());
 
 			lastSelected = itemN;
 		}

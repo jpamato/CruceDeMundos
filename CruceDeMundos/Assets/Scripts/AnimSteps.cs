@@ -23,7 +23,7 @@ public class AnimSteps : MonoBehaviour {
 	}
 
 	public void CheckStep(int step2Check){
-		Debug.Log (step + " - " + step2Check);	
+		//Debug.Log (step + " - " + step2Check);	
 		if (step<=step2Check)
 			anim.Play ();
 		else
@@ -32,6 +32,6 @@ public class AnimSteps : MonoBehaviour {
 
 	public void DestroyGO(){
 		toDestroy.GetComponent<CircleCollider2D> ().enabled = false;
-		Destroy (toDestroy, 10);
+		Destroy (toDestroy, 5);
 	}
 }

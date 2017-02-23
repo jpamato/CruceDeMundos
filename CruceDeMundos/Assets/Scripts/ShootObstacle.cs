@@ -18,6 +18,8 @@ public class ShootObstacle : MonoBehaviour {
 
 	private GameObject tool;
 
+	public bool shooting;
+
 	// Use this for initialization
 	void Start() {
 		obstaclesInRange = new List<GameObject>();
@@ -43,6 +45,7 @@ public class ShootObstacle : MonoBehaviour {
 			if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
 				Shoot (target.GetComponent<Collider2D> ());
 				lastShotTime = Time.time;
+				shooting = true;
 			}
 			// 3
 			Vector3 direction = tool.transform.position - target.transform.position;
@@ -51,6 +54,7 @@ public class ShootObstacle : MonoBehaviour {
 				new Vector3 (0, 0, 1));
 		} else {
 			tool.transform.localRotation = Quaternion.Euler (Vector3.zero);
+			shooting = false;
 		}
 	}
 

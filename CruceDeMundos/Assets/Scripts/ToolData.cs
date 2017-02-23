@@ -13,14 +13,16 @@ public class ToolData : MonoBehaviour {
 		public float fireLoss;
 	}
 
+	public ToolLevel currentLevel;
+
 	public List<ToolLevel> levels;
 	public PlayerData.ToolName toolType;
 
-	private ToolLevel currentLevel;
+
 
 	// Use this for initialization
-	void Start () {
-
+	void Awake () {
+		CurrentLevel = levels[0];
 	}
 
 	// Update is called once per frame
@@ -28,8 +30,12 @@ public class ToolData : MonoBehaviour {
 
 	}
 
-	void OnEnable() {
-		CurrentLevel = levels[0];
+	void OnDisable() {
+		currentLevel.visualization.SetActive (false);
+	}
+
+	void OnEnable() {		
+		currentLevel.visualization.SetActive (true);
 	}
 
 	//1

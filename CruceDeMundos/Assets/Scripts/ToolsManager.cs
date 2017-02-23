@@ -17,7 +17,6 @@ public class ToolsManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {		
-		damagingObstacles = new List<string> ();
 		Events.OnChargeCollect += OnChargeCollect;
 		Events.OnAddTool += OnAddTool;
 	}
@@ -51,17 +50,30 @@ public class ToolsManager : MonoBehaviour {
 		}
 	}
 
-	public void SetFriendEmpty(GameObject f){
-		FriendTool ft = Array.Find (friendsTools, p => p.friend == f);
+	public void SetFriendTool(GameObject friend, string toolName){
+		FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
+		ft.toolName = toolName;
+		ft.hasCharge = true;
+		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.Contains(ShootObstacle.obstacleType.FIRE.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.FIRE.ToString());
+		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.PORTAL.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.PORTAL.ToString());
+	}
+
+	public void SetFriendEmpty(GameObject friend){
+		FriendTool ft = Array.Find (friendsTools, p => p.friend == friend);
 		ft.hasCharge = false;
-		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.IndexOf (ShootObstacle.obstacleType.FIRE.ToString()) == -1)
+
+		FriendTool f = Array.Find (friendsTools, p => p.toolName == ft.toolName && p.hasCharge == true);
+
+		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && f==null)
 			damagingObstacles.Add (ShootObstacle.obstacleType.FIRE.ToString());
-		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.IndexOf (ShootObstacle.obstacleType.PORTAL.ToString()) == -1)
+		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && f==null)
 			damagingObstacles.Add (ShootObstacle.obstacleType.PORTAL.ToString());
 	}
 
 	public bool CanDamage(string tag){
-		Debug.Log ("TAG: "+tag);
+		//Debug.Log ("TAG: "+tag);
 		if (damagingObstacles.Count > 0) {
 			return damagingObstacles.Contains (tag);
 		} else {
@@ -73,4 +85,5 @@ public class ToolsManager : MonoBehaviour {
 	void Update () {
 	
 	}
+
 }
