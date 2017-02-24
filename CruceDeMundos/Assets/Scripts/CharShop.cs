@@ -20,8 +20,12 @@ public class CharShop : MonoBehaviour {
 			else
 				toolColumn [i].SetActive (false);
 		}
-		if(firstChoice>-1)
+		if (firstChoice > -1) {
 			Invoke ("Init", 0.1f);
+		} else if (Data.Instance.playerData.toolsNumber>1) {
+			firstChoice = -1 * firstChoice % 10;
+			Invoke ("Init", 0.1f);
+		}
 	}
 
 	void Init(){
