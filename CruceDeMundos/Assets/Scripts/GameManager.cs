@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour {
 
 	void Intro(){		
 		Events.GameIntro ();
-		Invoke ("Mision", 4);
+		//Invoke ("Mision", 4);
 	}
 
-	void Mision(){
+	public void Mision(){
 		state = states.MISION;
 		Events.GameMision ();
 	}
@@ -60,13 +60,17 @@ public class GameManager : MonoBehaviour {
 
 	void DialogDone(){		
 		if (!gameStarted) {
-			Events.StartGame ();
-			gameStarted=true;
+			Events.GameReady ();
 		} else {
 			state = states.ACTIVE;
 			Events.GameActive ();
 		}
 		Events.ResetCharacterCollider ();
+	}
+
+	public void StartGame(){
+		Events.StartGame ();
+		gameStarted=true;
 	}
 
 	public void Map(){
