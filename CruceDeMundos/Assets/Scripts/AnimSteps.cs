@@ -27,7 +27,7 @@ public class AnimSteps : MonoBehaviour {
 
 	public void CheckStep(int step2Check){
 		//Debug.Log (step + " - " + step2Check);	
-		if (step<=step2Check)
+		if (step<step2Check)
 			anim.Play ();
 		else
 			anim.Stop();
