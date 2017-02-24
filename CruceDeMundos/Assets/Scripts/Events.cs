@@ -12,6 +12,7 @@ public static class Events {
 	public static System.Action GameMision = delegate { };
 	public static System.Action GameTools = delegate { };
 	public static System.Action GameHint = delegate { };
+	public static System.Action GameReady = delegate { };
 	public static System.Action GameActive = delegate { };
 	public static System.Action GameDialog = delegate { };
 	public static System.Action GameMap = delegate { };

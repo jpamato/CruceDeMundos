@@ -16,6 +16,8 @@ public class GameUI : MonoBehaviour {
 	public GameObject winLevelBanner;
 	public GameObject timeOutBanner;
 	public GameObject toolsLoseBanner;
+	public GameObject siguienteBanner;
+	public GameObject iniciarBanner;
 
 	public Text objective1;
 	public Text objective2;
@@ -38,6 +40,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameMision += GameMision;
 		Events.GameTools += GameTools;
 		Events.GameHint += GameHint;
+		Events.GameReady += GameReady;
 		Events.GameActive += GameActive;
 		Events.GameDialog += GameDialog;
 
@@ -54,6 +57,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameMision -= GameMision;
 		Events.GameTools -= GameTools;
 		Events.GameHint -= GameHint;
+		Events.GameReady -= GameReady;
 		Events.GameActive -= GameActive;
 		Events.GameDialog -= GameDialog;
 
@@ -65,8 +69,8 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameIntro(){		
-		levelBanner.SetActive (true);
-		Invoke ("HideLevel", 2);
+		siguienteBanner.SetActive (true);
+		//Invoke ("HideLevel", 2);
 	}
 
 	void HideLevel(){
@@ -74,6 +78,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameMision(){
+		siguienteBanner.SetActive (false);
 		mision.SetActive (true);
 	}
 
@@ -97,13 +102,18 @@ public class GameUI : MonoBehaviour {
 		dialog.SetActive (true);
 	}
 
-	void StartGame(){
+	void GameReady(){
 		dialog.SetActive (false);
-		startLevelBanner.SetActive (true);
-		Invoke ("HideStarGame", 1);
+		iniciarBanner.SetActive (true);
 	}
 
-	void HideStarGame(){
+	void StartGame(){
+		iniciarBanner.SetActive (false);
+		startLevelBanner.SetActive (true);
+		Invoke ("HideStartGame", 1);
+	}
+
+	void HideStartGame(){
 		startLevelBanner.SetActive (false);
 		Events.GameActive ();
 		Game.Instance.gameManager.state = GameManager.states.ACTIVE;
