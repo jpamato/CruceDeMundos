@@ -69,11 +69,12 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameIntro(){		
-		siguienteBanner.SetActive (true);
-		//Invoke ("HideLevel", 2);
+		levelBanner.SetActive (true);
+		Invoke ("HideLevel", 2);
 	}
 
 	void HideLevel(){
+		siguienteBanner.SetActive (true);
 		levelBanner.SetActive (false);
 	}
 
