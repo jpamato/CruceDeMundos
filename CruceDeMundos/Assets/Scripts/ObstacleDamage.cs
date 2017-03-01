@@ -78,7 +78,7 @@ public class ObstacleDamage : MonoBehaviour {
 		Transform healthBarTransform = target.transform.parent.FindChild("HealthBar");
 		HealthBar healthBar = 
 			healthBarTransform.gameObject.GetComponent<HealthBar>();
-		healthBar.currentHealth = Mathf.Max(healthBar.currentHealth-obstacleData.CurrentLevel.damage, 0);
+		healthBar.CurrentHealth = Mathf.Max(healthBar.currentHealth-obstacleData.CurrentLevel.damage, 0);
 		// 4
 		if (healthBar.currentHealth <= 0) {
 			Game.Instance.toolsManager.SetFriendEmpty (target.transform.parent.gameObject);

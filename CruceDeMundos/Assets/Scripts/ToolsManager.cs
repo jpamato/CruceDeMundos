@@ -32,7 +32,7 @@ public class ToolsManager : MonoBehaviour {
 		for (int i = 0; i < friendsTools.Length; i++) {
 			if (friendsTools[i].toolName == tType.ToString()) {
 				HealthBar healthBar = friendsTools[i].friend.GetComponentInChildren<HealthBar>();
-				healthBar.currentHealth = Mathf.Min(healthBar.currentHealth+charge, 100);
+				healthBar.CurrentHealth = Mathf.Min(healthBar.currentHealth+charge, 100);
 			}
 		}
 	}
@@ -42,7 +42,14 @@ public class ToolsManager : MonoBehaviour {
 		Transform tool = ft.friend.transform.FindChild (tType.ToString ());
 		if (!tool.gameObject.activeSelf) {
 			tool.gameObject.SetActive (true);
-			ft.friend.transform.FindChild ("HealthBar").gameObject.SetActive (true);
+			GameObject hb = ft.friend.transform.FindChild ("HealthBar").gameObject;
+			hb.SetActive (true);
+			if (tType.ToString().Equals (PlayerData.ToolName.Restaurador.ToString ())) {							
+				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
+			} else if (tType.ToString().Equals (PlayerData.ToolName.Matafuegos.ToString ())) {							
+				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().fireEnergy;
+			}
+
 			ft.friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
 			SetTool (ft, tType.ToString ());
 			Data.Instance.playerData.toolsNumber++;

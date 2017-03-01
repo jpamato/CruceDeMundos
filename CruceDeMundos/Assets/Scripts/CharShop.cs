@@ -60,7 +60,15 @@ public class CharShop : MonoBehaviour {
 				for (int i = 0; i < ttypes.Length; i++) {
 					if (ttypes [i].Equals (shI.toolName.ToString ())) {
 						tool.gameObject.SetActive (true);
-						friend.transform.FindChild ("HealthBar").gameObject.SetActive (true);
+						GameObject hb = friend.transform.FindChild ("HealthBar").gameObject;
+						hb.SetActive (true);
+						if (ttypes[i].Equals (PlayerData.ToolName.Restaurador.ToString ())) {							
+							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
+						} else if (ttypes[i].Equals (PlayerData.ToolName.Matafuegos.ToString ())) {							
+							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().fireEnergy;
+						}
+
+
 						friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
 					} else {
 						friend.transform.FindChild (ttypes [i]).gameObject.SetActive (false);
