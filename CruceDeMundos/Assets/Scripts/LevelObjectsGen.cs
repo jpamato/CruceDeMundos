@@ -52,6 +52,7 @@ public class LevelObjectsGen : MonoBehaviour {
 		public List<ChargeDetails> chargeDetails;
 		[Serializable]
 		public class ChargeDetails{			
+			public CollectableItem.CollectableType type;
 			public int val;
 			public Transform transform;
 		}
@@ -110,7 +111,9 @@ public class LevelObjectsGen : MonoBehaviour {
 			foreach (LevelCharge.ChargeDetails chDet in levelCh.chargeDetails) {
 				GameObject go = Instantiate (levelCh.objectPrefab, transform) as GameObject;
 				go.transform.position = chDet.transform.position;
-				go.GetComponent<CollectableItem> ().val = chDet.val;
+				CollectableItem ci = go.GetComponent<CollectableItem> ();
+				ci.val = chDet.val;
+				ci.itemType = chDet.type;
 			}
 		}
 	}

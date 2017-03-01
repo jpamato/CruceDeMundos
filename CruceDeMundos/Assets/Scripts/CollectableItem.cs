@@ -4,6 +4,7 @@ using System.Collections;
 public class CollectableItem : MonoBehaviour {
 
 	public CollectableType itemType;
+	public GameObject[] items;
 	public int val;
 
 	public enum CollectableType{
@@ -15,6 +16,10 @@ public class CollectableItem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		foreach (GameObject go in items)
+			go.SetActive (false);
+
+		items [(int)itemType].SetActive (true);
 	
 	}
 	
