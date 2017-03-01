@@ -18,6 +18,7 @@ public class GameUI : MonoBehaviour {
 	public GameObject toolsLoseBanner;
 	public GameObject siguienteBanner;
 	public GameObject iniciarBanner;
+	public GameObject tutorial;
 
 	public Text objective1;
 	public Text objective2;
@@ -75,11 +76,15 @@ public class GameUI : MonoBehaviour {
 
 	void HideLevel(){
 		siguienteBanner.SetActive (true);
+		if (Game.Instance.levelManager.leveldata.isTuto)
+			tutorial.SetActive (true);
 		levelBanner.SetActive (false);
 	}
 
 	void GameMision(){
 		siguienteBanner.SetActive (false);
+		if (Game.Instance.levelManager.leveldata.isTuto)
+			tutorial.SetActive (false);
 		mision.SetActive (true);
 	}
 

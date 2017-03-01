@@ -31,6 +31,7 @@ public class LevelData : MonoBehaviour {
 		public string layoutJson;
 		public VisualCell labCell;
 		public int resourceWin;
+		public bool isTuto;
 	}
 
 	[Serializable]
