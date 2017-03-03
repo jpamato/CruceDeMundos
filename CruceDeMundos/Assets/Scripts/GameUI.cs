@@ -22,10 +22,11 @@ public class GameUI : MonoBehaviour {
 
 	public Text objective1;
 	public Text objective2;
+	public Text objective3;
 
 	// Use this for initialization
 	void Start () {
-		levelNro.text = Data.Instance.playerData.level+"";
+		levelNro.text = "Nivel "+Data.Instance.playerData.level;
 
 		resourcesProgress.OnRefreshResources (Data.Instance.playerData.resources);
 
@@ -33,6 +34,7 @@ public class GameUI : MonoBehaviour {
 
 		objective1.text = Game.Instance.levelManager.leveldata.objective1;
 		objective2.text = Game.Instance.levelManager.leveldata.objective2;
+		objective3.text = Game.Instance.levelManager.leveldata.objective3;
 
 		ingameUI.SetActive (false);
 		levelBanner.SetActive (false);

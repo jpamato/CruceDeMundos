@@ -49,9 +49,9 @@ public class CharShop : MonoBehaviour {
 			Game.Instance.toolsManager.SetFriendEmpty (friend);
 
 			foreach (GameObject item in itemButtons) 
-				item.GetComponent<Button> ().targetGraphic.color = Color.green;
+				item.GetComponent<Button> ().targetGraphic.color = Color.grey;
 			
-			itemButtons [itemN].GetComponent<Button> ().targetGraphic.color = Color.red;
+			itemButtons [itemN].GetComponent<Button> ().targetGraphic.color = Color.white;
 
 			Transform tool = friend.transform.FindChild (shI.toolName.ToString ());
 			if (!tool.gameObject.activeSelf) {

@@ -14,7 +14,7 @@ public class ShopItem : MonoBehaviour {
 	void Start () {
 		val = Data.Instance.playerData.tools [(int)toolName].GetComponent<ToolData> ().levels [level].cost;
 		text = GetComponentInChildren<Text> ();
-		text.text = "#" + val;
+		text.text = val + "RT";
 	}
 	
 	// Update is called once per frame

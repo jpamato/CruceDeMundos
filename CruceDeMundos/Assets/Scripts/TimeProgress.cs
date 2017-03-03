@@ -7,9 +7,13 @@ public class TimeProgress : MonoBehaviour {
 	public Text label;
 
 	public float time;
+
+	float minFactor;
 	void Start () {
 		if (Game.Instance.levelManager.leveldata.isVsTime)
 			time = Game.Instance.levelManager.leveldata.timeOut;			
+
+		minFactor = 1f / 60;
 	}
 	void Update(){
 		if (Game.Instance.gameManager.state == GameManager.states.ACTIVE) {
@@ -20,7 +24,12 @@ public class TimeProgress : MonoBehaviour {
 			} else {
 				time += Time.deltaTime;
 			}
-			label.text = Mathf.Floor(time).ToString ();
+
+			int min = (int)(time * minFactor);
+
+			string sec = (time - min * 60).ToString("00");
+
+			label.text = min+":"+sec;
 		}
 	}
 

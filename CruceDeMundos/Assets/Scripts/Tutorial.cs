@@ -14,8 +14,8 @@ public class Tutorial : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*if (Input.GetMouseButtonDown (0))
-			ShowNext ();*/
+		if (Input.GetMouseButtonDown (0))
+			ShowNext ();
 	}
 
 	void OnEnable(){

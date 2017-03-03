@@ -15,10 +15,10 @@ public class ResourcesProgress : MonoBehaviour {
 	}
 	public void OnRefreshResources(int resources)
 	{		
-		label.text = "#" + resources.ToString();
+		label.text = resources.ToString();
 	}
 
 	void OnEnable(){
-		label.text = "#" + Data.Instance.playerData.resources;
+		label.text = "" + Data.Instance.playerData.resources;
 	}
 }
