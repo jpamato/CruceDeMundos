@@ -32,9 +32,9 @@ public class GameUI : MonoBehaviour {
 
 		//Debug.Log (level.number);
 
-		objective1.text = Game.Instance.levelManager.leveldata.objective1;
-		objective2.text = Game.Instance.levelManager.leveldata.objective2;
-		objective3.text = Game.Instance.levelManager.leveldata.objective3;
+		//objective1.text = Game.Instance.levelManager.leveldata.objective1;
+		//objective2.text = Game.Instance.levelManager.leveldata.objective2;
+		//objective3.text = Game.Instance.levelManager.leveldata.objective3;
 
 		ingameUI.SetActive (false);
 		levelBanner.SetActive (false);
