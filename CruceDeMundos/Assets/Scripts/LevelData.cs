@@ -16,6 +16,8 @@ public class LevelData : MonoBehaviour {
 	public class Level
 	{
 		public int levelNumber;
+		public string title;
+		public List<string> objectives;
 		public string objective1;
 		public string objective2;
 		public string objective3;
@@ -24,6 +26,7 @@ public class LevelData : MonoBehaviour {
 		public int fireNumber;
 		public int portalNumber;
 		public int pollutionNumber;
+		public List<TimeObjective> timeObjectives;
 		public List<ObstacleObjective> obstacleObjectives;
 		public List<DialogUnlock> dialogsUnlock;
 		public GameObject levelObjects;
@@ -40,6 +43,14 @@ public class LevelData : MonoBehaviour {
 	{
 		public string tag;
 		public int number;
+		public int objectiveIndex;
+	}
+
+	[Serializable]
+	public class TimeObjective
+	{		
+		public float timeOut;
+		public int objectiveIndex;
 	}
 
 	[Serializable]

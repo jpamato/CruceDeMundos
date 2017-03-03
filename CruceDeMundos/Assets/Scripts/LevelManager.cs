@@ -8,8 +8,9 @@ public class LevelManager : MonoBehaviour {
 	public CameraController camControl;
 
 	public LevelData.Level leveldata;
-	public bool obj2_Done = false;
+	public bool[] objectivesDone = new bool[] {false,false,false};
 
+	public List<LevelData.TimeObjective> timeObjectives;
 	public List<LevelData.ObstacleObjective> obstacleObjectives;
 	public List<LevelData.DialogUnlock> dialogsUnlock;
 
@@ -18,11 +19,21 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		leveldata = Data.Instance.levelData.levels.Find (x => x.levelNumber == Data.Instance.playerData.level);
+
+		timeObjectives = new List<LevelData.TimeObjective> ();
+		foreach (LevelData.TimeObjective tObjective in leveldata.timeObjectives) {
+			LevelData.TimeObjective to = new LevelData.TimeObjective ();
+			to.timeOut = tObjective.timeOut;
+			to.objectiveIndex = tObjective.objectiveIndex;
+			timeObjectives.Add (to);
+		}
+
 		obstacleObjectives = new List<LevelData.ObstacleObjective> ();
 		foreach (LevelData.ObstacleObjective oObjective in leveldata.obstacleObjectives) {
 			LevelData.ObstacleObjective oo = new LevelData.ObstacleObjective ();
 			oo.number = oObjective.number;
 			oo.tag = oObjective.tag;
+			oo.objectiveIndex = oObjective.objectiveIndex;
 			obstacleObjectives.Add (oo);
 		}
 
@@ -71,9 +82,8 @@ public class LevelManager : MonoBehaviour {
 			if (oObjective.tag == tag) {				
 				oObjective.number--;
 				if (oObjective.number <= 0) {
-					obstacleObjectives.Remove (oObjective);
-					if (obstacleObjectives.Count == 0)
-						obj2_Done = true;					
+					objectivesDone [oObjective.objectiveIndex] = true;
+					obstacleObjectives.Remove (oObjective);									
 				}
 			}
 		}
@@ -90,6 +100,15 @@ public class LevelManager : MonoBehaviour {
 					}
 				}
 			}
+	}
+
+	public void CheckTimeObjective(float time){
+		for(int i=0;i<timeObjectives.Count;i++){
+			LevelData.TimeObjective tObjective = timeObjectives[i];
+			if (tObjective.timeOut < time) {				
+				objectivesDone [tObjective.objectiveIndex] = true;
+			}
+		}
 	}
 
 	public void ToolLose(){
