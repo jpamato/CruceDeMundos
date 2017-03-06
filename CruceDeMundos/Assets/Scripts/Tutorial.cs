@@ -4,6 +4,7 @@ using System.Collections;
 public class Tutorial : MonoBehaviour {
 
 	public GameObject[] step;
+	public GameObject skipButton;
 	public float tutoVel;
 	int index=-1;
 
@@ -28,6 +29,9 @@ public class Tutorial : MonoBehaviour {
 			step [index].SetActive (true);
 			if (index - 1 > -1)
 				step [index - 1].SetActive (false);		
+		} else {
+			step [index].SetActive (false);		
+			skipButton.SetActive (false);
 		}
 	}
 

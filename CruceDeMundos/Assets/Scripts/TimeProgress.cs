@@ -27,7 +27,7 @@ public class TimeProgress : MonoBehaviour {
 
 			int min = (int)(time * minFactor);
 
-			string sec = (time - min * 60).ToString("00");
+			string sec = ((int)time - min * 60).ToString("00");
 
 			label.text = min+":"+sec;
 		}

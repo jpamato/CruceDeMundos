@@ -105,7 +105,7 @@ public class LevelManager : MonoBehaviour {
 	public void CheckTimeObjective(float time){
 		for(int i=0;i<timeObjectives.Count;i++){
 			LevelData.TimeObjective tObjective = timeObjectives[i];
-			if (tObjective.timeOut < time) {				
+			if (time < tObjective.timeOut) {				
 				objectivesDone [tObjective.objectiveIndex] = true;
 			}
 		}
