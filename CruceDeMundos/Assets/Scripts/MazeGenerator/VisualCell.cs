@@ -61,7 +61,7 @@ public class VisualCell : MonoBehaviour
 				visited = false;
 				Events.OnNewCell ();
 			} else {
-				gameObject.GetComponent<Renderer> ().material.color = new Color(0,1f,0,0.25f);
+				gameObject.GetComponent<Renderer> ().material.color = new Color(0,0.5f,0,0.5f);
 				visited = true;
 				Events.OnNewCell ();
 			}
