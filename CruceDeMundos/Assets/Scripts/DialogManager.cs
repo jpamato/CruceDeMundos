@@ -35,13 +35,13 @@ public class DialogManager : MonoBehaviour {
 		charImage.sprite = character.sprite;
 		charName.text = character.name;
 
+		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
+
 		levelInfo = character.levelsInfo.Find (x => x.level == level);
 
 		if (levelInfo == null) {
-			levelInfo = AddNewLevelInfo (character, level);
+			levelInfo = AddNewLevelInfo (character, level, dialog.dialogType);
 		}
-
-		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
 
 		dTree = Array.Find (dialog.dialogTree, p => p.index == levelInfo.goTo);
 
@@ -53,11 +53,12 @@ public class DialogManager : MonoBehaviour {
 		}
 	}
 
-	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level){
+	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level, DialogData.Dialog.dType dialogType){
 		DialogData.DialogCharacter.LevelInfo levelInfo = new DialogData.DialogCharacter.LevelInfo ();
 		levelInfo.level = level;
 		levelInfo.emoval = 0;
 		levelInfo.goTo = 0;
+		levelInfo.dtype = dialogType;
 		character.levelsInfo.Add (levelInfo);
 		return levelInfo;
 	}
@@ -106,11 +107,12 @@ public class DialogManager : MonoBehaviour {
 
 	}
 
-	public void UnlockDialog(string characterName, int level, int goTo){
+	public void UnlockDialog(string characterName, int level_, int goTo){
 		character = Array.Find(Data.Instance.dialogData.dialogCharacters, p => p.name == characterName);
-		levelInfo = character.levelsInfo.Find (x => x.level == level);
+		levelInfo = character.levelsInfo.Find (x => x.level == level_);
 		if (levelInfo == null) {
-			levelInfo = AddNewLevelInfo (character, level);
+			DialogData.Dialog d = Data.Instance.dialogData.dialogs.Find (x => (x.name == characterName && x.level == level_));
+			levelInfo = AddNewLevelInfo (character, level_, d.dialogType);
 		}
 		levelInfo.goTo = goTo;
 	}

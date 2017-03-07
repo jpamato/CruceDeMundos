@@ -8,9 +8,9 @@
 				{ 	"mood":"neutral",
 					"prompt":"¡Hola Chicos! Es muy importante que puedan atravesar la ciudad y llegar a la puerta verde. ¿Creen que van a poder lograrlo?",
 					replies:[
-						{emoVal:1,exit:true,goTo:1,text:"¡Seguro Dra Grimberg, cuente con nosotros!"},
-						{emoVal:0,exit:true,goTo:1,text:"Haremos lo posible Dra Grimberg, ojalá tengamos suerte"},
-						{emoVal:-1,exit:true,goTo:1,text:"Lo veo difícil Dra No se si podremos lograrlo"}]
+						{emoVal:1,exit:true,goTo:0,text:"¡Seguro Dra Grimberg, cuente con nosotros!"},
+						{emoVal:0,exit:true,goTo:0,text:"Haremos lo posible Dra Grimberg, ojalá tengamos suerte"},
+						{emoVal:-1,exit:true,goTo:0,text:"Lo veo difícil Dra No se si podremos lograrlo"}]
 				}
 			]
 		}

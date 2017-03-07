@@ -79,7 +79,7 @@ public class Game : MonoBehaviour {
 		state = states.PAUSED;       
 	}
 
-	public void OnGameRestart()
+	public void NextLevel()
 	{	
 		OnGamePaused(false);
 		Data.Instance.playerData.level++;
@@ -89,9 +89,16 @@ public class Game : MonoBehaviour {
 			Data.Instance.playerData.resources = 50;
 			Data.Instance.playerData.toolsNumber = 1;
 		}
-		Data.Instance.LoadLevel("Game"); 
-
+		Data.Instance.LoadLevel("Game");
 	}
+
+	public void Replay()
+	{	
+		OnGamePaused(false);
+		Data.Instance.dialogData.ResetHintAtLevel(Data.Instance.playerData.level);
+		Data.Instance.LoadLevel("Game");
+	}
+
 	void OnGamePaused(bool paused)
 	{
 		if (paused)

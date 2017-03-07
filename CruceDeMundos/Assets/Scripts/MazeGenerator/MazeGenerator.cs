@@ -163,7 +163,7 @@ public class MazeGenerator : MonoBehaviour
 			string[] s = (N ["Maze"] [i] ["id"]as string).Split ('_');
 			int xPos = int.Parse (s [0]);
 			int yPos = int.Parse (s [1]);
-			Debug.Log ("ACA");
+
 			visualCellInst = Instantiate (visualCellPrefab, new Vector3 (xPos * step, N ["height"].AsInt * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
 			visualCellInst.transform.parent = transform;
 			if (N ["Maze"] [i] ["north"] + "" == "FIRE") {

@@ -189,5 +189,6 @@ public class GameUI : MonoBehaviour {
 			if(i<2)stars2.transform.Find ("star_"+i).gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
 			stars3.transform.Find ("star_"+i).gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
 		}
+		Data.Instance.playerData.SetSummary ();
 	}
 }

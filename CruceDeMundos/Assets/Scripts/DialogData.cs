@@ -43,10 +43,19 @@ public class DialogData : MonoBehaviour {
 			public int level;
 			public int emoval;
 			public int goTo;
+			public Dialog.dType dtype;
 		}
 
 		public void ResetLevel(int level){
 			LevelInfo l = levelsInfo.Find (x => x.level == level);
+			if (l != null) {
+				l.emoval = 0;
+				l.goTo = 0;
+			}
+		}
+
+		public void ResetType(int level, Dialog.dType dtype){
+			LevelInfo l = levelsInfo.Find (x => x.level == level && x.dtype == dtype);
 			if (l != null) {
 				l.emoval = 0;
 				l.goTo = 0;
@@ -57,6 +66,11 @@ public class DialogData : MonoBehaviour {
 	public void ResetAllAtLevel(int level){
 		foreach (DialogCharacter dch in dialogCharacters)
 			dch.ResetLevel (level);
+	}
+
+	public void ResetHintAtLevel(int level){
+		foreach (DialogCharacter dch in dialogCharacters)
+			dch.ResetType (level,Dialog.dType.HINT);
 	}
 
 	IEnumerator Import(string file){
