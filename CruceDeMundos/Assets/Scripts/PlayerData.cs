@@ -14,13 +14,4 @@ public class PlayerData : MonoBehaviour {
 
 	public GameObject[] tools;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
