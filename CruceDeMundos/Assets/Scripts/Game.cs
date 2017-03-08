@@ -95,7 +95,6 @@ public class Game : MonoBehaviour {
 	public void Replay()
 	{	
 		OnGamePaused(false);
-		Data.Instance.dialogData.ResetHintAtLevel(Data.Instance.playerData.level);
 		Data.Instance.LoadLevel("Game");
 	}
 

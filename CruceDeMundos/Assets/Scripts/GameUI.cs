@@ -190,5 +190,6 @@ public class GameUI : MonoBehaviour {
 			stars3.transform.Find ("star_"+i).gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
 		}
 		Data.Instance.playerData.SetSummary ();
+		Data.Instance.SaveGameData ();
 	}
 }

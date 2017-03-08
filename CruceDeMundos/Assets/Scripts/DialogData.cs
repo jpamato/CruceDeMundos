@@ -207,4 +207,47 @@ public class DialogData : MonoBehaviour {
 		else
 			return Dialog.dType.ET;
 	}
+
+	public string GetDialogData(){
+		string json = "dialogData:[\n";
+		for (int i = 0; i < dialogCharacters.Length; i++) {
+			json += "{\n";
+			json += "name:"+dialogCharacters[i].name+",\n";
+			json += "lastEmoVal:"+dialogCharacters[i].lastEmoVal+",\n";
+			json += "globalEmoVal:"+dialogCharacters[i].globalEmoVal+",\n";
+			json += "levelsInfo:[";
+			for (int j = 0; j < dialogCharacters [i].levelsInfo.Count; j++) {
+				json += "{";
+				json += "level:" + dialogCharacters [i].levelsInfo [j].level+",";
+				json += "emoval:" + dialogCharacters [i].levelsInfo [j].emoval+",";
+				json += "goTo:" + dialogCharacters [i].levelsInfo [j].goTo+",";
+				json += "dtype:" + dialogCharacters [i].levelsInfo [j].dtype;
+				json += "}";
+				if(j<dialogCharacters [i].levelsInfo.Count-1)
+					json += ",";
+			}
+			json += "]\n}";
+			if(i<dialogCharacters.Length-1)
+			json += ",\n";
+		}
+		json += "]\n";
+
+		return json;
+	}
+
+	public void SetDialogData(JSONNode N){
+		for (int i = 0; i < N.Count; i++) {
+			//DialogCharacter dCh = Array.Find (dialogCharacters, p => p.name == N[i]["name"]);
+			dialogCharacters[i].lastEmoVal = N [i] ["lastEmoVal"].AsInt;
+			dialogCharacters[i].globalEmoVal = N [i] ["globalEmoVal"].AsInt;
+			for (int j = 0; j < N [i] ["levelsInfo"].Count; j++) {
+				DialogCharacter.LevelInfo li = new DialogCharacter.LevelInfo ();
+				li.level = N [i] ["levelsInfo"] [j] ["level"].AsInt;
+				li.emoval = N [i] ["levelsInfo"] [j] ["emoval"].AsInt;
+				li.goTo = N [i] ["levelsInfo"] [j] ["emoval"].AsInt;
+				li.dtype = (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), N [i] ["levelsInfo"] [j] ["dtype"]);
+				dialogCharacters [i].levelsInfo.Add (li);
+			}
+		}
+	}
 }

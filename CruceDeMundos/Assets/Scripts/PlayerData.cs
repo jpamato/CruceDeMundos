@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using SimpleJSON;
 
 public class PlayerData : MonoBehaviour {
 
@@ -44,4 +45,41 @@ public class PlayerData : MonoBehaviour {
 
 	}
 
+	public string GetPlayerData(){
+		string json = "playerData:{\n";
+		json += "level:"+level+",\n";
+		json += "resources:"+resources+",\n";
+		json += "toolsNumber:"+toolsNumber+",\n";
+		json += "summary:[\n";
+
+		for(int i=0;i<summary.Count;i++){
+			json += "{levelNumber:"+ summary[i].levelNumber + ",";
+			json += "objectivesDone:[";
+			for (int j = 0; j < summary [i].objectivesDone.Length; j++) {
+				json += ""+summary [i].objectivesDone[j];
+				if(j<summary [i].objectivesDone.Length-1)
+					json += ",";
+			}
+			json += "]}";
+			if (i < summary.Count - 1)
+				json += ",";;
+		}
+		json += "]\n}";
+
+		return json;
+	}
+
+	public void SetPlayerData(JSONNode N){
+		level = N ["level"].AsInt;
+		resources = N ["resources"].AsInt;
+		toolsNumber = N ["toolsNumber"].AsInt;
+		for (int i = 0; i < N ["summary"].Count; i++) {
+			Level l = new Level ();
+			l.levelNumber = N ["summary"] [i] ["levelNumber"].AsInt;
+			for (int j = 0; j < N ["summary"] [i] ["objectivesDone"].Count; j++) {
+				l.objectivesDone [j] = N ["summary"] [i] ["objectivesDone"] [j].AsBool;
+			}
+			summary.Add (l);
+		}
+	}
 }

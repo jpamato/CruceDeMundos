@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleJSON;
 
 public class Data : MonoBehaviour
 {
@@ -63,11 +64,33 @@ public class Data : MonoBehaviour
 		fade = GetComponentInChildren<Fade>();
 		//fade.gameObject.SetActive(true);
 
+		//LoadGameData();
+		//Reset();
+
 		DontDestroyOnLoad(this.gameObject);
         
     }
-    public void Reset()
-    {
 
-    }    
+	public void SaveGameData(){
+		SendData ();
+		string json = "{";
+		json+= playerData.GetPlayerData ()+",";
+		json += dialogData.GetDialogData ()+"}";
+		PlayerPrefs.SetString ("GameData",json);
+	}
+
+	public void LoadGameData(){
+		string json = PlayerPrefs.GetString ("GameData");
+		var N = JSON.Parse (json);
+		playerData.SetPlayerData (N ["playerData"]);
+		dialogData.SetDialogData (N ["dialogData"]);
+	}
+
+    public void Reset(){
+		PlayerPrefs.DeleteAll ();
+    }
+
+	public void SendData(){
+		dialogData.ResetHintAtLevel(playerData.level);
+	}
 }
