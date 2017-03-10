@@ -183,11 +183,16 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void SetSummary(){
+		Stars s2 = stars2.GetComponent<Stars> ();
+		Stars s3 = stars3.GetComponent<Stars> ();
 		for (int i = 0; i < Game.Instance.levelManager.objectivesDone.Length; i++) {
 			objectives_summary [i].transform.Find ("done").gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
 			objectives_summary [i].transform.Find ("undone").gameObject.SetActive (!Game.Instance.levelManager.objectivesDone[i]);
-			if(i<2)stars2.transform.Find ("star_"+i).gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
-			stars3.transform.Find ("star_"+i).gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
+			if (i < 2)
+			if(Game.Instance.levelManager.objectivesDone [i])
+				s2.SetStarOn (i);
+			if (Game.Instance.levelManager.objectivesDone [i])
+				s3.SetStarOn (i);
 		}
 		Data.Instance.playerData.SetSummary ();
 		Data.Instance.SaveGameData ();

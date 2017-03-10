@@ -18,9 +18,6 @@ public class LevelData : MonoBehaviour {
 		public int levelNumber;
 		public string title;
 		public List<string> objectives;
-		public string objective1;
-		public string objective2;
-		public string objective3;
 		public bool isVsTime;
 		public float timeOut;
 		public int fireNumber;

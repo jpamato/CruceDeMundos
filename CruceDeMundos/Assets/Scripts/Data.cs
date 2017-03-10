@@ -64,7 +64,7 @@ public class Data : MonoBehaviour
 		fade = GetComponentInChildren<Fade>();
 		//fade.gameObject.SetActive(true);
 
-		//LoadGameData();
+		LoadGameData();
 		//Reset();
 
 		DontDestroyOnLoad(this.gameObject);
@@ -81,9 +81,11 @@ public class Data : MonoBehaviour
 
 	public void LoadGameData(){
 		string json = PlayerPrefs.GetString ("GameData");
-		var N = JSON.Parse (json);
-		playerData.SetPlayerData (N ["playerData"]);
-		dialogData.SetDialogData (N ["dialogData"]);
+		if (!json.Equals("")) {
+			var N = JSON.Parse (json);
+			playerData.SetPlayerData (N ["playerData"]);
+			dialogData.SetDialogData (N ["dialogData"]);
+		}
 	}
 
     public void Reset(){

@@ -21,8 +21,22 @@ public class PlayerData : MonoBehaviour {
 	[Serializable]
 	public class Level
 	{
+		public enum LevelState{
+			LOCKED,
+			UNLOCKED,
+			PLAYED,
+			DONE
+		}
 		public int levelNumber;
+		public LevelState levelState;
 		public bool[] objectivesDone = new bool[] {false,false,false};
+	}
+
+	void UnlockNext (){
+		Level level = new Level ();
+		level.levelNumber = Game.Instance.levelManager.leveldata.levelNumber + 1;
+		level.levelState = Level.LevelState.UNLOCKED;
+		summary.Add (level);
 	}
 
 	public void SetSummary (){
@@ -42,7 +56,14 @@ public class PlayerData : MonoBehaviour {
 				if (!level.objectivesDone [i])
 					level.objectivesDone [i] = oDone [i];
 		}
+		int objDone = Array.FindAll (level.objectivesDone, p => p == true).Length;
+		if (objDone == Game.Instance.levelManager.leveldata.objectives.Count)
+			level.levelState = Level.LevelState.DONE;
+		else
+			level.levelState = Level.LevelState.PLAYED;
 
+		if(oDone[0])
+			UnlockNext ();
 	}
 
 	public string GetPlayerData(){
@@ -54,6 +75,7 @@ public class PlayerData : MonoBehaviour {
 
 		for(int i=0;i<summary.Count;i++){
 			json += "{levelNumber:"+ summary[i].levelNumber + ",";
+			json += "levelState:"+ summary[i].levelState.ToString() + ",";
 			json += "objectivesDone:[";
 			for (int j = 0; j < summary [i].objectivesDone.Length; j++) {
 				json += ""+summary [i].objectivesDone[j];
@@ -76,10 +98,11 @@ public class PlayerData : MonoBehaviour {
 		for (int i = 0; i < N ["summary"].Count; i++) {
 			Level l = new Level ();
 			l.levelNumber = N ["summary"] [i] ["levelNumber"].AsInt;
+			l.levelState = (Level.LevelState) Enum.Parse(typeof(Level.LevelState),N ["summary"] [i] ["levelState"]);
 			for (int j = 0; j < N ["summary"] [i] ["objectivesDone"].Count; j++) {
 				l.objectivesDone [j] = N ["summary"] [i] ["objectivesDone"] [j].AsBool;
 			}
 			summary.Add (l);
 		}
-	}
+	}	
 }
