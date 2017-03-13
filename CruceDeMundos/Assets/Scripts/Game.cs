@@ -98,6 +98,12 @@ public class Game : MonoBehaviour {
 		Data.Instance.LoadLevel("Game");
 	}
 
+	public void LevelMap()
+	{	
+		OnGamePaused(false);
+		Data.Instance.LoadLevel("LevelMap");
+	}
+
 	void OnGamePaused(bool paused)
 	{
 		if (paused)
