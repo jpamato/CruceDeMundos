@@ -90,6 +90,7 @@ public class Data : MonoBehaviour
 
     public void Reset(){
 		PlayerPrefs.DeleteAll ();
+		Data.Instance.LoadLevel("LevelMap");
     }
 
 	public void SendData(){

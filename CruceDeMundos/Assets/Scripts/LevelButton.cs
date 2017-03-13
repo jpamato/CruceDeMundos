@@ -69,4 +69,12 @@ public class LevelButton : MonoBehaviour {
 		Data.Instance.playerData.level = levelNumber;
 		Data.Instance.LoadLevel("Game");
 	}
+
+	public void OnPointerEnter(){		
+		Events.OnLevelButtonEnter (levelNumber);
+	}
+
+	public void OnPointerExit(){
+		Events.OnLevelButtonExit();
+	}
 }

@@ -33,4 +33,7 @@ public static class Events {
 	public static System.Action<PlayerData.ToolName> OnAddTool = delegate { };
 
 	public static System.Action OnNewCell = delegate { };
+
+	public static System.Action<int> OnLevelButtonEnter = delegate { };
+	public static System.Action OnLevelButtonExit = delegate { };
 }
