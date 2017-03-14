@@ -77,11 +77,7 @@ public class Data : MonoBehaviour
         
     }
 
-	public void SaveUserData(){
-		string json = "{";
-		json += "userId:" + userId + ",";
-		json += "userName:" + userName + "}";
-		PlayerPrefs.SetString ("UserData",json);
+	public void SaveUserData(){		
 		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName));
 	}
 
