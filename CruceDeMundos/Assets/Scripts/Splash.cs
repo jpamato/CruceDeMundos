@@ -10,8 +10,11 @@ public class Splash : MonoBehaviour {
 	bool loadDone;
 
 	// Use this for initialization
-	void Start () {		
-		StartCoroutine(AsynchronousLoad ("LevelMap"));
+	void Start () {
+		if(Data.Instance.userId.Equals(""))
+			StartCoroutine(AsynchronousLoad ("Sign"));
+		else
+			StartCoroutine(AsynchronousLoad ("LevelMap"));
 	}
 	
 	// Update is called once per frame

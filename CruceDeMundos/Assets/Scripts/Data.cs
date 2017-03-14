@@ -10,9 +10,13 @@ public class Data : MonoBehaviour
     const string PREFAB_PATH = "Data";    
     static Data mInstance = null;
 
+	public string userId;
+	public string userName;
 	public PlayerData playerData;
 	public DialogData dialogData;
 	public LevelData levelData;
+
+	public DataController dataController;
 
 	private Fade fade;
 
@@ -60,16 +64,38 @@ public class Data : MonoBehaviour
 		playerData = GetComponent<PlayerData> ();
 		dialogData = GetComponent<DialogData> ();
 		levelData = GetComponent<LevelData> ();
+		dataController = GetComponent<DataController> ();
 
 		fade = GetComponentInChildren<Fade>();
 		//fade.gameObject.SetActive(true);
 
+		LoadUserData();
 		LoadGameData();
 		//Reset();
 
 		DontDestroyOnLoad(this.gameObject);
         
     }
+
+	public void SaveUserData(){
+		string json = "{";
+		json += "userId:" + userId + ",";
+		json += "userName:" + userName + "}";
+		PlayerPrefs.SetString ("UserData",json);
+		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName));
+	}
+
+	public void LoadUserData(){
+		string json = PlayerPrefs.GetString ("UserData");
+		if (!json.Equals ("")) {
+			var N = JSON.Parse (json);
+			userId = N ["userId"];
+			userName = N ["userName"];
+		} /*else {
+			userId = "";
+			userName = "";
+		}*/
+	}
 
 	public void SaveGameData(){
 		SendData ();
