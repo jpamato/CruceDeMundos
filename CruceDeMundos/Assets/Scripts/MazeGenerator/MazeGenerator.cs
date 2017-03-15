@@ -160,7 +160,8 @@ public class MazeGenerator : MonoBehaviour
 		//Debug.Log (N ["Maze"][0]["east"].AsBool);
 
 		for (int i = 0; i < N ["Maze"].Count; i++) {
-			string[] s = (N ["Maze"] [i] ["id"]as string).Split ('_');
+			string nodeName = N ["Maze"] [i] ["id"];
+			string[] s = nodeName.Split ('_');
 			int xPos = int.Parse (s [0]);
 			int yPos = int.Parse (s [1]);
 
