@@ -1,4 +1,4 @@
-{height:16,
+{height:20,
 Maze:[
 {id:0_0,north:SOLID,east:INVISIBLE,south:SOLID,west:SOLID},
 {id:0_1,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
@@ -7,8 +7,8 @@ Maze:[
 {id:0_4,north:INVISIBLE,east:SOLID,south:SOLID,west:SOLID},
 {id:0_5,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:0_6,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
-{id:0_7,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:INVISIBLE},
-{id:0_8,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:INVISIBLE},
+{id:0_7,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:IN},
+{id:0_8,north:INVISIBLE,east:INVISIBLE,south:INVISIBLE,west:IN},
 {id:0_9,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
 {id:0_10,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:SOLID},
 {id:0_11,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
@@ -22,7 +22,7 @@ Maze:[
 {id:1_3,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
 {id:1_4,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
 {id:1_5,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},
-{id:1_6,north:SOLID,east:INVISIBLE,south:SOLID,west:SOLID},
+{id:1_6,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:1_7,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:1_8,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:1_9,north:SOLID,east:INVISIBLE,south:INVISIBLE,west:SOLID},
@@ -242,7 +242,7 @@ Maze:[
 {id:14_15,north:SOLID,east:INVISIBLE,south:SOLID,west:INVISIBLE},
 {id:15_0,north:SOLID,east:SOLID,south:INVISIBLE,west:INVISIBLE},
 {id:15_1,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},
-{id:15_2,north:INVISIBLE,east:INVISIBLE,south:SOLID,west:INVISIBLE},
+{id:15_2,north:INVISIBLE,east:OUT,south:SOLID,west:INVISIBLE},
 {id:15_3,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:INVISIBLE},
 {id:15_4,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:INVISIBLE},
 {id:15_5,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
@@ -255,4 +255,4 @@ Maze:[
 {id:15_12,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
 {id:15_13,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:SOLID},
 {id:15_14,north:INVISIBLE,east:SOLID,south:INVISIBLE,west:INVISIBLE},
-{id:15_15,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE}]}
+{id:15_15,north:INVISIBLE,east:SOLID,south:SOLID,west:INVISIBLE},]}
