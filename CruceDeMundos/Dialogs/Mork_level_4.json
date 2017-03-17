@@ -1,0 +1,15 @@
+﻿{
+	name:"Mork",
+	level:4,
+	type:"et",
+	dialogTree:[		
+		{index:0,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Muchas gracias muchachos, ¡cuidense!",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
+				}				
+			]
+		}
+	]	
+}
