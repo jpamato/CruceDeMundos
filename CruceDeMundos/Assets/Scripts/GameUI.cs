@@ -31,6 +31,15 @@ public class GameUI : MonoBehaviour {
 	public GameObject stars3;
 	public Text summaryTitle;
 
+	public ToggleButton fono;
+	public ToggleButton btnObjetivos;
+	public ToggleButton btnHelp;
+	public ToggleButton btnMap;
+	public ToggleButton btnSound;
+
+	public GameObject confirm;
+	public GameObject help;
+
 	// Use this for initialization
 	void Start () {
 		levelNro.text = "Nivel "+Data.Instance.playerData.level;
@@ -61,6 +70,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameHint += GameHint;
 		Events.GameReady += GameReady;
 		Events.GameActive += GameActive;
+		Events.GameMap += GameMap;
 		Events.GameDialog += GameDialog;
 
 		Events.StartGame += StartGame;
@@ -78,6 +88,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameHint -= GameHint;
 		Events.GameReady -= GameReady;
 		Events.GameActive -= GameActive;
+		Events.GameMap -= GameMap;
 		Events.GameDialog -= GameDialog;
 
 		Events.StartGame -= StartGame;
@@ -106,6 +117,20 @@ public class GameUI : MonoBehaviour {
 		mision.SetActive (true);
 	}
 
+	public void ShowMision(){
+		mision.SetActive (true);
+		btnObjetivos.SetButtonOn (true);
+	}
+
+	public void CloseMision(){
+		if (Game.Instance.gameManager.state == GameManager.states.MISION) {
+			Game.Instance.gameManager.Tools ();
+		} else {
+			mision.SetActive (false);
+			btnObjetivos.SetButtonOn (false);
+		}
+	}
+
 	void GameTools(){
 		mision.SetActive (false);
 		tools.SetActive (true);
@@ -117,8 +142,13 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameActive(){
+		fono.SetButtonOn (false);
 		dialog.SetActive (false);
 		ingameUI.SetActive (true);
+	}
+
+	void GameMap(){
+		fono.SetButtonOn (true);
 	}
 
 	void GameDialog(){		
@@ -196,5 +226,19 @@ public class GameUI : MonoBehaviour {
 		}
 		Data.Instance.playerData.SetSummary ();
 		Data.Instance.SaveGameData ();
+	}
+
+	public void SoundToggle(bool on){
+		btnSound.SetButtonOn (on);
+	}
+
+	public void HelpToggle(bool on){
+		btnHelp.SetButtonOn (on);
+		help.SetActive (on);
+	}
+
+	public void LevelMap(bool on){
+		btnMap.SetButtonOn (on);
+		confirm.SetActive (on);
 	}
 }

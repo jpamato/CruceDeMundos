@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 		Events.GameMision ();
 	}
 
-	public void Tools(){
+	public void Tools(){		
 		state = states.TOOLS;
 		Events.GameTools ();
 	}
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
 		gameStarted=true;
 	}
 
-	public void Map(){
+	public void Phone(){
 		if (state == states.MAP) {
 			state = states.ACTIVE;
 			Events.GameActive ();
