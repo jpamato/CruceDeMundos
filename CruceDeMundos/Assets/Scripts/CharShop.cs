@@ -46,7 +46,7 @@ public class CharShop : MonoBehaviour {
 
 		if(Data.Instance.playerData.resources-shI.val+lastCost>=0){
 		
-			Game.Instance.toolsManager.SetFriendEmpty (friend);
+			Game.Instance.toolsManager.SetFriendEmpty (friend, true);
 
 			foreach (GameObject item in itemButtons) 
 				item.GetComponent<Button> ().targetGraphic.color = Color.grey;

@@ -19,6 +19,7 @@ public class ShootObstacle : MonoBehaviour {
 	private GameObject tool;
 
 	public bool shooting;
+	HealthBar healthBar;
 
 	// Use this for initialization
 	void Start() {
@@ -26,6 +27,8 @@ public class ShootObstacle : MonoBehaviour {
 		lastShotTime = Time.time;
 		toolData = gameObject.GetComponentInChildren<ToolData> ();
 		tool = gameObject.GetComponent<ToolData> ().CurrentLevel.visualization;
+
+		healthBar = transform.parent.FindChild("HealthBar").gameObject.GetComponent<HealthBar>();
 	}
 
 	// Update is called once per frame
@@ -45,9 +48,12 @@ public class ShootObstacle : MonoBehaviour {
 			
 			if (target.gameObject.GetComponent<ObstacleData> ().CurrentLevel.health > 0) {
 				if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
+					if(healthBar.currentHealth>0)
+						shooting = true;
+					else
+						shooting = false;
 					Shoot (target.GetComponent<Collider2D> ());
 					lastShotTime = Time.time;
-					shooting = true;
 				}
 			} else {
 				shooting = false;
@@ -90,8 +96,7 @@ public class ShootObstacle : MonoBehaviour {
 
 	void Shoot(Collider2D target) {
 
-		Transform healthBarTransform = transform.parent.FindChild("HealthBar");
-		HealthBar healthBar = healthBarTransform.gameObject.GetComponent<HealthBar>();
+
 		if (healthBar.currentHealth >= toolData.CurrentLevel.fireLoss) {
 			shooting = true;
 			GameObject bulletPrefab = toolData.CurrentLevel.bullet;
@@ -112,7 +117,7 @@ public class ShootObstacle : MonoBehaviour {
 			healthBar.CurrentHealth = Mathf.Max (healthBar.currentHealth - toolData.CurrentLevel.fireLoss, 0);
 
 			if (healthBar.currentHealth == 0)
-				Game.Instance.toolsManager.SetFriendEmpty (transform.parent.gameObject);
+				Game.Instance.toolsManager.SetFriendEmpty (transform.parent.gameObject,false);
 		}
 
 		// 3 

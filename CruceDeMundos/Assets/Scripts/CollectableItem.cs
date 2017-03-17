@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CollectableItem : MonoBehaviour {
 
@@ -41,12 +42,14 @@ public class CollectableItem : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {		
 		if (other.tag == "Player") {
 			if (itemType == CollectableType.FIRECHARGE) {
-				if (!Game.Instance.toolsManager.damagingObstacles.Contains ("FIRE")) {					
+				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Matafuegos.ToString());
+				if (ft != null) {					
 					Events.OnChargeCollect (val, PlayerData.ToolName.Matafuegos);
 					SetDestroy ();
 				}
 			} else if (itemType == CollectableType.PORTALCHARGE) {
-				if (!Game.Instance.toolsManager.damagingObstacles.Contains ("PORTAL")) {
+				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Restaurador.ToString());
+				if (ft != null) {
 					Events.OnChargeCollect (val, PlayerData.ToolName.Restaurador);
 					SetDestroy ();
 				}

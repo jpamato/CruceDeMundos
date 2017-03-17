@@ -31,6 +31,7 @@ public class ToolsManager : MonoBehaviour {
 		float charge = 1f * val / cant;
 		for (int i = 0; i < friendsTools.Length; i++) {
 			if (friendsTools[i].toolName == tType.ToString()) {
+				friendsTools [i].hasCharge = true;
 				HealthBar healthBar = friendsTools[i].friend.GetComponentInChildren<HealthBar>();
 				healthBar.CurrentHealth = Mathf.Min(healthBar.currentHealth+charge, 100);
 			}
@@ -70,7 +71,7 @@ public class ToolsManager : MonoBehaviour {
 			damagingObstacles.Remove (ShootObstacle.obstacleType.PORTAL.ToString());
 	}
 
-	public void SetFriendEmpty(GameObject friend){
+	public void SetFriendEmpty(GameObject friend, bool remove){
 		FriendTool ft = Array.Find (friendsTools, p => p.friend == friend);
 		ft.hasCharge = false;
 
@@ -80,6 +81,9 @@ public class ToolsManager : MonoBehaviour {
 			damagingObstacles.Add (ShootObstacle.obstacleType.FIRE.ToString());
 		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && f==null)
 			damagingObstacles.Add (ShootObstacle.obstacleType.PORTAL.ToString());
+
+		if (remove)
+			ft.toolName = "";
 	}
 
 	public bool CanDamage(string tag){
