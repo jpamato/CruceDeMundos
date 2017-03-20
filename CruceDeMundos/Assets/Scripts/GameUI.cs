@@ -175,6 +175,7 @@ public class GameUI : MonoBehaviour {
 
 	void OnObjectiveDone(){
 		Game.Instance.levelManager.CheckTimeObjective (timeprogress.time);
+		Game.Instance.levelManager.CheckChargeObjective ();
 		ingameUI.SetActive (false);
 		//winLevelBanner.SetActive (true);
 		summary.SetActive (true);

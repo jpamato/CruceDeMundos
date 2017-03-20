@@ -25,6 +25,7 @@ public class LevelData : MonoBehaviour {
 		public int pollutionNumber;
 		public List<TimeObjective> timeObjectives;
 		public List<ObstacleObjective> obstacleObjectives;
+		public List<ChargeObjective> chargeObjective;
 		public List<DialogUnlock> dialogsUnlock;
 		public GameObject levelObjects;
 		public CameraController.Zoom zoomIn;
@@ -38,8 +39,16 @@ public class LevelData : MonoBehaviour {
 	[Serializable]
 	public class ObstacleObjective
 	{
-		public string tag;
+		public ShootObstacle.obstacleType tag;
 		public int number;
+		public int objectiveIndex;
+	}
+
+	[Serializable]
+	public class ChargeObjective
+	{
+		public PlayerData.ToolName toolName;
+		public int val;
 		public int objectiveIndex;
 	}
 

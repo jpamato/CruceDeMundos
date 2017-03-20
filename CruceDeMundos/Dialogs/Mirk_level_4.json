@@ -1,6 +1,6 @@
 ﻿{
 	name:"Mirk",
-	level:2,
+	level:4,
 	type:"et",
 	dialogTree:[		
 		{index:0,
