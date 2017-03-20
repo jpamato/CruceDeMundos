@@ -18,6 +18,8 @@ public class Data : MonoBehaviour
 
 	public DataController dataController;
 
+	public MusicManager musicManager;
+
 	private Fade fade;
 
     public static Data Instance
@@ -41,6 +43,7 @@ public class Data : MonoBehaviour
 
 	public void LoadLevel(string aLevelName)
     {        
+		musicManager.MusicChange (aLevelName);
         LoadLevel(aLevelName, 0.01f, 0.01f, Color.black);
     }
     public void LoadLevel(string aLevelName, float aFadeOutTime, float aFadeInTime, Color aColor)
@@ -65,6 +68,7 @@ public class Data : MonoBehaviour
 		dialogData = GetComponent<DialogData> ();
 		levelData = GetComponent<LevelData> ();
 		dataController = GetComponent<DataController> ();
+		musicManager = GetComponent<MusicManager> ();
 
 		fade = GetComponentInChildren<Fade>();
 		//fade.gameObject.SetActive(true);

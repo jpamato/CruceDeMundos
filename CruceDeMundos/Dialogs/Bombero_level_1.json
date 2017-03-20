@@ -6,16 +6,16 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Hola chicos, ¿qué hacen por acá? Hay un incendio muy peligroso, no se puede pasar",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"Hola, estamos ayudando a la Dra Grimberg a cerrar los portales interdimensionales."}]
+					"prompt":"Hola chicos, ¿qué hacen por acá? Hay un incendio, no se puede pasar.",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"Estamos ayudando a la doctora Grimberg a cerrar los portales interdimensionales."}]
 				}
 			]
 		},
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Ah ¡perfecto! Justo allí en la próxima cuadra hay uno de esos portales, ¿pueden cerrarlo?",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"Por supuesto que si"}]
+					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden cerrarlo?",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"¡Sí!"}]
 				}
 			]
 		},
@@ -31,7 +31,7 @@
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Muchas gracias muchachos, ¡cuidense!",
+					"prompt":"Gracias muchachos, ¡y cuídense mucho!",
 					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
 				}				
 			]
