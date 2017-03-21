@@ -2,16 +2,36 @@
 	name:"Mork",
 	level:3,
 	type:"et",
-	dialogTree:[
-		
+	dialogTree:[		
 		{index:0,
+			moods:[
+				{ 	"mood":"negative",
+					"prompt":"Que malos perdedores que son uds los humanos",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"¡Ahora si, te re gano!", objective:true},
+						{emoVal:0,exit:true,goTo:0,text:"Intentémoslo"},
+						{emoVal:-1,exit:true,goTo:0,text:"¡Uh que pesado!"}]
+				},
+				{ 	"mood":"neutral",
+					"prompt":"A ver chicos, ¿me ganan la discusión?",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"¡Si, te gane!", objective:true},
+						{emoVal:0,exit:true,goTo:0,text:"Discutir... no se... tratemos de llevaros bien"},
+						{emoVal:-1,exit:true,goTo:0,text:"¡Tomatelas lagarto!"}]
+				}
+			]
+		},
+		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Muchas gracias muchachos, ¡cuidense!",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
-				}				
+					"prompt":"Bien jugado amigo, nos vemos",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+				},
+				{	"mood":"positive",
+					"prompt":"Bien hecho, así me gusta",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+				}
 			]
-		}		
-
-	]
+		}
+	]	
 }

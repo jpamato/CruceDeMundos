@@ -6,10 +6,69 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Muchas gracias muchachos, ¡cuidense!",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
+					"prompt":"Hola amigos, necesito que cierren al menos 2 portales que están en el camino",
+					replies:[
+						{emoVal:0,exit:true,goTo:1,text:"Eh... intentaré hacerlo"},
+						{emoVal:-1,exit:true,goTo:1,text:"Cerralos vos, no tengo tiempo"},
+						{emoVal:1,exit:true,goTo:1,text:"¡Delo por hecho!"}]
 				}				
 			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"negative",
+					"prompt":"Otra vez tu por aquí... ¡Mejor ve a molestar a otra parte!",
+					replies:[
+						{emoVal:-1,exit:true,goTo:1,text:"SALIR"}]
+				}
+				{	"mood":"neutral",
+					"prompt":"¿Lo has intentado? por favor trata de ayudarme... ",
+					replies:[						
+						{emoVal:0,exit:true,goTo:1,text:"Ok, veré que puedo hacer"}]
+				}
+				{ 	"mood":"positive",
+					"prompt":"¿todavía nos has podido apagar los incendios? ¡Sigue intentándolo!",
+					replies:[						
+						{emoVal:1,exit:true,goTo:2,text:"Por supuesto, ¡trato hecho!"}]
+				}
+			]
+		},	
+
+		{index:2,
+			moods:[
+				{ 	"mood":"negative",
+					"prompt":"Veo que finalmente has tenido tiempo para ayudarme...",
+					replies:[
+						{emoVal:0,exit:true,goTo:3,text:"Así es"}]
+				}
+				{	"mood":"neutral",
+					"prompt":"Muy bien, has logrado ayudarme... Gracias amigo",
+					replies:[						
+						{emoVal:0,exit:true,goTo:3,text:"De nada"}]
+				}
+				{ 	"mood":"positive",
+					"prompt":"¡Excelente, me has ayudado, gracias!",
+					replies:[						
+						{emoVal:1,exit:true,goTo:3,text:"¡gracias a ti!"}]
+				}
+			]
+		},
+
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"No vemos humano",
+					replies:[						
+						{emoVal:0,exit:true,goTo:3,text:"Nos vemos"}]
+				}
+				{ 	"mood":"positive",
+					"prompt":"¡Hasta pronto amigo! suerte con tu misión",
+					replies:[						
+						{emoVal:1,exit:true,goTo:3,text:"¡muchas gracias!"}]
+				}
+			]
 		}
-	]	
+
+	]
 }
+
