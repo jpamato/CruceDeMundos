@@ -26,6 +26,7 @@ public class LevelData : MonoBehaviour {
 		public List<TimeObjective> timeObjectives;
 		public List<ObstacleObjective> obstacleObjectives;
 		public List<ChargeObjective> chargeObjective;
+		public List<DialogObjective> dialogObjective;
 		public List<DialogUnlock> dialogsUnlock;
 		public GameObject levelObjects;
 		public CameraController.Zoom zoomIn;
@@ -49,6 +50,13 @@ public class LevelData : MonoBehaviour {
 	{
 		public PlayerData.ToolName toolName;
 		public int val;
+		public int objectiveIndex;
+	}
+
+	[Serializable]
+	public class DialogObjective
+	{
+		public string characterName;
 		public int objectiveIndex;
 	}
 

@@ -130,6 +130,12 @@ public class DialogData : MonoBehaviour {
 					} else {
 						d.dialogTree [i].moods [j].replies [k].tool = "";
 					}
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["objective"] != null) {
+						d.dialogTree [i].moods [j].replies [k].objective = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["objective"].AsBool;
+					} else {
+						d.dialogTree [i].moods [j].replies [k].objective = false;
+					}
 				}
 			}
 		}
@@ -182,6 +188,7 @@ public class DialogData : MonoBehaviour {
 			public int portalCharge;
 			public int pollutionCharge;
 			public string tool;
+			public bool objective;
 		}
 
 	}
@@ -244,7 +251,7 @@ public class DialogData : MonoBehaviour {
 				DialogCharacter.LevelInfo li = new DialogCharacter.LevelInfo ();
 				li.level = N [i] ["levelsInfo"] [j] ["level"].AsInt;
 				li.emoval = N [i] ["levelsInfo"] [j] ["emoval"].AsInt;
-				li.goTo = N [i] ["levelsInfo"] [j] ["emoval"].AsInt;
+				li.goTo = N [i] ["levelsInfo"] [j] ["goTo"].AsInt;
 				li.dtype = (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), N [i] ["levelsInfo"] [j] ["dtype"]);
 				dialogCharacters [i].levelsInfo.Add (li);
 			}

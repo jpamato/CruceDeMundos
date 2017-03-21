@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour {
 	public List<LevelData.TimeObjective> timeObjectives;
 	public List<LevelData.ObstacleObjective> obstacleObjectives;
 	public List<LevelData.ChargeObjective> chargeObjective;
+	public List<LevelData.DialogObjective> dialogObjective;
 	public List<LevelData.DialogUnlock> dialogsUnlock;
 
 	public int tools;
@@ -48,6 +49,14 @@ public class LevelManager : MonoBehaviour {
 			chargeObjective.Add (co);
 		}
 
+		dialogObjective = new List<LevelData.DialogObjective> ();
+		foreach (LevelData.DialogObjective dObjective in leveldata.dialogObjective) {
+			LevelData.DialogObjective diaO = new LevelData.DialogObjective ();
+			diaO.characterName = dObjective.characterName;
+			diaO.objectiveIndex = dObjective.objectiveIndex;
+			dialogObjective.Add (diaO);
+		}
+
 		dialogsUnlock = new List<LevelData.DialogUnlock> ();
 		foreach (LevelData.DialogUnlock dUnlock in leveldata.dialogsUnlock) {
 			LevelData.DialogUnlock dU = new LevelData.DialogUnlock ();
@@ -76,10 +85,12 @@ public class LevelManager : MonoBehaviour {
 
 	void Start () {		
 		Events.OnObstacleDestroy += OnObstacleDestroy;
+		Events.OnDialogObjective += OnDialogObjective;
 	}
 
 	void OnDestroy(){		
 		Events.OnObstacleDestroy -= OnObstacleDestroy;
+		Events.OnDialogObjective -= OnDialogObjective;
 	}
 	
 	// Update is called once per frame
@@ -132,6 +143,14 @@ public class LevelManager : MonoBehaviour {
 					objectivesDone [cObjective.objectiveIndex] = true;
 				}
 			}
+		}
+	}
+
+	void OnDialogObjective(string characterName){
+		for (int i = 0; i < dialogObjective.Count; i++) {
+			LevelData.DialogObjective dObjective = dialogObjective [i];
+			if (dObjective.characterName.Equals (characterName))
+				objectivesDone [dObjective.objectiveIndex] = true;
 		}
 	}
 

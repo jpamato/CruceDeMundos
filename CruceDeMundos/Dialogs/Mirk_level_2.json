@@ -1,0 +1,37 @@
+﻿{
+	name:"Mirk",
+	level:2,
+	type:"et",
+	dialogTree:[		
+		{index:0,
+			moods:[
+				{ 	"mood":"negative",
+					"prompt":"Por favor, no sean malos, ¡levantenme el ánimo!",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"¡Si, arriba amigo!", objective:true},
+						{emoVal:0,exit:true,goTo:0,text:"Bueno voy a ver como puedo ayudarte"},
+						{emoVal:-1,exit:true,goTo:0,text:"¡Uh que llorón!"}]
+				},
+				{ 	"mood":"neutral",
+					"prompt":"Hola chicos, ¿quieren levantarme el ánimo?",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"¡Si, arriba amigo!", objective:true},
+						{emoVal:0,exit:true,goTo:0,text:"Bueno voy a ver como puedo ayudarte"},
+						{emoVal:-1,exit:true,goTo:0,text:"¡Salí de acá emo, ah re!"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Bien hecho amigo, nos vemos la próxima",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+				},
+				{	"mood":"positive",
+					"prompt":"Bien hecho amigo, nos vemos la próxima",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+				}
+			]
+		}
+	]	
+}

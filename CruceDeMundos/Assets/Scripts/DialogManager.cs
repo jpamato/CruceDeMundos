@@ -91,12 +91,14 @@ public class DialogManager : MonoBehaviour {
 				Events.OnAddTool(PlayerData.ToolName.Restaurador);
 		}
 
-		if (!mood.replies [index].tool.Equals("")) {
+		/*if (!mood.replies [index].tool.Equals("")) {
 			if(mood.replies [index].tool.Equals(PlayerData.ToolName.Matafuegos.ToString())){
-
 			}else if(mood.replies [index].tool.Equals(PlayerData.ToolName.Restaurador.ToString())){
-
 			}
+		}*/
+
+		if (mood.replies [index].objective) {
+			Events.OnDialogObjective (character.name);
 		}
 		
 
