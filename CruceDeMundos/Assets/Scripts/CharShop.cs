@@ -76,9 +76,11 @@ public class CharShop : MonoBehaviour {
 				}
 			}
 			ToolData td = tool.GetComponent<ToolData> ();
-			td.CurrentLevel = td.levels [shI.level];			
-
+			td.CurrentLevel = td.levels [shI.level];
 			Data.Instance.playerData.resources -= shI.val;
+
+			tool.GetComponent<ShootObstacle> ().UpdateTool();
+
 
 			Data.Instance.playerData.resources += lastCost;
 

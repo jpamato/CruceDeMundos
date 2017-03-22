@@ -127,4 +127,8 @@ public class ShootObstacle : MonoBehaviour {
 		AudioSource audioSource = gameObject.GetComponent<AudioSource>();
 		audioSource.PlayOneShot(audioSource.clip);*/
 	}
+
+	public void UpdateTool(){
+		tool = gameObject.GetComponent<ToolData> ().CurrentLevel.visualization;
+	}
 }

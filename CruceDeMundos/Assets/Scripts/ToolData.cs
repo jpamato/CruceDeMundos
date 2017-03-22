@@ -11,6 +11,14 @@ public class ToolData : MonoBehaviour {
 		public GameObject bullet;
 		public float fireRate;
 		public float fireLoss;
+		private ToggleButton toggleButton;
+		public void SetToolOn(bool on){
+			if(toggleButton!=null)
+			toggleButton.SetButtonOn (on);				
+		}
+		public void SetToggle(ToggleButton tb){
+			toggleButton = tb;
+		}
 	}
 
 	public ToolLevel currentLevel;
@@ -54,6 +62,9 @@ public class ToolData : MonoBehaviour {
 				if (levelVisualization != null) {
 					if (i == currentLevelIndex) {
 						levels[i].visualization.SetActive(true);
+						ToggleButton tb = levels [i].visualization.GetComponent<ToggleButton> ();
+						if (tb != null)
+							levels [i].SetToggle (tb);
 					} else {
 						levels[i].visualization.SetActive(false);
 					}
@@ -87,6 +98,7 @@ public class ToolData : MonoBehaviour {
 				if (levelVisualization != null) {
 					if (i == currentLevelIndex) {
 						levels [i].visualization.SetActive (true);
+
 					} else {
 						levels [i].visualization.SetActive (false);
 					}

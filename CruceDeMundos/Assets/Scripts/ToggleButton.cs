@@ -6,10 +6,11 @@ public class ToggleButton : MonoBehaviour {
 
 	public GameObject buttonOn;
 	public GameObject buttonOff;
+	public bool defaultValue;
 
 	// Use this for initialization
 	void Start () {
-		SetButtonOn (false);
+		SetButtonOn (defaultValue);
 	}
 	
 	// Update is called once per frame
