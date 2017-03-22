@@ -66,11 +66,13 @@ public class LevelButton : MonoBehaviour {
 	}
 
 	public void PlayLevel(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Data.Instance.playerData.level = levelNumber;
 		Data.Instance.LoadLevel("Game");
 	}
 
 	public void OnPointerEnter(){		
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.over);
 		Events.OnLevelButtonEnter (levelNumber);
 	}
 

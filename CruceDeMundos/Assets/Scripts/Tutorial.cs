@@ -24,6 +24,7 @@ public class Tutorial : MonoBehaviour {
 	}
 
 	public void ShowNext(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.over);
 		if (index + 1 < step.Length) {
 			index++;
 			step [index].SetActive (true);

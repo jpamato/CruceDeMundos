@@ -123,6 +123,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	public void CloseMision(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		if (Game.Instance.gameManager.state == GameManager.states.MISION) {
 			Game.Instance.gameManager.Tools ();
 		} else {

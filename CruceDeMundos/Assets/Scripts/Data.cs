@@ -19,6 +19,7 @@ public class Data : MonoBehaviour
 	public DataController dataController;
 
 	public MusicManager musicManager;
+	public InterfaceSfx interfaceSfx;
 
 	private Fade fade;
 
@@ -69,6 +70,7 @@ public class Data : MonoBehaviour
 		levelData = GetComponent<LevelData> ();
 		dataController = GetComponent<DataController> ();
 		musicManager = GetComponent<MusicManager> ();
+		interfaceSfx = GetComponentInChildren<InterfaceSfx> ();
 
 		fade = GetComponentInChildren<Fade>();
 		//fade.gameObject.SetActive(true);

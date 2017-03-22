@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Mision(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		state = states.MISION;
 		Events.GameMision ();
 	}
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Hint(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		state = states.HINT;
 		Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
 		Events.GameHint ();
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void StartGame(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Events.StartGame ();
 		gameStarted=true;
 	}

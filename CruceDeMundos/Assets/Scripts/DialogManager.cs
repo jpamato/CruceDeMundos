@@ -63,7 +63,8 @@ public class DialogManager : MonoBehaviour {
 		return levelInfo;
 	}
 
-	public void ReplySelect(int index){		
+	public void ReplySelect(int index){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 

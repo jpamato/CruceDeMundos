@@ -23,8 +23,8 @@ public class Splash : MonoBehaviour {
 	}
 
 	public void NextScene(){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		loadDone = true;
-
 	}
 
 	IEnumerator AsynchronousLoad (string scene)
