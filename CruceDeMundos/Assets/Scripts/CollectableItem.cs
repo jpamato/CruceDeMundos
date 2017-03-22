@@ -7,6 +7,10 @@ public class CollectableItem : MonoBehaviour {
 	public CollectableType itemType;
 	public GameObject[] items;
 	public int val;
+	public AudioClip energyUp;
+	public AudioClip rtUp;
+
+	private AudioSource source;
 
 	GameObject onState;
 	GameObject offState;
@@ -26,6 +30,8 @@ public class CollectableItem : MonoBehaviour {
 		items [(int)itemType].SetActive (true);
 		onState = items [(int)itemType].transform.Find ("on").gameObject;
 		offState = items [(int)itemType].transform.Find ("off").gameObject;
+
+		source = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -45,12 +51,14 @@ public class CollectableItem : MonoBehaviour {
 				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Matafuegos.ToString());
 				if (ft != null) {					
 					Events.OnChargeCollect (val, PlayerData.ToolName.Matafuegos);
+					source.PlayOneShot (energyUp);
 					SetDestroy ();
 				}
 			} else if (itemType == CollectableType.PORTALCHARGE) {
 				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Restaurador.ToString());
 				if (ft != null) {
 					Events.OnChargeCollect (val, PlayerData.ToolName.Restaurador);
+					source.PlayOneShot (energyUp);
 					SetDestroy ();
 				}
 			} else if (itemType == CollectableType.POLLUTIONCHARGE) {
@@ -61,6 +69,7 @@ public class CollectableItem : MonoBehaviour {
 			} else if (itemType == CollectableType.RESOURCES) {
 				Data.Instance.playerData.resources += val;
 				Events.OnRefreshResources (Data.Instance.playerData.resources);
+				source.PlayOneShot (rtUp);
 				SetDestroy ();
 			}
 		}
