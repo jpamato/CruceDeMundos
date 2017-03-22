@@ -3,12 +3,17 @@ using System.Collections;
 
 public class AnimSteps : MonoBehaviour {
 
+	public GameObject fade;
 	public int step;
 	private Animation anim;
 
 	public GameObject toDestroy;
 	// Use this for initialization
+
+	private AudioSource source;
+
 	void Start () {
+		source = gameObject.GetComponent<AudioSource> ();
 		anim = GetComponent<Animation> ();
 		/*Debug.Log ("GO: " + gameObject.name + " anim: ");
 		foreach(AnimationState aS in anim)
@@ -36,6 +41,26 @@ public class AnimSteps : MonoBehaviour {
 	public void DestroyGO(){
 		//Debug.Log ("Destroy: " + toDestroy.name);
 		toDestroy.GetComponent<CircleCollider2D> ().enabled = false;
+		FadeOut (4f);
 		Destroy (toDestroy, 5);
+	}
+
+	public void FadeOut(float seconds){
+		GameObject f = Instantiate (fade);
+		f.transform.parent = Data.Instance.gameObject.transform;
+		Fade fadeOut = f.GetComponent<Fade> ();
+
+		fadeOut.OnBeginMethod = () => {			
+		};
+		fadeOut.OnLoopMethod = () => {
+			float vol = Mathf.Lerp (0, 1, fadeOut.time);
+			source.volume = vol;
+		};
+		fadeOut.OnEndMethod = () => {
+			source.Stop();
+			source.volume = 1f;
+			fadeOut.Destroy();
+		};
+		fadeOut.StartFadeOut (seconds);
 	}
 }
