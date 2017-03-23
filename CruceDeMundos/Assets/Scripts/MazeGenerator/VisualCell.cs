@@ -37,7 +37,10 @@ public class VisualCell : MonoBehaviour
 
 				if (Game.Instance.traceManager.lastCell != null) {
 						Game.Instance.traceManager.lastCell.MakeTrail (this);
-						if(!visited)cameFrom = Game.Instance.traceManager.lastCell;						
+					if (!visited)
+						cameFrom = Game.Instance.traceManager.lastCell;
+					else
+						Events.OnFalseTrail (this,this);
 				}
 
 				Game.Instance.traceManager.lastCell = this;
@@ -57,15 +60,23 @@ public class VisualCell : MonoBehaviour
 	public void MakeTrail(VisualCell next){
 		if (enter) {			
 			if (next == cameFrom) {
-				gameObject.GetComponent<Renderer> ().material.color = new Color(0,0,0,0);
-				visited = false;
+				SetVisited (false);
 				Events.OnNewCell ();
 			} else {
-				gameObject.GetComponent<Renderer> ().material.color = new Color(0,0.6f,0,0.6f);
-				visited = true;
+				SetVisited (true);
 				Events.OnNewCell ();
 			}
 			enter = false;
+		}
+	}
+
+	public void SetVisited(bool v){
+		visited = v;
+		if (v) {
+			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0.6f, 0, 0.6f);
+		} else {
+			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
+			//Events.OnFalseTrail (this,this);
 		}
 	}
 

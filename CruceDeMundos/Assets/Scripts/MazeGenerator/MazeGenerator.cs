@@ -39,7 +39,13 @@ public class MazeGenerator : MonoBehaviour
 			Init (); 
 		else
 			Import (jsonName);		
+
+		Events.OnFalseTrail += OnFalseTrail;
     }
+
+	void OnDestroy(){
+		Events.OnFalseTrail -= OnFalseTrail;
+	}
 
     void Init ()
     {
@@ -466,8 +472,21 @@ public class MazeGenerator : MonoBehaviour
 		Init ();
 	}
 
-void AddPathPoint(Transform t){
+	void AddPathPoint(Transform t){
 		//Instantiate(point,t.transform.position,Quaternion.Euler(Vector3.zero));
 		//if(Game.Instance!=null)Game.Instance.pathfinder.path.Add(new Vector2(t.transform.position.x,t.transform.position.y));
 	}
+
+	void OnFalseTrail(VisualCell cellCheck, VisualCell cellStop){
+		List<VisualCell>vcells = visualCells.FindAll(x => x.cameFrom == cellCheck);
+		foreach (VisualCell vc in vcells) {
+			if (vc != null && vc != cellStop) {
+				if (vc.visited) {
+					vc.SetVisited (false);
+					OnFalseTrail (vc, cellStop);
+				}
+			}
+		}
+	}
+	
 }

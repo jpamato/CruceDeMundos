@@ -16,7 +16,7 @@ public class TimeProgress : MonoBehaviour {
 		minFactor = 1f / 60;
 	}
 	void Update(){
-		if (Game.Instance.gameManager.state == GameManager.states.ACTIVE) {
+		if (Game.Instance.gameManager.state == GameManager.states.ACTIVE || Game.Instance.gameManager.state == GameManager.states.MAP) {
 			if (Game.Instance.levelManager.leveldata.isVsTime) {
 				time -= Time.deltaTime;
 				if (time < 1)
