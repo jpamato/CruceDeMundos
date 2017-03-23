@@ -13,6 +13,7 @@ public class Game : MonoBehaviour {
 	public ToolsManager toolsManager;
 	public PathFinder pathfinder;
 	public TraceManager traceManager;
+	public LevelMetrics levelMetrics;
 
 	public enum states
 	{
@@ -53,6 +54,8 @@ public class Game : MonoBehaviour {
 		levelManager = GetComponent<LevelManager>();
 		toolsManager = GetComponent<ToolsManager>();
 		pathfinder = GetComponent<PathFinder>();
+
+		levelMetrics = GetComponent<LevelMetrics>();
 
 
 		/*ui.Init();
@@ -100,6 +103,10 @@ public class Game : MonoBehaviour {
 
 	public void LevelMap()
 	{	
+		if (gameManager.state == GameManager.states.MAP) {
+			Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
+			Data.Instance.LoadGameData ();
+		}
 		OnGamePaused(false);
 		Data.Instance.LoadLevel("LevelMap");
 	}

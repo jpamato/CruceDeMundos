@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
 		Events.DialogDone += DialogDone;
 		Events.OnRefreshResources (Data.Instance.playerData.resources);
 
+		Game.Instance.levelMetrics.levelBeginTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.map1BeginTime = Game.Instance.levelMetrics.levelBeginTime;
+
 		Invoke ("Intro", 1);
 	}
 
@@ -43,18 +46,24 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Mision(){
+		Game.Instance.levelMetrics.map1EndTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.objectivesBeginTime = Game.Instance.levelMetrics.map1EndTime;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		state = states.MISION;
 		Events.GameMision ();
 	}
 
-	public void Tools(){		
+	public void Tools(){
+		Game.Instance.levelMetrics.objectivesEndTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.toolsBeginTime = Game.Instance.levelMetrics.objectivesEndTime;
 		state = states.TOOLS;
 		Events.GameTools ();
 	}
 
 	public void Hint(){
+		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
+		Game.Instance.toolsManager.SelectedToolsData ();
 		state = states.HINT;
 		Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
 		Events.GameHint ();

@@ -89,7 +89,7 @@ public class CharShop : MonoBehaviour {
 			/*int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
 			Game.Instance.toolsManager.toolstype [index] = shI.toolName;*/
 
-			Game.Instance.toolsManager.SetFriendTool (friend, shI.toolName.ToString ());
+			Game.Instance.toolsManager.SetFriendTool (friend, shI.toolName.ToString (), shI.level);
 
 			lastSelected = itemN;
 		}

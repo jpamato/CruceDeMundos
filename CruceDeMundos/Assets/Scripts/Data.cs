@@ -109,10 +109,12 @@ public class Data : MonoBehaviour
 
 	public void LoadGameData(){
 		string json = PlayerPrefs.GetString ("GameData");
-		if (!json.Equals("")) {
+		if (!json.Equals ("")) {
 			var N = JSON.Parse (json);
 			playerData.SetPlayerData (N ["playerData"]);
 			dialogData.SetDialogData (N ["dialogData"]);
+		} else {
+			SaveGameData ();
 		}
 	}
 

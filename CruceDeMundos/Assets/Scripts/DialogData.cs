@@ -247,6 +247,7 @@ public class DialogData : MonoBehaviour {
 			//DialogCharacter dCh = Array.Find (dialogCharacters, p => p.name == N[i]["name"]);
 			dialogCharacters[i].lastEmoVal = N [i] ["lastEmoVal"].AsInt;
 			dialogCharacters[i].globalEmoVal = N [i] ["globalEmoVal"].AsInt;
+			dialogCharacters [i].levelsInfo.Clear ();
 			for (int j = 0; j < N [i] ["levelsInfo"].Count; j++) {
 				DialogCharacter.LevelInfo li = new DialogCharacter.LevelInfo ();
 				li.level = N [i] ["levelsInfo"] [j] ["level"].AsInt;

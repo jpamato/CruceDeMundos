@@ -10,8 +10,10 @@ public class ToolsManager : MonoBehaviour {
 
 	[System.Serializable]
 	public class FriendTool {
+		public string name;
 		public GameObject friend;
 		public string toolName;
+		public int toolLevel;
 		public bool hasCharge;
 	}
 
@@ -52,19 +54,20 @@ public class ToolsManager : MonoBehaviour {
 			}
 
 			ft.friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
-			SetTool (ft, tType.ToString ());
+			SetTool (ft, tType.ToString (), 0);
 			Data.Instance.playerData.toolsNumber++;
 		}
 	}
 
-	public void SetFriendTool(GameObject friend, string toolName){
+	public void SetFriendTool(GameObject friend, string toolName, int tLevel){
 		FriendTool ft = Array.Find (Game.Instance.toolsManager.friendsTools, p => p.friend == friend);
-		SetTool (ft, toolName);
+		SetTool (ft, toolName, tLevel);
 	}
 
-	void SetTool(FriendTool ft, string toolName){
+	void SetTool(FriendTool ft, string toolName, int tLevel){
 		ft.toolName = toolName;
 		ft.hasCharge = true;
+		ft.toolLevel = tLevel;
 		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.Contains(ShootObstacle.obstacleType.FIRE.ToString()))
 			damagingObstacles.Remove (ShootObstacle.obstacleType.FIRE.ToString());
 		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.PORTAL.ToString()))
@@ -98,6 +101,17 @@ public class ToolsManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void SelectedToolsData(){
+		string result = "";
+		for (int i = 0; i < friendsTools.Length; i++) {
+			if (i != 0)
+				result += "/";
+			if(friendsTools [i].toolName!="")
+			result += friendsTools [i].name + "_" + friendsTools [i].toolName + "_" + friendsTools [i].toolLevel;
+		}
+		Game.Instance.levelMetrics.tools = result;
 	}
 
 }

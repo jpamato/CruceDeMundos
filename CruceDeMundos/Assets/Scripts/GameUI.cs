@@ -149,6 +149,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameMap(){
+		Game.Instance.levelMetrics.mapCheck++;
 		fono.SetButtonOn (true);
 	}
 
@@ -215,6 +216,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void SetSummary(){
+		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
 		Stars s2 = stars2.GetComponent<Stars> ();
 		Stars s3 = stars3.GetComponent<Stars> ();
 		for (int i = 0; i < Game.Instance.levelManager.objectivesDone.Length; i++) {
