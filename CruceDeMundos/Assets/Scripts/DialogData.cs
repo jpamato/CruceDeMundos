@@ -70,7 +70,7 @@ public class DialogData : MonoBehaviour {
 
 	public void ResetHintAtLevel(int level){
 		foreach (DialogCharacter dch in dialogCharacters)
-			dch.ResetType (level,Dialog.dType.HINT);
+			dch.ResetType (level,Dialog.dType.AUTOEVAL);
 	}
 
 	IEnumerator Import(string file){
@@ -147,8 +147,8 @@ public class DialogData : MonoBehaviour {
 	{
 		public enum dType
 		{
+			AUTOEVAL,
 			ET,
-			HINT,
 			HUMAN
 		}
 		public string name;
@@ -193,26 +193,28 @@ public class DialogData : MonoBehaviour {
 
 	}
 
-	Dialog.Mood.moodType castMoodType(string s){		
-		if(s.Equals("negative"))
+	Dialog.Mood.moodType castMoodType(string s){
+		return (Dialog.Mood.moodType)System.Enum.Parse(typeof(Dialog.Mood.moodType), s.ToUpperInvariant());
+		/*if(s.Equals("negative"))
 			return Dialog.Mood.moodType.NEGATIVE;
 		else if(s.Equals("neutral"))
 			return Dialog.Mood.moodType.NEUTRAL;
 		else if(s.Equals("positive"))
 			return Dialog.Mood.moodType.POSITIVE;	
 		else
-			return Dialog.Mood.moodType.NEUTRAL;
+			return Dialog.Mood.moodType.NEUTRAL;*/
 	}
 
 	Dialog.dType castDialogType(string s){
-		if(s.Equals("et"))
+		return (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), s.ToUpperInvariant());
+		/*if(s.Equals("et"))
 			return Dialog.dType.ET;
 		else if(s.Equals("hint"))
 			return Dialog.dType.HINT;
 		else if(s.Equals("human"))
 			return Dialog.dType.HUMAN;
 		else
-			return Dialog.dType.ET;
+			return Dialog.dType.ET;*/
 	}
 
 	public string GetDialogData(){

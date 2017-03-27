@@ -219,6 +219,7 @@ public class GameUI : MonoBehaviour {
 		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
 		Stars s2 = stars2.GetComponent<Stars> ();
 		Stars s3 = stars3.GetComponent<Stars> ();
+		string misions = "";
 		for (int i = 0; i < Game.Instance.levelManager.objectivesDone.Length; i++) {
 			objectives_summary [i].transform.Find ("done").gameObject.SetActive (Game.Instance.levelManager.objectivesDone[i]);
 			objectives_summary [i].transform.Find ("undone").gameObject.SetActive (!Game.Instance.levelManager.objectivesDone[i]);
@@ -227,7 +228,11 @@ public class GameUI : MonoBehaviour {
 				s2.SetStarOn (i);
 			if (Game.Instance.levelManager.objectivesDone [i])
 				s3.SetStarOn (i);
+
+			if(i<Game.Instance.levelManager.leveldata.objectives.Count)
+			misions += Game.Instance.levelManager.objectivesDone [i] + ";";
 		}
+		Game.Instance.levelMetrics.SaveLevelData (misions);
 		Data.Instance.playerData.SetSummary ();
 		Data.Instance.SaveGameData ();
 	}

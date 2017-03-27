@@ -105,11 +105,12 @@ public class ToolsManager : MonoBehaviour {
 
 	public void SelectedToolsData(){
 		string result = "";
-		for (int i = 0; i < friendsTools.Length; i++) {
-			if (i != 0)
-				result += "/";
-			if(friendsTools [i].toolName!="")
-			result += friendsTools [i].name + "_" + friendsTools [i].toolName + "_" + friendsTools [i].toolLevel;
+		for (int i = 0; i < friendsTools.Length; i++) {			
+			if (friendsTools [i].toolName != "") {
+				if (i != 0)
+					result += ";";
+				result += friendsTools [i].name + "_" + friendsTools [i].toolName + "_" + friendsTools [i].toolLevel;
+			}
 		}
 		Game.Instance.levelMetrics.tools = result;
 	}

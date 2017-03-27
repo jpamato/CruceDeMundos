@@ -41,10 +41,12 @@ public class MazeGenerator : MonoBehaviour
 			Import (jsonName);		
 
 		Events.OnFalseTrail += OnFalseTrail;
+		Events.GetVisistedTrail += GetVisistedTrail;
     }
 
 	void OnDestroy(){
 		Events.OnFalseTrail -= OnFalseTrail;
+		Events.GetVisistedTrail -= GetVisistedTrail;
 	}
 
     void Init ()
@@ -487,6 +489,16 @@ public class MazeGenerator : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	void GetVisistedTrail(){
+		List<VisualCell>vcells = visualCells.FindAll(x => x.visited == true);
+		string result = "";
+		foreach (VisualCell vc in vcells)
+			result += vc.name+";";
+
+		Game.Instance.levelMetrics.trail = result;
+		
 	}
 	
 }

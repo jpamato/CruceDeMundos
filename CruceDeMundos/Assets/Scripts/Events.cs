@@ -35,6 +35,7 @@ public static class Events {
 
 	public static System.Action OnNewCell = delegate { };
 	public static System.Action<VisualCell,VisualCell> OnFalseTrail = delegate { };
+	public static System.Action GetVisistedTrail = delegate { };
 
 	public static System.Action<int> OnLevelButtonEnter = delegate { };
 	public static System.Action OnLevelButtonExit = delegate { };

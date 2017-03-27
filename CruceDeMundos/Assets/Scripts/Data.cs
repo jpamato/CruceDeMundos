@@ -83,6 +83,11 @@ public class Data : MonoBehaviour
         
     }
 
+	public void SaveLevelData(string tools, string misions, int mapchecks, float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, int rtB, int rtAt){		
+		StartCoroutine(dataController.SaveLevelData(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, tools, misions, mapchecks,
+			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, rtB, rtAt, playerData.resources));
+	}
+
 	public void SaveUserData(){		
 		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName));
 	}

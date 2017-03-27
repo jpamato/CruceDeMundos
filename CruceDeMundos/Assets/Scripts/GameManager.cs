@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 		INTRO,
 		MISION,
 		TOOLS,
-		HINT,
+		AUTOEVAL,
 		ACTIVE,
 		MAP,
 		DIALOG,
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 
 		Game.Instance.levelMetrics.levelBeginTime = Time.realtimeSinceStartup;
 		Game.Instance.levelMetrics.map1BeginTime = Game.Instance.levelMetrics.levelBeginTime;
+		Game.Instance.levelMetrics.rtBegin = Data.Instance.playerData.resources;
 
 		Invoke ("Intro", 1);
 	}
@@ -60,11 +61,12 @@ public class GameManager : MonoBehaviour {
 		Events.GameTools ();
 	}
 
-	public void Hint(){
+	public void AutoEval(){
 		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Game.Instance.toolsManager.SelectedToolsData ();
-		state = states.HINT;
+		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;
+		state = states.AUTOEVAL;
 		Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
 		Events.GameHint ();
 	}
