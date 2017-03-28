@@ -65,6 +65,7 @@ public class DialogManager : MonoBehaviour {
 
 	public void ReplySelect(int index){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
+		SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -101,7 +102,6 @@ public class DialogManager : MonoBehaviour {
 		if (mood.replies [index].objective) {
 			Events.OnDialogObjective (character.name);
 		}
-		
 
 		if (mood.replies [index].exit)
 			Events.DialogDone ();
@@ -118,5 +118,9 @@ public class DialogManager : MonoBehaviour {
 			levelInfo = AddNewLevelInfo (character, level_, d.dialogType);
 		}
 		levelInfo.goTo = goTo;
+	}
+
+	public void SendDialogData(string charName, int index, string mood, int answerId){
+		Data.Instance.SaveDialogData (charName, level, index, mood, answerId);
 	}
 }

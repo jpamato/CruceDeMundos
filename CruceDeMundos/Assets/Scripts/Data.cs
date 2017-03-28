@@ -83,6 +83,10 @@ public class Data : MonoBehaviour
         
     }
 
+	public void SaveDialogData(string character, int level, int index, string mood, int answerId){		
+		StartCoroutine(dataController.SaveDialogData(userId,SystemInfo.deviceUniqueIdentifier, character, level, index, mood, answerId));
+	}
+
 	public void SaveLevelData(string tools, string misions, int mapchecks, float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, int rtB, int rtAt){		
 		StartCoroutine(dataController.SaveLevelData(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, tools, misions, mapchecks,
 			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, rtB, rtAt, playerData.resources));
