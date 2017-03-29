@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
+using UnityEngine.Audio;
 
 public class Data : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Data : MonoBehaviour
 
 	public MusicManager musicManager;
 	public InterfaceSfx interfaceSfx;
+	public AudioMixer audioMaster;
+	public bool mute;
 
 	private Fade fade;
 
@@ -134,5 +137,13 @@ public class Data : MonoBehaviour
 
 	public void SendData(){
 		dialogData.ResetHintAtLevel(playerData.level);
+	}
+
+	public void Mute(bool m){
+		mute = m;
+		if (mute)
+			audioMaster.SetFloat ("masterVolume", -80f);
+		else
+			audioMaster.SetFloat ("masterVolume", 0f);
 	}
 }

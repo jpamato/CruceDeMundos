@@ -79,6 +79,8 @@ public class GameUI : MonoBehaviour {
 		Events.OnTimeOut += OnTimeOut;
 		Events.OnToolsLose += OnToolsLose;
 
+		//btnSound.SetButtonOn (!Data.Instance.mute);
+		btnSound.defaultValue = !Data.Instance.mute;
 	}
 
 	void OnDestroy(){
@@ -239,6 +241,8 @@ public class GameUI : MonoBehaviour {
 
 	public void SoundToggle(bool on){
 		btnSound.SetButtonOn (on);
+		Data.Instance.Mute (!on);
+
 	}
 
 	public void HelpToggle(bool on){
