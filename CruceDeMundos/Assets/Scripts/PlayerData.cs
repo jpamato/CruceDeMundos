@@ -9,6 +9,7 @@ public class PlayerData : MonoBehaviour {
 	public int level;
 	public int resources;
 	public int toolsNumber;
+	public int friendsNumber;
 	public List<Level> summary;
 
 	public enum ToolName{
@@ -62,8 +63,11 @@ public class PlayerData : MonoBehaviour {
 		else
 			level.levelState = Level.LevelState.PLAYED;
 
-		if(oDone[0])
+		if (oDone [0]) {
 			UnlockNext ();
+			if (lNumber == 2)
+				friendsNumber = 3;
+		}
 	}
 
 	public string GetPlayerData(){
@@ -71,6 +75,7 @@ public class PlayerData : MonoBehaviour {
 		json += "level:"+level+",\n";
 		json += "resources:"+resources+",\n";
 		json += "toolsNumber:"+toolsNumber+",\n";
+		json += "friendsNumber:"+friendsNumber+",\n";
 		json += "summary:[\n";
 
 		for(int i=0;i<summary.Count;i++){
@@ -95,6 +100,7 @@ public class PlayerData : MonoBehaviour {
 		level = N ["level"].AsInt;
 		resources = N ["resources"].AsInt;
 		toolsNumber = N ["toolsNumber"].AsInt;
+		friendsNumber = N ["friendsNumber"].AsInt;
 		for (int i = 0; i < N ["summary"].Count; i++) {
 			Level l = new Level ();
 			l.levelNumber = N ["summary"] [i] ["levelNumber"].AsInt;
