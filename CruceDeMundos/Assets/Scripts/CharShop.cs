@@ -66,6 +66,8 @@ public class CharShop : MonoBehaviour {
 							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
 						} else if (ttypes[i].Equals (PlayerData.ToolName.Matafuegos.ToString ())) {							
 							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().fireEnergy;
+						} else if (ttypes[i].Equals (PlayerData.ToolName.Armonizador.ToString ())) {							
+							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().pollutionEnergy;
 						}
 
 

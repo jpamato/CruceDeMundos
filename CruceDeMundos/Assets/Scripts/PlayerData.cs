@@ -14,7 +14,8 @@ public class PlayerData : MonoBehaviour {
 
 	public enum ToolName{
 		Matafuegos,
-		Restaurador
+		Restaurador,
+		Armonizador
 	}
 
 	public GameObject[] tools;
