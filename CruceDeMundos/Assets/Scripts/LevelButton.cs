@@ -34,8 +34,10 @@ public class LevelButton : MonoBehaviour {
 				played.SetActive (true);
 				levelState = PlayerData.Level.LevelState.PLAYED;
 			}else if(level.levelState==PlayerData.Level.LevelState.DONE){
-				done.SetActive (true);			
-				levelState = PlayerData.Level.LevelState.DONE;
+				/*done.SetActive (true);			
+				levelState = PlayerData.Level.LevelState.DONE;*/
+				played.SetActive (true);
+				levelState = PlayerData.Level.LevelState.PLAYED;
 			}
 		}
 		LevelData.Level ldata = Data.Instance.levelData.levels.Find (x => x.levelNumber == levelNumber);
