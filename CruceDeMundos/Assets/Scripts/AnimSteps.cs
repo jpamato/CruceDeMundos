@@ -54,11 +54,14 @@ public class AnimSteps : MonoBehaviour {
 		};
 		fadeOut.OnLoopMethod = () => {
 			float vol = Mathf.Lerp (0, 1, fadeOut.time);
-			source.volume = vol;
+			if(source!=null)
+				source.volume = vol;
 		};
 		fadeOut.OnEndMethod = () => {
-			source.Stop();
-			source.volume = 1f;
+			if(source!=null){
+				source.Stop();
+				source.volume = 1f;
+			}
 			fadeOut.Destroy();
 		};
 		fadeOut.StartFadeOut (seconds);
