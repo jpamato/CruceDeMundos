@@ -12,10 +12,15 @@ public class MovePlayer : MonoBehaviour {
 	private float rotationOffset = -90f;
 	private Animator animator;
 
+	private AudioSource source;
+	public AudioClip ring;
+
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		Game.Instance.traceManager.freeTrail = true;
 		animator = avatar.GetComponent<Animator> ();
+
+		source = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +33,7 @@ public class MovePlayer : MonoBehaviour {
 				if (!moving) {
 					animator.Play ("start");
 					moving = true;
+					source.PlayOneShot (ring);
 				}
 			}else{
 				if (moving) {
