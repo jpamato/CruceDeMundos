@@ -69,8 +69,10 @@ public class DialogData : MonoBehaviour {
 	}
 
 	public void ResetHintAtLevel(int level){
-		foreach (DialogCharacter dch in dialogCharacters)
-			dch.ResetType (level,Dialog.dType.AUTOEVAL);
+		foreach (DialogCharacter dch in dialogCharacters) {
+			dch.ResetType (level, Dialog.dType.AUTOEVAL);
+			dch.ResetType (level, Dialog.dType.COLLAB);
+		}
 	}
 
 	IEnumerator Import(string file){
@@ -136,6 +138,30 @@ public class DialogData : MonoBehaviour {
 					} else {
 						d.dialogTree [i].moods [j].replies [k].objective = false;
 					}
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["dialog"] != null) {
+						d.dialogTree [i].moods [j].replies [k].dialog = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["dialog"];
+					} else {
+						d.dialogTree [i].moods [j].replies [k].dialog = "";
+					}
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelEnd"] != null) {
+						d.dialogTree [i].moods [j].replies [k].levelEndDialog = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelEnd"].AsBool;
+					} else {
+						d.dialogTree [i].moods [j].replies [k].levelEndDialog = false;
+					}
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["move"] != null) {
+						d.dialogTree [i].moods [j].replies [k].move = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["move"].AsInt;
+					} else {
+						d.dialogTree [i].moods [j].replies [k].move = -1;
+					}
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["block"] != null) {
+						d.dialogTree [i].moods [j].replies [k].block = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["block"].AsInt;
+					} else {
+						d.dialogTree [i].moods [j].replies [k].block = 0;
+					}
 				}
 			}
 		}
@@ -148,8 +174,10 @@ public class DialogData : MonoBehaviour {
 		public enum dType
 		{
 			AUTOEVAL,
-			ET,
-			HUMAN
+			NARRATIVE,
+			COLLAB,
+			ET,			
+			HUMAN			
 		}
 		public string name;
 		public int level;
@@ -189,6 +217,10 @@ public class DialogData : MonoBehaviour {
 			public int pollutionCharge;
 			public string tool;
 			public bool objective;
+			public string dialog;
+			public bool levelEndDialog;
+			public int move;
+			public int block;
 		}
 
 	}

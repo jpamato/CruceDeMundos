@@ -28,6 +28,7 @@ public class LevelData : MonoBehaviour {
 		public List<ChargeObjective> chargeObjective;
 		public List<DialogObjective> dialogObjective;
 		public List<DialogUnlock> dialogsUnlock;
+		public List<CharacterMove> characterMove;
 		public GameObject levelObjects;
 		public CameraController.Zoom zoomIn;
 		public CameraController.Zoom zoomOut;
@@ -73,5 +74,12 @@ public class LevelData : MonoBehaviour {
 		public string characterName;
 		public int goTo;
 		public List<ObstacleObjective> obstacleObjectives;
+	}
+
+	[Serializable]
+	public class CharacterMove
+	{		
+		public string characterName;
+		public Vector2[] positions;
 	}
 }

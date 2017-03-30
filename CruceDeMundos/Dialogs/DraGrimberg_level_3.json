@@ -6,11 +6,23 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¡Chicos, ya estamos más cerca! Ahora tienen que llegar a hasta el puerto para enbarcarse hasta la isla ¿están en condiciones de hacerlo?",
-					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Esto es pan comido, allá vamos!"},
-						{emoVal:0,exit:true,goTo:0,text:"Lo intentaremos, esperemos poder llegar hasta allí pronto"},
-						{emoVal:-1,exit:true,goTo:0,text:"Estamos muy cansados ya Dr Grimberg... se nos está complicando..."}]
+					"prompt":"Bueno, ¿qué dicen? ¿Se sienten capaces de apagar ese incendio?",
+					replies:[						
+						{emoVal:0,exit:false,goTo:1,text:"Maso"},
+						{emoVal:-1,exit:false,goTo:1,text:"Ni ahí"},
+						{emoVal:1,exit:false,goTo:1,text:"Más vale"}
+						]
+				}
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
+					replies:[						
+						{emoVal:0,exit:false,goTo:1,text:"Afirmativo, doc.",dialog:"Emmanuel"}
+						]
 				}
 			]
 		}

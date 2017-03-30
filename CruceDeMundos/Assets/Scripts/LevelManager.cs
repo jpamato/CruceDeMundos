@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour {
 	public List<LevelData.ChargeObjective> chargeObjective;
 	public List<LevelData.DialogObjective> dialogObjective;
 	public List<LevelData.DialogUnlock> dialogsUnlock;
+	public List<LevelData.CharacterMove> characterMove;
 
 	public int tools;
 
@@ -72,6 +73,14 @@ public class LevelManager : MonoBehaviour {
 			dialogsUnlock.Add (dU);
 		}
 
+		characterMove = new List<LevelData.CharacterMove> ();
+		foreach (LevelData.CharacterMove chMove in leveldata.characterMove) {
+			LevelData.CharacterMove chM = new LevelData.CharacterMove ();
+			chM.characterName = chMove.characterName;
+			chM.positions= chMove.positions;
+			characterMove.Add (chM);
+		}
+
 		tools = Data.Instance.playerData.toolsNumber;
 
 		camControl.zoomIn = leveldata.zoomIn;
@@ -86,11 +95,13 @@ public class LevelManager : MonoBehaviour {
 	void Start () {		
 		Events.OnObstacleDestroy += OnObstacleDestroy;
 		Events.OnDialogObjective += OnDialogObjective;
+		Events.MoveCharacter += MoveCharacter;
 	}
 
 	void OnDestroy(){		
 		Events.OnObstacleDestroy -= OnObstacleDestroy;
 		Events.OnDialogObjective -= OnDialogObjective;
+		Events.MoveCharacter -= MoveCharacter;
 	}
 	
 	// Update is called once per frame
@@ -151,6 +162,14 @@ public class LevelManager : MonoBehaviour {
 			LevelData.DialogObjective dObjective = dialogObjective [i];
 			if (dObjective.characterName.Equals (characterName))
 				objectivesDone [dObjective.objectiveIndex] = true;
+		}
+	}
+
+	void MoveCharacter(string charName, int index){
+		LevelData.CharacterMove chM = characterMove.Find (x => (x.characterName == charName));
+		if(chM!=null){
+			GameObject character = GameObject.FindGameObjectWithTag (charName);
+			character.transform.localPosition = chM.positions [index];
 		}
 	}
 

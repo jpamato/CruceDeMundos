@@ -45,7 +45,11 @@ public class DialogManager : MonoBehaviour {
 
 		dTree = Array.Find (dialog.dialogTree, p => p.index == levelInfo.goTo);
 
-		mood = Array.Find (dTree.moods, p => (int)p.mType == (levelInfo.emoval + 1));
+		if (dTree.moods.Length > 1)
+			mood = Array.Find (dTree.moods, p => (int)p.mType == (levelInfo.emoval + 1));
+		else
+			mood = dTree.moods [0];
+		
 		charText.text = mood.prompt;
 		for (int i = 0; i < mood.replies.Length; i++) {
 			ansText [i].text = mood.replies [i].text;
@@ -79,18 +83,19 @@ public class DialogManager : MonoBehaviour {
 			Events.OnRefreshResources (Data.Instance.playerData.resources);
 		}
 
-		if (mood.replies [index].fireCharge > 0) 
-			Events.OnChargeCollect(mood.replies [index].fireCharge, PlayerData.ToolName.Matafuegos);
-		if (mood.replies [index].portalCharge > 0) 
-			Events.OnChargeCollect(mood.replies [index].portalCharge, PlayerData.ToolName.Restaurador);
+		if (mood.replies [index].fireCharge > 0)
+			Events.OnChargeCollect (mood.replies [index].fireCharge, PlayerData.ToolName.Matafuegos);
+		if (mood.replies [index].portalCharge > 0)
+			Events.OnChargeCollect (mood.replies [index].portalCharge, PlayerData.ToolName.Restaurador);
 		/*if (mood.replies [index].pollutionCharge > 0) 
 			Events.OnChargeCollect(mood.replies [index].pollutionCharge, PlayerData.ToolName.A);*/
 
+
 		if (mood.replies [index].tool != "") {
-			if(mood.replies [index].tool.Equals(PlayerData.ToolName.Matafuegos.ToString()))
-				Events.OnAddTool(PlayerData.ToolName.Matafuegos);
-			else if(mood.replies [index].tool.Equals(PlayerData.ToolName.Restaurador.ToString()))
-				Events.OnAddTool(PlayerData.ToolName.Restaurador);
+			if (mood.replies [index].tool.Equals (PlayerData.ToolName.Matafuegos.ToString ()))
+				Events.OnAddTool (PlayerData.ToolName.Matafuegos);
+			else if (mood.replies [index].tool.Equals (PlayerData.ToolName.Restaurador.ToString ()))
+				Events.OnAddTool (PlayerData.ToolName.Restaurador);
 		}
 
 		/*if (!mood.replies [index].tool.Equals("")) {
@@ -103,10 +108,23 @@ public class DialogManager : MonoBehaviour {
 			Events.OnDialogObjective (character.name);
 		}
 
-		if (mood.replies [index].exit)
+		if (mood.replies [index].move > -1)
+			Events.MoveCharacter (character.name, mood.replies [index].move);
+
+		if (mood.replies [index].block != 0)
+			Events.CharacterBlocking (character.name, mood.replies [index].block);
+
+
+		if (mood.replies [index].exit){
 			Events.DialogDone ();
-		else
+			if (mood.replies [index].levelEndDialog)
+				Events.OnLevelEndDialog ();
+		}else{
+			if (mood.replies [index].dialog != "") {
+				LoadDialog (mood.replies [index].dialog);
+			}
 			LoadDialog (character.name);
+		}
 
 	}
 

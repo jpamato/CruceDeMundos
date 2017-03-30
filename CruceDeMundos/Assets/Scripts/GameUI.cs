@@ -67,7 +67,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameIntro += GameIntro;
 		Events.GameMision += GameMision;
 		Events.GameTools += GameTools;
-		Events.GameHint += GameHint;
+		Events.GameAutoeval += GameAutoeval;
 		Events.GameReady += GameReady;
 		Events.GameActive += GameActive;
 		Events.GameMap += GameMap;
@@ -79,6 +79,8 @@ public class GameUI : MonoBehaviour {
 		Events.OnTimeOut += OnTimeOut;
 		Events.OnToolsLose += OnToolsLose;
 
+		Events.OnLevelEndDialog += OnLevelEndDialog;
+
 		//btnSound.SetButtonOn (!Data.Instance.mute);
 		btnSound.defaultValue = !Data.Instance.mute;
 	}
@@ -87,7 +89,7 @@ public class GameUI : MonoBehaviour {
 		Events.GameIntro -= GameIntro;
 		Events.GameMision -= GameMision;
 		Events.GameTools -= GameTools;
-		Events.GameHint -= GameHint;
+		Events.GameAutoeval -= GameAutoeval;
 		Events.GameReady -= GameReady;
 		Events.GameActive -= GameActive;
 		Events.GameMap -= GameMap;
@@ -98,6 +100,8 @@ public class GameUI : MonoBehaviour {
 		Events.OnObjectiveDone -= OnObjectiveDone;
 		Events.OnTimeOut -= OnTimeOut;
 		Events.OnToolsLose -= OnToolsLose;
+
+		Events.OnLevelEndDialog -= OnLevelEndDialog;
 	}
 
 	void GameIntro(){		
@@ -139,7 +143,7 @@ public class GameUI : MonoBehaviour {
 		tools.SetActive (true);
 	}
 
-	void GameHint(){		
+	void GameAutoeval(){		
 		tools.SetActive (false);
 		dialog.SetActive (true);
 	}
@@ -188,8 +192,20 @@ public class GameUI : MonoBehaviour {
 		Data.Instance.playerData.resources += Game.Instance.levelManager.leveldata.resourceWin;
 		Events.OnRefreshResources (Data.Instance.playerData.resources);
 		Game.Instance.gameManager.state = GameManager.states.WIN;
-		SetSummary ();
+
+		if (Game.Instance.levelManager.leveldata.levelNumber == 2) {
+			summary.SetActive (false);
+			Game.Instance.dialogManager.LoadDialog ("Agustina");
+			Events.GameDialog ();
+		} else {
+			SetSummary ();
+		}
 		//Invoke ("HideStarGame", 1);
+	}
+
+	void OnLevelEndDialog(){
+		summary.SetActive (true);
+		SetSummary ();
 	}
 
 	void OnTimeOut(){

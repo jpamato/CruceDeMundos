@@ -5,31 +5,69 @@
 	dialogTree:[		
 		{index:0,
 			moods:[
-				{ 	"mood":"negative",
-					"prompt":"Por favor, no sean malos, ¡levantenme el ánimo!",
-					replies:[
-						{emoVal:1,exit:true,goTo:1,text:"¡Si, arriba amigo!", objective:true},
-						{emoVal:0,exit:true,goTo:0,text:"Bueno voy a ver como puedo ayudarte"},
-						{emoVal:-1,exit:true,goTo:0,text:"¡Uh que llorón!"}]
-				},
 				{ 	"mood":"neutral",
-					"prompt":"Hola chicos, ¿quieren levantarme el ánimo?",
-					replies:[
-						{emoVal:1,exit:true,goTo:1,text:"¡Si, arriba amigo!", objective:true},
-						{emoVal:0,exit:true,goTo:0,text:"Bueno voy a ver como puedo ayudarte"},
-						{emoVal:-1,exit:true,goTo:0,text:"¡Salí de acá emo, ah re!"}]
+					"prompt":"No sé, no sé",
+					replies:[						
+						{emoVal:0,exit:false,goTo:1,text:"Upa, ¿Cómo va eso? ¿Estás enojado?"},
+						{emoVal:1,exit:false,goTo:1,text:"Upa, ¿Cómo va eso? ¿Estás triste?"},
+						{emoVal:0,exit:false,goTo:1,text:"Upa, ¿Cómo va eso? ¿Estás aterrado?!"}]
 				}
 			]
 		},
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Bien hecho amigo, nos vemos la próxima",
-					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+					"prompt":"No, estoy triste como un swampapón perdido en el espacio.",
+					replies:[						
+						{emoVal:-1,exit:false,goTo:2,text:"¿Triste? ¡Andáááá, salame!"},
+						{emoVal:0,exit:false,goTo:2,text:"(...No sé qué decirle, mejor sigo)"},
+						{emoVal:1,exit:false,goTo:2,text:"¿Podemos ayudarte? ¿Por qué estás triste?"}]
 				},
 				{	"mood":"positive",
-					"prompt":"Bien hecho amigo, nos vemos la próxima",
-					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Hasta pronto!"}]
+					"prompt":"¡Sí, snif! Muy triste, tristísimo.",
+					replies:[						
+						{emoVal:-1,exit:false,goTo:2,text:"¿Triste? ¡Andáááá, salame!"},
+						{emoVal:0,exit:false,goTo:2,text:"(...No sé qué decirle, mejor sigo)"},
+						{emoVal:1,exit:false,goTo:2,text:"¿Podemos ayudarte? ¿Por qué estás triste?"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[	
+				{	"mood":"neutral",
+					"prompt":"Perdón, ¿dijiste algo?",
+					replies:[{emoVal:-1,exit:false,goTo:2,text:"No hablé, estaba pensando nomás."}]
+				},
+				{	"mood":"negative",
+					"prompt":"Está bien, snif, vayan nomás.",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
+				},
+				{	"mood":"positive",
+					"prompt":"Porque no sé cuándo volveré a casa y extraño a los míos.",
+					replies:[						
+						{emoVal:1,exit:false,goTo:3,text:"Uy, claro, pero va a estar todo bien, de verdad. Estamos trabajando para eso"},
+						{emoVal:0,exit:false,goTo:3,text:"Todo pasa Creo, capaz que no, la verdad."},
+						{emoVal:0,exit:false,goTo:3,text:"..."}]
+				}
+			]
+		},
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Buff.",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
+				},
+				{	"mood":"positive",
+					"prompt":"¿En serio? Me alegraron el día. En agradecimiento les daré unos recursos tecnológicos.",
+					replies:[{emoVal:1,exit:true,goTo:4,text:"SALIR",resources:50,objective:true}]
+				}
+			]
+		},
+		{index:4,
+			moods:[			
+				{	"mood":"positive",
+					"prompt":"Creo en ustedes, no los olvidaré. ¡Adiós!",
+					replies:[{emoVal:1,exit:true,goTo:4,text:"SALIR"}]
 				}
 			]
 		}

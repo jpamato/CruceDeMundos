@@ -1,0 +1,16 @@
+﻿{
+	name:"Emmanuel",
+	level:3,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"prompt":"Pero gente, ¿no será peligroso eso?",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"Dale, Ema, ¡si apagamos incendios bien podemos rastrear un bidón!"}]
+				}
+			]
+		}
+
+	]
+}

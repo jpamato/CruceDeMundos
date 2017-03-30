@@ -1,7 +1,7 @@
 ﻿{
 	name:"Bombero",
 	level:1,
-	type:"et",
+	type:"narrative",
 	dialogTree:[
 		{index:0,
 			moods:[
@@ -15,7 +15,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden cerrarlo?",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"¡Sí!"}]
+					replies:[{emoVal:0,exit:false,goTo:2,text:"¡Claro!"}]
 				}
 			]
 		},
@@ -23,7 +23,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"prompt":"¡Excelente! Lleven este matafuegos, lo van a necesitar",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR",tool:"Matafuegos"}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Listo!",tool:"Matafuegos"}]
 				}				
 			]
 		},
@@ -31,8 +31,8 @@
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Gracias muchachos, ¡y cuídense mucho!",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
+					"prompt":"Eso es todo. Cuídense mucho",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Vos también!"}]
 				}				
 			]
 		}		

@@ -6,11 +6,11 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¡Hola Chicos! Es muy importante que puedan atravesar la ciudad y llegar a la puerta verde. ¿Creen que van a poder lograrlo?",
+					"prompt":"Antes de que se vayan, díganme, ¿creen que llegarán al lado opuesto de esta parte de la ciudad?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Seguro Dra Grimberg, cuente con nosotros!"},
-						{emoVal:0,exit:true,goTo:0,text:"Haremos lo posible Dra Grimberg, ojalá tengamos suerte"},
-						{emoVal:-1,exit:true,goTo:0,text:"Lo veo difícil Dra No se si podremos lograrlo"}]
+						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!"},
+						{emoVal:0,exit:true,goTo:0,text:"Mhhh... ¿Haremos lo posible?"},
+						{emoVal:-1,exit:true,goTo:0,text:"No creo, doc"}]
 				}
 			]
 		}

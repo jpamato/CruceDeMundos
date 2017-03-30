@@ -6,9 +6,63 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Muchas gracias muchachos, ¡cuidense!",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"SALIR"}]
+					"prompt":"¡Qué barbaridad estos incendios! ¿Ustedes no pueden hacer nada?",
+					replies:[
+					{emoVal:0,exit:false,goTo:1,text:"Podríamos, pero los portales son nuestra prioridad."},
+					{emoVal:1,exit:false,goTo:1,text:"Eso es tarea de los bomberos ahora."}]
 				}				
+			]
+		},
+		{index:1,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"¿Pero no es una pena que su ciudad se destruya?",
+					replies:[
+					{emoVal:0,exit:false,goTo:2,text:"¡¿Y a vos qué te parece?!"}
+					]
+				},
+				{	"mood":"positive",
+					"prompt":"Los bomberos parecen muy ocupados. Necesitan colaboración.",
+					replies:[
+					{emoVal:1,exit:false,goTo:2,text:"Ellos mismos nos dijeron que nos despreocupemos."}
+					]
+				}				
+			]
+		},
+		{index:2,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Bueno, no los veo muy activos que digamos.",
+					replies:[
+					{emoVal:0,exit:false,goTo:3,text:"Porque estamos hablando con vos que, por cierto, tampoco estás ayudando mucho, ¿no?."}
+					]
+				},
+				{	"mood":"positive",
+					"prompt":"¿Y ustedes les creyeron?",
+					replies:[
+					{emoVal:0,exit:false,goTo:3,text:"Más bien. Cuando ellos quieren ayuda, la piden. Por cierto, tampoco estás ayudando mucho, ¿no?"}
+					]
+				}				
+			]
+		},
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Soy mejor imaginando operativos. Además, trabajar cansa.",
+					replies:[
+					{emoVal:0,exit:true,goTo:0,text:"Ya veo, vos, piola. No te vayas a fatigar."}
+					]
+				}							
+			]
+		},
+		{index:4,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"¿Vieron lo bien que imagino? ¡Apagaron todos los incendios!",
+					replies:[
+					{emoVal:0,exit:true,goTo:4,text:"Psé, sos de una ayuda bárbara"}
+					]
+				}							
 			]
 		}
 	]	
