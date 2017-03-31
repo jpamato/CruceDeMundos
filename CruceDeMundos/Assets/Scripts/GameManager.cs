@@ -90,9 +90,11 @@ public class GameManager : MonoBehaviour {
 	public void Phone(){
 		if (state == states.MAP) {
 			state = states.ACTIVE;
+			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.phoneClose);
 			Events.GameActive ();
 		} else {
 			state = states.MAP;
+			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.phoneOpen);
 			Events.GameMap();
 		}
 	}

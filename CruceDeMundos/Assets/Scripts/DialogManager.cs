@@ -87,8 +87,8 @@ public class DialogManager : MonoBehaviour {
 			Events.OnChargeCollect (mood.replies [index].fireCharge, PlayerData.ToolName.Matafuegos);
 		if (mood.replies [index].portalCharge > 0)
 			Events.OnChargeCollect (mood.replies [index].portalCharge, PlayerData.ToolName.Restaurador);
-		/*if (mood.replies [index].pollutionCharge > 0) 
-			Events.OnChargeCollect(mood.replies [index].pollutionCharge, PlayerData.ToolName.A);*/
+		if (mood.replies [index].pollutionCharge > 0) 
+			Events.OnChargeCollect(mood.replies [index].pollutionCharge, PlayerData.ToolName.Armonizador);
 
 
 		if (mood.replies [index].tool != "") {
@@ -96,6 +96,8 @@ public class DialogManager : MonoBehaviour {
 				Events.OnAddTool (PlayerData.ToolName.Matafuegos);
 			else if (mood.replies [index].tool.Equals (PlayerData.ToolName.Restaurador.ToString ()))
 				Events.OnAddTool (PlayerData.ToolName.Restaurador);
+			else if (mood.replies [index].tool.Equals (PlayerData.ToolName.Armonizador.ToString ()))
+				Events.OnAddTool (PlayerData.ToolName.Armonizador);
 		}
 
 		/*if (!mood.replies [index].tool.Equals("")) {

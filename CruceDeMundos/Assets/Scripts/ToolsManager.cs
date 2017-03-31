@@ -42,6 +42,13 @@ public class ToolsManager : MonoBehaviour {
 
 	void OnAddTool(PlayerData.ToolName tType){
 		FriendTool ft = Array.Find (friendsTools, p => p.toolName == "");
+		if (ft == null) {
+			ft = friendsTools [0];
+			Transform t = ft.friend.transform.FindChild (ft.toolName);
+			t.gameObject.SetActive (false);
+		}
+
+
 		Transform tool = ft.friend.transform.FindChild (tType.ToString ());
 		if (!tool.gameObject.activeSelf) {
 			tool.gameObject.SetActive (true);

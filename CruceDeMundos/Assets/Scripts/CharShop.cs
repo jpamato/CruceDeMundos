@@ -38,6 +38,7 @@ public class CharShop : MonoBehaviour {
 	}
 
 	public void OnItemSelect(int itemN){
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.toolSelect);
 		ShopItem shI = itemButtons [itemN].GetComponent<ShopItem> ();
 		int lastCost = 0;
 		if (lastSelected > -1){					

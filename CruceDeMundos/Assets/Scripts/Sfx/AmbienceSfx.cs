@@ -12,13 +12,17 @@ public class AmbienceSfx : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		source = GetComponent<AudioSource> ();
-		if (Data.Instance.playerData.level < 4 && Data.Instance.playerData.level < 10)
+		Invoke ("Init", 1);			
+	}
+
+	void Init(){		
+		if (Game.Instance.levelManager.leveldata.levelNumber < 5 || Game.Instance.levelManager.leveldata.levelNumber > 10)
 			source.clip = ambience1_3;
 		else
 			source.clip = ambience2;
 
 		source.Play ();
-			
+
 	}
 	
 	// Update is called once per frame

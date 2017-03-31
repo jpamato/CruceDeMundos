@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterfaceSfx : MonoBehaviour {
+public class IngameSfx : MonoBehaviour {
 
-	public AudioClip click1;
-	public AudioClip click2;
-	public AudioClip over;
-	public AudioClip phoneOpen;
-	public AudioClip phoneClose;
-	public AudioClip toolSelect;
+	public AudioClip dialog;
 
 	private AudioSource source;
 
