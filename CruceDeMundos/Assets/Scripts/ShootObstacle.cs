@@ -105,8 +105,9 @@ public class ShootObstacle : MonoBehaviour {
 
 	void Shoot(Collider2D target) {
 
-		source.Play ();
+
 		if (healthBar.currentHealth >= toolData.CurrentLevel.fireLoss) {
+			source.Play ();
 			shooting = true;
 			GameObject bulletPrefab = toolData.CurrentLevel.bullet;
 			// 1 

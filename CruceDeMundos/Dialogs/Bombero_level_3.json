@@ -32,7 +32,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"prompt":"¡Lo hicieron! Acá tienen la nafta.",
-					replies:[{emoVal:0,exit:false,goTo:4,text:"¡Esa!",block:-1}]
+					replies:[{emoVal:0,exit:false,goTo:4,text:"¡Esa!",move:0,block:-1}]
 				}				
 			]
 		},
