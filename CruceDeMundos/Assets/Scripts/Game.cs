@@ -14,6 +14,8 @@ public class Game : MonoBehaviour {
 	public PathFinder pathfinder;
 	public TraceManager traceManager;
 	public LevelMetrics levelMetrics;
+	public IngameMusic ingameMusic;
+	public IngameSfx ingameSfx;
 
 	public enum states
 	{
@@ -56,6 +58,9 @@ public class Game : MonoBehaviour {
 		pathfinder = GetComponent<PathFinder>();
 
 		levelMetrics = GetComponent<LevelMetrics>();
+
+		ingameMusic = GetComponentInChildren<IngameMusic> ();
+		ingameSfx = GetComponentInChildren<IngameSfx> ();
 
 
 		/*ui.Init();

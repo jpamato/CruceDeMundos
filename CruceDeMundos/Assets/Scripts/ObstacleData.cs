@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class ObstacleData : MonoBehaviour {
 
+	public AudioClip obstacleImpact;
+	public AudioClip obstacleDeath;
+
 	public float colliderScaleFactor = 3;
 
 	[System.Serializable]
@@ -23,6 +26,8 @@ public class ObstacleData : MonoBehaviour {
 
 	// Use this for initialization
 
+	AudioSource source;
+
 	void Awake(){
 		obCollider = GetComponent<CircleCollider2D> ();
 		CurrentLevel = levels[0];
@@ -34,7 +39,7 @@ public class ObstacleData : MonoBehaviour {
 			animSteps = currentLevel.visualization.GetComponent<AnimSteps> ();
 		}
 
-
+		source = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -91,9 +96,12 @@ public class ObstacleData : MonoBehaviour {
 	public bool RecibeDamage(float val){
 		currentLevel.health -= 1;
 		animSteps.SetNextStep (currentLevel.health);
-		if (currentLevel.health <= 0)
+		if (currentLevel.health <= 0) {
+			source.PlayOneShot (obstacleDeath);
 			return true;
-		else
+		} else {
+			source.PlayOneShot (obstacleImpact);
 			return false;
+		}
 	}
 }

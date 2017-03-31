@@ -9,6 +9,7 @@ public class TimeProgress : MonoBehaviour {
 	public float time;
 
 	float minFactor;
+	bool alarm;
 	void Start () {
 		if (Game.Instance.levelManager.leveldata.isVsTime)
 			time = Game.Instance.levelManager.leveldata.timeOut;			
@@ -19,6 +20,10 @@ public class TimeProgress : MonoBehaviour {
 		if (Game.Instance.gameManager.state == GameManager.states.ACTIVE || Game.Instance.gameManager.state == GameManager.states.MAP) {
 			if (Game.Instance.levelManager.leveldata.isVsTime) {
 				time -= Time.deltaTime;
+				if (time < 10f && !alarm) {
+					Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.timeAlarm);
+					alarm = true;
+				}
 				if (time < 1)
 					Events.OnTimeOut ();				
 			} else {

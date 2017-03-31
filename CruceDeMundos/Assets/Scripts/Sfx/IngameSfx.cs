@@ -5,6 +5,7 @@ using UnityEngine;
 public class IngameSfx : MonoBehaviour {
 
 	public AudioClip dialog;
+	public AudioClip timeAlarm;
 
 	private AudioSource source;
 

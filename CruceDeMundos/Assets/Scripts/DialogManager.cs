@@ -55,6 +55,8 @@ public class DialogManager : MonoBehaviour {
 			ansText [i].text = mood.replies [i].text;
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
 		}
+
+		Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.dialog);
 	}
 
 	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level, DialogData.Dialog.dType dialogType){

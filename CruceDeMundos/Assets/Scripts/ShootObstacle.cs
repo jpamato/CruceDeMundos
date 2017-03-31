@@ -21,6 +21,8 @@ public class ShootObstacle : MonoBehaviour {
 	public bool shooting;
 	HealthBar healthBar;
 
+	AudioSource source;
+
 	// Use this for initialization
 	void Start() {
 		obstaclesInRange = new List<GameObject>();
@@ -29,6 +31,8 @@ public class ShootObstacle : MonoBehaviour {
 		tool = gameObject.GetComponent<ToolData> ().CurrentLevel.visualization;
 
 		healthBar = transform.parent.FindChild("HealthBar").gameObject.GetComponent<HealthBar>();
+
+		source = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -48,15 +52,20 @@ public class ShootObstacle : MonoBehaviour {
 			
 			if (target.gameObject.GetComponent<ObstacleData> ().CurrentLevel.health > 0) {
 				if (Time.time - lastShotTime > toolData.CurrentLevel.fireRate) {
-					if(healthBar.currentHealth>0)
+					if (healthBar.currentHealth > 0)
 						shooting = true;
-					else
+					else {
 						shooting = false;
+						if (source.isPlaying)
+							source.Stop ();
+					}
 					Shoot (target.GetComponent<Collider2D> ());
 					lastShotTime = Time.time;
 				}
 			} else {
 				shooting = false;
+				if (source.isPlaying)
+					source.Stop ();
 			}
 			// 3
 			Vector3 direction = tool.transform.position - target.transform.position;
@@ -96,7 +105,7 @@ public class ShootObstacle : MonoBehaviour {
 
 	void Shoot(Collider2D target) {
 
-
+		source.Play ();
 		if (healthBar.currentHealth >= toolData.CurrentLevel.fireLoss) {
 			shooting = true;
 			GameObject bulletPrefab = toolData.CurrentLevel.bullet;

@@ -198,6 +198,7 @@ public class GameUI : MonoBehaviour {
 			Game.Instance.dialogManager.LoadDialog ("Agustina");
 			Events.GameDialog ();
 		} else {
+			Game.Instance.ingameMusic.MusicWin ();
 			SetSummary ();
 		}
 		//Invoke ("HideStarGame", 1);
@@ -205,6 +206,7 @@ public class GameUI : MonoBehaviour {
 
 	void OnLevelEndDialog(){
 		summary.SetActive (true);
+		Game.Instance.ingameMusic.MusicWin ();
 		SetSummary ();
 	}
 
@@ -215,16 +217,18 @@ public class GameUI : MonoBehaviour {
 		summaryTitle.text = "SE ACABÓ EL TIEMPO, INTENTALO NUEVAMENTE";
 		Game.Instance.levelManager.objectivesDone [0] = false;
 		Game.Instance.gameManager.state = GameManager.states.LOSE;
+		Game.Instance.ingameMusic.MusicTimeOut ();
 		SetSummary ();
 	}
 
-	void OnToolsLose(){
+	void OnToolsLose(){		
 		ingameUI.SetActive (false);
 		//toolsLoseBanner.SetActive (true);
 		summary.SetActive (true);
 		summaryTitle.text = "TE QUEDASTE SIN HERRAMIENTAS, INTENTALO NUEVAMENTE";
 		Game.Instance.levelManager.objectivesDone [0] = false;
 		Game.Instance.gameManager.state = GameManager.states.LOSE;
+		Game.Instance.ingameMusic.MusicWin ();
 		SetSummary ();
 	}
 	
@@ -233,7 +237,7 @@ public class GameUI : MonoBehaviour {
 	
 	}
 
-	void SetSummary(){
+	void SetSummary(){		
 		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
 		Stars s2 = stars2.GetComponent<Stars> ();
 		Stars s3 = stars3.GetComponent<Stars> ();

@@ -7,12 +7,13 @@ public class IngameMusic : MonoBehaviour {
 	public AudioClip musicLevel;
 	public AudioClip musicLevelTime;
 	public AudioClip musicLevelWin;
+	public AudioClip musicLevelTimeOut;
 
 	public float vol;
 	public float thresh;
 
 	AudioSource source;
-	bool init;
+	public bool init;
 
 	// Use this for initialization
 	void Start () {
@@ -39,5 +40,19 @@ public class IngameMusic : MonoBehaviour {
 			else
 				source.volume = 0f;
 		}
+	}
+
+	public void MusicWin(){
+		init = false;
+		source.clip = musicLevelWin;
+		source.volume = vol;
+		source.Play ();
+	}
+
+	public void MusicTimeOut(){
+		init = false;
+		source.clip = musicLevelTimeOut;
+		source.volume = vol;
+		source.Play ();
 	}
 }
