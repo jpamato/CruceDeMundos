@@ -433,20 +433,20 @@ public class MazeGenerator : MonoBehaviour
     }
 
 	public void SaveJson(){
-	string json = "{height:"+_height+",\nMaze:[";
+	string json = "{\"height\":"+_height+",\n\"Maze\":[";
 		// Initialise mes cellules visuel et detruit les murs en fonction des cellules virtuel
 		int index=0;
 		foreach(VisualCell visualCellInst in visualCells)
 		{
 			//Debug.Log (visualCellInst.name);
 
-			json += "\n{id:"+ visualCellInst.transform.name + ",";
-			json += "north:" + visualCellInst.northState.ToString() +",";
-			json += "east:" + visualCellInst.eastState.ToString()+",";
-			json += "south:" + visualCellInst.southState.ToString()+",";
-			json += "west:" + visualCellInst.westState.ToString()+"}";
-
-			if(index<cells.Length-1)
+			json += "\n{\"id\":\""+ visualCellInst.transform.name + "\",";
+			json += "\"north\":\"" + visualCellInst.northState.ToString() +"\",";
+			json += "\"east\":\"" + visualCellInst.eastState.ToString()+"\",";
+			json += "\"south\":\"" + visualCellInst.southState.ToString()+"\",";
+			json += "\"west\":\"" + visualCellInst.westState.ToString()+"\"}";
+			
+			if(index<visualCells.Count-1)
 				json += ",";
 
 			index++;
