@@ -7,7 +7,16 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"prompt":"¡Excelente! Lleven este armonizador, lo van a necesitar",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Listo!",tool:"Armonizador"}]
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Listo!",tool:"Armonizador"}]
+				}				
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"prompt":"Nos vemos pronto",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"¡Listo!"}]
 				}				
 			]
 		}

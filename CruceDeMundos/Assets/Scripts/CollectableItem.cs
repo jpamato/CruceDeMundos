@@ -62,10 +62,12 @@ public class CollectableItem : MonoBehaviour {
 					SetDestroy ();
 				}
 			} else if (itemType == CollectableType.POLLUTIONCHARGE) {
-				/*if (!Game.Instance.toolsManager.damagingObstacles.Contains ("POLLUTION")){
-					Events.OnChargeCollect(val,PlayerData.ToolName.Armonizador);
+				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Armonizador.ToString());
+				if (ft != null) {
+					Events.OnChargeCollect (val, PlayerData.ToolName.Armonizador);
+					source.PlayOneShot (energyUp);
 					SetDestroy ();
-				}*/
+				}
 			} else if (itemType == CollectableType.RESOURCES) {
 				Data.Instance.playerData.resources += val;
 				Events.OnRefreshResources (Data.Instance.playerData.resources);

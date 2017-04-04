@@ -58,6 +58,8 @@ public class ToolsManager : MonoBehaviour {
 				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
 			} else if (tType.ToString().Equals (PlayerData.ToolName.Matafuegos.ToString ())) {							
 				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().fireEnergy;
+			} else if (tType.ToString().Equals (PlayerData.ToolName.Armonizador.ToString ())) {							
+				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().pollutionEnergy;
 			}
 
 			ft.friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
