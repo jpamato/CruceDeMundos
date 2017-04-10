@@ -166,7 +166,7 @@ public class MazeGenerator : MonoBehaviour
 		//Debug.Log (text.text);
 		var N = JSON.Parse(text.text);
 		//Debug.Log (N ["Maze"][0]["east"].AsBool);
-
+		_height = N ["height"].AsInt;
 		for (int i = 0; i < N ["Maze"].Count; i++) {
 			string nodeName = N ["Maze"] [i] ["id"];
 			string[] s = nodeName.Split ('_');

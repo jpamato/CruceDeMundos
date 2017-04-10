@@ -7,6 +7,7 @@ using System.IO;
 
 public class DialogData : MonoBehaviour {
 
+	public bool sendDialogs2Database;
 	public DialogCharacter[] dialogCharacters;
 	public List<Dialog> dialogs;
 
@@ -162,8 +163,13 @@ public class DialogData : MonoBehaviour {
 					} else {
 						d.dialogTree [i].moods [j].replies [k].block = 0;
 					}
-				}
-			}
+					if (sendDialogs2Database) {
+						Debug.Log ("aca");
+						StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index, d.dialogType.ToString (),
+		d.dialogTree [i].moods [j].mType.ToString(), d.dialogTree [i].moods [j].prompt, k, d.dialogTree [i].moods [j].replies [k].text));
+					}
+				}				
+			}			
 		}
 		dialogs.Add (d);
 	}

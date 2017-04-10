@@ -8,6 +8,7 @@ public class DataController : MonoBehaviour {
 	private string createUser_URL = URL + "users/create?";
 	private string addLevel_URL = URL + "level/add?";
 	private string addReply_URL = URL + "reply/add?";
+	private string addDialog_URL = URL + "dialog/add?";
 
 	// Use this for initialization
 	void Start () {
@@ -80,6 +81,26 @@ public class DataController : MonoBehaviour {
 			print ("No pudo agregar reply: " + hs_post.error);
 		else
 			print ("reply agregada: " + hs_post.text);
+
+	}
+
+	public IEnumerator AddDialog(string character, int level, int index, string dType, string mood, string prompt, int answerId, string answer)
+	{
+		// username = username.Replace(" ", "_");
+		//string hash = Md5Test.Md5Sum(_facebookID + _username  + secretKey);
+		//string style = Data.Instance.playerSettings.heroData.styles.style;
+		Debug.Log("aca2");
+		string post_url = addDialog_URL + "&character_name=" + WWW.EscapeURL (character) + "&level_id=" + level +
+			"&dialog_index=" + index + "&dialog_type=" + WWW.EscapeURL (dType) + "&dialog_mood=" + WWW.EscapeURL (mood) +
+			"&dialog_prompt=" + WWW.EscapeURL (prompt) + "&answer_id=" + answerId + "&answer_text=" + WWW.EscapeURL(answer);
+
+		print ("addDialog : " + post_url);
+		WWW hs_post = new WWW (post_url);
+		yield return hs_post;
+		if (hs_post.error != null)
+			print ("No pudo agregar dialogo: " + hs_post.error);
+		else
+			print ("dialogo agregado: " + hs_post.text);
 
 	}
 }
