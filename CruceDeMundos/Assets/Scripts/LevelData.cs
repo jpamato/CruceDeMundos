@@ -5,11 +5,22 @@ using System;
 
 public class LevelData : MonoBehaviour {
 
+	public bool saveMissionsToDatabase;
+
 	public List<Level> levels;
 
 	// Use this for initialization
-	void Start () {	
-	
+	void Start () {
+		if (saveMissionsToDatabase) {
+			Debug.Log ("aca");
+			foreach (Level l in levels) {
+				string m = ""; 
+				foreach (string o in l.objectives) {
+					m += o + ";";
+				}
+				StartCoroutine(Data.Instance.dataController.AddMission (l.levelNumber, m));
+			}
+		}
 	}
 	
 	[Serializable]
