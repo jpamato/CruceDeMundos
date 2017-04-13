@@ -15,6 +15,7 @@ public class OnObjectiveCollider : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {		
 		if (other.tag == "Player") {			
+			GetComponentInParent<VisualCell> ().visited = true;
 			Events.OnObjectiveDone ();
 		}
 	}

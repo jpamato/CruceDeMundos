@@ -3,7 +3,8 @@ using System.Collections;
 
 public class DataController : MonoBehaviour {
 
-	const string URL = "http://127.0.0.1:8000/";
+	//const string URL = "http://127.0.0.1:8000/";
+	const string URL = "http://yaguar.alwaysdata.net/";
 
 	private string createUser_URL = URL + "users/create?";
 	private string addLevel_URL = URL + "level/add?";
@@ -44,16 +45,16 @@ public class DataController : MonoBehaviour {
 	}
 
 	public IEnumerator SaveLevelData(string _userid, string _compid, int level, string tools, string missions, int mapchecks,
-		float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE)
+		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE)
 	{
 		// username = username.Replace(" ", "_");
 		//string hash = Md5Test.Md5Sum(_facebookID + _username  + secretKey);
 		//string style = Data.Instance.playerSettings.heroData.styles.style;
 
 		string post_url = addLevel_URL + "user_id=" + WWW.EscapeURL (_userid) + "&computer_id=" + WWW.EscapeURL (_compid) +
-				"&level_id=" + level + "&tools_selected=" + WWW.EscapeURL (tools) + "&misions=" + WWW.EscapeURL (missions) +
+				"&level_id=" + level + "&tools_selected=" + WWW.EscapeURL (tools) + "&missions=" + WWW.EscapeURL (missions) +
 				"&map_checks="+ mapchecks + "&level_time=" + levelTime + "&game_time=" + gameTime +
-				"&first_map_time=" + mapTime + "&mision_time=" + misionTime + "&tools_time=" + toolsTime +
+				"&first_map_time=" + mapTime + "&mission_time=" + missionTime + "&tools_time=" + toolsTime +
 			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE;
 		print ("addLevel : " + post_url);
 		WWW hs_post = new WWW (post_url);
