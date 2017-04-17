@@ -90,9 +90,9 @@ public class Data : MonoBehaviour
 		StartCoroutine(dataController.SaveDialogData(userId,SystemInfo.deviceUniqueIdentifier, character, level, index, mood, answerId));
 	}
 
-	public void SaveLevelData(string tools, string misions, int mapchecks, float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, int rtB, int rtAt){		
+	public void SaveLevelData(string tools, string misions, int mapchecks, float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, int rtB, int rtAt, int giveup){		
 		StartCoroutine(dataController.SaveLevelData(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, tools, misions, mapchecks,
-			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, rtB, rtAt, playerData.resources));
+			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, rtB, rtAt, playerData.resources, giveup));
 	}
 
 	public void SaveUserData(){		

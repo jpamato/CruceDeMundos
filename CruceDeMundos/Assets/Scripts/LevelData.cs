@@ -47,6 +47,7 @@ public class LevelData : MonoBehaviour {
 		public VisualCell labCell;
 		public int resourceWin;
 		public bool isTuto;
+		public bool isImposible;
 	}
 
 	[Serializable]

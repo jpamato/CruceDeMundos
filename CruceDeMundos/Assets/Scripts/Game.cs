@@ -106,6 +106,21 @@ public class Game : MonoBehaviour {
 		Data.Instance.LoadLevel("Game");
 	}
 
+	public void GiveUp()
+	{	
+		OnGamePaused(false);
+		if (Game.Instance.levelManager.leveldata.isImposible)
+			Game.Instance.levelMetrics.saltearNivel = 1;
+
+		Data.Instance.playerData.UnlockNext ();
+		Game.Instance.levelMetrics.SaveLevelData ("");
+		Data.Instance.playerData.SetSummary ();
+		Data.Instance.SaveGameData ();
+
+		Data.Instance.playerData.level++;
+		Data.Instance.LoadLevel("Game");
+	}
+
 	public void LevelMap()
 	{	
 		if (gameManager.state == GameManager.states.MAP) {

@@ -30,11 +30,12 @@ public class PlayerData : MonoBehaviour {
 			DONE
 		}
 		public int levelNumber;
+		public int playedTimes;
 		public LevelState levelState;
 		public bool[] objectivesDone = new bool[] {false,false,false};
 	}
 
-	void UnlockNext (){
+	public void UnlockNext (){
 		Level level = new Level ();
 		level.levelNumber = Game.Instance.levelManager.leveldata.levelNumber + 1;
 		level.levelState = Level.LevelState.UNLOCKED;
@@ -49,11 +50,13 @@ public class PlayerData : MonoBehaviour {
 		if (level == null) {
 			level = new Level ();
 			level.levelNumber = lNumber;
+			level.playedTimes++;
 			for (int i = 0; i < level.objectivesDone.Length; i++)
 				if (!level.objectivesDone [i])
 					level.objectivesDone [i] = oDone [i];			
 			summary.Add (level);
 		} else {
+			level.playedTimes++;
 			for (int i = 0; i < level.objectivesDone.Length; i++)
 				if (!level.objectivesDone [i])
 					level.objectivesDone [i] = oDone [i];
@@ -71,6 +74,14 @@ public class PlayerData : MonoBehaviour {
 		}
 	}
 
+	public int GetLevelPlayedTimes(){
+		Level l = summary.Find (x => x.levelNumber == level);
+		if (l != null)
+			return l.playedTimes;
+		else
+			return 0;
+	}
+
 	public string GetPlayerData(){
 		string json = "playerData:{\n";
 		json += "level:"+level+",\n";
@@ -81,6 +92,7 @@ public class PlayerData : MonoBehaviour {
 
 		for(int i=0;i<summary.Count;i++){
 			json += "{levelNumber:"+ summary[i].levelNumber + ",";
+			json += "playedTimes:"+ summary[i].playedTimes + ",";
 			json += "levelState:"+ summary[i].levelState.ToString() + ",";
 			json += "objectivesDone:[";
 			for (int j = 0; j < summary [i].objectivesDone.Length; j++) {
@@ -105,6 +117,7 @@ public class PlayerData : MonoBehaviour {
 		for (int i = 0; i < N ["summary"].Count; i++) {
 			Level l = new Level ();
 			l.levelNumber = N ["summary"] [i] ["levelNumber"].AsInt;
+			l.playedTimes = N ["summary"] [i] ["playedTimes"].AsInt;
 			l.levelState = (Level.LevelState) Enum.Parse(typeof(Level.LevelState),N ["summary"] [i] ["levelState"]);
 			for (int j = 0; j < N ["summary"] [i] ["objectivesDone"].Count; j++) {
 				l.objectivesDone [j] = N ["summary"] [i] ["objectivesDone"] [j].AsBool;

@@ -22,10 +22,12 @@ public class GameUI : MonoBehaviour {
 	public GameObject tutorial;
 	public GameObject summary;
 	public TimeProgress timeprogress;
+	public GameObject SeguirBanner;
 
 	public Text[] objectives;
 
 	public GameObject[] objectives_summary;
+	public Button nextLevel;
 
 	public GameObject stars2;
 	public GameObject stars3;
@@ -39,6 +41,8 @@ public class GameUI : MonoBehaviour {
 
 	public GameObject confirm;
 	public GameObject help;
+
+	public int playTimes2GiveUp;
 
 	// Use this for initialization
 	void Start () {
@@ -179,6 +183,8 @@ public class GameUI : MonoBehaviour {
 		startLevelBanner.SetActive (false);
 		Events.GameActive ();
 		Game.Instance.gameManager.state = GameManager.states.ACTIVE;
+		if (Game.Instance.levelManager.leveldata.isImposible && Data.Instance.playerData.GetLevelPlayedTimes() >= playTimes2GiveUp)
+			SeguirBanner.SetActive (true);
 	}
 
 	void OnObjectiveDone(){
@@ -214,10 +220,13 @@ public class GameUI : MonoBehaviour {
 		ingameUI.SetActive (false);
 		//timeOutBanner.SetActive (true);
 		summary.SetActive (true);
+		nextLevel.interactable = false;
 		summaryTitle.text = "SE ACABÓ EL TIEMPO, INTENTALO NUEVAMENTE";
 		Game.Instance.levelManager.objectivesDone [0] = false;
 		Game.Instance.gameManager.state = GameManager.states.LOSE;
 		Game.Instance.ingameMusic.MusicTimeOut ();
+		if (Game.Instance.levelManager.leveldata.isImposible)
+			Game.Instance.levelMetrics.saltearNivel = 0;
 		SetSummary ();
 	}
 
@@ -225,10 +234,13 @@ public class GameUI : MonoBehaviour {
 		ingameUI.SetActive (false);
 		//toolsLoseBanner.SetActive (true);
 		summary.SetActive (true);
+		nextLevel.interactable = false;
 		summaryTitle.text = "TE QUEDASTE SIN HERRAMIENTAS, INTENTALO NUEVAMENTE";
 		Game.Instance.levelManager.objectivesDone [0] = false;
 		Game.Instance.gameManager.state = GameManager.states.LOSE;
 		Game.Instance.ingameMusic.MusicWin ();
+		if (Game.Instance.levelManager.leveldata.isImposible)
+			Game.Instance.levelMetrics.saltearNivel = 0;
 		SetSummary ();
 	}
 	

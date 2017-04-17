@@ -23,6 +23,8 @@ public class LevelMetrics : MonoBehaviour {
 	public int rtBegin;
 	public int rtPostTools;
 
+	public int saltearNivel = -1;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -37,7 +39,7 @@ public class LevelMetrics : MonoBehaviour {
 		Events.GetVisistedTrail ();
 
 		Data.Instance.SaveLevelData (tools, misions, mapCheck, levelEndTime - levelBeginTime,
-			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, rtBegin, rtPostTools);
+			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, rtBegin, rtPostTools, saltearNivel);
 		
 	}
 }

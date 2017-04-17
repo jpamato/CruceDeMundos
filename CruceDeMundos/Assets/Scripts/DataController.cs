@@ -45,7 +45,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	public IEnumerator SaveLevelData(string _userid, string _compid, int level, string tools, string missions, int mapchecks,
-		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE)
+		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE, int giveup)
 	{
 		// username = username.Replace(" ", "_");
 		//string hash = Md5Test.Md5Sum(_facebookID + _username  + secretKey);
@@ -55,7 +55,7 @@ public class DataController : MonoBehaviour {
 				"&level_id=" + level + "&tools_selected=" + WWW.EscapeURL (tools) + "&missions=" + WWW.EscapeURL (missions) +
 				"&map_checks="+ mapchecks + "&level_time=" + levelTime + "&game_time=" + gameTime +
 				"&first_map_time=" + mapTime + "&mission_time=" + missionTime + "&tools_time=" + toolsTime +
-			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE;
+			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE + "&give_up=" + giveup;
 		print ("addLevel : " + post_url);
 		WWW hs_post = new WWW (post_url);
 		yield return hs_post;
