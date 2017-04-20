@@ -42,18 +42,18 @@ public class AvatarCustomizer : MonoBehaviour {
 		public GameObject pierna2b;
 
 		public void SetActive(bool active){
-			cabeza.SetActive (active);
-			torax.SetActive (active);
-			brazo1.SetActive (active);
-			brazo1b.SetActive (active);
-			mano1.SetActive (active);
-			brazo2.SetActive (active);
-			brazo2b.SetActive (active);
-			mano2.SetActive (active);
-			pierna1.SetActive (active);
-			pierna1b.SetActive (active);
-			pierna2.SetActive (active);
-			pierna2b.SetActive (active);
+			if(cabeza!=null)cabeza.SetActive (active);
+			if(torax!=null)torax.SetActive (active);
+			if(brazo1!=null)brazo1.SetActive (active);
+			if(brazo1b!=null)brazo1b.SetActive (active);
+			if(mano1!=null)mano1.SetActive (active);
+			if(brazo2!=null)brazo2.SetActive (active);
+			if(brazo2b!=null)brazo2b.SetActive (active);
+			if(mano2!=null)mano2.SetActive (active);
+			if(pierna1!=null)pierna1.SetActive (active);
+			if(pierna1b!=null)pierna1b.SetActive (active);
+			if(pierna2!=null)pierna2.SetActive (active);
+			if(pierna2b!=null)pierna2b.SetActive (active);
 		}
 	}
 
@@ -75,9 +75,9 @@ public class AvatarCustomizer : MonoBehaviour {
 		}
 
 		public void SetActive(bool active){
-			ojos [expressIndex].SetActive (active);
-			cejas [expressIndex].SetActive (active);
-			bocas [expressIndex].SetActive (active);
+			if(ojos!=null)ojos [expressIndex].SetActive (active);
+			if(cejas!=null)cejas [expressIndex].SetActive (active);
+			if(bocas!=null)bocas [expressIndex].SetActive (active);
 		}
 	}
 
@@ -127,7 +127,7 @@ public class AvatarCustomizer : MonoBehaviour {
 	public void SetPiel(int index){
 		for (int i = 0; i < pieles.Length; i++) {			
 				pieles [i].SetActive (i == index);
-				pielButton [i].SetButtonOn (i == index);
+			if(pielButton.Length>0)pielButton [i].SetButtonOn (i == index);
 		}
 		Data.Instance.avatarData.pielIndex = index;
 	}
