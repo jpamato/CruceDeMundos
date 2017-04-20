@@ -9,7 +9,7 @@ public class ToggleButton : MonoBehaviour {
 	public bool defaultValue;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		SetButtonOn (defaultValue);
 	}
 	

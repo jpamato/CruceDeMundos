@@ -19,6 +19,8 @@ public class Data : MonoBehaviour
 
 	public DataController dataController;
 
+	public AvatarData avatarData;
+
 	public MusicManager musicManager;
 	public InterfaceSfx interfaceSfx;
 	public AudioMixer audioMaster;
@@ -72,6 +74,7 @@ public class Data : MonoBehaviour
 		dialogData = GetComponent<DialogData> ();
 		levelData = GetComponent<LevelData> ();
 		dataController = GetComponent<DataController> ();
+		avatarData = GetComponent<AvatarData> ();
 		musicManager = GetComponent<MusicManager> ();
 		interfaceSfx = GetComponentInChildren<InterfaceSfx> ();
 
@@ -80,6 +83,7 @@ public class Data : MonoBehaviour
 
 		LoadUserData();
 		LoadGameData();
+		avatarData.LoadAvatarData ();
 		//Reset();
 
 		DontDestroyOnLoad(this.gameObject);

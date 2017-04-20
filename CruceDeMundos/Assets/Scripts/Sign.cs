@@ -12,6 +12,7 @@ public class Sign : MonoBehaviour {
 		Data.Instance.userId = userID.text;
 		Data.Instance.userName = userName.text;
 		Data.Instance.SaveUserData ();
+		Data.Instance.avatarData.SaveAvatarData ();
 		Data.Instance.LoadLevel ("LevelMap");
 	}
 }

@@ -12,17 +12,13 @@ public class AvatarCustomizer : MonoBehaviour {
 	public Bottom[] piernas;
 	public Shoe[] zapatos;
 
-	private int caraIndex;
-	private int torsoIndex;
-	private int piernasIndex;
-	private int zapatoIndex;
-
 	// Use this for initialization
 	void Start () {
-		/*SetCara (true);
-		SetTorso (true);
-		SetPiernas (true);
-		SetZapato (true);*/
+		SetPiel (Data.Instance.avatarData.pielIndex);
+		SetCara(Data.Instance.avatarData.caraIndex);
+		SetTorso(Data.Instance.avatarData.torsoIndex);
+		SetPiernas(Data.Instance.avatarData.piernasIndex);
+		SetZapato (Data.Instance.avatarData.zapatoIndex);
 	}
 	
 	// Update is called once per frame
@@ -133,49 +129,66 @@ public class AvatarCustomizer : MonoBehaviour {
 				pieles [i].SetActive (i == index);
 				pielButton [i].SetButtonOn (i == index);
 		}
+		Data.Instance.avatarData.pielIndex = index;
 	}
 
-	public void SetCara(bool next){
+	public void SetNextCara(bool next){
 		if (next)
-			caraIndex = caraIndex + 1 < caras.Length ? caraIndex + 1 : 0;
+			Data.Instance.avatarData.caraIndex = Data.Instance.avatarData.caraIndex + 1 < caras.Length ? Data.Instance.avatarData.caraIndex + 1 : 0;
 		else
-			caraIndex = caraIndex - 1 > -1 ? caraIndex - 1 : caras.Length-1;
+			Data.Instance.avatarData.caraIndex = Data.Instance.avatarData.caraIndex - 1 > -1 ? Data.Instance.avatarData.caraIndex - 1 : caras.Length-1;
 
+		SetCara (Data.Instance.avatarData.caraIndex);
+	}
+
+	public void SetCara(int index){
 		for (int i = 0; i < caras.Length; i++) {			
-			caras [i].SetActive (i == caraIndex);
+			caras [i].SetActive (i == index);
 		}
 	}
 
-	public void SetTorso(bool next){
+	public void SetNextTorso(bool next){
 		if (next)
-			torsoIndex = torsoIndex + 1 < torsos.Length ? torsoIndex + 1 : 0;
+			Data.Instance.avatarData.torsoIndex = Data.Instance.avatarData.torsoIndex + 1 < torsos.Length ? Data.Instance.avatarData.torsoIndex + 1 : 0;
 		else
-			torsoIndex = torsoIndex - 1 > -1 ? torsoIndex - 1 : torsos.Length-1;
+			Data.Instance.avatarData.torsoIndex = Data.Instance.avatarData.torsoIndex - 1 > -1 ? Data.Instance.avatarData.torsoIndex - 1 : torsos.Length-1;
 
+		SetTorso (Data.Instance.avatarData.torsoIndex);
+	}
+
+	public void SetTorso(int index){
 		for (int i = 0; i < torsos.Length; i++) {			
-			torsos [i].SetActive (i == torsoIndex);
+			torsos [i].SetActive (i == index);
 		}
 	}
 
-	public void SetPiernas(bool next){
+	public void SetNextPiernas(bool next){
 		if (next)
-			piernasIndex = piernasIndex + 1 < piernas.Length ? piernasIndex + 1 : 0;
+			Data.Instance.avatarData.piernasIndex = Data.Instance.avatarData.piernasIndex + 1 < piernas.Length ? Data.Instance.avatarData.piernasIndex + 1 : 0;
 		else
-			piernasIndex = piernasIndex - 1 > -1 ? piernasIndex - 1 : piernas.Length-1;
+			Data.Instance.avatarData.piernasIndex = Data.Instance.avatarData.piernasIndex - 1 > -1 ? Data.Instance.avatarData.piernasIndex - 1 : piernas.Length-1;
 
+		SetPiernas (Data.Instance.avatarData.piernasIndex);
+	}
+
+	public void SetPiernas(int index){
 		for (int i = 0; i < piernas.Length; i++) {			
-			piernas [i].SetActive (i == piernasIndex);
+			piernas [i].SetActive (i == index);
 		}
 	}
 
-	public void SetZapato(bool next){
+	public void SetNextZapato(bool next){
 		if (next)
-			zapatoIndex = zapatoIndex + 1 < zapatos.Length ? zapatoIndex + 1 : 0;
+			Data.Instance.avatarData.zapatoIndex = Data.Instance.avatarData.zapatoIndex + 1 < zapatos.Length ? Data.Instance.avatarData.zapatoIndex + 1 : 0;
 		else
-			zapatoIndex = zapatoIndex - 1 > -1 ? zapatoIndex - 1 : zapatos.Length-1;
+			Data.Instance.avatarData.zapatoIndex = Data.Instance.avatarData.zapatoIndex - 1 > -1 ? Data.Instance.avatarData.zapatoIndex - 1 : zapatos.Length-1;
 
+		SetZapato (Data.Instance.avatarData.zapatoIndex);
+	}
+
+	public void SetZapato(int index){
 		for (int i = 0; i < zapatos.Length; i++) {			
-			zapatos [i].SetActive (i == zapatoIndex);
+			zapatos [i].SetActive (i == index);
 		}
 	}
 
