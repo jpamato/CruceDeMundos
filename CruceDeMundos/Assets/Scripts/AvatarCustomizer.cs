@@ -12,6 +12,8 @@ public class AvatarCustomizer : MonoBehaviour {
 	public Bottom[] piernas;
 	public Shoe[] zapatos;
 
+	public bool isFullSizeView;
+
 	Animator animator;
 
 	// Use this for initialization
@@ -165,7 +167,7 @@ public class AvatarCustomizer : MonoBehaviour {
 		for (int i = 0; i < torsos.Length; i++) {			
 			torsos [i].SetActive (i == index);
 		}
-		animator.Play ("customizer_top");
+		if(isFullSizeView)animator.Play ("customizer_top");
 	}
 
 	public void SetNextPiernas(bool next){
@@ -181,7 +183,7 @@ public class AvatarCustomizer : MonoBehaviour {
 		for (int i = 0; i < piernas.Length; i++) {			
 			piernas [i].SetActive (i == index);
 		}
-		animator.Play ("customizer_bottom");
+		if(isFullSizeView)animator.Play ("customizer_bottom");
 	}
 
 	public void SetNextZapato(bool next){
