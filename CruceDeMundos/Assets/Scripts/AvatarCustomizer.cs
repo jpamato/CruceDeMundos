@@ -134,7 +134,7 @@ public class AvatarCustomizer : MonoBehaviour {
 	public void SetPiel(int index){
 		for (int i = 0; i < pieles.Length; i++) {			
 				pieles [i].SetActive (i == index);
-			if(pielButton.Length>0)pielButton [i].SetButtonOn (i == index);
+			if(pielButton.Length>0&&pielButton[i]!=null)pielButton [i].SetButtonOn (i == index);
 		}
 		Data.Instance.avatarData.pielIndex = index;
 	}

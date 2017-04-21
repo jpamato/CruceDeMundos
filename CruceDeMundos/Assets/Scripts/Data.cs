@@ -150,4 +150,12 @@ public class Data : MonoBehaviour
 		else
 			audioMaster.SetFloat ("masterVolume", 0f);
 	}
+
+	public string GetFullPathByFolder(string FolderName, string fileName)
+	{
+		string folder = Path.Combine(Application.persistentDataPath, FolderName);
+		if (!Directory.Exists(folder))
+			Directory.CreateDirectory(folder);
+		return Path.Combine(folder, fileName);
+	}
 }

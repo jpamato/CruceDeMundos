@@ -42,18 +42,23 @@ public class GameUI : MonoBehaviour {
 	public GameObject confirm;
 	public GameObject help;
 
+	public GameObject selfieEditor;
+	public RawImage selfieImage;
+	public Camera selfieCam;
+	public RenderTexture selfieRT;
+
 	public int playTimes2GiveUp;
 
 	// Use this for initialization
 	void Start () {
-		levelNro.text = "Nivel "+Data.Instance.playerData.level;
+		levelNro.text = "Nivel " + Data.Instance.playerData.level;
 		levelTitle.text = Game.Instance.levelManager.leveldata.title;
 
 		resourcesProgress.OnRefreshResources (Data.Instance.playerData.resources);
 
 		//Debug.Log (level.number);
 		for (int i = 0; i < objectives.Length; i++) {
-			if(i<Game.Instance.levelManager.leveldata.objectives.Count)
+			if (i < Game.Instance.levelManager.leveldata.objectives.Count)
 				objectives [i].text = Game.Instance.levelManager.leveldata.objectives [i];
 			if (objectives [i].text != "") {
 				objectives_summary [i].SetActive (true);
@@ -87,6 +92,10 @@ public class GameUI : MonoBehaviour {
 
 		//btnSound.SetButtonOn (!Data.Instance.mute);
 		btnSound.defaultValue = !Data.Instance.mute;
+
+		if (Data.Instance.avatarData.selfie != null){
+			selfieImage.texture = Data.Instance.avatarData.selfie;
+		}
 	}
 
 	void OnDestroy(){
@@ -285,5 +294,17 @@ public class GameUI : MonoBehaviour {
 	public void LevelMap(bool on){
 		btnMap.SetButtonOn (on);
 		confirm.SetActive (on);
+	}
+
+	public void SelfieEdit(bool on){
+		selfieCam.enabled = on;
+		selfieEditor.SetActive (on);
+	}
+
+	public void SelfieDone(){		
+		selfieCam.enabled = false;
+		Data.Instance.avatarData.CaptureSelfie (selfieRT);
+		selfieImage.texture = Data.Instance.avatarData.selfie;
+		selfieEditor.SetActive (false);
 	}
 }
