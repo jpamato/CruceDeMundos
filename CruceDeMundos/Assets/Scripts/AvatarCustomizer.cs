@@ -12,8 +12,13 @@ public class AvatarCustomizer : MonoBehaviour {
 	public Bottom[] piernas;
 	public Shoe[] zapatos;
 
+	Animator animator;
+
 	// Use this for initialization
 	void Start () {
+
+		animator = GetComponent<Animator> ();
+
 		SetPiel (Data.Instance.avatarData.pielIndex);
 		SetCara(Data.Instance.avatarData.caraIndex);
 		SetTorso(Data.Instance.avatarData.torsoIndex);
@@ -160,6 +165,7 @@ public class AvatarCustomizer : MonoBehaviour {
 		for (int i = 0; i < torsos.Length; i++) {			
 			torsos [i].SetActive (i == index);
 		}
+		animator.Play ("customizer_top");
 	}
 
 	public void SetNextPiernas(bool next){
@@ -175,6 +181,7 @@ public class AvatarCustomizer : MonoBehaviour {
 		for (int i = 0; i < piernas.Length; i++) {			
 			piernas [i].SetActive (i == index);
 		}
+		animator.Play ("customizer_bottom");
 	}
 
 	public void SetNextZapato(bool next){
