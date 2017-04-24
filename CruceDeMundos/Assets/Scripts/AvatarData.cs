@@ -16,19 +16,51 @@ public class AvatarData : MonoBehaviour {
 	public int selfie_w;
 	public int selfie_h;
 
-	public string[] estados;
+	public List<string> estados;
 
 	public string folder = "img";
 	public string filename = "selfie.png";
 
+	public string PATH = "Selfie/";
+
 	// Use this for initialization
 	void Start () {
-		
+		estados = new List<string> ();
+		#if UNITY_EDITOR
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_WIN
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_OSX
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName+PATH);
+		#endif
+
+		FileInfo[] info = dir.GetFiles("*.json");
+		foreach (FileInfo f in info) {
+		StartCoroutine(Import(f.FullName));
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	IEnumerator Import(string file){
+
+		/*string filePath = "Dialogs/" + file.Replace (".json", "");
+		TextAsset text = Resources.Load<TextAsset> (filePath);*/
+
+		WWW www = new WWW("file://" + file);
+		yield return www;
+		string text = www.text;
+
+		//Debug.Log (text);
+		var N = JSON.Parse (text);
+
+		for (int i = 0; i < N["estados"].Count; i++) {
+			estados.Add (N["estados"][i]);
+		}
+
 	}
 
 	public void SaveAvatarData(){
@@ -37,7 +69,8 @@ public class AvatarData : MonoBehaviour {
 		json += "caraIndex:"+caraIndex+",\n";
 		json += "torsoIndex:"+torsoIndex+",\n";
 		json += "piernasIndex:"+piernasIndex+",\n";
-		json += "zapatoIndex:"+zapatoIndex+"\n}";
+		json += "zapatoIndex:"+zapatoIndex+",\n";
+		json += "estadoIndex:"+estadoIndex+"\n}";
 		PlayerPrefs.SetString ("AvatarData",json);
 	}
 
@@ -50,6 +83,7 @@ public class AvatarData : MonoBehaviour {
 			torsoIndex = N ["torsoIndex"].AsInt;
 			piernasIndex = N ["piernasIndex"].AsInt;
 			zapatoIndex = N ["zapatoIndex"].AsInt;
+			estadoIndex = N ["estadoIndex"].AsInt;
 		}
 		LoadSelfieImg ();
 	}

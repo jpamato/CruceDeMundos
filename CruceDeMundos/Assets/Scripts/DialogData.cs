@@ -83,7 +83,7 @@ public class DialogData : MonoBehaviour {
 
 		WWW www = new WWW("file://" + file);
 		yield return www;
-		String text = www.text;
+		string text = www.text;
 
 		//Debug.Log (text);
 		var N = JSON.Parse (text);

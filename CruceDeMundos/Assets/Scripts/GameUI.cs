@@ -305,6 +305,7 @@ public class GameUI : MonoBehaviour {
 		selfieCam.enabled = false;
 		Data.Instance.avatarData.CaptureSelfie (selfieRT);
 		selfieImage.texture = Data.Instance.avatarData.selfie;
+		Data.Instance.avatarData.SaveAvatarData ();
 		selfieEditor.SetActive (false);
 	}
 }
