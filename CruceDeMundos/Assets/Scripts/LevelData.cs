@@ -18,7 +18,8 @@ public class LevelData : MonoBehaviour {
 				foreach (string o in l.objectives) {
 					m += o + ";";
 				}
-				StartCoroutine(Data.Instance.dataController.AddMission (l.levelNumber, m));
+				//StartCoroutine(Data.Instance.dataController.AddMission (l.levelNumber, m));
+				StartCoroutine(Data.Instance.dataController.AddLevelData (l.levelNumber, m,l.portalNumber,l.fireNumber,l.pollutionNumber));
 			}
 		}
 	}

@@ -11,6 +11,7 @@ public class DataController : MonoBehaviour {
 	private string addReply_URL = URL + "reply/add?";
 	private string addDialog_URL = URL + "dialog/add?";
 	private string addMission_URL = URL + "missions/add?";
+	private string addLevelData_URL = URL + "levelData/add?";
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +45,7 @@ public class DataController : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator SaveLevelData(string _userid, string _compid, int level, string tools, string missions, int mapchecks,
+	public IEnumerator SaveLevelData(string _userid, string _compid, int level, string tools, string missions, int portalDone, int fireDone, int pollutionDone, int mapchecks,
 		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE, int giveup)
 	{
 		// username = username.Replace(" ", "_");
@@ -53,6 +54,7 @@ public class DataController : MonoBehaviour {
 
 		string post_url = addLevel_URL + "user_id=" + WWW.EscapeURL (_userid) + "&computer_id=" + WWW.EscapeURL (_compid) +
 				"&level_id=" + level + "&tools_selected=" + WWW.EscapeURL (tools) + "&missions=" + WWW.EscapeURL (missions) +
+				"&portal_done="+ portalDone + "&fire_done="+ fireDone + "&pollution_done="+ pollutionDone +
 				"&map_checks="+ mapchecks + "&level_time=" + levelTime + "&game_time=" + gameTime +
 				"&first_map_time=" + mapTime + "&mission_time=" + missionTime + "&tools_time=" + toolsTime +
 			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE + "&give_up=" + giveup;
@@ -113,6 +115,23 @@ public class DataController : MonoBehaviour {
 		//string style = Data.Instance.playerSettings.heroData.styles.style;
 
 		string post_url = addMission_URL + "&level_id=" + level + "&missions=" + WWW.EscapeURL (missions) ;
+
+		print ("addMission : " + post_url);
+		WWW hs_post = new WWW (post_url);
+		yield return hs_post;
+		if (hs_post.error != null)
+			print ("No pudo agregar mision: " + hs_post.error);
+		else
+			print ("mision agregada: " + hs_post.text);
+	}
+
+	public IEnumerator AddLevelData(int level, string missions, int portal, int fire, int pollution)
+	{
+		// username = username.Replace(" ", "_");
+		//string hash = Md5Test.Md5Sum(_facebookID + _username  + secretKey);
+		//string style = Data.Instance.playerSettings.heroData.styles.style;
+
+		string post_url = addLevelData_URL + "&level_id=" + level + "&missions=" + WWW.EscapeURL (missions) + "&portal=" + portal + "&fire=" + fire + "&pollution=" + pollution;
 
 		print ("addMission : " + post_url);
 		WWW hs_post = new WWW (post_url);
