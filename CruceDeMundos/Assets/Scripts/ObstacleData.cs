@@ -96,7 +96,7 @@ public class ObstacleData : MonoBehaviour {
 	public bool RecibeDamage(float val){
 		currentLevel.health -= 1;
 		animSteps.SetNextStep (currentLevel.health);
-		if (currentLevel.health <= 0) {
+		if (currentLevel.health == 0) {
 			source.PlayOneShot (obstacleDeath);
 			return true;
 		} else {

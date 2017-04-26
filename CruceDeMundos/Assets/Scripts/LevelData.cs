@@ -5,13 +5,13 @@ using System;
 
 public class LevelData : MonoBehaviour {
 
-	public bool saveMissionsToDatabase;
+	public bool saveToDatabase;
 
 	public List<Level> levels;
 
 	// Use this for initialization
 	void Start () {
-		if (saveMissionsToDatabase) {
+		if (saveToDatabase) {
 			Debug.Log ("aca");
 			foreach (Level l in levels) {
 				string m = ""; 
