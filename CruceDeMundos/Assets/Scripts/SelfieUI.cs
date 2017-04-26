@@ -11,12 +11,14 @@ public class SelfieUI : MonoBehaviour {
 	public Text estado;
 	public Text selfieBalloon;
 
+	public GameObject avatarSelfie;
+
 	Animator animator;
 
 
 	// Use this for initialization
 	void Start () {
-		animator = GetComponent<Animator> ();
+		animator = avatarSelfie.GetComponent<Animator> ();
 		estado.text = Data.Instance.avatarData.estados [Data.Instance.avatarData.estadoIndex];
 		selfieBalloon.text = estado.text;
 	}
