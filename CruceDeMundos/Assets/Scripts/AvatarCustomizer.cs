@@ -199,6 +199,7 @@ public class AvatarCustomizer : MonoBehaviour {
 		for (int i = 0; i < zapatos.Length; i++) {			
 			zapatos [i].SetActive (i == index);
 		}
+		if(isFullSizeView)animator.Play ("customizer_bottom");
 	}
 
 }
