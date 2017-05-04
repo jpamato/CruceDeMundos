@@ -23,6 +23,8 @@ public class VisualCell : MonoBehaviour
 	public WallState northState;
 	public WallState southState;
 
+	public bool deadEnd;
+	public int visitTimes;
 
 	public bool isFirst;
 	public bool visited=false;
@@ -74,6 +76,8 @@ public class VisualCell : MonoBehaviour
 		visited = v;
 		if (v) {
 			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0.6f, 0, 0.6f);
+			if (deadEnd)
+				visitTimes++;
 		} else {
 			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
 			//Events.OnFalseTrail (this,this);

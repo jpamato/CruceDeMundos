@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DataController : MonoBehaviour {
 
-	//const string URL = "http://127.0.0.1:8000/";
-	const string URL = "http://yaguar.alwaysdata.net/";
+	const string URL = "http://127.0.0.1:8000/";
+	//const string URL = "http://yaguar.alwaysdata.net/";
 
 	private string createUser_URL = URL + "users/create?";
 	private string addLevel_URL = URL + "level/add?";
@@ -47,7 +47,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	public IEnumerator SaveLevelData(string _userid, string _compid, int level, string tools, string missions, int portalDone, int fireDone, int pollutionDone, int mapchecks,
-		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, int rtB, int rtAT, int rtE, int giveup)
+		float levelTime, float gameTime, float mapTime, float missionTime, float toolsTime, string mapTrail, string mapDeadEnds, int rtB, int rtAT, int rtE, int giveup)
 	{
 		string hash = Md5Test.Md5Sum(_userid + _compid  + secretKey);
 
@@ -56,7 +56,7 @@ public class DataController : MonoBehaviour {
 				"&portal_done="+ portalDone + "&fire_done="+ fireDone + "&pollution_done="+ pollutionDone +
 				"&map_checks="+ mapchecks + "&level_time=" + levelTime + "&game_time=" + gameTime +
 				"&first_map_time=" + mapTime + "&mission_time=" + missionTime + "&tools_time=" + toolsTime +
-			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE + "&give_up=" + giveup + "&hash="+hash;
+			"&map_trail=" + WWW.EscapeURL (mapTrail) + "&map_dead_ends=" + WWW.EscapeURL (mapDeadEnds) + "&rt_begin=" + rtB + "&rt_after_tools=" + rtAT + "&rt_end=" + rtE + "&give_up=" + giveup + "&hash="+hash;
 		print ("addLevel : " + post_url);
 		WWW hs_post = new WWW (post_url);
 		yield return hs_post;

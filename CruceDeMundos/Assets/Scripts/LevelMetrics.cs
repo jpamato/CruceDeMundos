@@ -19,6 +19,7 @@ public class LevelMetrics : MonoBehaviour {
 	public float toolsEndTime;
 
 	public string trail;
+	public string deadEnds;
 
 	public int rtBegin;
 	public int rtPostTools;
@@ -57,7 +58,7 @@ public class LevelMetrics : MonoBehaviour {
 		Events.GetVisistedTrail ();
 
 		Data.Instance.SaveLevelData (tools, misions, portalesCerrados, fuegosApagados, polucionEliminada, mapCheck, levelEndTime - levelBeginTime,
-			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, rtBegin, rtPostTools, saltearNivel);
+			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, deadEnds, rtBegin, rtPostTools, saltearNivel);
 		
 	}
 }

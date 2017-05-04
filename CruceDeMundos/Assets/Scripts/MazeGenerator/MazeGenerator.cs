@@ -373,6 +373,7 @@ public class MazeGenerator : MonoBehaviour
 				r.material = wallOut;
 			}*/
 
+			visualCellInst.deadEnd = N ["Maze"] [i] ["deadEnd"].AsBool;
 			visualCellInst.transform.name = N ["Maze"] [i] ["id"];
 			visualCells.Add (visualCellInst);
 		}
@@ -444,7 +445,8 @@ public class MazeGenerator : MonoBehaviour
 			json += "\"north\":\"" + visualCellInst.northState.ToString() +"\",";
 			json += "\"east\":\"" + visualCellInst.eastState.ToString()+"\",";
 			json += "\"south\":\"" + visualCellInst.southState.ToString()+"\",";
-			json += "\"west\":\"" + visualCellInst.westState.ToString()+"\"}";
+			json += "\"west\":\"" + visualCellInst.westState.ToString()+"\",";
+			json += "\"deadEnd\":\"" + visualCellInst.deadEnd+"\"}";
 			
 			if(index<visualCells.Count-1)
 				json += ",";
@@ -497,7 +499,13 @@ public class MazeGenerator : MonoBehaviour
 		foreach (VisualCell vc in vcells)
 			result += vc.name+";";
 
+		List<VisualCell>vcells2 = visualCells.FindAll(x => x.deadEnd == true);
+		string result2 = "";
+		foreach (VisualCell vc in vcells2)
+		result2 += "{\"id\":\""+vc.name+"\",\"times\":\""+vc.visitTimes+"\"};";
+
 		Game.Instance.levelMetrics.trail = result;
+		Game.Instance.levelMetrics.deadEnds = result2;
 		
 	}
 	
