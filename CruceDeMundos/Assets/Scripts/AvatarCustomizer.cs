@@ -82,9 +82,12 @@ public class AvatarCustomizer : MonoBehaviour {
 		}
 
 		public void SetActive(bool active){
-			if(ojos!=null)ojos [expressIndex].SetActive (active);
-			if(cejas!=null)cejas [expressIndex].SetActive (active);
-			if(bocas!=null)bocas [expressIndex].SetActive (active);
+			foreach(GameObject go in ojos)
+				go.SetActive (active);
+			foreach(GameObject go in cejas)
+				go.SetActive (active);
+			foreach(GameObject go in bocas)
+				go.SetActive (active);			
 		}
 	}
 
