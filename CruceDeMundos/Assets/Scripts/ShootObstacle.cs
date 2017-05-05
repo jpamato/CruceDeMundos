@@ -77,6 +77,8 @@ public class ShootObstacle : MonoBehaviour {
 		} else {
 			tool.transform.localRotation = Quaternion.Euler (Vector3.zero);
 			shooting = false;
+			if (source.isPlaying)
+				source.Stop ();
 		}
 	}
 
