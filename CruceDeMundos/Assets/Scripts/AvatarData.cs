@@ -7,6 +7,8 @@ using System.IO;
 public class AvatarData : MonoBehaviour {
 
 	public int pielIndex;
+	public int peloIndex;
+	public int peloColorIndex;
 	public int caraIndex;
 	public int torsoIndex;
 	public int piernasIndex;
@@ -66,6 +68,8 @@ public class AvatarData : MonoBehaviour {
 	public void SaveAvatarData(){
 		string json = "{\n";
 		json += "pielIndex:"+pielIndex+",\n";
+		json += "peloIndex:"+peloIndex+",\n";
+		json += "peloColorIndex:"+peloColorIndex+",\n";
 		json += "caraIndex:"+caraIndex+",\n";
 		json += "torsoIndex:"+torsoIndex+",\n";
 		json += "piernasIndex:"+piernasIndex+",\n";
@@ -79,6 +83,8 @@ public class AvatarData : MonoBehaviour {
 		if (!json.Equals ("")) {
 			var N = JSON.Parse (json);
 			pielIndex = N ["pielIndex"].AsInt;
+			peloIndex = N ["peloIndex"].AsInt;
+			peloColorIndex = N ["peloColorIndex"].AsInt;
 			caraIndex = N ["caraIndex"].AsInt;
 			torsoIndex = N ["torsoIndex"].AsInt;
 			piernasIndex = N ["piernasIndex"].AsInt;

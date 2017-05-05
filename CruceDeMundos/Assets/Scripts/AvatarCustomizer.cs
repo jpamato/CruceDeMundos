@@ -7,6 +7,8 @@ public class AvatarCustomizer : MonoBehaviour {
 
 	public ToggleButton[] pielButton;
 	public Piel[] pieles;
+	public ToggleButton[] peloButton;
+	public Pelo[] pelos;
 	public Cara[] caras;
 	public Top[] torsos;
 	public Bottom[] piernas;
@@ -22,6 +24,8 @@ public class AvatarCustomizer : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 
 		SetPiel (Data.Instance.avatarData.pielIndex);
+		SetPelo (Data.Instance.avatarData.peloIndex);
+		SetPeloColor (Data.Instance.avatarData.peloColorIndex);
 		SetCara(Data.Instance.avatarData.caraIndex);
 		SetTorso(Data.Instance.avatarData.torsoIndex);
 		SetPiernas(Data.Instance.avatarData.piernasIndex);
@@ -61,6 +65,16 @@ public class AvatarCustomizer : MonoBehaviour {
 			if(pierna1b!=null)pierna1b.SetActive (active);
 			if(pierna2!=null)pierna2.SetActive (active);
 			if(pierna2b!=null)pierna2b.SetActive (active);
+		}
+	}
+
+	[Serializable]
+	public class Pelo{
+		public GameObject Peinado;
+		public GameObject[] colors;
+
+		public void SetActive(bool active){
+			if(Peinado!=null)Peinado.SetActive (active);
 		}
 	}
 
@@ -140,6 +154,34 @@ public class AvatarCustomizer : MonoBehaviour {
 			if(pielButton.Length>0&&pielButton[i]!=null)pielButton [i].SetButtonOn (i == index);
 		}
 		Data.Instance.avatarData.pielIndex = index;
+	}
+
+	public void SetNextPelo(bool next){
+		if (next)
+			Data.Instance.avatarData.peloIndex = Data.Instance.avatarData.peloIndex + 1 < pelos.Length ? Data.Instance.avatarData.peloIndex + 1 : 0;
+		else
+			Data.Instance.avatarData.peloIndex = Data.Instance.avatarData.peloIndex - 1 > -1 ? Data.Instance.avatarData.peloIndex - 1 : pelos.Length-1;
+
+		SetPelo (Data.Instance.avatarData.peloIndex);
+	}
+
+	public void SetPelo(int index){
+		for (int i = 0; i < pelos.Length; i++) {			
+			pelos [i].SetActive (i == index);
+		}
+		if(isFullSizeView)animator.Play ("customizer_hair");
+	}
+
+	public void SetPeloColor(int index){
+		foreach (Pelo p in pelos) {
+			for (int i = 0; i < p.colors.Length; i++) {			
+				p.colors [i].SetActive (i == index);
+				if (peloButton.Length > 0 && peloButton [i] != null)
+					peloButton [i].SetButtonOn (i == index);
+			}
+		}
+		Data.Instance.avatarData.peloColorIndex = index;
+		if(isFullSizeView)animator.Play ("customizer_hair");
 	}
 
 	public void SetNextCara(bool next){
