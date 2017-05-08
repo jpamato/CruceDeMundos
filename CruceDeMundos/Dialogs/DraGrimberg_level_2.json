@@ -2,23 +2,26 @@
 	name:"Dra Grimberg",
 	level:2,
 	type:"autoeval",
+	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Bien, ¿entonces qué creen? ¿Encontrarán a Agustina?",
-					replies:[
-						{emoVal:1,exit:false,goTo:1,text:"¡De una!",dialog:"Emmanuel"},
-						{emoVal:0,exit:false,goTo:1,text:"¿La verdad? ¡No sé!",dialog:"Emmanuel"},
-						{emoVal:-1,exit:false,goTo:1,text:"Más no que sí.",dialog:"Emmanuel"}]
+					"expre":"neutra",
+					"prompt":"Vienen muy bien, chicos. ¿Necesitan algo?",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"Ahora que lo dice... Manu, por acá se llega a la casa de Agustina, ¿no?",dialog:"Emmanuel"}]
 				}
 			]
 		},
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Aguante el triunvirato, ¡suerte!",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Gracias!"}]
+					"expre":"sonrisa1",
+					"prompt":"Buena idea!. ¿Entonces creés que podrás sumar a Agus al equipo?",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"Claro que sí!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:1,text:"¿La verdad? ¡No sé!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:1,text:"Lo veo dificilísimo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

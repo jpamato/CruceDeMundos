@@ -6,7 +6,8 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Hola chicos, ¿qué hacen por acá? Hay un incendio, no se puede pasar.",
+					"expre":"preocupado",
+					"prompt":"Hola, ¿qué hacen por acá? Hay un incendio, no se puede pasar.",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"Estamos ayudando a la doctora Grimberg a cerrar los portales interdimensionales."}]
 				}
 			]
@@ -14,25 +15,68 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden cerrarlo?",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"¡Claro!"}]
+					"expre":"sonriente1",
+					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden ayudar a cerrarlo?",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"¡Claro!",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:2,text:"Mmm, ¿justo ahora?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"moderado"},
+						{emoVal:0,exit:false,goTo:2,text:"No",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no"}
+					]
 				}
 			]
 		},
 		{index:2,
-			moods:[
-				{ 	"mood":"neutral",
-					"prompt":"¡Excelente! Lleven este matafuegos, lo van a necesitar",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Listo!",tool:"Matafuegos"}]
-				}				
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"No lo pediría si no fuera necesario.",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"Está bien."}]
+				}
 			]
 		},
-
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Eso es todo. Cuídense mucho",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Vos también!"}]
+					"prompt":"El único tema es que en el camino encontrarán incendios...",
+					replies:[{emoVal:1,exit:false,goTo:4,text:"¿Entonces nos darías un matafuegos, por favor?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
+						{emoVal:-1,exit:false,goTo:4,text:"Entonces dame ya un matafuegos que estamos apurados, ¡¿no ves?!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
+						{emoVal:0,exit:false,goTo:4,text:"¿Incendios? Uff, qué mala suerte",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"}
+					]
+				}
+			]
+		},
+		{index:4,
+			moods:[
+				{ 	"mood":"negative",
+					"expre":"enojado",
+					"prompt":"Acá tienen uno.",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Listo",tool:"Matafuegos"}]
+				},				
+				{ 	"mood":"neutral",
+					"prompt":"¿Quieren un matafuegos?",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"¡Aceptamos, gracias!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",tool:"Matafuegos"},
+						{emoVal:0,exit:false,goTo:5,text:"No, gracias.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
+					]
+				},
+				{ 	"mood":"positive",
+					"prompt":"Seguro, lo van a necesitar.",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Gracias",tool:"Matafuegos"}]
+				}
+			]
+		},
+
+		{index:5,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"LLevenlo igual, chicos, lo van a necesitar.",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"...",tool:"Matafuegos"}]
+				}				
+			]
+		}
+
+		{index:6,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Eso es todo. Cuídense mucho.",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Vos también"}]
 				}				
 			]
 		}		

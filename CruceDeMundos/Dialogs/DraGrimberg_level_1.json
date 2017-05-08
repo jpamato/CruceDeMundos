@@ -2,15 +2,17 @@
 	name:"Dra Grimberg",
 	level:1,
 	type:"autoeval",
+	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Antes de que se vayan, díganme, ¿creen que llegarán al lado opuesto de esta parte de la ciudad?",
+					"expre":"preocupada1",
+					"prompt":"Antes de que se vayan, ¿creés que llegarán al lado opuesto de esta parte de la ciudad?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!"},
-						{emoVal:0,exit:true,goTo:0,text:"Mhhh... ¿Haremos lo posible?"},
-						{emoVal:-1,exit:true,goTo:0,text:"No creo, doc"}]
+						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"No, no sé si podré",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

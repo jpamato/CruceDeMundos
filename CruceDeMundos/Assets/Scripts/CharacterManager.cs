@@ -3,13 +3,26 @@ using System.Collections;
 
 public class CharacterManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public Camera cam;
+	public GameObject character;
+
+	Animator animator;
+
+	public void SetCharacter(GameObject ch){
+		character = Instantiate (ch) as GameObject;
+		character.transform.parent = gameObject.transform;
+		character.transform.localPosition = Vector3.zero;
+		animator = character.GetComponent<Animator> ();
+		cam.enabled = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void SetAnimation(string a){
+		animator.Play (""+a);
+	}
+
+	public void Close(){
+		cam.enabled = false;
+		//character = null;
+		Destroy (character.gameObject);
 	}
 }

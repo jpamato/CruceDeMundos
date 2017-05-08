@@ -5,6 +5,7 @@ using System;
 
 public class DialogManager : MonoBehaviour {
 
+	public CharacterManager chManager;
 	public Image charImage;
 	public Text charName;
 
@@ -32,7 +33,8 @@ public class DialogManager : MonoBehaviour {
 	public void LoadDialog(string characterName){
 
 		character = Array.Find(Data.Instance.dialogData.dialogCharacters, p => p.name == characterName);
-		charImage.sprite = character.sprite;
+		//charImage.sprite = character.sprite;
+		chManager.SetCharacter(character.visualization);
 		charName.text = character.name;
 
 		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
@@ -49,7 +51,14 @@ public class DialogManager : MonoBehaviour {
 			mood = Array.Find (dTree.moods, p => (int)p.mType == (levelInfo.emoval + 1));
 		else
 			mood = dTree.moods [0];
+
+		if (mood.expre != "") {
+			chManager.SetAnimation (mood.expre);
+			levelInfo.lastExpre = mood.expre;
+		}else if(levelInfo.lastExpre!="")
+			chManager.SetAnimation (levelInfo.lastExpre);
 		
+
 		charText.text = mood.prompt;
 		for (int i = 0; i < mood.replies.Length; i++) {
 			ansText [i].text = mood.replies [i].text;
@@ -119,6 +128,7 @@ public class DialogManager : MonoBehaviour {
 			Events.CharacterBlocking (character.name, mood.replies [index].block);
 
 
+		chManager.Close ();
 		if (mood.replies [index].exit){
 			Events.DialogDone ();
 			if (mood.replies [index].levelEndDialog)
@@ -126,8 +136,9 @@ public class DialogManager : MonoBehaviour {
 		}else{
 			if (mood.replies [index].dialog != "") {
 				LoadDialog (mood.replies [index].dialog);
+			} else {
+				LoadDialog (character.name);
 			}
-			LoadDialog (character.name);
 		}
 
 	}

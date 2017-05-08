@@ -6,8 +6,9 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Che, por acá se llega a la casa de Agus, ¿no?",
-					replies:[{emoVal:0,exit:false,goTo:0,text:"Sí. Vamos, que con ella no nos para nadie.",dialog:"Dra Grimberg"}]
+					"expre":"entusiasmada",
+					"prompt":"¡Sí! Vamos a buscarla, ¡la necesitamos!",
+					replies:[{emoVal:0,exit:false,goTo:0,text:"Con ella en el equipo no nos para nadie.",dialog:"Dra Grimberg"}]
 				}
 			]
 		}

@@ -34,7 +34,7 @@ public class DialogData : MonoBehaviour {
 	public class DialogCharacter
 	{
 		public string name;
-		public Sprite sprite;
+		public GameObject visualization;
 		public int lastEmoVal;
 		public int globalEmoVal;
 		public List<LevelInfo> levelsInfo;
@@ -44,6 +44,7 @@ public class DialogData : MonoBehaviour {
 			public int level;
 			public int emoval;
 			public int goTo;
+			public string lastExpre;
 			public Dialog.dType dtype;
 		}
 
@@ -91,7 +92,8 @@ public class DialogData : MonoBehaviour {
 		Dialog d = new Dialog ();
 		d.name = N ["name"];
 		d.level = N ["level"].AsInt;
-		d.dialogType = castDialogType(N["type"]);
+		d.dialogType = CastDialogType(N["type"]);
+		d.initial = N ["initial"] != null ? N ["initial"].AsBool : false;
 		d.dialogTree = new Dialog.DialogTree[N ["dialogTree"].Count];
 		for (int i = 0; i < d.dialogTree.Length; i++) {
 			d.dialogTree[i] = new Dialog.DialogTree();
@@ -99,8 +101,12 @@ public class DialogData : MonoBehaviour {
 			d.dialogTree [i].moods = new Dialog.Mood[N ["dialogTree"] [i] ["moods"].Count];
 			for (int j = 0; j < d.dialogTree [i].moods.Length; j++) {
 				d.dialogTree [i].moods [j] = new Dialog.Mood ();
-				d.dialogTree [i].moods [j].mType = castMoodType (N ["dialogTree"] [i] ["moods"] [j] ["mood"]);
+				d.dialogTree [i].moods [j].mType = CastMoodType (N ["dialogTree"] [i] ["moods"] [j] ["mood"]);
 				d.dialogTree [i].moods [j].prompt = N ["dialogTree"] [i] ["moods"] [j] ["prompt"];
+				if (N ["dialogTree"] [i] ["moods"] [j] ["expre"] != null)
+					d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"];
+				else
+					d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"] = "";
 				d.dialogTree [i].moods [j].replies = new Dialog.Reply[N ["dialogTree"] [i] ["moods"] [j] ["replies"].Count];
 				for (int k = 0; k < d.dialogTree [i].moods [j].replies.Length; k++) {
 					d.dialogTree [i].moods [j].replies [k] = new Dialog.Reply ();
@@ -108,6 +114,22 @@ public class DialogData : MonoBehaviour {
 					d.dialogTree [i].moods [j].replies [k].exit = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["exit"].AsBool;
 					d.dialogTree [i].moods [j].replies [k].goTo = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["goTo"].AsInt;
 					d.dialogTree [i].moods [j].replies [k].text = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["text"];
+					
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"] != null)
+						d.dialogTree [i].moods [j].replies [k].replyType = CastReplyType(N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"]);
+					else
+						d.dialogTree [i].moods [j].replies [k].replyType = Dialog.Reply.rType.NARRATIVO;
+				
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"] != null)
+						d.dialogTree [i].moods [j].replies [k].replySubType = CastReplySubType(N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"]);
+					else
+						d.dialogTree [i].moods [j].replies [k].replySubType = Dialog.Reply.rSubType.NARRATIVO;
+
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"] != null)
+						d.dialogTree [i].moods [j].replies [k].indicadorVal = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"];
+					else
+						d.dialogTree [i].moods [j].replies [k].indicadorVal ="";
+				
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"] != null)
 						d.dialogTree [i].moods [j].replies [k].resources = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"].AsInt;
 					else
@@ -188,6 +210,7 @@ public class DialogData : MonoBehaviour {
 		public string name;
 		public int level;
 		public dType dialogType;
+		public bool initial;
 		public DialogTree[] dialogTree;
 
 		[Serializable]
@@ -207,6 +230,7 @@ public class DialogData : MonoBehaviour {
 				POSITIVE
 			}
 			public moodType mType;
+			public string expre;
 			public string prompt;
 			public Reply[] replies;
 
@@ -217,6 +241,9 @@ public class DialogData : MonoBehaviour {
 			public bool exit;
 			public int goTo;
 			public string text;
+			public rType replyType;
+			public rSubType replySubType;
+			public string indicadorVal;
 			public int resources;
 			public int fireCharge;
 			public int portalCharge;
@@ -227,11 +254,45 @@ public class DialogData : MonoBehaviour {
 			public bool levelEndDialog;
 			public int move;
 			public int block;
+
+			public enum rType
+			{
+				NARRATIVO,
+			
+				ASERTIVIDAD,
+				AUTOEFICACIA,			
+				COLABORATIVO,		
+				EMPATÍA			
+			}
+
+			public enum rSubType{
+				NARRATIVO,
+
+				//asertividad
+				PROACTIVIDAD,
+				INTERÉS,
+				PEDIDO,
+				NEGARSE,
+
+				//autoeficacia
+				JUICIO,
+				AUTOPERCEPCIÓN,
+
+				//colaborativo
+				COMPARTIR,
+				ACEPTAR,
+				CONFIANZA,
+				TODOS,
+
+				//empatía
+				RECONOCIMIENTO,
+				ACCIÓN				
+			}	
 		}
 
 	}
 
-	Dialog.Mood.moodType castMoodType(string s){
+	Dialog.Mood.moodType CastMoodType(string s){
 		return (Dialog.Mood.moodType)System.Enum.Parse(typeof(Dialog.Mood.moodType), s.ToUpperInvariant());
 		/*if(s.Equals("negative"))
 			return Dialog.Mood.moodType.NEGATIVE;
@@ -243,7 +304,7 @@ public class DialogData : MonoBehaviour {
 			return Dialog.Mood.moodType.NEUTRAL;*/
 	}
 
-	Dialog.dType castDialogType(string s){
+	Dialog.dType CastDialogType(string s){
 		return (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), s.ToUpperInvariant());
 		/*if(s.Equals("et"))
 			return Dialog.dType.ET;
@@ -253,6 +314,15 @@ public class DialogData : MonoBehaviour {
 			return Dialog.dType.HUMAN;
 		else
 			return Dialog.dType.ET;*/
+	}
+
+
+	Dialog.Reply.rType CastReplyType(string s){
+		return (Dialog.Reply.rType )System.Enum.Parse(typeof(Dialog.Reply.rType), s.ToUpperInvariant());
+	}
+
+	Dialog.Reply.rSubType CastReplySubType(string s){
+		return (Dialog.Reply.rSubType )System.Enum.Parse(typeof(Dialog.Reply.rSubType), s.ToUpperInvariant());
 	}
 
 	public string GetDialogData(){

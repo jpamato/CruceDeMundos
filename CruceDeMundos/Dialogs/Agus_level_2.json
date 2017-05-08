@@ -6,7 +6,8 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¿Qué hacen acá? ¡La ciudad es un bardo!",
+					"expre":"pensativa",
+					"prompt":"¿Qué hacen acá? ¡La ciudad está de terror!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"¡Por eso te necesitamos! En el camino te explico, ¿estás lista?"}]
 				}
 			]
@@ -14,6 +15,7 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
+					"expre":"rockera",
 					"prompt":"¿Yo? ¡Siempre!",
 					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Grande, Agus!",levelEnd:true}]
 				}
