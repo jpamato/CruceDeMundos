@@ -89,7 +89,7 @@ public class DialogManager : MonoBehaviour {
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = false;
 		}
 
-		if (mood.replies [index].resources > 0) {
+		if (mood.replies [index].resources != 0) {
 			Data.Instance.playerData.resources += mood.replies [index].resources;
 			Events.OnRefreshResources (Data.Instance.playerData.resources);
 		}

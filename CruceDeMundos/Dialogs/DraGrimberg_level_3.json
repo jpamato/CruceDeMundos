@@ -6,11 +6,12 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Bueno, ¿qué dicen? ¿Se sienten capaces de apagar ese incendio?",
+					"expre":"preocupada1",
+					"prompt":"Bueno, ¿qué decís? ¿Te sentís capaz de apagar ese incendio?",
 					replies:[						
-						{emoVal:0,exit:false,goTo:1,text:"Maso"},
-						{emoVal:-1,exit:false,goTo:1,text:"Ni ahí"},
-						{emoVal:1,exit:false,goTo:1,text:"Más vale"}
+						{emoVal:0,exit:false,goTo:1,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:false,goTo:1,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:1,exit:false,goTo:1,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"}
 						]
 				}
 			]
@@ -19,6 +20,7 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
+					"expre":"preocupada2",
 					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
 					replies:[						
 						{emoVal:0,exit:false,goTo:1,text:"Afirmativo, doc.",dialog:"Emmanuel"}

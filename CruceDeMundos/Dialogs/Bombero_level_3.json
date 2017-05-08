@@ -7,6 +7,7 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
+					"expre":"cansado",
 					"prompt":"Ustedes son los ayudantes de la doctora, ¿no?",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"Sí, vamos al puerto. ¿De dónde podemos sacar combustible para una lancha?"}]
 				}				
@@ -15,32 +16,63 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Yo tengo un bidón. Es suyo si me dan una mano apagando el fuego",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"Dale que va.",move:1,block:1}]
+					"prompt":"Les buscaría un bidón pero estoy ocupado con los incendios",
+					replies:[
+						{emoVal:1,exit:false,goTo:2,text:"¿Qué tal si nosotros nos ocupamos de un incendio y vos del bidón?",rType:"COLABORATIVO",rSType:"TODOS"},
+						{emoVal:0,exit:false,goTo:2,text:"Ah, no podemos ocuparnos ahora.",rType:"ASERTIVIDAD",rSType:"INTERÉS",indicVal:"no - moderado"},
+						{emoVal:0,exit:false,goTo:2,text:"Arreglate solo. ¡Chau!",rType:"ASERTIVIDAD",rSType:"INTERÉS",indicVal:"no - agresivo"}
+					]
 				}				
 			]
 		},
 		{index:2,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"¿Y? ¿Qué hay con ese fuego? Teníamos un trato",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"Ah, sí"}]
-				}				
+					"expre":"neutro",
+					"prompt":"Avisen si se arrepienten.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"...",move:1,block:1}]
+				},
+				{	"mood":"positive",
+					"expre":"sonrisa2",
+					"prompt":"¡Perfecto!",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Ok",move:1,block:1}]
+				}
 			]
 		},
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"¡Lo hicieron! Acá tienen la nafta.",
-					replies:[{emoVal:0,exit:false,goTo:4,text:"¡Esa!",move:0,block:-1}]
+					"expre":"cansado",
+					"prompt":"¿Y? ¿Qué hay con ese fuego?",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Ah, sí"}]
 				}				
 			]
 		},
 		{index:4,
 			moods:[				
 				{	"mood":"neutral",
+					"expre":"sonrisa2",
+					"prompt":"¡Lo hicieron! Acá tienen la nafta.",
+					replies:[{emoVal:0,exit:false,goTo:5,text:"¡Esa!",move:0,block:-1}]
+				}				
+			]
+		},
+		{index:5,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"Ahora sigan, y hasta que lleguen al puerto despreocúpense de los incendios que yo los iré apagando.",
+					replies:[
+					{emoVal:0,exit:true,goTo:6,text:"Qué bien, un tema menos. ¡Saludos a los muchachos!",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
+					{emoVal:0,exit:true,goTo:6,text:"No confío en que puedas solo. Si encuentro uno, lo apago.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"},
+					]
+				}				
+			]
+		},
+		{index:6,
+			moods:[				
+				{	"mood":"neutral",
 					"prompt":"Ya llegan mis refuerzos. Así que hasta que lleguen al puerto despreocúpense de los incendios.",
-					replies:[{emoVal:0,exit:true,goTo:4,text:"Qué bien, un tema menos. ¡Saludos a los muchachos!"}]
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Qué bien, un tema menos. ¡Saludos a los muchachos!"}]
 				}				
 			]
 		}

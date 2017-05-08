@@ -6,24 +6,47 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"Yo estaba en mi shakosi, disfrutando un baño de algas, cuando de pronto",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"...Apareciste acá, ya sé. Nosotros tampoco entendemos qué salió mal."}]
+					"expre":"preocupado",
+					"prompt":"...",
+					replies:[
+						{emoVal:0,exit:false,goTo:1,text:"Hola, ¿podemos ayudarte en algo?",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
+						{emoVal:0,exit:true,goTo:0,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no"}
+					]
 				}
 			]
 		},
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Veo que la confusión es mutua. ¿Y esto que encontré les sirve de algo?",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"¡Recursos tecnológicos! Gracias, amigo, sí que sirve.",resources:50}]
+					"expre":"confundido",
+					"prompt":"Debo llevar a los míos algo llamado Recursos tecnológicos y no sé cómo conseguirlos.",
+					replies:[
+						{emoVal:1,exit:false,goTo:2,text:"Nosotros tenemos RT. Podemos darte un poco.",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:2,text:"Nosotros tenemos RT pero no podemos darte.",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"no"}
+					]
 				}
 			]
 		},
 		{index:2,
 			moods:[				
+				{	"mood":"positive",
+					"expre":"agradecido",
+					"prompt":"¡Eso sería un gesto maravilloso, acepto!",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Tomá RT, ¡y suerte!",resources:-50}]
+				},
 				{	"mood":"neutral",
-					"prompt":"Extraño mi shakosi calentito.",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"..."}]
+					"expre":"deprimido",
+					"prompt":"Oh, qué lástima. Adiós entonces.",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"Adiós."}]
+				}
+			]
+		},
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Ya tengo RT. Gracias y buen viaje.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Bueno!"}]
 				}
 			]
 		}
