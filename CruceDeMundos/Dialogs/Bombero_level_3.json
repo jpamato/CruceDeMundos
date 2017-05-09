@@ -30,12 +30,12 @@
 				{	"mood":"neutral",
 					"expre":"neutro",
 					"prompt":"Avisen si se arrepienten.",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"...",move:1,block:1}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Quedamos así!",move:1,block:1}]
 				},
 				{	"mood":"positive",
 					"expre":"sonrisa2",
 					"prompt":"¡Perfecto!",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"Ok",move:1,block:1}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Quedamos así!",move:1,block:1}]
 				}
 			]
 		},
@@ -71,8 +71,8 @@
 		{index:6,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Ya llegan mis refuerzos. Así que hasta que lleguen al puerto despreocúpense de los incendios.",
-					replies:[{emoVal:0,exit:true,goTo:6,text:"Qué bien, un tema menos. ¡Saludos a los muchachos!"}]
+					"prompt":"Ahora sigan, y hasta que lleguen al puerto despreocúpense de los incendios que yo los iré apagando.",
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Okey"}]
 				}				
 			]
 		}
