@@ -208,9 +208,9 @@ public class GameUI : MonoBehaviour {
 		Events.OnRefreshResources (Data.Instance.playerData.resources);
 		Game.Instance.gameManager.state = GameManager.states.WIN;
 
-		if (Game.Instance.levelManager.leveldata.levelNumber == 2) {
+		if (Game.Instance.dialogManager.LoadFinalDialog()) {
 			summary.SetActive (false);
-			Game.Instance.dialogManager.LoadDialog ("Agustina");
+			//Game.Instance.dialogManager.LoadDialog ("Agustina");
 			Events.GameDialog ();
 		} else {
 			Game.Instance.ingameMusic.MusicWin ();

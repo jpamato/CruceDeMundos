@@ -30,6 +30,36 @@ public class DialogManager : MonoBehaviour {
 	
 	}
 
+	public bool LoadInitialDialog(){
+		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.initial == true && x.level == level));
+
+		if (dialog != null) {
+			character = Array.Find (Data.Instance.dialogData.dialogCharacters, p => p.name == dialog.name);
+			//charImage.sprite = character.sprite;
+			chManager.SetCharacter (character.visualization);
+			charName.text = character.name;
+			LoadDialog ();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public bool LoadFinalDialog(){
+		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.final == true && x.level == level));
+
+		if (dialog != null) {
+			character = Array.Find (Data.Instance.dialogData.dialogCharacters, p => p.name == dialog.name);
+			//charImage.sprite = character.sprite;
+			chManager.SetCharacter (character.visualization);
+			charName.text = character.name;
+			LoadDialog ();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public void LoadDialog(string characterName){
 
 		character = Array.Find(Data.Instance.dialogData.dialogCharacters, p => p.name == characterName);
@@ -39,6 +69,10 @@ public class DialogManager : MonoBehaviour {
 
 		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
 
+		LoadDialog ();
+	}
+
+	public void LoadDialog(){
 		levelInfo = character.levelsInfo.Find (x => x.level == level);
 
 		if (levelInfo == null) {
@@ -57,7 +91,7 @@ public class DialogManager : MonoBehaviour {
 			levelInfo.lastExpre = mood.expre;
 		}else if(levelInfo.lastExpre!="")
 			chManager.SetAnimation (levelInfo.lastExpre);
-		
+
 
 		charText.text = mood.prompt;
 		for (int i = 0; i < mood.replies.Length; i++) {

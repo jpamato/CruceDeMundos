@@ -94,6 +94,7 @@ public class DialogData : MonoBehaviour {
 		d.level = N ["level"].AsInt;
 		d.dialogType = CastDialogType(N["type"]);
 		d.initial = N ["initial"] != null ? N ["initial"].AsBool : false;
+		d.final = N ["final"] != null ? N ["final"].AsBool : false;
 		d.dialogTree = new Dialog.DialogTree[N ["dialogTree"].Count];
 		for (int i = 0; i < d.dialogTree.Length; i++) {
 			d.dialogTree[i] = new Dialog.DialogTree();
@@ -211,6 +212,7 @@ public class DialogData : MonoBehaviour {
 		public int level;
 		public dType dialogType;
 		public bool initial;
+		public bool final;
 		public DialogTree[] dialogTree;
 
 		[Serializable]

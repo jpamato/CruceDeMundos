@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour {
 		Game.Instance.toolsManager.SelectedToolsData ();
 		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;
 		state = states.AUTOEVAL;
-		Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
+		if(!Game.Instance.dialogManager.LoadInitialDialog ())
+			Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
 		Events.GameAutoeval ();
 	}
 

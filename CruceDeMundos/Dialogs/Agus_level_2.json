@@ -2,6 +2,7 @@
 	name:"Agustina",
 	level:2,
 	type:"narrative",
+	final:true,
 	dialogTree:[
 		{index:0,
 			moods:[
