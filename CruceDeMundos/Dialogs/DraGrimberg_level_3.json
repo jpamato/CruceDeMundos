@@ -2,6 +2,7 @@
 	name:"Dra Grimberg",
 	level:3,
 	type:"autoeval",
+	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[

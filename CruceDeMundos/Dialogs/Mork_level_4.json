@@ -6,17 +6,19 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Estos portales son peligrosos para ambas dimensiones! ¿Pueden cerrarlos?",
+					"expre":"preocupado",
+					"prompt":"¡Ayuda! ¡Estos portales son peligrosos! ¿Pueden cerrarlos?",
 					replies:[
-						{emoVal:0,exit:false,goTo:1,text:"Lástima, nos agarrás en mal momento."},
-						{emoVal:0,exit:true,goTo:0,text:"¡Ni locos!"},
-						{emoVal:0,exit:false,goTo:1,text:"Podemos, ahí vamos."}]
+						{emoVal:0,exit:false,goTo:1,text:"Lástima, nos agarrás en mal momento.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:0,text:"¡Ni locos! ¿Qué te pensás?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"},
+						{emoVal:0,exit:false,goTo:1,text:"Podemos, ahí vamos.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"}]
 				}				
 			]
 		},
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
+					"expre":"ansioso",
 					"prompt":"Les daré recursos tecnológicos si lo consiguen",
 					replies:[						
 						{emoVal:0,exit:true,goTo:2,text:"Nos vendrían más que bien"}]
@@ -27,6 +29,7 @@
 		{index:2,
 			moods:[			
 				{	"mood":"neutral",
+					"expre":"ansioso",
 					"prompt":"Sigue habiendo portales abiertos",
 					replies:[						
 						{emoVal:0,exit:true,goTo:2,text:"Ah, sí"}]
@@ -36,6 +39,7 @@
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
+					"expre":"alegre",
 					"prompt":"¡Son unos krakens, lo lograron! Tomen sus recursos.",
 					replies:[						
 						{emoVal:0,exit:true,goTo:4,text:"¡Buena!",resources:50}]
@@ -46,6 +50,7 @@
 		{index:4,
 			moods:[				
 				{	"mood":"neutral",
+					"expre":"agradecido",
 					"prompt":"Aquí está todo en orden Por ahora.",
 					replies:[						
 						{emoVal:0,exit:true,goTo:4,text:"SALIR"}]

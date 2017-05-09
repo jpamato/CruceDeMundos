@@ -2,15 +2,17 @@
 	name:"Dra Grimberg",
 	level:4,
 	type:"autoeval",
+	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ven?",
+					"expre":"sonrisa1",
+					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ves?",
 					replies:[
-						{emoVal:-1,exit:true,goTo:0,text:"No lo veo."},
-						{emoVal:1,exit:true,goTo:0,text:"¡Súper!"},
-						{emoVal:0,exit:true,goTo:0,text:"Compliqueti"}]
+						{emoVal:-1,exit:true,goTo:0,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:1,exit:true,goTo:0,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 						
 				}
 			]
