@@ -6,7 +6,7 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"preocupado",
+					"expre":"aterrorizado",
 					"prompt":"¡Ayuda! ¡Estos portales son peligrosos! ¿Pueden cerrarlos?",
 					replies:[
 						{emoVal:0,exit:false,goTo:1,text:"Lástima, nos agarrás en mal momento.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},

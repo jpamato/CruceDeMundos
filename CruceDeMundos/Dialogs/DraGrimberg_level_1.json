@@ -8,7 +8,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupada1",
-					"prompt":"Antes de que se vayan, ¿creés que llegarán al lado opuesto de esta parte de la ciudad?",
+					"prompt":"Antes de que se vayan,¿creés que llegarás al lado opuesto de esta parte de la ciudad?",
 					replies:[
 						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
 						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible",rType:"AUTOEFICACIA",rSType:"JUICIO"},
