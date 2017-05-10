@@ -26,7 +26,7 @@
 					"prompt":"¡Equipo, están saliendo de la ciudad! Manu, ¿qué tal te sentís con lo hecho hasta ahora?",
 					replies:[
 						{emoVal:0,exit:true,goTo:0,text:"¡Nací para esto!",rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
-						{emoVal:0,exit:true,goTo:0,text:"No lo hice del todo mal, ¿no?",rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
 						{emoVal:0,exit:true,goTo:0,text:"Podría haberlo hecho mucho mejor.",rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
 						
 				}

@@ -16,11 +16,10 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Les buscaría un bidón pero estoy ocupado con los incendios",
+					"prompt":"Les buscaría un bidón pero estoy ocupado con los incendios.",
 					replies:[
-						{emoVal:1,exit:false,goTo:2,text:"¿Qué tal si nosotros nos ocupamos de un incendio y vos del bidón?",rType:"COLABORATIVO",rSType:"TODOS"},
-						{emoVal:0,exit:false,goTo:2,text:"Ah, no podemos ocuparnos ahora.",rType:"ASERTIVIDAD",rSType:"INTERÉS",indicVal:"no - moderado"},
-						{emoVal:0,exit:false,goTo:2,text:"Arreglate solo. ¡Chau!",rType:"ASERTIVIDAD",rSType:"INTERÉS",indicVal:"no - agresivo"}
+						{emoVal:1,exit:false,goTo:2,text:"Nosotros podemos ocuparnos de un incendio y vos del bidón.",rType:"COLABORATIVO,ASERTIVIDAD",rSType:"TODOS,INTERÉS",indicVal:"sí,sí"},
+						{emoVal:0,exit:false,goTo:2,text:"Ah, no podemos ocuparnos ahora.",rType:"COLABORATIVO,ASERTIVIDAD",rSType:"TODOS,INTERÉS",indicVal:"no,no - moderado"}
 					]
 				}				
 			]
