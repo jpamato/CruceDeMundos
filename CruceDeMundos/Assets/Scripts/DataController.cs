@@ -87,13 +87,16 @@ public class DataController : MonoBehaviour {
 
 	}
 
-	public IEnumerator AddDialog(string character, int level, int index, string dType, string mood, string prompt, int answerId, string answer)
+	public IEnumerator AddDialog(string character, int level, int index, string dType, string mood, string prompt, int answerId,
+		string answer, string replyType, string replySubType, string indicVal)
 	{
 		string hash = Md5Test.Md5Sum(secretKey);
 
 		string post_url = addDialog_URL + "&character_name=" + WWW.EscapeURL (character) + "&level_id=" + level +
 			"&dialog_index=" + index + "&dialog_type=" + WWW.EscapeURL (dType) + "&dialog_mood=" + WWW.EscapeURL (mood) +
-			"&dialog_prompt=" + WWW.EscapeURL (prompt) + "&answer_id=" + answerId + "&answer_text=" + WWW.EscapeURL(answer) + "&hash="+hash;
+			"&dialog_prompt=" + WWW.EscapeURL (prompt) + "&answer_id=" + answerId + "&answer_text=" + WWW.EscapeURL(answer) +
+			"&tipo_indicador=" + WWW.EscapeURL(replyType) + "&subtipo_indicador=" + WWW.EscapeURL(replySubType) + 
+			"&valor_indicador=" + WWW.EscapeURL(indicVal) + "&hash="+hash;
 
 		print ("addDialog : " + post_url);
 		WWW hs_post = new WWW (post_url);
