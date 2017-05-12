@@ -91,7 +91,7 @@ public class Game : MonoBehaviour {
 	{	
 		OnGamePaused(false);
 		Data.Instance.playerData.level++;
-		if (Data.Instance.playerData.level > 4) {
+		if (Data.Instance.playerData.level > 8) {
 			Data.Instance.dialogData.ResetAllAtLevel (1);
 			Data.Instance.playerData.level = 1;
 			Data.Instance.playerData.resources = 50;

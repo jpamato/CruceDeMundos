@@ -81,6 +81,8 @@ public class ToolsManager : MonoBehaviour {
 			damagingObstacles.Remove (ShootObstacle.obstacleType.FIRE.ToString());
 		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.PORTAL.ToString()))
 			damagingObstacles.Remove (ShootObstacle.obstacleType.PORTAL.ToString());
+		else if (ft.toolName.Equals (PlayerData.ToolName.Armonizador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.POLLUTION.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.POLLUTION.ToString());
 	}
 
 	public void SetFriendEmpty(GameObject friend, bool remove){
@@ -93,6 +95,8 @@ public class ToolsManager : MonoBehaviour {
 			damagingObstacles.Add (ShootObstacle.obstacleType.FIRE.ToString());
 		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && f==null)
 			damagingObstacles.Add (ShootObstacle.obstacleType.PORTAL.ToString());
+		else if (ft.toolName.Equals (PlayerData.ToolName.Armonizador.ToString ()) && f==null)
+			damagingObstacles.Add (ShootObstacle.obstacleType.POLLUTION.ToString());
 
 		if (remove)
 			ft.toolName = "";

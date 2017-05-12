@@ -12,7 +12,7 @@ public class ObstacleDamage : MonoBehaviour {
 	}
 
 	public List<GameObject> toolsInRange;
-	public toolType tType;
+	public toolType[] tType;
 	public SpriteRenderer field;
 	private float lastShotTime;
 	private ObstacleData obstacleData;
@@ -56,21 +56,25 @@ public class ObstacleDamage : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		// 2
-		if (other.gameObject.tag.Equals(tType.ToString())) {			
-			if (Game.Instance.toolsManager.CanDamage (gameObject.tag)) {
-				toolsInRange.Add (other.gameObject);
-				ToolDestructionDelegate del = other.gameObject.GetComponent<ToolDestructionDelegate> ();
-				del.toolDelegate += OnObstacleDestroy;
+		foreach (toolType t in tType) {
+			if (other.gameObject.tag.Equals (t.ToString ())) {			
+				if (Game.Instance.toolsManager.CanDamage (gameObject.tag)) {
+					toolsInRange.Add (other.gameObject);
+					ToolDestructionDelegate del = other.gameObject.GetComponent<ToolDestructionDelegate> ();
+					del.toolDelegate += OnObstacleDestroy;
+				}
 			}
 		}
 	}
 	// 3
 	void OnTriggerExit2D (Collider2D other) {
-		if (other.gameObject.tag.Equals(tType.ToString())) {
-			toolsInRange.Remove(other.gameObject);
-			ToolDestructionDelegate del =
-				other.gameObject.GetComponent<ToolDestructionDelegate>();
-			del.toolDelegate -= OnObstacleDestroy;
+		foreach (toolType t in tType) {
+			if (other.gameObject.tag.Equals (t.ToString ())) {
+				toolsInRange.Remove (other.gameObject);
+				ToolDestructionDelegate del =
+					other.gameObject.GetComponent<ToolDestructionDelegate> ();
+				del.toolDelegate -= OnObstacleDestroy;
+			}
 		}
 	}
 
