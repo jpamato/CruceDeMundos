@@ -12,7 +12,9 @@ public class CharacterManager : MonoBehaviour {
 		character = Instantiate (ch) as GameObject;
 		character.transform.parent = gameObject.transform;
 		character.transform.localPosition = Vector3.zero;
-		animator = character.GetComponent<Animator> ();
+		animator = character.GetComponentInChildren<Animator> ();
+		if(animator==null)
+			animator = character.GetComponent<Animator> ();
 		cam.enabled = true;
 	}
 
