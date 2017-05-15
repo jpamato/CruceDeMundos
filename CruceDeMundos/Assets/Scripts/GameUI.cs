@@ -258,7 +258,8 @@ public class GameUI : MonoBehaviour {
 	
 	}
 
-	void SetSummary(){		
+	void SetSummary(){
+		Game.Instance.gameManager.state = GameManager.states.ENDED;
 		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
 		Stars s2 = stars2.GetComponent<Stars> ();
 		Stars s3 = stars3.GetComponent<Stars> ();
@@ -299,6 +300,10 @@ public class GameUI : MonoBehaviour {
 	public void SelfieEdit(bool on){
 		selfieCam.enabled = on;
 		selfieEditor.SetActive (on);
+		if (on)
+			Game.Instance.gameManager.state = GameManager.states.SELFIE;
+		else
+			Game.Instance.gameManager.state = GameManager.states.MAP;
 	}
 
 	public void SelfieDone(){		

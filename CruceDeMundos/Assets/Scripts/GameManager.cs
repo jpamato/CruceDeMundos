@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 		AUTOEVAL,
 		ACTIVE,
 		MAP,
+		SELFIE,
 		DIALOG,
 		WIN,
 		LOSE,

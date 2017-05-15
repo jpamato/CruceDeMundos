@@ -11,7 +11,7 @@
 					replies:[						
 						{emoVal:0,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás tímido?"},
 						{emoVal:1,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás triste?"},
-						{emoVal:0,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás aterrado?!"}]
+						{emoVal:0,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás aterrado?"}]
 				}
 			]
 		},

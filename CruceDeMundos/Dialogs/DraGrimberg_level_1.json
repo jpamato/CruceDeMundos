@@ -12,7 +12,7 @@
 					replies:[
 						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
 						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:true,goTo:0,text:"No, no sé si podré",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+						{emoVal:-1,exit:true,goTo:0,text:"No creo que pueda",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}
