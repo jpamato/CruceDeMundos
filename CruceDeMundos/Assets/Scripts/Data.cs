@@ -94,9 +94,12 @@ public class Data : MonoBehaviour
 		StartCoroutine(dataController.SaveDialogData(userId,SystemInfo.deviceUniqueIdentifier, character, level, index, mood, answerId));
 	}
 
-	public void SaveLevelData(string tools, string misions, int portalDone, int fireDone, int pollutionDone, int mapchecks, float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, string mapDeadEnds, int rtB, int rtAt, int giveup){		
-		StartCoroutine(dataController.SaveLevelData(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, tools, misions, portalDone, fireDone, pollutionDone,mapchecks,
-			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, mapDeadEnds, rtB, rtAt, playerData.resources, giveup));
+	public void SaveLevelData(string tools, string toolsEnd, string misions, int portalDone, int fireDone, int pollutionDone, int mapchecks,
+		float levelTime, float gameTime, float mapTime, float misionTime, float toolsTime, string mapTrail, string mapDeadEnds, int rtB, 
+		int rtAt, int pCharge, int fCharge, int poCharge, int rtCharge, int giveup){		
+		StartCoroutine(dataController.SaveLevelData(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, tools, toolsEnd, misions, portalDone, fireDone, pollutionDone,mapchecks,
+			levelTime, gameTime, mapTime, misionTime, toolsTime, mapTrail, mapDeadEnds, rtB, rtAt, playerData.resources, pCharge, fCharge,
+			poCharge, rtCharge, giveup));
 	}
 
 	public void SaveUserData(){		

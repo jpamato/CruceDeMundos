@@ -53,6 +53,7 @@ public class CollectableItem : MonoBehaviour {
 					Events.OnChargeCollect (val, PlayerData.ToolName.Matafuegos);
 					source.PlayOneShot (energyUp);
 					SetDestroy ();
+					Game.Instance.levelMetrics.fireCharge++;
 				}
 			} else if (itemType == CollectableType.PORTALCHARGE) {
 				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Restaurador.ToString());
@@ -60,6 +61,7 @@ public class CollectableItem : MonoBehaviour {
 					Events.OnChargeCollect (val, PlayerData.ToolName.Restaurador);
 					source.PlayOneShot (energyUp);
 					SetDestroy ();
+					Game.Instance.levelMetrics.portalCharge++;
 				}
 			} else if (itemType == CollectableType.POLLUTIONCHARGE) {
 				ToolsManager.FriendTool ft = Array.Find(Game.Instance.toolsManager.friendsTools, x => x.toolName == PlayerData.ToolName.Armonizador.ToString());
@@ -67,11 +69,13 @@ public class CollectableItem : MonoBehaviour {
 					Events.OnChargeCollect (val, PlayerData.ToolName.Armonizador);
 					source.PlayOneShot (energyUp);
 					SetDestroy ();
+					Game.Instance.levelMetrics.pollutionCharge++;
 				}
 			} else if (itemType == CollectableType.RESOURCES) {
 				Data.Instance.playerData.resources += val;
 				Events.OnRefreshResources (Data.Instance.playerData.resources);
 				source.PlayOneShot (rtUp);
+				Game.Instance.levelMetrics.resourcesCharge++;
 				SetDestroy ();
 			}
 		}

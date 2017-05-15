@@ -118,14 +118,31 @@ public class ToolsManager : MonoBehaviour {
 
 	public void SelectedToolsData(){
 		string result = "";
+		int j = 0;
 		for (int i = 0; i < friendsTools.Length; i++) {			
 			if (friendsTools [i].toolName != "") {
-				if (i != 0)
+				if (j != 0)
 					result += ";";
-				result += friendsTools [i].name + "_" + friendsTools [i].toolName + "_" + friendsTools [i].toolLevel;
+				result += friendsTools [i].name + ":" + friendsTools [i].toolName + "_" + friendsTools [i].toolLevel;
+				j++;
 			}
 		}
 		Game.Instance.levelMetrics.tools = result;
+	}
+
+	public void FinalToolsCharge(){
+		string result = "";
+		int j = 0;
+		for (int i = 0; i < friendsTools.Length; i++) {			
+			if (friendsTools [i].toolName != "") {
+				HealthBar hb = friendsTools [i].friend.transform.GetComponentInChildren<HealthBar>();
+				if (j != 0)
+					result += ";";
+				result += friendsTools [i].name + ":" + hb.currentHealth +"%";
+				j++;
+			}
+		}
+		Game.Instance.levelMetrics.toolsEndCharge = result;
 	}
 
 }

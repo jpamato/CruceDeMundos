@@ -19,7 +19,7 @@ public class LevelData : MonoBehaviour {
 					m += o + ";";
 				}
 				//StartCoroutine(Data.Instance.dataController.AddMission (l.levelNumber, m));
-				StartCoroutine(Data.Instance.dataController.AddLevelData (l.levelNumber, m,l.portalNumber,l.fireNumber,l.pollutionNumber));
+				StartCoroutine(Data.Instance.dataController.AddLevelData (l.levelNumber, m,l.portalNumber,l.fireNumber,l.pollutionNumber,l.portalCharge,l.fireCharge,l.pollutionCharge,l.resourcesCharge));
 			}
 		}
 	}
@@ -35,6 +35,10 @@ public class LevelData : MonoBehaviour {
 		public int fireNumber;
 		public int portalNumber;
 		public int pollutionNumber;
+		public int fireCharge;
+		public int portalCharge;
+		public int pollutionCharge;
+		public int resourcesCharge;
 		public List<TimeObjective> timeObjectives;
 		public List<ObstacleObjective> obstacleObjectives;
 		public List<ChargeObjective> chargeObjective;

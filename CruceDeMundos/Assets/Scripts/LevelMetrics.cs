@@ -6,6 +6,7 @@ public class LevelMetrics : MonoBehaviour {
 
 	public int mapCheck;
 	public string tools;
+	public string toolsEndCharge;
 	public float levelBeginTime;
 	public float levelEndTime;
 
@@ -29,6 +30,11 @@ public class LevelMetrics : MonoBehaviour {
 	public int portalesCerrados;
 	public int fuegosApagados;
 	public int polucionEliminada;
+
+	public int portalCharge;
+	public int fireCharge;
+	public int pollutionCharge;
+	public int resourcesCharge;
 
 	// Use this for initialization
 	void Start () {
@@ -57,8 +63,10 @@ public class LevelMetrics : MonoBehaviour {
 	public void SaveLevelData(string misions){
 		Events.GetVisistedTrail ();
 
-		Data.Instance.SaveLevelData (tools, misions, portalesCerrados, fuegosApagados, polucionEliminada, mapCheck, levelEndTime - levelBeginTime,
-			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, deadEnds, rtBegin, rtPostTools, saltearNivel);
+		Game.Instance.toolsManager.FinalToolsCharge ();
+
+		Data.Instance.SaveLevelData (tools, toolsEndCharge, misions, portalesCerrados, fuegosApagados, polucionEliminada, mapCheck, levelEndTime - levelBeginTime,
+			Game.Instance.gameUI.timeprogress.time, map1EndTime - map1BeginTime, objectivesEndTime - objectivesBeginTime, toolsEndTime - toolsBeginTime, trail, deadEnds, rtBegin, rtPostTools, portalCharge, fireCharge, pollutionCharge, resourcesCharge, saltearNivel);
 		
 	}
 }
