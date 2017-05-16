@@ -9,8 +9,9 @@
 					"expre":"preocupado",
 					"prompt":"...",
 					replies:[
-						{emoVal:0,exit:false,goTo:1,text:"Hola, ¿podemos ayudarte en algo?",rType:"ASERTIVIDAD,EMPATÍA",rSType:"PROACTIVIDAD,ACCIÓN",indicVal:"sí,sí"},
-						{emoVal:0,exit:true,goTo:0,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD,EMPATÍA",rSType:"PROACTIVIDAD,ACCIÓN",indicVal:"no,no - moderado"}
+						{emoVal:0,exit:false,goTo:1,text:"Hola, ¿podemos ayudarte en algo?",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
+						{emoVal:0,exit:true,goTo:0,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:0,text:"Correte, tonto, que queremos seguir.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
 					]
 				}
 			]
@@ -19,7 +20,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"confundido",
-					"prompt":"Debo llevar a los míos algo llamado Recursos tecnológicos y no sé cómo conseguirlos.",
+					"prompt":"Debo llevar a los míos un solo recurso tecnológico y no sé cómo conseguirlo.",
 					replies:[
 						{emoVal:1,exit:false,goTo:2,text:"Nosotros tenemos RT. Podemos darte un poco.",rType:"COLABORATIVO,EMPATÍA",rSType:"COMPARTIR,ACCIÓN",indicVal:"sí,sí"},
 						{emoVal:0,exit:false,goTo:2,text:"Nosotros tenemos RT pero no podemos darte.",rType:"COLABORATIVO,EMPATÍA",rSType:"COMPARTIR,ACCIÓN",indicVal:"no,no - moderado"}

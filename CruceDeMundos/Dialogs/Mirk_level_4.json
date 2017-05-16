@@ -7,7 +7,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"ansioso",
-					"prompt":"¡Vieron la cantidad de incendios que hay!?",
+					"prompt":"¡¿Vieron la cantidad de incendios que hay?!",
 					replies:[
 					{emoVal:1,exit:false,goTo:1,text:"El bombero dijo que ellos se ocuparán por ahora y le creemos.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
 					{emoVal:0,exit:false,goTo:1,text:"No sabemos si el bombero dijo la verdad pero nuestra prioridad son los portales",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"moderado"},
@@ -19,7 +19,7 @@
 			moods:[	
 				{	"mood":"negative",
 					"expre":"irritado",
-					"prompt":"Opino que igual deberían apagar algunos incendios.",
+					"prompt":"Opino que igual ustedes deberían apagar algunos incendios.",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"Repito, no podemos hacer nada."}
 					]
