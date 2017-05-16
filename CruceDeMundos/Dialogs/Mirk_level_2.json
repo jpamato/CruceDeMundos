@@ -7,7 +7,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"triste",
-					"prompt":"Ay, no sé, no sé",
+					"prompt":"Hola",
 					replies:[						
 						{emoVal:0,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás tímido?"},
 						{emoVal:1,exit:false,goTo:1,text:"¿Cómo va eso? ¿Estás triste?"},
