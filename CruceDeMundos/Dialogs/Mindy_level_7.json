@@ -1,0 +1,82 @@
+﻿{
+	name:"Mindy",
+	level:7,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupado",
+					"prompt":"...",
+					replies:[
+						{emoVal:0,exit:false,goTo:1,text:"¿Hola? Te noto preocupada",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"preocupado (preocupado)"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Hola? Te noto irritada",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"irritado (preocupado)"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Hola? Te noto confundida",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"confundida (preocupado)"}
+					]
+					
+				}				
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupado",
+					"prompt":"Estoy preocupadísima.",
+					replies:[
+					{emoVal:0,exit:false,goTo:2,text:"¿Puedo preguntarte por qué?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"sí,sí"},
+					{emoVal:0,exit:true,goTo:2,text:"(No puedo ocuparme de todo, yo sigo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - moderado,no - moderado"},
+					{emoVal:0,exit:true,goTo:2,text:"Y nosotros estamos ocupadísimos, nena, que es lo que importa.",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"}
+					]
+				}				
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupado",
+					"prompt":"No encuentro a mi hijo. Tuvimos un accidente con la nave, y nos separamos.",
+					replies:[
+					{emoVal:1,exit:true,goTo:3,text:"Nosotros somos tres, ya mismo salimos a buscarlo.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
+					{emoVal:0,exit:true,goTo:3,text:"Uh, ahora tenemos otra misión entre manos. Suerte con eso.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+					{emoVal:0,exit:true,goTo:3,text:"Lo hubieras cuidado mejor. Nosotros no estamos para eso. Chau",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"}
+					]
+				}				
+			]
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"positive",
+					"prompt":"Mi hijo todavía no aparece.",
+					replies:[{emoVal:1,exit:true,goTo:3,text:"Lo buscaremos."}]
+				},
+				{ 	"mood":"neutral",
+					"prompt":"Mi hijo todavía no aparece.",
+					replies:[
+					{emoVal:1,exit:true,goTo:3,text:"Nosotros somos tres, ya mismo salimos a buscarlo.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
+					{emoVal:0,exit:true,goTo:3,text:"Uh, ahora tenemos otra misión entre manos. Suerte con eso.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+					{emoVal:0,exit:true,goTo:3,text:"Lo hubieras cuidado mejor. Nosotros no estamos para eso. Chau",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"}
+					]
+				}
+			]
+		},
+
+		{index:4,
+			moods:[
+				{ 	"mood":"positive",
+					"expre":"agradecido",
+					"prompt":"Gracias!",
+					replies:[{emoVal:0,exit:true,goTo:4,text:"De nada."}]
+				},
+				{ 	"mood":"neutral",
+					"expre":"agradecido",
+					"prompt":"Gracias!",
+					replies:[{emoVal:0,exit:true,goTo:4,text:"De nada."}]
+				}
+			]
+		}
+		
+	]
+}

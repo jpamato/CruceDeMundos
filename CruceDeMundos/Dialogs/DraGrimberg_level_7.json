@@ -6,11 +6,12 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¡Chicos, ya estamos más cerca! Ahora tienen que llegar a hasta el puerto para enbarcarse hasta la isla ¿están en condiciones de hacerlo?",
+					"expre":"preocupada2",
+					"prompt":"Bueno, ¿qué decís? ¿Te sentís capaz de salir del nivel en menos de 2 minutos?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Esto es pan comido, allá vamos!"},
-						{emoVal:0,exit:true,goTo:0,text:"Lo intentaremos, esperemos poder llegar hasta allí pronto"},
-						{emoVal:-1,exit:true,goTo:0,text:"Estamos muy cansados ya Dr Grimberg... se nos está complicando..."}]
+						{emoVal:1,exit:true,goTo:0,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

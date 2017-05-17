@@ -1,0 +1,19 @@
+﻿{
+	name:"Morkid",
+	level:7,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"triste",
+					"prompt":"Estoy perdido.",
+					replies:[
+						{emoVal:0,exit:true,goTo:0,text:"¡Te encontramos!",move:1,objective:true,unlock:"Mindy,4"}
+					]
+					
+				}				
+			]
+		}
+	]
+}

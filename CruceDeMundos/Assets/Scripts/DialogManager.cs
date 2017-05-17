@@ -161,6 +161,9 @@ public class DialogManager : MonoBehaviour {
 		if (mood.replies [index].block != 0)
 			Events.CharacterBlocking (character.name, mood.replies [index].block);
 
+		if (mood.replies [index].dUnlock != null)
+			UnlockDialog (mood.replies [index].dUnlock.characterName, level, mood.replies [index].dUnlock.goTo);
+
 
 		chManager.Close ();
 		if (mood.replies [index].exit){

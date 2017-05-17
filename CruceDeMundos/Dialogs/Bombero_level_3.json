@@ -20,7 +20,7 @@
 					replies:[
 						{emoVal:1,exit:false,goTo:2,text:"Nosotros podemos ocuparnos de un incendio y vos del bidón.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
 						{emoVal:0,exit:false,goTo:2,text:"Ah, no podemos ocuparnos ahora.",rType:"COLABORATIVO,ASERTIVIDAD",rSType:"TODOS",indicVal:"no"},
-						{emoVal:0,exit:false,goTo:2,text:"No creo que sea buena esa idea...",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"}
+						{emoVal:0,exit:false,goTo:2,text:"No creo que sea buena esa idea...",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"}
 					]
 				}				
 			]

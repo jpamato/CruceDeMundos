@@ -1,0 +1,39 @@
+﻿{
+	name:"Patovalien",
+	level:7,
+	type:"autoeval",
+	dialogTree:[		
+		{index:0,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"irritado",
+					"prompt":"Solo diré que aún te quedan cosas por hacer aquí.",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"No puedo sacarle una palabra más. Mejor averiguo qué me queda por hacer."}]
+				}				
+			]
+		},
+		{index:1,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"agradecido",
+					"prompt":"Ayudaste a mi amigo en desgracia y ahora yo colaboraré contigo dándote un recurso tecnológico. ¡Acéptalo!",
+					replies:[
+					{emoVal:0,exit:false,goTo:2,text:"¡Acepto, gracias!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",resources:50},
+					{emoVal:0,exit:false,goTo:2,text:"No, tengo suficiente.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
+					]
+				}				
+			]
+		},
+		{index:2,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"agradecido",
+					"prompt":"Que lleguen bien a su destino.",
+					replies:[
+					{emoVal:0,exit:true,goTo:2,text:"Y vos al tuyo.",move:1,block:-1}
+					]
+				}			
+			]
+		}
+	]	
+}
