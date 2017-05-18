@@ -3,9 +3,12 @@ using System.Collections;
 
 public class DataController : MonoBehaviour {
 
+	string[] test1 = {"020121600","2","1","tarde"};
+	string[] test2 = { "020088300", "2", "1", "tarde" };
+
 	//const string URL = "http://127.0.0.1:8000/";
-	//const string URL = "http://cdm.com.ar:8000/";
-	const string URL = "http://yaguar.alwaysdata.net/";
+	const string URL = "http://cdm.com.ar:8000/";
+	//const string URL = "http://yaguar.alwaysdata.net/";
 
 	private string createUser_URL = URL + "users/create?";
 	private string addLevel_URL = URL + "level/add?";
@@ -31,7 +34,9 @@ public class DataController : MonoBehaviour {
 		string hash = Md5Test.Md5Sum(secretKey);
 		//string style = Data.Instance.playerSettings.heroData.styles.style;
 		if (_userid != "" && _compid != "") {
-			string post_url = createUser_URL + "userid=" + WWW.EscapeURL (_userid) + "&computerid=" + WWW.EscapeURL (_compid) + "&username=" + WWW.EscapeURL (_username) + "&hash="+hash;
+			string post_url = createUser_URL + "userid=" + WWW.EscapeURL (_userid) + "&computerid=" + WWW.EscapeURL (_compid) +
+				"&username=" + WWW.EscapeURL (_username) + "&cue=" + WWW.EscapeURL (test1[0]) + "&grado=" + WWW.EscapeURL (test1[1]) + 
+				"&division=" + WWW.EscapeURL (test1[2]) + "&turno=" + WWW.EscapeURL (test1[3]) + "&hash="+hash;
 			print ("CreateUser : " + post_url);
 			WWW hs_post = new WWW (post_url);
 			yield return hs_post;
