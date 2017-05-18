@@ -33,14 +33,12 @@
 					"expre":"alegre",
 					"prompt":"Seguro, la van a necesitar si quieren atravesar la isla.",
 					replies:[{emoVal:0,exit:true,goTo:3,text:"Gracias.",tool:"Armonizador"}]
-				}				
-			],	moods:[
+				},				
 				{ 	"mood":"neutral",
 					"expre":"alegre",
 					"prompt":"Llévenla. La van a necesitar si quieren atravesar la isla",
 					replies:[{emoVal:0,exit:true,goTo:3,text:"Gracias.",tool:"Armonizador"}]
-				}				
-			],	moods:[
+				},				
 				{ 	"mood":"negative",
 					"expre":"preocupado",
 					"prompt":"Bueno, ¡qué carácter! Aquí la tienen.",

@@ -6,11 +6,13 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"prompt":"¡Chicos, ya estamos más cerca! Ahora tienen que llegar a hasta el puerto para enbarcarse hasta la isla ¿están en condiciones de hacerlo?",
+					"expre":"preocupada1",
+					"prompt":"Al cruzar el puente llegarás a la universidad. Allí se dará la misión final. ¿Cómo te ves cruzando el puente?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Esto es pan comido, allá vamos!"},
-						{emoVal:0,exit:true,goTo:0,text:"Lo intentaremos, esperemos poder llegar hasta allí pronto"},
-						{emoVal:-1,exit:true,goTo:0,text:"Estamos muy cansados ya Dr Grimberg... se nos está complicando..."}]
+						{emoVal:1,exit:true,goTo:0,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}
+					]
 				}
 			]
 		}

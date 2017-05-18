@@ -1,0 +1,118 @@
+﻿{
+	name:"Murk",
+	level:7,
+	type:"collab",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Hola, humanos en desarrollo. En mi dimensión soy comediante y aprendí unos cuantos chistes estando aquí.",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"Ahá, interesante, ¿entonces?"}]
+					
+				}				
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"¿Quieren oír algunos de mi extenso repertorio?",
+					replies:[
+					{emoVal:0,exit:true,goTo:0,text:"Disculpá, pero no tenemos mucho tiempo. Otro día, ¿sí?",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"},
+					{emoVal:0,exit:true,goTo:0,text:"No vamos a parar para oir tus pavadas. ¡El chiste sos vos!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
+					{emoVal:2,exit:false,goTo:2,text:"Te escuchamos.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"}
+					]
+				}				
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Que le dijo una impresora a otra? ¿Ese papel es tuyo o es impresión mía? Jiu, jiu.",
+					replies:[
+					{emoVal:0,exit:false,goTo:3,text:"No está nada mal."},
+					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					]
+				}				
+			]
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"¿Cómo declara su amor una chinche a la otra? Te amo chincheramente. Jiu, jiu.",
+					replies:[
+					{emoVal:0,exit:false,goTo:4,text:"Simpático, sí."},
+					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					]
+				}				
+			]
+		},
+
+		{index:4,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"¿Que le dice un perro arrepentido a otro? Perroname. Jiu, jiu.",
+					replies:[
+					{emoVal:0,exit:false,goTo:5,text:"Je, je, ¡está bien!"},
+					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					]
+				}				
+			]
+		},
+
+		{index:5,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Uno de mi dimensión: ¿Qué le dijo un swampampón constipado a otro? Driblitz inodoris quiront. Jiu, jiu.",
+					replies:[
+					{emoVal:0,exit:false,goTo:6,text:"Ah, ese no lo cacé del todo."},
+					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					]
+				}				
+			]
+		},
+
+		{index:6,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Una cuchara llama a la otra: ¡Cuchara, cuchara! Oh, parece que no es - cuchara. Jiu, Jiu",
+					replies:[
+					{emoVal:0,exit:false,goTo:7,text:"Jiu, jiu. Ay, ya me contagió su risa."},
+					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					]
+				}				
+			]
+		},
+
+		{index:7,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"¿Cómo insulta una pila a otra? ¡Estúpila!",
+					replies:[{emoVal:0,exit:true,goTo:8,text:"Estuvo muy bueno. Pagaría por verte en un show de stand up."}]
+				}				
+			]
+		},
+
+		{index:8,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Han sido un público maravilloso. ¡Vuelvan cuando quieran!",
+					replies:[{emoVal:0,exit:true,goTo:8,text:"¡Hasta luego!"}]
+				}				
+			]
+		}
+	
+		
+	]
+}

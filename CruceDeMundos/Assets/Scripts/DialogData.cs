@@ -209,6 +209,12 @@ public class DialogData : MonoBehaviour {
 						d.dialogTree [i].moods [j].replies [k].dUnlock = null;
 					}
 
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["obstacle"] != null) {
+						d.dialogTree [i].moods [j].replies [k].oType = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["obstacle"];
+					} else {
+						d.dialogTree [i].moods [j].replies [k].oType = "";
+					}
+					
 					if (sendDialogs2Database) {
 						Debug.Log ("aca");						
 						StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
@@ -281,6 +287,7 @@ public class DialogData : MonoBehaviour {
 			public int move;
 			public int block;
 			public LevelData.DialogUnlock dUnlock;
+			public string oType;
 
 			public enum rType
 			{

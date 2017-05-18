@@ -23,9 +23,9 @@
 					"expre":"ansioso",
 					"prompt":"Ojalá. Mi nave está en llamas y si explota puede abrir un vórtice muy peligroso. ¿Apagarían conmigo el incendio?",
 					replies:[
-					{emoVal:1,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
+					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
 					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:-1,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arreglate!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arreglate!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
 					]
 				}				
 			]
@@ -45,8 +45,8 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"excitado",
-					"prompt":"¡Gracias por salvar mi nave! Ahora, si llegaran a encontrar a mi familia, que está perdida, les estaré por siempre agradecido.",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"Ya veremos. Adiós, por ahora."}]
+					"prompt":"Gracias por salvar mi nave y evitar mayores desgracias.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Todo bien."}]
 				}				
 			]
 		}

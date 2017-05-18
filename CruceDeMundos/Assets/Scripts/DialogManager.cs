@@ -164,6 +164,15 @@ public class DialogManager : MonoBehaviour {
 		if (mood.replies [index].dUnlock != null)
 			UnlockDialog (mood.replies [index].dUnlock.characterName, level, mood.replies [index].dUnlock.goTo);
 
+		if (mood.replies [index].oType != "") {
+			GameObject[] go = GameObject.FindGameObjectsWithTag (mood.replies [index].oType);
+			if (go != null) {
+				Destroy (go[go.Length-1]);
+				Events.OnObstacleDestroy (mood.replies [index].oType);
+			}
+
+		}
+
 
 		chManager.Close ();
 		if (mood.replies [index].exit){
