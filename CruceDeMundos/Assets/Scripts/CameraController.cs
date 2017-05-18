@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour {
 	private Camera cam;
 
 	public bool zoom = true;
+	public Zoom zoomIntro;
 	public Zoom zoomIn;
 	public Zoom zoomOut;
 
@@ -27,9 +28,10 @@ public class CameraController : MonoBehaviour {
 		cam = gameObject.GetComponent<Camera> ();
 		CamZoom(true);
 		offset = transform.position - player.transform.position;
-		CamZoom (false);
+		GameIntro ();
 		Events.GameActive += GameActive;
 		Events.GameMap += GameMap;
+		//Events.GameIntro += GameIntro;
 	}
 
 	void OnDestroy(){		
@@ -72,6 +74,13 @@ public class CameraController : MonoBehaviour {
 
 	void GameMap(){
 		CamZoom (false);
+	}
+
+	void GameIntro(){
+		Debug.Log ("intro");
+		zoom = false;
+		gameObject.transform.position = zoomIntro.camPos;
+		cam.orthographicSize = zoomIntro.camSize;
 	}
 
 }

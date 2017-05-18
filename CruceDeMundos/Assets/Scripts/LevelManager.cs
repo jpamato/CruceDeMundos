@@ -83,6 +83,7 @@ public class LevelManager : MonoBehaviour {
 
 		tools = Data.Instance.playerData.toolsNumber;
 
+		camControl.zoomIntro = leveldata.zoomIntro;
 		camControl.zoomIn = leveldata.zoomIn;
 		camControl.zoomOut = leveldata.zoomOut;
 		Instantiate (leveldata.levelObjects, container.transform);

@@ -46,6 +46,7 @@ public class LevelData : MonoBehaviour {
 		public List<DialogUnlock> dialogsUnlock;
 		public List<CharacterMove> characterMove;
 		public GameObject levelObjects;
+		public CameraController.Zoom zoomIntro;
 		public CameraController.Zoom zoomIn;
 		public CameraController.Zoom zoomOut;
 		public string layoutJson;
