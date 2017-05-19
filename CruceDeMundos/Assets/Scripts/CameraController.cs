@@ -77,7 +77,6 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void GameIntro(){
-		Debug.Log ("intro");
 		zoom = false;
 		gameObject.transform.position = zoomIntro.camPos;
 		cam.orthographicSize = zoomIntro.camSize;

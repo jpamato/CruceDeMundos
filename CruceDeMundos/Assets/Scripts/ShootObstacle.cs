@@ -126,7 +126,8 @@ public class ShootObstacle : MonoBehaviour {
 			bulletComp.startPosition = startPosition;
 			bulletComp.targetPosition = targetPosition;
 						
-			healthBar.CurrentHealth = Mathf.Max (healthBar.currentHealth - toolData.CurrentLevel.fireLoss, 0);
+			//healthBar.CurrentHealth = Mathf.Max (healthBar.currentHealth - toolData.CurrentLevel.fireLoss, 0);
+			healthBar.SetHealth(Mathf.Max (healthBar.currentHealth - toolData.CurrentLevel.fireLoss, 0),toolData.CurrentLevel.fireRate);
 
 			if (healthBar.currentHealth == 0)
 				Game.Instance.toolsManager.SetFriendEmpty (transform.parent.gameObject,false);
