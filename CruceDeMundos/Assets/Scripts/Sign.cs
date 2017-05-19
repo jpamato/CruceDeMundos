@@ -8,6 +8,7 @@ public class Sign : MonoBehaviour {
 	public Text userName;
 	public Camera selfieCam;
 	public RenderTexture selfieRT;
+	public Button continuar;
 
 	public void Continue(){
 		selfieCam.enabled = true;
@@ -22,5 +23,13 @@ public class Sign : MonoBehaviour {
 		Data.Instance.SaveUserData ();
 		Data.Instance.avatarData.SaveAvatarData ();
 		Data.Instance.LoadLevel ("LevelMap");
+	}
+
+	public void SetContinue(string s){
+		if (s == "") {
+			continuar.interactable = false;
+		} else {
+			continuar.interactable = true;
+		}
 	}
 }
