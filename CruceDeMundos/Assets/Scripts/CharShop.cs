@@ -87,7 +87,7 @@ public class CharShop : MonoBehaviour {
 
 			Data.Instance.playerData.resources += lastCost;
 
-			//Events.OnRefreshResources (Data.Instance.playerData.resources);
+			Events.OnRefreshResources (Data.Instance.playerData.resources);
 
 			/*int index = Array.IndexOf (Game.Instance.toolsManager.friends, friend);
 			Game.Instance.toolsManager.toolstype [index] = shI.toolName;*/
