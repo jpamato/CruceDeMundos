@@ -1,0 +1,56 @@
+﻿{
+	name:"Mork",
+	level:10,
+	type:"collab",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"irritado",
+					"prompt":"...",
+					replies:[
+						{emoVal:1,exit:false,goTo:1,text:"¿Qué tal? Se te ve irritada.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve confundida.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve ansiosa.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
+					]
+					
+				}				
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"positive",
+					"expre":"ansioso",
+					"prompt":"¡Estoy perdido y necesito llegar a la biblioteca! ¿Saben dónde es?",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"El bombero nos dijo que está en el norte. Espero que te sirva el dato.",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"sí"}]
+				},
+
+				{ 	"mood":"neutral",
+					"expre":"ansioso",
+					"prompt":"¡Estoy perdido y necesito llegar a la biblioteca! ¿Saben dónde es?",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"Lo sabemos pero no se lo diríamos a un desconocido",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"no"}]
+				}
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"saludo",
+					"prompt":"¡Me sirve! Debo reunirme allí con mi hermana.",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"¡Que la encuentres, chau!"}]
+				}
+			]
+		},
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"saludo",
+					"prompt":"",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
+				}
+			]
+		}
+	]
+}
