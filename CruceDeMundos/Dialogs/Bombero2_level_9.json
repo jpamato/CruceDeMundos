@@ -1,0 +1,17 @@
+﻿{
+	name:"Bombero2",
+	level:9,
+	type:"collab",
+	dialogTree:[
+		
+		{index:0,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"sonrisa1",
+					"prompt":"El acceso a la biblioteca está libre. ¡Suerte, chicos!",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Gracias!"}]
+				}				
+			]
+		}
+	]
+}
