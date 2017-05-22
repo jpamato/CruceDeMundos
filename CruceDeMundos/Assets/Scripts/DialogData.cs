@@ -198,15 +198,17 @@ public class DialogData : MonoBehaviour {
 						d.dialogTree [i].moods [j].replies [k].block = 0;
 					}
 
+					LevelData.DialogUnlock du = new LevelData.DialogUnlock ();
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["unlock"] != null) {
 						string s = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["unlock"];
-						string[] ss = s.Split (',');
-						LevelData.DialogUnlock du = new LevelData.DialogUnlock ();
+						string[] ss = s.Split (',');						
 						du.characterName = ss [0];
 						du.goTo = int.Parse (ss [1]);
 						d.dialogTree [i].moods [j].replies [k].dUnlock = du;
 					} else {
-						d.dialogTree [i].moods [j].replies [k].dUnlock = null;
+						du.characterName = "";
+						du.goTo = -1;
+						d.dialogTree [i].moods [j].replies [k].dUnlock = du;
 					}
 
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["obstacle"] != null) {

@@ -161,7 +161,7 @@ public class DialogManager : MonoBehaviour {
 		if (mood.replies [index].block != 0)
 			Events.CharacterBlocking (character.name, mood.replies [index].block);
 
-		if (mood.replies [index].dUnlock != null)
+		if (mood.replies [index].dUnlock.goTo > -1)
 			UnlockDialog (mood.replies [index].dUnlock.characterName, level, mood.replies [index].dUnlock.goTo);
 
 		if (mood.replies [index].oType != "") {
@@ -172,7 +172,6 @@ public class DialogManager : MonoBehaviour {
 			}
 
 		}
-
 
 		chManager.Close ();
 		if (mood.replies [index].exit){
