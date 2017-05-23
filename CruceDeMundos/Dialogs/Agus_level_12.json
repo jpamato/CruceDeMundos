@@ -1,0 +1,26 @@
+﻿{
+	name:"Agustina",
+	level:12,
+	type:"narrative",	
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"entusiasmada",
+					"prompt":"Yo me ocupo de esta antena. ¡Vamos chicos, nosotros podemos!",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Vamos, sí!",friendDisable:"Agus"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"rockera",
+					"prompt":"¿Yo? ¡Siempre!",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Grande, Agus!",levelEnd:true}]
+				}
+			]
+		}
+	]
+}
+

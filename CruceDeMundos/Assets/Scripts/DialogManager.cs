@@ -170,9 +170,11 @@ public class DialogManager : MonoBehaviour {
 				Destroy (go[go.Length-1]);
 				Events.OnObstacleDestroy (mood.replies [index].oType);
 			}
-
 		}
 
+		if (mood.replies [index].friendDisable != "")
+			Game.Instance.toolsManager.DisableFriend(mood.replies [index].friendDisable);
+		
 		chManager.Close ();
 		if (mood.replies [index].exit){
 			Events.DialogDone ();

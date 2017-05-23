@@ -1,0 +1,17 @@
+﻿{
+	name:"Emmanuel",
+	level:12,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"temeroso",
+					"prompt":"Esta es mi antena. Me quedo acá.",
+					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Ánimo, Emma!",friendDisable:"Emmanuel"}]
+				}
+			]
+		}
+
+	]
+}

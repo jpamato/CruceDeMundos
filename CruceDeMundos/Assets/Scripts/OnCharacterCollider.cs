@@ -7,6 +7,7 @@ public class OnCharacterCollider : MonoBehaviour {
 
 	bool trigged;
 	public bool blocking;
+	public bool once;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +40,7 @@ public class OnCharacterCollider : MonoBehaviour {
 	}
 
 	void ResetCharacterCollider(){
+		if(!once)
 		trigged = false;
 	}
 
