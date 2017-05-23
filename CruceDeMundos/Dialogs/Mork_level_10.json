@@ -9,9 +9,9 @@
 					"expre":"irritado",
 					"prompt":"...",
 					replies:[
-						{emoVal:1,exit:false,goTo:1,text:"¿Qué tal? Se te ve irritada.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
-						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve confundida.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
-						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve ansiosa.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
+						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve irritada.",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"irritado (irritado)"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve confundida.",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"confundido (irritado)"},
+						{emoVal:0,exit:false,goTo:1,text:"¿Qué tal? Se te ve ansiosa.",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"ansioso (irritado)"}
 					]
 					
 				}				
@@ -20,16 +20,14 @@
 
 		{index:1,
 			moods:[
-				{ 	"mood":"positive",
-					"expre":"ansioso",
-					"prompt":"¡Estoy perdido y necesito llegar a la biblioteca! ¿Saben dónde es?",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"El bombero nos dijo que está en el norte. Espero que te sirva el dato.",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"sí"}]
-				},
-
 				{ 	"mood":"neutral",
-					"expre":"ansioso",
-					"prompt":"¡Estoy perdido y necesito llegar a la biblioteca! ¿Saben dónde es?",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"Lo sabemos pero no se lo diríamos a un desconocido",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"no"}]
+					"expre":"irritado",
+					"prompt":"¡Estoy irritada! ¿Cómo querés que esté?",
+					replies:[
+					{emoVal:0,exit:false,goTo:2,text:"¡Epa! ¿Por qué estás así?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"sí,sí"},
+					{emoVal:0,exit:false,goTo:2,text:"(Uh, mejor no me meto en esto.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - moderado,no - moderado"},
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué se yo? Pero a mí no me compliques con tus problemas, ¿eh?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"},
+					]
 				}
 			]
 		},
@@ -37,18 +35,22 @@
 		{index:2,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"saludo",
-					"prompt":"¡Me sirve! Debo reunirme allí con mi hermana.",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"¡Que la encuentres, chau!"}]
+					"expre":"preocupado",
+					"prompt":"Perdón, me enojo pero en realidad estoy preocupada. Es que no entiendo lo que pasa ni cómo colaborar.",
+					replies:[
+						{emoVal:0,exit:false,goTo:3,text:"¿Colaborarías apagando  algunos incendios? Así nosotros salimos más rápido y ayudamos a la doctora.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
+						{emoVal:0,exit:true,goTo:2,text:"Tenemos que seguir. Que cada uno se ocupe de lo suyo.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:2,text:"Si no entendés, no hablés. ¡Chau!",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - agresivo"},
+						]
 				}
 			]
 		},
 		{index:3,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"saludo",
-					"prompt":"",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
+					"expre":"excitado",
+					"prompt":" ¡Buena idea! Sería triste perder el conocimiento que duerme en los libros.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Gracias, amiga!",obstacle:"FIRE",move:1}]
 				}
 			]
 		}
