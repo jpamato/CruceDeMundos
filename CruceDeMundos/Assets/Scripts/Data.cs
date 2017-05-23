@@ -26,6 +26,8 @@ public class Data : MonoBehaviour
 	public AudioMixer audioMaster;
 	public bool mute;
 
+	public bool unlockAllLevels;
+
 	private Fade fade;
 
     public static Data Instance

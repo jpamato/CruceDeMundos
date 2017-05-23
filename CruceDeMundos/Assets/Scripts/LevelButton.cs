@@ -19,7 +19,10 @@ public class LevelButton : MonoBehaviour {
 			if (levelNumber == 1) {
 				unlocked.SetActive (true);
 				levelState = PlayerData.Level.LevelState.UNLOCKED;
-			} else {
+			} else if(Data.Instance.unlockAllLevels){
+				unlocked.SetActive (true);
+				levelState = PlayerData.Level.LevelState.UNLOCKED;
+			}else {
 				locked.SetActive (true);
 				levelState = PlayerData.Level.LevelState.LOCKED;
 			}

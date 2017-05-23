@@ -40,6 +40,17 @@
 		{index:3,
 			moods:[
 				{ 	"mood":"neutral",
+					"expre":"neutra",
+					"prompt":"AQUÍ DEBERIA VENIR CINEMÁTICA DONDE SE MUESTRA QUE LAS ANTENAS SE DESACTIVAN Y EL VORTICE CENTRAL CERRANDOSE",
+					replies:[{emoVal:0,exit:false,goTo:4,text:"CONTINUAR"}]
+						
+				}
+			]
+		}
+
+		{index:4,
+			moods:[
+				{ 	"mood":"neutral",
 					"expre":"sonrisa2",
 					"prompt":"¡Lo lograron! ¿qué tal te sentís con lo que hiciste?",
 					replies:[

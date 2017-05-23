@@ -146,7 +146,6 @@ public class ToolsManager : MonoBehaviour {
 	}
 
 	public void DisableFriend(string fn){
-		Debug.Log ("ACA: "+fn);
 		FriendTool ft = Array.Find (friendsTools, p => p.name == fn);
 		if (ft != null) {
 			SetFriendEmpty (ft.friend, false);
