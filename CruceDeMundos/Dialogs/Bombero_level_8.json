@@ -20,8 +20,8 @@
 					"prompt":"Sí, pero les pido un favor. Si me ayudan a apagar al menos un incendio, evitaremos entre todos que haya más derrumbes.",
 					replies:[
 					{emoVal:1,exit:false,goTo:2,text:"Dale, si nos cruzamos con uno, lo apagamos.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:true,goTo:2,text:"Mmmh, lo vamos viendo, no creo que podamos parar para eso.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - moderado,no - moderado"},
-					{emoVal:0,exit:true,goTo:2,text:"Ese es tu trabajo, viejo, nosotros tenemos otro.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - agresivo,no - agresivo"}
+					{emoVal:0,exit:true,goTo:2,text:"Mmmh, lo vamos viendo, no creo que podamos parar para eso.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - moderado,no - moderado",move:1,block:1},
+					{emoVal:0,exit:true,goTo:2,text:"Ese es tu trabajo, viejo, nosotros tenemos otro.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - agresivo,no - agresivo",move:1,block:1}
 					]
 				}				
 			]
@@ -33,17 +33,17 @@
 					"prompt":"Si me ayudan a apagar al menos un incendio, evitaremos entre todos que haya más derrumbes.",
 					replies:[
 					{emoVal:1,exit:false,goTo:2,text:"Dale, si nos cruzamos con uno, lo apagamos.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:true,goTo:2,text:"Mmmh, lo vamos viendo, no creo que podamos parar para eso.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - moderado,no - moderado"},
-					{emoVal:0,exit:true,goTo:2,text:"Ese es tu trabajo, viejo, nosotros tenemos otro.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - agresivo,no - agresivo"}
+					{emoVal:0,exit:true,goTo:2,text:"Mmmh, lo vamos viendo, no creo que podamos parar para eso.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - moderado,no - moderado",move:1,block:1},
+					{emoVal:0,exit:true,goTo:2,text:"Ese es tu trabajo, viejo, nosotros tenemos otro.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"no - agresivo,no - agresivo",move:1,block:1}
 					]
 				},
 				{	"mood":"positive",
 					"expre":"sonrisa1",
 					"prompt":"Entonces, ¿aceptarías que te de una carga extra de matafuegos?",
 					replies:[
-					{emoVal:0,exit:true,goTo:3,text:"No sé si da.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
-					{emoVal:0,exit:true,goTo:3,text:"¡Seguro!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",fireCharge:50},
-					{emoVal:0,exit:true,goTo:3,text:"No va a hacer falta.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
+					{emoVal:0,exit:true,goTo:3,text:"No sé si da.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no",move:1,block:1}
+					{emoVal:0,exit:true,goTo:3,text:"¡Seguro!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",fireCharge:50,move:1,block:1},
+					{emoVal:0,exit:true,goTo:3,text:"No va a hacer falta.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no",move:1,block:1}
 					]
 				}
 			]
