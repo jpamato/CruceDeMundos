@@ -9,8 +9,9 @@
 					"expre":"ansioso",
 					"prompt":"No sé qué hacer.",
 					replies:[
-						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD ",indicVal:"no - moderado,no"},
+						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no - moderado,no"},
 						{emoVal:0,exit:false,goTo:1,text:"Parece que estás en problemas. ¿Podemos ayudarte?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"sí,sí"}
+						{emoVal:0,exit:true,goTo:0,text:"No sé qué te pasa, pero mejor seguimos",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no,no"},
 					]
 					
 				}				

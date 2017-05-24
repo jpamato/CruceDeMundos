@@ -16,7 +16,7 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"neutro",
+					"expre":"cansado",
 					"prompt":"Sí, pero les pido un favor. Si me ayudan a apagar al menos un incendio, evitaremos entre todos que haya más derrumbes.",
 					replies:[
 					{emoVal:1,exit:false,goTo:2,text:"Dale, si nos cruzamos con uno, lo apagamos.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
@@ -29,7 +29,7 @@
 		{index:2,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"neutro",
+					"expre":"cansado",
 					"prompt":"Si me ayudan a apagar al menos un incendio, evitaremos entre todos que haya más derrumbes.",
 					replies:[
 					{emoVal:1,exit:false,goTo:2,text:"Dale, si nos cruzamos con uno, lo apagamos.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
@@ -41,6 +41,7 @@
 					"expre":"sonrisa1",
 					"prompt":"Entonces, ¿aceptarías que te de una carga extra de matafuegos?",
 					replies:[
+					{emoVal:0,exit:true,goTo:3,text:"No sé si da.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
 					{emoVal:0,exit:true,goTo:3,text:"¡Seguro!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",fireCharge:50},
 					{emoVal:0,exit:true,goTo:3,text:"No va a hacer falta.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"}
 					]

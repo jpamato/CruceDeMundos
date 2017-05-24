@@ -26,7 +26,7 @@
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"¿Puedo preguntarte por qué?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"sí,sí"},
 					{emoVal:0,exit:true,goTo:2,text:"(No puedo ocuparme de todo, yo sigo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - moderado,no - moderado"},
-					{emoVal:0,exit:true,goTo:2,text:"Y nosotros estamos ocupadísimos, nena, que es lo que importa.",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"}
+					{emoVal:0,exit:true,goTo:2,text:"No parece... Nosotros estamos ocupadísimos, queremos seguir.",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"}
 					]
 				}				
 			]
@@ -36,7 +36,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupado",
-					"prompt":"No encuentro a mi hijo. Tuvimos un accidente con la nave, y nos separamos.",
+					"prompt":"No encuentro a mi hijo. Tuvimos un accidente con la nave, y nos separamos. ¿Me pueden ayudar?",
 					replies:[
 					{emoVal:1,exit:true,goTo:3,text:"Nosotros somos tres, ya mismo salimos a buscarlo.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
 					{emoVal:0,exit:true,goTo:3,text:"Uh, ahora tenemos otra misión entre manos. Suerte con eso.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},

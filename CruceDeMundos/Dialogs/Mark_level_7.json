@@ -9,6 +9,7 @@
 					"expre":"preocupado",
 					"prompt":"Los ayudaría a limpiar la zona pero necesitaría algún recurso tecnológico para mi antiplasma. ¿Podrán darme uno de los suyos?",
 					replies:[
+						{emoVal:0,exit:true,goTo:0,text:"Mmmm... No estoy Seguro...",rType:"COLABORATIVO,COLABORATIVO",rSType:"COMPARTIR,TODOS",indicVal:"no,no"},
 						{emoVal:0,exit:false,goTo:1,text:"Sí. Tomá un poco.",rType:"EMPATÍA,COLABORATIVO,COLABORATIVO",rSType:"ACCIÓN,COMPARTIR,TODOS",indicVal:"sí,sí,sí"},
 						{emoVal:0,exit:true,goTo:0,text:"Lo lamento pero no. Puede que los necesitemos más adelante.",rType:"EMPATÍA,COLABORATIVO,COLABORATIVO",rSType:"ACCIÓN,COMPARTIR,TODOS",indicVal:"no - moderado,no,no"}
 					]

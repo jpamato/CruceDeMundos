@@ -12,7 +12,7 @@
 					replies:[
 						{emoVal:1,exit:false,goTo:1,text:"¿Podrías decirnos cómo salir?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
 						{emoVal:-1,exit:false,goTo:1,text:"¿Y a mí qué me importa? Decinos algo útil, cómo salir, por ejemplo.",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
-						{emoVal:0,exit:true,goTo:2,text:"Bueno, ya nos arreglaremos.",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"}
+						{emoVal:0,exit:true,goTo:2,text:"Sí, es rara la zona...",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"}
 					]
 				}				
 			]
