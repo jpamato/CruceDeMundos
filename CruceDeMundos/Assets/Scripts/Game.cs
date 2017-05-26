@@ -17,6 +17,10 @@ public class Game : MonoBehaviour {
 	public IngameMusic ingameMusic;
 	public IngameSfx ingameSfx;
 
+	public GameObject fade;
+	[HideInInspector]
+	public float globalGlow;
+
 	public enum states
 	{
 		PAUSED,
@@ -63,6 +67,7 @@ public class Game : MonoBehaviour {
 		ingameSfx = GetComponentInChildren<IngameSfx> ();
 
 
+		FadeIn(2f,true);
 		/*ui.Init();
 		OnGamePaused(false);*/
 	}
@@ -144,5 +149,37 @@ public class Game : MonoBehaviour {
 			state = lastState;
 			Time.timeScale = 1;
 		}
+	}
+
+	public void FadeIn(float seconds, bool pingpong){
+		GameObject f = Instantiate (fade);
+		f.transform.parent = Data.Instance.gameObject.transform;
+		Fade fadeIn = f.GetComponent<Fade> ();
+
+		fadeIn.OnLoopMethod = () => {
+			globalGlow = Mathf.Lerp (0.3f, 1f, fadeIn.time);
+		};
+		fadeIn.OnEndMethod = () => {
+			if(pingpong)
+				FadeOut(seconds,pingpong);
+			fadeIn.Destroy();
+		};
+		fadeIn.StartFadeIn (seconds);
+	}
+
+	public void FadeOut(float seconds, bool pingpong){
+		GameObject f = Instantiate (fade);
+		f.transform.parent = Data.Instance.gameObject.transform;
+		Fade fadeOut = f.GetComponent<Fade> ();
+
+		fadeOut.OnLoopMethod = () => {
+			globalGlow = Mathf.Lerp (0.3f, 1f, fadeOut.time);		
+		};
+		fadeOut.OnEndMethod = () => {
+			if(pingpong)
+				FadeIn(seconds,pingpong);
+			fadeOut.Destroy();
+		};
+		fadeOut.StartFadeOut (seconds);
 	}
 }

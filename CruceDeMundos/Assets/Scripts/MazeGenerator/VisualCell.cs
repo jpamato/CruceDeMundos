@@ -32,6 +32,17 @@ public class VisualCell : MonoBehaviour
 
 	public VisualCell cameFrom;
 
+	Renderer renderer;
+
+	void Start(){
+		renderer = gameObject.GetComponent<Renderer> ();
+	}
+
+	void Update(){
+		if (visited)
+			renderer.material.color = new Color (0, 0.6f, 0, Game.Instance.globalGlow*0.6f);			
+	}
+
 	void OnTriggerEnter2D(Collider2D other) {		
 		if (other.tag == "Player") {
 			if (!enter && Game.Instance.traceManager.freeTrail) {
@@ -75,11 +86,11 @@ public class VisualCell : MonoBehaviour
 	public void SetVisited(bool v){
 		visited = v;
 		if (v) {
-			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0.6f, 0, 0.6f);
+			renderer.material.color = new Color (0, 0.6f, 0, 0.6f);
 			if (deadEnd)
 				visitTimes++;
 		} else {
-			gameObject.GetComponent<Renderer> ().material.color = new Color (0, 0, 0, 0);
+			renderer.material.color = new Color (0, 0, 0, 0);
 			//Events.OnFalseTrail (this,this);
 		}
 	}
