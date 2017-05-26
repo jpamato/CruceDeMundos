@@ -9,7 +9,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"sonrisa1",
-					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ves?",
+					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ves, #Manu?",
 					replies:[
 						{emoVal:0,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
 						{emoVal:0,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
@@ -23,7 +23,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"neutra",
-					"prompt":"¡Equipo, están saliendo de la ciudad! ¿qué tal te sentís con lo hecho hasta ahora?",
+					"prompt":"¡Equipo, están saliendo de la ciudad! #Manu, ¿qué tal te sentís con lo hecho hasta ahora?",
 					replies:[
 						{emoVal:0,exit:true,goTo:0,text:"¡Nací para esto!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
 						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},

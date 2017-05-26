@@ -114,7 +114,7 @@ public class DialogData : MonoBehaviour {
 					d.dialogTree [i].moods [j].replies [k].emoVal = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["emoVal"].AsInt;
 					d.dialogTree [i].moods [j].replies [k].exit = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["exit"].AsBool;
 					d.dialogTree [i].moods [j].replies [k].goTo = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["goTo"].AsInt;
-					d.dialogTree [i].moods [j].replies [k].text = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["text"];
+					d.dialogTree [i].moods [j].replies [k].text = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["text"];
 					
 					string rt = "";
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"] != null) {

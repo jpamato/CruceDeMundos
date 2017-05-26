@@ -8,7 +8,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"neutra",
-					"prompt":"El vórtice se descontrola, ¡encuentra la salida de la biblioteca! ¿Podrás hacerlo?",
+					"prompt":"#Manu, el vórtice se descontrola, ¡encuentra la salida de la biblioteca! ¿Podrás hacerlo?",
 					replies:[
 						{emoVal:1,exit:true,goTo:0,text:"Claro que sí!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
 						{emoVal:0,exit:true,goTo:0,text:"¿La verdad? ¡No sé!",rType:"AUTOEFICACIA",rSType:"JUICIO"},

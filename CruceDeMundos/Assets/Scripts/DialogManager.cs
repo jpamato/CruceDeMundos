@@ -7,7 +7,7 @@ public class DialogManager : MonoBehaviour {
 
 	public CharacterManager chManager;
 	public Image charImage;
-	public Text charName;
+	//public Text charName;
 
 	public Text charText;
 	public Text[] ansText;
@@ -37,7 +37,7 @@ public class DialogManager : MonoBehaviour {
 			character = Array.Find (Data.Instance.dialogData.dialogCharacters, p => p.name == dialog.name);
 			//charImage.sprite = character.sprite;
 			chManager.SetCharacter (character.visualization);
-			charName.text = character.name;
+			//charName.text = character.name;
 			LoadDialog ();
 			return true;
 		} else {
@@ -52,7 +52,7 @@ public class DialogManager : MonoBehaviour {
 			character = Array.Find (Data.Instance.dialogData.dialogCharacters, p => p.name == dialog.name);
 			//charImage.sprite = character.sprite;
 			chManager.SetCharacter (character.visualization);
-			charName.text = character.name;
+			//charName.text = character.name;
 			LoadDialog ();
 			return true;
 		} else {
@@ -65,7 +65,7 @@ public class DialogManager : MonoBehaviour {
 		character = Array.Find(Data.Instance.dialogData.dialogCharacters, p => p.name == characterName);
 		//charImage.sprite = character.sprite;
 		chManager.SetCharacter(character.visualization);
-		charName.text = character.name;
+		//charName.text = character.name;
 
 		dialog = Data.Instance.dialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
 
@@ -93,7 +93,7 @@ public class DialogManager : MonoBehaviour {
 			chManager.SetAnimation (levelInfo.lastExpre);
 
 
-		charText.text = mood.prompt;
+		charText.text = mood.prompt.Replace("#Manu",Data.Instance.userName);
 		for (int i = 0; i < mood.replies.Length; i++) {
 			ansText [i].text = mood.replies [i].text;
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;

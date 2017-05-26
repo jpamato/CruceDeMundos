@@ -8,7 +8,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupada1",
-					"prompt":"Bueno, ¿qué decís? ¿Te sentís capaz de apagar ese incendio?",
+					"prompt":"Bueno, ¿qué decís, #Manu? ¿Te sentís capaz de apagar ese incendio?",
 					replies:[						
 						{emoVal:0,exit:false,goTo:1,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
 						{emoVal:-1,exit:false,goTo:1,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"},
