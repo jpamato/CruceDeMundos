@@ -35,7 +35,8 @@ public class ToolsManager : MonoBehaviour {
 			if (friendsTools[i].toolName == tType.ToString()) {
 				friendsTools [i].hasCharge = true;
 				HealthBar healthBar = friendsTools[i].friend.GetComponentInChildren<HealthBar>();
-				healthBar.CurrentHealth = Mathf.Min(healthBar.currentHealth+charge, 100);
+				//healthBar.CurrentHealth = Mathf.Min(healthBar.currentHealth+charge, 100);
+				healthBar.SetHealth(Mathf.Min(healthBar.currentHealth+charge, 100),3f);
 			}
 		}
 	}

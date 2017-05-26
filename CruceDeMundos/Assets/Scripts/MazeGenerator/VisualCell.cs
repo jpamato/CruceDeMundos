@@ -40,7 +40,7 @@ public class VisualCell : MonoBehaviour
 
 	void Update(){
 		if (visited)
-			renderer.material.color = new Color (0, 0.6f, 0, Game.Instance.globalGlow*0.6f);			
+			renderer.material.color = new Color (0, 0.6f, 0, Game.Instance.globalGlow*0.6f);
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {		
