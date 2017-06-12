@@ -54,14 +54,14 @@ public class CharShop : MonoBehaviour {
 			
 			itemButtons [itemN].GetComponent<Button> ().targetGraphic.color = Color.white;
 
-			Transform tool = friend.transform.FindChild (shI.toolName.ToString ());
+			Transform tool = friend.transform.Find (shI.toolName.ToString ());
 			if (!tool.gameObject.activeSelf) {
 				//System.Enum.GetValues (PlayerData.ToolName.Matafuegos);
 				string[] ttypes = System.Enum.GetNames(typeof(PlayerData.ToolName));
 				for (int i = 0; i < ttypes.Length; i++) {
 					if (ttypes [i].Equals (shI.toolName.ToString ())) {
 						tool.gameObject.SetActive (true);
-						GameObject hb = friend.transform.FindChild ("HealthBar").gameObject;
+						GameObject hb = friend.transform.Find ("HealthBar").gameObject;
 						hb.SetActive (true);
 						if (ttypes[i].Equals (PlayerData.ToolName.Restaurador.ToString ())) {							
 							hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
@@ -72,9 +72,9 @@ public class CharShop : MonoBehaviour {
 						}
 
 
-						friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
+						friend.transform.Find ("HealthBarBackground").gameObject.SetActive (true);
 					} else {
-						friend.transform.FindChild (ttypes [i]).gameObject.SetActive (false);
+						friend.transform.Find (ttypes [i]).gameObject.SetActive (false);
 					}
 				}
 			}

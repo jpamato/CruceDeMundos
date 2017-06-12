@@ -35,7 +35,7 @@ public class MoveEnemy : MonoBehaviour {
 	private void RotateIntoMoveDirection(float x, float y) {		
 		if (x != 0f || y != 0f) {
 			float rotationAngle = Mathf.Atan2 (y, x) * 180 / Mathf.PI;
-			GameObject sprite = (GameObject)gameObject.transform.FindChild("Sprite").gameObject;
+			GameObject sprite = (GameObject)gameObject.transform.Find("Sprite").gameObject;
 			sprite.transform.rotation = Quaternion.Euler(0f,0f,rotationAngle);
 		}
 

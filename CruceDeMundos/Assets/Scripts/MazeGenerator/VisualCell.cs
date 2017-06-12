@@ -122,21 +122,21 @@ public class VisualCell : MonoBehaviour
 		wall.gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = true;
 		//wall.GetComponent<Renderer> ().material.color = Color.white;
-		wall.transform.FindChild ("fire").gameObject.SetActive (false);
-		wall.transform.FindChild ("portal").gameObject.SetActive (false);
+		wall.transform.Find ("fire").gameObject.SetActive (false);
+		wall.transform.Find ("portal").gameObject.SetActive (false);
 
 	}
 	void MakeFire(Transform wall){
 		wall.gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = false;
-		wall.transform.FindChild ("fire").gameObject.SetActive (true);
-		wall.transform.FindChild ("portal").gameObject.SetActive (false);
+		wall.transform.Find ("fire").gameObject.SetActive (true);
+		wall.transform.Find ("portal").gameObject.SetActive (false);
 	}
 	void MakePortal(Transform wall){
 		wall.gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = false;
-		wall.transform.FindChild ("fire").gameObject.SetActive (false);
-		wall.transform.FindChild ("portal").gameObject.SetActive (true);
+		wall.transform.Find ("fire").gameObject.SetActive (false);
+		wall.transform.Find ("portal").gameObject.SetActive (true);
 	}
 
 	void MakeIn(Transform wall){
@@ -158,28 +158,28 @@ public class VisualCell : MonoBehaviour
 	void MuteNeighbor(Transform source){
 		if (source.gameObject.name.Equals ("East")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild ((int.Parse (coord [0]) + 1) + "_" + coord [1]);
+			Transform parent = source.transform.parent.transform.parent.Find ((int.Parse (coord [0]) + 1) + "_" + coord [1]);
 			if (parent != null) {
 				parent.transform.Find ("West").gameObject.SetActive(false);
 				parent.GetComponent<VisualCell> ().westState = WallState.INVISIBLE;
 			}			
 		} else if (source.gameObject.name.Equals ("West")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild ((int.Parse (coord [0]) - 1) + "_" + coord [1]);
+			Transform parent = source.transform.parent.transform.parent.Find ((int.Parse (coord [0]) - 1) + "_" + coord [1]);
 			if (parent != null) {
 				parent.transform.Find ("East").gameObject.SetActive(false);
 				parent.GetComponent<VisualCell> ().eastState = WallState.INVISIBLE;
 			}
 		} else if (source.gameObject.name.Equals ("North")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) - 1));
+			Transform parent = source.transform.parent.transform.parent.Find (coord [0] + "_" + (int.Parse (coord [1]) - 1));
 			if (parent != null) {
 				parent.transform.Find ("South").gameObject.SetActive(false);
 				parent.GetComponent<VisualCell> ().southState = WallState.INVISIBLE;
 			}
 		} else if (source.gameObject.name.Equals ("South")) {
 			string[] coord = source.transform.parent.name.Split ('_');
-			Transform parent = source.transform.parent.transform.parent.FindChild (coord [0] + "_" + (int.Parse (coord [1]) + 1));
+			Transform parent = source.transform.parent.transform.parent.Find (coord [0] + "_" + (int.Parse (coord [1]) + 1));
 			if (parent != null) {
 				parent.transform.Find ("North").gameObject.SetActive(false);
 				parent.GetComponent<VisualCell> ().northState = WallState.INVISIBLE;
