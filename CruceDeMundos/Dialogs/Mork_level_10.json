@@ -26,7 +26,7 @@
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"¡Epa! ¿Por qué estás así?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"sí,sí"},
 					{emoVal:0,exit:false,goTo:2,text:"(Uh, mejor no me meto en esto.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - moderado,no - moderado"},
-					{emoVal:0,exit:false,goTo:2,text:"¿Qué se yo? Pero a mí no me compliques con tus problemas, ¿eh?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"},
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué se yo?A mí no me compliques, ¡¿eh?!",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,INTERÉS",indicVal:"no - agresivo,no - agresivo"},
 					]
 				}
 			]
@@ -36,11 +36,11 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupado",
-					"prompt":"Perdón, me enojo pero en realidad estoy preocupada. Es que no entiendo lo que pasa ni cómo colaborar.",
+					"prompt":"¡Perdón, quiero frenar este desastre y no sé qué hacer!",
 					replies:[
-						{emoVal:0,exit:false,goTo:3,text:"¿Colaborarías apagando  algunos incendios? Así nosotros salimos más rápido y ayudamos a la doctora.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:3,text:"¿Podrías apagar algunos incendios? Así llegamos más rápido...",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
 						{emoVal:0,exit:true,goTo:2,text:"Tenemos que seguir. Que cada uno se ocupe de lo suyo.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - moderado"},
-						{emoVal:0,exit:true,goTo:2,text:"Si no entendés, no hablés. ¡Chau!",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - agresivo"},
+						{emoVal:0,exit:true,goTo:2,text:"Si no sabés, no hablés. ¡Chau!",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - agresivo"},
 						]
 				}
 			]

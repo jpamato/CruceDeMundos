@@ -28,18 +28,13 @@
 					"prompt":"¡Sí! Me siento muy triste",
 					replies:[						
 						{emoVal:0,exit:false,goTo:3,text:"¿Triste? ¡Andáááá, salame!",rType:"ASERTIVIDAD,EMPATÍA",rSType:"INTERÉS,ACCIÓN",indicVal:"no - agresión,no"},
-						{emoVal:0,exit:false,goTo:2,text:"(...No me interesa, mejor sigo)",rType:"ASERTIVIDAD,EMPATÍA",rSType:"INTERÉS,ACCIÓN",indicVal:"no - moderado,moderado"},
+						{emoVal:0,exit:false,goTo:3,text:"(...No me interesa, mejor sigo)",rType:"ASERTIVIDAD,EMPATÍA",rSType:"INTERÉS,ACCIÓN",indicVal:"no - moderado,moderado"},
 						{emoVal:1,exit:false,goTo:2,text:"¿Por qué estás triste?",rType:"ASERTIVIDAD,EMPATÍA",rSType:"INTERÉS,ACCIÓN",indicVal:"sí,sí"}]
 				}
 			]
 		},
 		{index:2,
 			moods:[	
-				{	"mood":"neutral",
-					"prompt":"Perdón, ¿dijiste algo?",
-					replies:[{emoVal:0,exit:false,goTo:3,text:"No hablé, estaba pensando nomás."}]
-				},
-			
 				{	"mood":"positive",
 					"prompt":"Porque no sé cuándo volveré a casa y extraño a los míos.",
 					replies:[						

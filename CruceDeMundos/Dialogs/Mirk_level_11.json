@@ -9,9 +9,9 @@
 					"expre":"alegre",
 					"prompt":"...",
 					replies:[
-						{emoVal:0,exit:false,goTo:1,text:"Da la impresión de que en medio de esta catástrofe estás alegre",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"alegre (alegre)"},
-						{emoVal:0,exit:false,goTo:1,text:"Da la impresión de que en medio de esta catástrofe estás irritado",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"irritado (alegre)"},
-						{emoVal:0,exit:false,goTo:1,text:"Da la impresión de que en medio de esta catástrofe estás confundido",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"confundido (alegre)"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás alegre",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"alegre (alegre)"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás aliviado",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"aliviado (alegre)"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás relajado",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"relajado (alegre)"},
 					]
 				}				
 			]

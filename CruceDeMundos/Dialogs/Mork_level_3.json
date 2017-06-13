@@ -22,8 +22,9 @@
 					"expre":"confundido",
 					"prompt":"Debo llevar a los míos un solo recurso tecnológico y no sé cómo conseguirlo.",
 					replies:[
-						{emoVal:1,exit:false,goTo:2,text:"Nosotros tenemos RT. Podemos darte un poco.",rType:"COLABORATIVO,EMPATÍA",rSType:"COMPARTIR,ACCIÓN",indicVal:"sí,sí"},
-						{emoVal:0,exit:false,goTo:2,text:"Nosotros tenemos RT pero no podemos darte.",rType:"COLABORATIVO,EMPATÍA",rSType:"COMPARTIR,ACCIÓN",indicVal:"no,no - moderado"}
+						{emoVal:1,exit:false,goTo:2,text:"Nosotros tenemos RT. Podemos darte un poco.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:2,text:"Nosotros tenemos RT pero no podemos darte.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+						{emoVal:0,exit:false,goTo:2,text:"Correte de nuestro camino que que queremos seguir.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"}
 					]
 				}
 			]

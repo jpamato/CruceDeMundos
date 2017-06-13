@@ -7,7 +7,7 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"neutro",
+					"expre":"cansado",
 					"prompt":"Chicos, no se puede cruzar el puente por acá, hay peligro de derrumbe.",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"Deberemos encontrar otro camino, entonces."}]
 				}				

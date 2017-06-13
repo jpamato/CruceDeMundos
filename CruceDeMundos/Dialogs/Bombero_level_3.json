@@ -7,7 +7,7 @@
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"cansado",
+					"expre":"neutro",
 					"prompt":"Ustedes son los ayudantes de la doctora, ¿no?",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"Sí, vamos al puerto. ¿De dónde podemos sacar combustible para una lancha?"}]
 				}				
@@ -42,7 +42,7 @@
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"cansado",
+					"expre":"neutro",
 					"prompt":"¿Y? ¿Qué hay con ese fuego?",
 					replies:[{emoVal:0,exit:true,goTo:3,text:"Ah, sí"}]
 				}				
@@ -64,6 +64,7 @@
 					replies:[
 					{emoVal:0,exit:true,goTo:6,text:"Qué bien, un tema menos. ¡Saludos a los muchachos!",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
 					{emoVal:0,exit:true,goTo:6,text:"No confío en que puedas solo. Si encuentro uno, lo apago.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"},
+					{emoVal:0,exit:true,goTo:6,text:"Mmm no sé si confiar en que puedas solo... Veo si apago alguno.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no - moderado"}
 					]
 				}				
 			]
