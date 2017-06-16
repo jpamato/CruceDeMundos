@@ -177,11 +177,11 @@ public class MazeGenerator : MonoBehaviour
 			visualCellInst.transform.parent = transform;
 			if (N ["Maze"] [i] ["north"] + "" == "FIRE") {
 				visualCellInst._North.gameObject.SetActive (true);
-				visualCellInst._North.FindChild ("fire").gameObject.SetActive (true);
+				visualCellInst._North.Find ("fire").gameObject.SetActive (true);
 				visualCellInst.northState = VisualCell.WallState.FIRE;
 			} else if (N ["Maze"] [i] ["north"] + "" == "PORTAL") {
 				visualCellInst._North.gameObject.SetActive (true);
-				visualCellInst._North.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst._North.Find ("portal").gameObject.SetActive (true);
 				visualCellInst.northState = VisualCell.WallState.PORTAL;
 			} else if (N ["Maze"] [i] ["north"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
@@ -216,11 +216,11 @@ public class MazeGenerator : MonoBehaviour
 
 			if (N ["Maze"] [i] ["south"] + "" == "FIRE") {
 				visualCellInst._South.gameObject.SetActive (true);
-				visualCellInst._South.FindChild ("fire").gameObject.SetActive (true);
+				visualCellInst._South.Find ("fire").gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.FIRE;
 			} else if (N ["Maze"] [i] ["south"] + "" == "PORTAL") {
 				visualCellInst._South.gameObject.SetActive (true);
-				visualCellInst._South.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst._South.Find ("portal").gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["south"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
@@ -257,11 +257,11 @@ public class MazeGenerator : MonoBehaviour
 			
 			if (N ["Maze"] [i] ["east"] + "" == "FIRE") {				
 				visualCellInst._East.gameObject.SetActive (true);
-				visualCellInst._East.FindChild ("fire").gameObject.SetActive (true);
+				visualCellInst._East.Find ("fire").gameObject.SetActive (true);
 				visualCellInst.eastState = VisualCell.WallState.FIRE;
 			} else if (N ["Maze"] [i] ["east"] + "" == "PORTAL") {				
 				visualCellInst._East.gameObject.SetActive (true);
-				visualCellInst._East.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst._East.Find ("portal").gameObject.SetActive (true);
 				visualCellInst.eastState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["east"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
@@ -298,11 +298,11 @@ public class MazeGenerator : MonoBehaviour
 
 			if (N ["Maze"] [i] ["west"] + "" == "FIRE") {
 				visualCellInst._West.gameObject.SetActive (true);
-				visualCellInst._West.FindChild ("fire").gameObject.SetActive (true);
+				visualCellInst._West.Find ("fire").gameObject.SetActive (true);
 				visualCellInst.westState = VisualCell.WallState.FIRE;
 			} else if (N ["Maze"] [i] ["west"] + "" == "PORTAL") {
 				visualCellInst._West.gameObject.SetActive (true);
-				visualCellInst._West.FindChild ("portal").gameObject.SetActive (true);
+				visualCellInst._West.Find ("portal").gameObject.SetActive (true);
 				visualCellInst.westState = VisualCell.WallState.PORTAL;
 			}else if (N ["Maze"] [i] ["west"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;

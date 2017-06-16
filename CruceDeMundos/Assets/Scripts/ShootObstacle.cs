@@ -30,7 +30,7 @@ public class ShootObstacle : MonoBehaviour {
 		toolData = gameObject.GetComponentInChildren<ToolData> ();
 		tool = gameObject.GetComponent<ToolData> ().CurrentLevel.visualization;
 
-		healthBar = transform.parent.FindChild("HealthBar").gameObject.GetComponent<HealthBar>();
+		healthBar = transform.parent.Find("HealthBar").gameObject.GetComponent<HealthBar>();
 
 		source = GetComponent<AudioSource> ();
 	}

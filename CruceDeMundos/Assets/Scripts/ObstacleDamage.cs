@@ -79,7 +79,7 @@ public class ObstacleDamage : MonoBehaviour {
 	}
 
 	void Shoot(GameObject target) {
-		Transform healthBarTransform = target.transform.parent.FindChild("HealthBar");
+		Transform healthBarTransform = target.transform.parent.Find("HealthBar");
 		HealthBar healthBar = 
 			healthBarTransform.gameObject.GetComponent<HealthBar>();
 		healthBar.CurrentHealth = Mathf.Max(healthBar.currentHealth-obstacleData.CurrentLevel.damage, 0);

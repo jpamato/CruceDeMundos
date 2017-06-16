@@ -45,15 +45,15 @@ public class ToolsManager : MonoBehaviour {
 		FriendTool ft = Array.Find (friendsTools, p => p.toolName == "");
 		if (ft == null) {
 			ft = friendsTools [0];
-			Transform t = ft.friend.transform.FindChild (ft.toolName);
+			Transform t = ft.friend.transform.Find (ft.toolName);
 			t.gameObject.SetActive (false);
 		}
 
 
-		Transform tool = ft.friend.transform.FindChild (tType.ToString ());
+		Transform tool = ft.friend.transform.Find (tType.ToString ());
 		if (!tool.gameObject.activeSelf) {
 			tool.gameObject.SetActive (true);
-			GameObject hb = ft.friend.transform.FindChild ("HealthBar").gameObject;
+			GameObject hb = ft.friend.transform.Find ("HealthBar").gameObject;
 			hb.SetActive (true);
 			if (tType.ToString().Equals (PlayerData.ToolName.Restaurador.ToString ())) {							
 				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().portalEnergy;
@@ -63,7 +63,7 @@ public class ToolsManager : MonoBehaviour {
 				hb.GetComponent<SpriteRenderer> ().sprite = hb.GetComponent<HealthBar> ().pollutionEnergy;
 			}
 
-			ft.friend.transform.FindChild ("HealthBarBackground").gameObject.SetActive (true);
+			ft.friend.transform.Find ("HealthBarBackground").gameObject.SetActive (true);
 			SetTool (ft, tType.ToString (), 0);
 			Data.Instance.playerData.toolsNumber++;
 		}
