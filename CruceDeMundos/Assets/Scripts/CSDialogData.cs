@@ -1,0 +1,432 @@
+﻿using UnityEngine;
+using System.Collections;
+using System;
+using System.Collections.Generic;
+using SimpleJSON;
+using System.IO;
+
+public class CSDialogData : MonoBehaviour {
+
+	public bool sendDialogs2Database;
+	public DialogCharacter[] dialogCharacters;
+	public List<Dialog> dialogs;
+
+	public string PATH = "/Resources/Dialogs";
+
+	void Start () {
+		dialogs = new List<Dialog> ();
+		#if UNITY_EDITOR
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_WIN
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Application.dataPath).FullName+PATH);
+		#elif UNITY_STANDALONE_OSX
+		DirectoryInfo dir = new DirectoryInfo(Directory.GetParent(Directory.GetParent(Application.dataPath).FullName).FullName+PATH);
+		#endif
+
+		FileInfo[] info = dir.GetFiles("*.json");
+		foreach (FileInfo f in info) {
+		StartCoroutine(Import(f.FullName));
+		}
+		//foreach (string file in System.IO.Directory.GetFiles(Application.dataPath+PATH)){}
+		}
+
+		[Serializable]
+		public class DialogCharacter
+		{
+		public string name;
+		public GameObject visualization;
+		public int lastEmoVal;
+		public int globalEmoVal;
+		public List<LevelInfo> levelsInfo;
+
+		[Serializable]
+		public class LevelInfo{
+		public int level;
+		public int emoval;
+		public int goTo;
+		public string lastExpre;
+		public Dialog.dType dtype;
+		}
+
+		public void ResetLevel(int level){
+		LevelInfo l = levelsInfo.Find (x => x.level == level);
+		if (l != null) {
+		l.emoval = 0;
+		l.goTo = 0;
+		}
+		}
+
+		public void ResetType(int level, Dialog.dType dtype){
+		LevelInfo l = levelsInfo.Find (x => x.level == level && x.dtype == dtype);
+		if (l != null) {
+		l.emoval = 0;
+		l.goTo = 0;
+		}
+		}
+		}
+
+		public void ResetAllAtLevel(int level){
+		foreach (DialogCharacter dch in dialogCharacters)
+		dch.ResetLevel (level);
+		}
+
+		public void ResetHintAtLevel(int level){
+		foreach (DialogCharacter dch in dialogCharacters) {
+		dch.ResetType (level, Dialog.dType.AUTOEVAL);
+		dch.ResetType (level, Dialog.dType.COLLAB);
+		}
+		}
+
+		IEnumerator Import(string file){
+
+		/*string filePath = "Dialogs/" + file.Replace (".json", "");
+		TextAsset text = Resources.Load<TextAsset> (filePath);*/
+
+		WWW www = new WWW("file://" + file);
+		yield return www;
+		string text = www.text;
+
+		//Debug.Log (text);
+		var N = JSON.Parse (text);
+
+		Dialog d = new Dialog ();
+		d.name = N ["name"];
+		d.level = N ["level"].AsInt;
+		d.dialogType = CastDialogType(N["type"]);
+		d.initial = N ["initial"] != null ? N ["initial"].AsBool : false;
+		d.final = N ["final"] != null ? N ["final"].AsBool : false;
+		d.dialogTree = new Dialog.DialogTree[N ["dialogTree"].Count];
+		for (int i = 0; i < d.dialogTree.Length; i++) {
+		d.dialogTree[i] = new Dialog.DialogTree();
+		d.dialogTree [i].index = N ["dialogTree"] [i] ["index"].AsInt;
+		d.dialogTree [i].moods = new Dialog.Mood[N ["dialogTree"] [i] ["moods"].Count];
+		for (int j = 0; j < d.dialogTree [i].moods.Length; j++) {
+		d.dialogTree [i].moods [j] = new Dialog.Mood ();
+		d.dialogTree [i].moods [j].mType = CastMoodType (N ["dialogTree"] [i] ["moods"] [j] ["mood"]);
+		d.dialogTree [i].moods [j].prompt = N ["dialogTree"] [i] ["moods"] [j] ["prompt"];
+		if (N ["dialogTree"] [i] ["moods"] [j] ["expre"] != null)
+		d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"];
+		else
+		d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"] = "";
+		d.dialogTree [i].moods [j].replies = new Dialog.Reply[N ["dialogTree"] [i] ["moods"] [j] ["replies"].Count];
+		for (int k = 0; k < d.dialogTree [i].moods [j].replies.Length; k++) {
+		d.dialogTree [i].moods [j].replies [k] = new Dialog.Reply ();
+		d.dialogTree [i].moods [j].replies [k].emoVal = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["emoVal"].AsInt;
+		d.dialogTree [i].moods [j].replies [k].exit = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["exit"].AsBool;
+		d.dialogTree [i].moods [j].replies [k].goTo = N ["dialogTree"] [i] ["moods"] [j] ["replies"][k]["goTo"].AsInt;
+		d.dialogTree [i].moods [j].replies [k].text = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["text"];
+
+		string rt = "";
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"] != null) {
+		d.dialogTree [i].moods [j].replies [k].replyType = CastReplyType (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"]);
+		rt = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"];
+		rt = rt.Replace (",", ";\n");
+		}
+		/*else
+		d.dialogTree [i].moods [j].replies [k].replyType = Dialog.Reply.rType.NARRATIVO;*/
+
+		string rst = "";
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"] != null) {
+		d.dialogTree [i].moods [j].replies [k].replySubType = CastReplySubType (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"]);
+		rst = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"];
+		rst = rst.Replace (",", ";\n");
+		}
+		/*else
+		d.dialogTree [i].moods [j].replies [k].replySubType = Dialog.Reply.rSubType.NARRATIVO;*/
+
+		string iv = "";
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"] != null) {
+		iv = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"];
+		d.dialogTree [i].moods [j].replies [k].indicadorVal = iv.Split(',');
+		iv = iv.Replace (",", ";\n");
+		}/*else
+		d.dialogTree [i].moods [j].replies [k].indicadorVal ="";*/
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"] != null)
+		d.dialogTree [i].moods [j].replies [k].resources = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["resources"].AsInt;
+		else
+		d.dialogTree [i].moods [j].replies [k].resources = 0;
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["fireCharge"] != null)
+		d.dialogTree [i].moods [j].replies [k].fireCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["fireCharge"].AsInt;
+		else
+		d.dialogTree [i].moods [j].replies [k].fireCharge = 0;
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["portalCharge"] != null)
+		d.dialogTree [i].moods [j].replies [k].portalCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["portalCharge"].AsInt;
+		else
+		d.dialogTree [i].moods [j].replies [k].portalCharge = 0;
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["pollutionCharge"] != null)
+		d.dialogTree [i].moods [j].replies [k].pollutionCharge = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["pollutionCharge"].AsInt;
+		else
+		d.dialogTree [i].moods [j].replies [k].pollutionCharge = 0;
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["tool"] != null) {
+		d.dialogTree [i].moods [j].replies [k].tool = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["tool"];
+		} else {
+		d.dialogTree [i].moods [j].replies [k].tool = "";
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["objective"] != null) {
+		d.dialogTree [i].moods [j].replies [k].objective = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["objective"].AsBool;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].objective = false;
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["dialog"] != null) {
+		d.dialogTree [i].moods [j].replies [k].dialog = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["dialog"];
+		} else {
+		d.dialogTree [i].moods [j].replies [k].dialog = "";
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelEnd"] != null) {
+		d.dialogTree [i].moods [j].replies [k].levelEndDialog = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelEnd"].AsBool;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].levelEndDialog = false;
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["move"] != null) {
+		d.dialogTree [i].moods [j].replies [k].move = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["move"].AsInt;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].move = -1;
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["block"] != null) {
+		d.dialogTree [i].moods [j].replies [k].block = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["block"].AsInt;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].block = 0;
+		}
+
+		LevelData.DialogUnlock du = new LevelData.DialogUnlock ();
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["unlock"] != null) {
+		string s = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["unlock"];
+		string[] ss = s.Split (',');						
+		du.characterName = ss [0];
+		du.goTo = int.Parse (ss [1]);
+		d.dialogTree [i].moods [j].replies [k].dUnlock = du;
+		} else {
+		du.characterName = "";
+		du.goTo = -1;
+		d.dialogTree [i].moods [j].replies [k].dUnlock = du;
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["obstacle"] != null) {
+		d.dialogTree [i].moods [j].replies [k].oType = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["obstacle"];
+		} else {
+		d.dialogTree [i].moods [j].replies [k].oType = "";
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["friendDisable"] != null)
+		d.dialogTree [i].moods [j].replies [k].friendDisable = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["friendDisable"];
+		else
+		d.dialogTree [i].moods [j].replies [k].friendDisable = "";
+
+		if (sendDialogs2Database) {
+		Debug.Log ("aca");						
+		StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
+		d.dialogType.ToString (),d.dialogTree [i].moods [j].mType.ToString(), d.dialogTree [i].moods [j].prompt,
+		k, d.dialogTree [i].moods [j].replies [k].text,rt,rst,iv));
+		}
+		}				
+		}			
+		}
+		dialogs.Add (d);
+		}
+
+		[Serializable]
+		public class Dialog
+		{
+		public enum dType
+		{
+		AUTOEVAL,
+		NARRATIVE,
+		COLLAB,
+		ET,			
+		HUMAN			
+		}
+		public string name;
+		public int level;
+		public dType dialogType;
+		public bool initial;
+		public bool final;
+		public DialogTree[] dialogTree;
+
+		[Serializable]
+		public class DialogTree
+		{
+		public int index;
+		public Mood[] moods;
+
+		}
+		[Serializable]
+		public class Mood
+		{
+		public enum moodType
+		{
+		NEGATIVE,
+		NEUTRAL,
+		POSITIVE
+		}
+		public moodType mType;
+		public string expre;
+		public string prompt;
+		public Reply[] replies;
+
+		}
+		[Serializable]
+		public class Reply{
+		public int emoVal;
+		public bool exit;
+		public int goTo;
+		public string text;
+		public List<rType> replyType;
+		public List<rSubType> replySubType;
+		public string[] indicadorVal;
+		public int resources;
+		public int fireCharge;
+		public int portalCharge;
+		public int pollutionCharge;
+		public string tool;
+		public bool objective;
+		public string dialog;
+		public bool levelEndDialog;
+		public int move;
+		public int block;
+		public LevelData.DialogUnlock dUnlock;
+		public string oType;
+		public string friendDisable;
+
+		public enum rType
+		{
+		NARRATIVO,
+
+		ASERTIVIDAD,
+		AUTOEFICACIA,			
+		COLABORATIVO,		
+		EMPATÍA			
+		}
+
+		public enum rSubType{
+		NARRATIVO,
+
+		//asertividad
+		PROACTIVIDAD,
+		INTERÉS,
+		PEDIDO,
+		NEGARSE,
+
+		//autoeficacia
+		JUICIO,
+		AUTOPERCEPCIÓN,
+
+		//colaborativo
+		COMPARTIR,
+		ACEPTAR,
+		CONFIANZA,
+		TODOS,
+
+		//empatía
+		RECONOCIMIENTO,
+		ACCIÓN				
+		}	
+		}
+
+		}
+
+		Dialog.Mood.moodType CastMoodType(string s){
+		return (Dialog.Mood.moodType)System.Enum.Parse(typeof(Dialog.Mood.moodType), s.ToUpperInvariant());
+		/*if(s.Equals("negative"))
+		return Dialog.Mood.moodType.NEGATIVE;
+		else if(s.Equals("neutral"))
+		return Dialog.Mood.moodType.NEUTRAL;
+		else if(s.Equals("positive"))
+		return Dialog.Mood.moodType.POSITIVE;	
+		else
+		return Dialog.Mood.moodType.NEUTRAL;*/
+		}
+
+		Dialog.dType CastDialogType(string s){
+		return (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), s.ToUpperInvariant());
+		/*if(s.Equals("et"))
+		return Dialog.dType.ET;
+		else if(s.Equals("hint"))
+		return Dialog.dType.HINT;
+		else if(s.Equals("human"))
+		return Dialog.dType.HUMAN;
+		else
+		return Dialog.dType.ET;*/
+		}
+
+
+		List<Dialog.Reply.rType> CastReplyType(string s){
+		List<Dialog.Reply.rType> l = new List<Dialog.Reply.rType> ();
+		string[] sl = s.Split (',');
+		foreach (string st in sl)
+		l.Add ((Dialog.Reply.rType)System.Enum.Parse (typeof(Dialog.Reply.rType), st.ToUpperInvariant ()));
+		return l;
+		}
+
+		List<Dialog.Reply.rSubType> CastReplySubType(string s){
+		List<Dialog.Reply.rSubType> l = new List<Dialog.Reply.rSubType> ();
+		string[] sl = s.Split (',');
+		foreach (string st in sl)
+		l.Add ((Dialog.Reply.rSubType )System.Enum.Parse(typeof(Dialog.Reply.rSubType), st.ToUpperInvariant()));
+		return l;
+		}
+
+		/*List<string> CastReplyIndicVal(string s){
+		List<string> l = new List<string> ();
+		string[] sl = s.Split (",");
+		Debug.Log (sl);
+		foreach (string st in sl)
+		l.Add (sl);
+		return l;
+		}*/
+
+		public string GetDialogData(){
+		string json = "dialogData:[\n";
+		for (int i = 0; i < dialogCharacters.Length; i++) {
+		json += "{\n";
+		json += "name:"+dialogCharacters[i].name+",\n";
+		json += "lastEmoVal:"+dialogCharacters[i].lastEmoVal+",\n";
+		json += "globalEmoVal:"+dialogCharacters[i].globalEmoVal+",\n";
+		json += "levelsInfo:[";
+		for (int j = 0; j < dialogCharacters [i].levelsInfo.Count; j++) {
+		json += "{";
+		json += "level:" + dialogCharacters [i].levelsInfo [j].level+",";
+		json += "emoval:" + dialogCharacters [i].levelsInfo [j].emoval+",";
+		json += "goTo:" + dialogCharacters [i].levelsInfo [j].goTo+",";
+		json += "lastExpre:" + dialogCharacters [i].levelsInfo [j].lastExpre+",";
+		json += "dtype:" + dialogCharacters [i].levelsInfo [j].dtype;
+		json += "}";
+		if(j<dialogCharacters [i].levelsInfo.Count-1)
+		json += ",";
+		}
+		json += "]\n}";
+		if(i<dialogCharacters.Length-1)
+		json += ",\n";
+		}
+		json += "]\n";
+
+		return json;
+		}
+
+		public void SetDialogData(JSONNode N){
+		for (int i = 0; i < N.Count; i++) {
+		//DialogCharacter dCh = Array.Find (dialogCharacters, p => p.name == N[i]["name"]);
+		dialogCharacters[i].lastEmoVal = N [i] ["lastEmoVal"].AsInt;
+		dialogCharacters[i].globalEmoVal = N [i] ["globalEmoVal"].AsInt;
+		dialogCharacters [i].levelsInfo.Clear ();
+		for (int j = 0; j < N [i] ["levelsInfo"].Count; j++) {
+		DialogCharacter.LevelInfo li = new DialogCharacter.LevelInfo ();
+		li.level = N [i] ["levelsInfo"] [j] ["level"].AsInt;
+		li.emoval = N [i] ["levelsInfo"] [j] ["emoval"].AsInt;
+		li.goTo = N [i] ["levelsInfo"] [j] ["goTo"].AsInt;
+		li.lastExpre = N [i] ["levelsInfo"] [j] ["lastExpre"];
+		li.dtype = (Dialog.dType)System.Enum.Parse(typeof(Dialog.dType), N [i] ["levelsInfo"] [j] ["dtype"]);
+		dialogCharacters [i].levelsInfo.Add (li);
+		}
+		}
+		}
+		}

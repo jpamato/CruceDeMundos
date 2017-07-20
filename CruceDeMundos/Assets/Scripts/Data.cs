@@ -21,6 +21,8 @@ public class Data : MonoBehaviour
 
 	public AvatarData avatarData;
 
+	public CSDialogData csdialogData;
+
 	public MusicManager musicManager;
 	public InterfaceSfx interfaceSfx;
 	public AudioMixer audioMaster;
@@ -77,6 +79,7 @@ public class Data : MonoBehaviour
 		levelData = GetComponent<LevelData> ();
 		dataController = GetComponent<DataController> ();
 		avatarData = GetComponent<AvatarData> ();
+		csdialogData = GetComponent<CSDialogData> ();
 		musicManager = GetComponent<MusicManager> ();
 		interfaceSfx = GetComponentInChildren<InterfaceSfx> ();
 
