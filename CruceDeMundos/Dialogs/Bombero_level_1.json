@@ -37,7 +37,7 @@
 				{	"mood":"neutral",
 					"prompt":"El único tema es que en el camino encontrarán incendios...",
 					replies:[{emoVal:1,exit:false,goTo:4,text:"¿Entonces nos darías un matafuegos, por favor?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
-						{emoVal:-1,exit:false,goTo:4,text:"Entonces dame ya un matafuegos que estamos apurados, ¡¿no ves?!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
+						{emoVal:-1,exit:false,goTo:4,text:"Dame ya un matafuegos que estamos apurados, ¡¿no ves?!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
 						{emoVal:0,exit:false,goTo:4,text:"¿Incendios? Uff, qué mala suerte",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"}
 					]
 				}
