@@ -1,0 +1,26 @@
+﻿{
+	name:"Mork",
+	level:1,
+	type:"et",
+	dialogTree:[		
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"excitado",
+					"prompt":"Aunque ahora mismo esto sea un desastre, me encanta saber que hay seres de otras dimensiones.",
+					replies:[						
+						{emoVal:0,exit:true,goTo:1,text:"¡A mí también!",rType:"NARRATIVO",rSType:"NARRATIVO"},
+						{emoVal:0,exit:true,goTo:1,text:"Estaría más encantado si el mundo no estuviera patas arriba.",rType:"NARRATIVO",rSType:"NARRATIVO"},
+						{emoVal:0,exit:true,goTo:1,text:"No veo nada bueno en eso.",rType:"NARRATIVO",rSType:"NARRATIVO"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[				
+				{	"mood":"neutral",
+					"prompt":"No tengo nada más para decir por ahora.",
+					replies:[{emoVal:0,exit:true,goTo:1,text:"SALIR",rType:"NARRATIVO",rSType:"NARRATIVO"}]
+				}
+		}
+	]	
+}
