@@ -16,7 +16,7 @@ public class AmbienceSfx : MonoBehaviour {
 	}
 
 	void Init(){		
-		if (Game.Instance.levelManager.leveldata.levelNumber < 5 || Game.Instance.levelManager.leveldata.levelNumber > 10)
+		if (Game.Instance.levelManager.leveldata.levelNumber < 4 || Game.Instance.levelManager.leveldata.levelNumber > 6)
 			source.clip = ambience1_3;
 		else
 			source.clip = ambience2;

@@ -178,6 +178,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameReady(){
+		tools.SetActive (false);
 		dialog.SetActive (false);
 		iniciarBanner.SetActive (true);
 	}

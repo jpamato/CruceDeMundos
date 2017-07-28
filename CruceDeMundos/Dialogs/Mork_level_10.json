@@ -1,6 +1,6 @@
 ﻿{
 	name:"Mork",
-	level:10,
+	level:-10,
 	type:"collab",
 	dialogTree:[
 		{index:0,

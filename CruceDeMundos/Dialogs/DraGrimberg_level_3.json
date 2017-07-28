@@ -1,30 +1,16 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:3,
+	level:2,
 	type:"autoeval",
 	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"preocupada1",
-					"prompt":"Bueno, ¿qué decís, #Manu? ¿Te sentís capaz de apagar ese incendio?",
-					replies:[						
-						{emoVal:0,exit:false,goTo:1,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:false,goTo:1,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:1,exit:false,goTo:1,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"}
-						]
-				}
-			]
-		},
-
-		{index:1,
-			moods:[
-				{ 	"mood":"neutral",
 					"expre":"preocupada2",
 					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
 					replies:[						
-						{emoVal:0,exit:false,goTo:1,text:"Afirmativo, doc.",dialog:"Emmanuel"}
+						{emoVal:0,exit:false,goTo:0,text:"Afirmativo, doc.",dialog:"Emmanuel"}
 						]
 				}
 			]

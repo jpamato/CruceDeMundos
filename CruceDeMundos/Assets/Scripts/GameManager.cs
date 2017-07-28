@@ -63,14 +63,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void AutoEval(){
-		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
-		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Game.Instance.toolsManager.SelectedToolsData ();
+		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
 		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;
-		state = states.AUTOEVAL;
-		if(!Game.Instance.dialogManager.LoadInitialDialog ())
-			Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");
-		Events.GameAutoeval ();
+		if (Game.Instance.dialogManager.LoadInitialDialog ()){			
+			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
+			state = states.AUTOEVAL;
+			/*if(!Game.Instance.dialogManager.LoadInitialDialog ())
+				Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");*/
+			Events.GameAutoeval ();
+		}else{
+			Events.GameReady ();
+		}
 	}
 
 	void DialogDone(){		

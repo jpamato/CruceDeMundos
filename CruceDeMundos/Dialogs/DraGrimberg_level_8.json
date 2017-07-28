@@ -1,6 +1,6 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:8,
+	level:6,
 	type:"autoeval",
 	initial:true,
 	final:true,

@@ -1,6 +1,6 @@
 ﻿{
 	name:"Mirk",
-	level:4,
+	level:3,
 	type:"et",
 	dialogTree:[		
 		{index:0,
@@ -24,18 +24,18 @@
 					{emoVal:0,exit:false,goTo:2,text:"Repito, no podemos hacer nada."}
 					]
 				},
-				{	"mood":"neutral",
+				{	"mood":"positive",
 					"expre":"irritado",
 					"prompt":"Opino que igual deberían apagar algunos incendios.",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"Ellos mismos nos dijeron que nos despreocupemos."}
 					]
 				},
-				{	"mood":"positive",
+				{	"mood":"neutral",
 					"expre":"irritado",
 					"prompt":"Opino que igual deberían apagar algunos incendios.",
 					replies:[
-					{emoVal:1,exit:true,goTo:0,text:"Bueno, capaz que tenés razón."}
+					{emoVal:0,exit:true,goTo:0,text:"Bueno, capaz que tenés razón."}
 					]
 				}				
 			]

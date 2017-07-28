@@ -1,13 +1,13 @@
 ﻿{
 	name:"Mork",
-	level:4,
+	level:3,
 	type:"et",
 	dialogTree:[		
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"aterrorizado",
-					"prompt":"¡Ayuda! ¡Estos portales son peligrosos! ¿Pueden cerrarlos?",
+					"prompt":"¡Ayuda! ¡Estos portales son peligrosos! ¿Pueden ayudarme a cerrarlos?",
 					replies:[
 						{emoVal:0,exit:false,goTo:1,text:"Lástima, nos agarrás en mal momento.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
 						{emoVal:0,exit:true,goTo:0,text:"¡Ni locos! ¿Qué te pensás?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"},

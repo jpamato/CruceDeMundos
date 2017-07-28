@@ -1,6 +1,6 @@
 ﻿{
 	name:"Mindy",
-	level:7,
+	level:5,
 	type:"narrative",
 	dialogTree:[
 		{index:0,

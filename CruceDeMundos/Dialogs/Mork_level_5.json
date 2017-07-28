@@ -1,13 +1,13 @@
 ﻿{
 	name:"Mork",
-	level:5,
+	level:4,
 	type:"narrative",
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"ansioso",
-					"prompt":"Saludos, nunca había visto seres con ruedas incorporadas. ¡Qué práctico!",
+					"prompt":"Hola, nunca había visto seres con ruedas incorporadas. ¡Qué práctico!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"En realidad tenemos piernas, pero bueno, estamos un poco ocupados como para explicarte anatomía humana."}]
 				}				
 			]
@@ -21,7 +21,7 @@
 					replies:[
 					{emoVal:1,exit:false,goTo:2,text:"Ah, nos vendría muy bien si te sobra, ¿nos la darías?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
 					{emoVal:0,exit:false,goTo:2,text:"No creo que la necesitemos.",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"},
-					{emoVal:-1,exit:false,goTo:2,text:"¡Entonces dejate de perder tiempo y danos una, ya!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"}					
+					{emoVal:-1,exit:false,goTo:2,text:"¡Dejate de perder el tiempo y danos una!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"}					
 					]
 				}				
 			]
