@@ -30,7 +30,16 @@
 				{	"mood":"neutral",
 					"expre":"neutro",
 					"prompt":"¡Bueno, que lleguen a salvo!",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"¡Sí"}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Sí!"}]
+				}
+			]
+		},
+		{index:3,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"neutro",
+					"prompt":"¡Que lleguen a salvo!",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Gracias!"}]
 				}
 			]
 		}

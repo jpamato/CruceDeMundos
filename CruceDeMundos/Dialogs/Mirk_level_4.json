@@ -44,9 +44,9 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"irritado",
-					"prompt":"Insisto, pero ustedes hagan lo que les parezca.",
+					"prompt":"Insisto, deberían apagar algunos incendios, pero ustedes hagan lo que les parezca.",
 					replies:[
-					{emoVal:0,exit:true,goTo:0,text:"Eso haremos."}
+					{emoVal:0,exit:true,goTo:2,text:"Eso haremos."}
 					]
 				}			
 			]

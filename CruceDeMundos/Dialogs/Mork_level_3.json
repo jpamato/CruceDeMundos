@@ -10,8 +10,8 @@
 					"prompt":"...",
 					replies:[
 						{emoVal:0,exit:false,goTo:1,text:"Hola, ¿podemos ayudarte en algo?",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
-						{emoVal:0,exit:true,goTo:0,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
-						{emoVal:0,exit:true,goTo:0,text:"Correte, tonto, que queremos seguir.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
+						{emoVal:0,exit:true,goTo:1,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:1,text:"Correte, tonto, que queremos seguir.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
 					]
 				}
 			]
