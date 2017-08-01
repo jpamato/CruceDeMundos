@@ -1,0 +1,19 @@
+﻿{
+	name:"Dra Grimberg",
+	level:1,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupada2",
+					"prompt":"¡#Manu, el experimento se salió de control y abrió un cruce de dimensiones!",
+					replies:[{emoVal:0,exit:false,goTo:0,text:"CONTINUAR",dialog:"Manu"]
+				}
+			]
+		}
+
+	]
+}

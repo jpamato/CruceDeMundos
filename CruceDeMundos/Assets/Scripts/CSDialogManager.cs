@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class CSDialogManager : MonoBehaviour {
@@ -12,7 +13,9 @@ public class CSDialogManager : MonoBehaviour {
 	public Text charText;
 	public Text[] ansText;
 
-	int level;
+	public List<Background> backgrounds;
+
+	public int level;
 
 	CSDialogData.DialogCharacter character;
 	CSDialogData.DialogCharacter.LevelInfo levelInfo;
@@ -30,13 +33,25 @@ public class CSDialogManager : MonoBehaviour {
 
 	}
 
+	[Serializable]
+	public class Background
+	{
+		public string name;
+		public GameObject visualization;
+	}
+
+	void SelectBackground(string bname){
+		foreach (Background b in backgrounds)
+			b.visualization.SetActive (bname == b.name);	
+	}
+
 	public bool LoadInitialDialog(){
 		dialog = Data.Instance.csdialogData.dialogs.Find (x => (x.initial == true && x.level == level));
 
 		if (dialog != null) {
 			character = Array.Find (Data.Instance.csdialogData.dialogCharacters, p => p.name == dialog.name);
 			//charImage.sprite = character.sprite;
-			chManager.SetCharacter (character.visualization);
+			chManager.SetCharacter (character.visualization,dialog.name=="Manu");
 			//charName.text = character.name;
 			LoadDialog ();
 			return true;
@@ -51,7 +66,7 @@ public class CSDialogManager : MonoBehaviour {
 		if (dialog != null) {
 			character = Array.Find (Data.Instance.csdialogData.dialogCharacters, p => p.name == dialog.name);
 			//charImage.sprite = character.sprite;
-			chManager.SetCharacter (character.visualization);
+			chManager.SetCharacter (character.visualization,dialog.name=="Manu");
 			//charName.text = character.name;
 			LoadDialog ();
 			return true;
@@ -64,7 +79,7 @@ public class CSDialogManager : MonoBehaviour {
 
 		character = Array.Find(Data.Instance.csdialogData.dialogCharacters, p => p.name == characterName);
 		//charImage.sprite = character.sprite;
-		chManager.SetCharacter(character.visualization);
+		chManager.SetCharacter (character.visualization,characterName=="Manu");
 		//charName.text = character.name;
 
 		dialog = Data.Instance.csdialogData.dialogs.Find (x => (x.name == character.name && x.level == level));
@@ -99,6 +114,8 @@ public class CSDialogManager : MonoBehaviour {
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
 		}
 
+		SelectBackground (mood.background);
+
 		//Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.dialog);
 	}
 
@@ -114,7 +131,7 @@ public class CSDialogManager : MonoBehaviour {
 
 	public void ReplySelect(int index){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
-		SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
+		//SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -174,7 +191,6 @@ public class CSDialogManager : MonoBehaviour {
 
 		if (mood.replies [index].friendDisable != "")
 			Game.Instance.toolsManager.DisableFriend(mood.replies [index].friendDisable);
-
 		chManager.Close ();
 		if (mood.replies [index].exit){
 			Events.DialogDone ();

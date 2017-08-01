@@ -72,8 +72,7 @@ public class CSDialogData : MonoBehaviour {
 
 		public void ResetHintAtLevel(int level){
 		foreach (DialogCharacter dch in dialogCharacters) {
-		dch.ResetType (level, Dialog.dType.AUTOEVAL);
-		dch.ResetType (level, Dialog.dType.COLLAB);
+		dch.ResetType (level, Dialog.dType.LEVEL);
 		}
 		}
 
@@ -108,6 +107,7 @@ public class CSDialogData : MonoBehaviour {
 		d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"];
 		else
 		d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"] = "";
+		d.dialogTree [i].moods [j].background = N ["dialogTree"] [i] ["moods"] [j] ["background"];
 		d.dialogTree [i].moods [j].replies = new Dialog.Reply[N ["dialogTree"] [i] ["moods"] [j] ["replies"].Count];
 		for (int k = 0; k < d.dialogTree [i].moods [j].replies.Length; k++) {
 		d.dialogTree [i].moods [j].replies [k] = new Dialog.Reply ();
@@ -239,11 +239,8 @@ public class CSDialogData : MonoBehaviour {
 		{
 		public enum dType
 		{
-		AUTOEVAL,
 		NARRATIVE,
-		COLLAB,
-		ET,			
-		HUMAN			
+		LEVEL
 		}
 		public string name;
 		public int level;
@@ -270,6 +267,7 @@ public class CSDialogData : MonoBehaviour {
 		}
 		public moodType mType;
 		public string expre;
+		public string background;
 		public string prompt;
 		public Reply[] replies;
 

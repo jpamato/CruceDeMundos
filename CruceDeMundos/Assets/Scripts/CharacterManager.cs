@@ -8,10 +8,13 @@ public class CharacterManager : MonoBehaviour {
 
 	Animator animator;
 
-	public void SetCharacter(GameObject ch){
+	public void SetCharacter(GameObject ch, bool isManu=false){
 		character = Instantiate (ch) as GameObject;
 		character.transform.parent = gameObject.transform;
-		character.transform.localPosition = Vector3.zero;
+		if (isManu)
+			character.transform.localPosition = new Vector3 (0f, -4f, 0f);
+		else
+			character.transform.localPosition = Vector3.zero;
 		animator = character.GetComponentInChildren<Animator> ();
 		if(animator==null)
 			animator = character.GetComponent<Animator> ();

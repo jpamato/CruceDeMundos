@@ -1,0 +1,19 @@
+﻿{
+	name:"Manu",
+	level:1,
+	type:"NARRATIVE",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupado",
+					"prompt":"¿La universidad tecnocrática? ¡Allí es donde trabajo ayudando a la doctora Grimberg! Ella está investigando coordenadas de tiempo y espacio ¡Justo me está llamando!",
+					replies:[{emoVal:0,exit:false,goTo:0,text:"CONTINUAR",dialog:"Dra Grimberg"]
+				}
+			]
+		}
+
+	]
+}
