@@ -10,7 +10,38 @@
 					"background":"interiorHabitacion1",
 					"expre":"preocupada2",
 					"prompt":"¡#Manu, el experimento se salió de control y abrió un cruce de dimensiones!",
-					replies:[{emoVal:0,exit:false,goTo:0,text:"CONTINUAR",dialog:"Manu"]
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupada2",
+					"prompt":"Estoy sola en el laboratorio de la universidad. El edificio fue evacuado.",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupada2",
+					"prompt":"¡Claro que sí pero tengo que detener el gran vórtice para cerrar el cruce! Necesito tu ayuda, vení cuanto antes y traé al menos a dos personas. La solución requiere de una maniobra en equipo.",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorCiudad",
+					"expre":"preocupada2",
+					"prompt":"#Manu, ya envié a tu celular el mapa con los puntos donde están los recursos tecnológicos necesarios para atravesar la ciudad. Junten todos los que puedan. Recuerden que deben tomar una lancha en el puerto para llegar al laboratorio; el puerto está al otro lado de la ciudad.",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"CONTINUAR"}]
 				}
 			]
 		}

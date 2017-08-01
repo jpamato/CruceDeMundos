@@ -193,9 +193,7 @@ public class CSDialogManager : MonoBehaviour {
 			Game.Instance.toolsManager.DisableFriend(mood.replies [index].friendDisable);
 		chManager.Close ();
 		if (mood.replies [index].exit){
-			Events.DialogDone ();
-			if (mood.replies [index].levelEndDialog)
-				Events.OnLevelEndDialog ();
+			Data.Instance.LoadLevel("Game");
 		}else{
 			if (mood.replies [index].dialog != "") {
 				LoadDialog (mood.replies [index].dialog);

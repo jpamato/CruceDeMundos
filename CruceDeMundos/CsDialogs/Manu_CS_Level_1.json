@@ -10,7 +10,40 @@
 					"background":"interiorHabitacion1",
 					"expre":"preocupado",
 					"prompt":"¿La universidad tecnocrática? ¡Allí es donde trabajo ayudando a la doctora Grimberg! Ella está investigando coordenadas de tiempo y espacio ¡Justo me está llamando!",
-					replies:[{emoVal:0,exit:false,goTo:0,text:"CONTINUAR",dialog:"Dra Grimberg"]
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupado",
+					"prompt":"Estoy viéndolo en la tele con mi amigo Emmanuel. ¿Dónde está usted, doctora?",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"interiorHabitacion1",
+					"expre":"preocupado",
+					"prompt":"¿Y por qué se quedó? ¿No es peligroso?",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		},
+		
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorCiudad",
+					"expre":"confiado",
+					"prompt":"Tranquilo, Emma, la doctora dijo que nos daría instrucciones para llegar.",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"CONTINUAR",dialog:"Dra Grimberg"}]
 				}
 			]
 		}
