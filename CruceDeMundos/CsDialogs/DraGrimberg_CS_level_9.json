@@ -1,0 +1,29 @@
+﻿{
+	name:"Dra Grimberg",
+	level:9,
+	type:"NARRATIVE",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"preocupada2",
+					"prompt":"¡Chicos, el vórtice creció masivamente y está a punto de absorber el laboratorio y todo lo que lo rodea! Pero ya sé qué hacer.",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"preocupada2",
+					"prompt":"El vórtice se alimenta de la energía de las tres antenas que hay antes de llegar al laboratorio...",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		}
+
+	]
+}

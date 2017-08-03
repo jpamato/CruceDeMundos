@@ -1,0 +1,39 @@
+﻿{
+	name:"Dra Grimberg",
+	level:7,
+	type:"NARRATIVE",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorPuente",
+					"expre":"preocupada2",
+					"prompt":"Se están acercando al predio de la universidad, que está repleto de vórtices El mayor está justo encima del laboratorio. ¡Es peligrosísimo!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorPuente",
+					"expre":"preocupada2",
+					"prompt":"No puedo, estoy atrapada en el laboratorio, Manu ¡Vengan pronto y cerremos el vórtice dimensional entre todos!",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorPuente",
+					"expre":"preocupada2",
+					"prompt":"Lamentablemente no, Emmanuel. Confío en descubrir la forma de detener esto pero necesitaré que ustedes tres se acerquen lo más posible.",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"CONTINUAR"}]
+				}
+			]
+		}
+
+	]
+}

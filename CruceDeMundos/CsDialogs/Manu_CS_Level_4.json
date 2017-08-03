@@ -1,0 +1,30 @@
+﻿{
+	name:"Manu",
+	level:4,
+	type:"NARRATIVE",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorMuelle",
+					"expre":"alegre",
+					"prompt":"¡Ya zarpamos hacia la isla, doctora! Pudimos cargar la nafta y Agustina nos está guiando sin problemas. Por suerte su papá le enseñó a navegar.",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorMuelle",
+					"expre":"alegre",
+					"prompt":"Sí, todo bien.",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+
+	]
+}

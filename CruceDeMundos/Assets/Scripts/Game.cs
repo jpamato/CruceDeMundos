@@ -96,13 +96,17 @@ public class Game : MonoBehaviour {
 	{	
 		OnGamePaused(false);
 		Data.Instance.playerData.level++;
-		if (Data.Instance.playerData.level > 8) {
-			Data.Instance.dialogData.ResetAllAtLevel (1);
+
+		if (Data.Instance.playerData.level == 4 || Data.Instance.playerData.level == 7 || Data.Instance.playerData.level == 9) 
+			Data.Instance.LoadLevel("Cutscene");
+		else if (Data.Instance.playerData.level > 9) {
+			/*Data.Instance.dialogData.ResetAllAtLevel (1);
 			Data.Instance.playerData.level = 1;
 			Data.Instance.playerData.resources = 50;
-			Data.Instance.playerData.toolsNumber = 1;
-		}
-		Data.Instance.LoadLevel("Game");
+			Data.Instance.playerData.toolsNumber = 1;*/
+			Data.Instance.LoadLevel("LevelMap");
+		}else
+			Data.Instance.LoadLevel("Game");
 	}
 
 	public void Replay()

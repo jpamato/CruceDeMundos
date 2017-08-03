@@ -9,46 +9,15 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupada2",
-					"prompt":"¡Chicos, el vórtice creció masivamente y está a punto de absorber el laboratorio donde estoy!",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"¡No! ¿Qué podemos hacer para cerrar el vórtice, doctora?"}]
-				}
-			]
-		},
-
-		{index:1,
-			moods:[
-				{ 	"mood":"neutral",
-					"expre":"preocupada2",
-					"prompt":"Escuchen bien. El vórtice se alimenta de la energía de las tres antenas que hay antes de llegar al laboratorio.",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"Entendemos, continúe."}]
-				}
-			]
-		},
-		{index:2,
-			moods:[
-				{ 	"mood":"neutral",
-					"expre":"preocupada2",
 					"prompt":"Deben desconectar las tres antenas a la vez, y para eso, cada uno de ustedes debe ocuparse de una. #Manu, ¿cómo te ves cerrando el vórtice?",
 					replies:[
-						{emoVal:1,exit:true,goTo:3,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:3,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:true,goTo:3,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+						{emoVal:1,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:1,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
-		}
-
-		{index:3,
-			moods:[
-				{ 	"mood":"neutral",
-					"expre":"neutra",
-					"prompt":"AQUÍ DEBERIA VENIR CINEMÁTICA DONDE SE MUESTRA QUE LAS ANTENAS SE DESACTIVAN Y EL VORTICE CENTRAL CERRANDOSE",
-					replies:[{emoVal:0,exit:false,goTo:4,text:"CONTINUAR"}]
-						
-				}
-			]
-		}
-
-		{index:4,
+		},
+		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"sonrisa2",

@@ -1,0 +1,19 @@
+﻿{
+	name:"Emmanuel",
+	level:7,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorPuente",
+					"expre":"horrorizado",
+					"prompt":"Este, digo yo ¿No hay alguna manera de resolver esto a control remoto, o algo así?",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+
+	]
+}

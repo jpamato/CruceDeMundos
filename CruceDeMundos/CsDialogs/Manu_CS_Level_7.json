@@ -1,0 +1,18 @@
+﻿{
+	name:"Manu",
+	level:7,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorPuente",
+					"expre":"preocupado",
+					"prompt":"¡Pero, doctora Grimberg, usted sigue en el laboratorio! ¡Salga ya mismo de ahí!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+	]
+}
