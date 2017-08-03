@@ -7,6 +7,15 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
+					"expre":"neutra",
+					"prompt":"Vienen muy bien, chicos. ¿Necesitan algo?",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"Ahora que lo dice... Creo que estamos cerca de la casa de Agustina...",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
 					"expre":"preocupada2",
 					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
 					replies:[						

@@ -21,4 +21,13 @@ public class ShopItem : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void OnPointerEnter(int index){		
+		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.over);
+		Events.OnToolButtonEnter (index);
+	}
+
+	public void OnPointerExit(){
+		Events.OnToolButtonExit();
+	}
 }

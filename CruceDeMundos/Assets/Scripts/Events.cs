@@ -43,4 +43,7 @@ public static class Events {
 
 	public static System.Action<int> OnLevelButtonEnter = delegate { };
 	public static System.Action OnLevelButtonExit = delegate { };
+
+	public static System.Action<int> OnToolButtonEnter = delegate { };
+	public static System.Action OnToolButtonExit = delegate { };
 }
