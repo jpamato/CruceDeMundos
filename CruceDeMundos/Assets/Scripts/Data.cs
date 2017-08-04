@@ -59,6 +59,7 @@ public class Data : MonoBehaviour
     public void LoadLevel(string aLevelName, float aFadeOutTime, float aFadeInTime, Color aColor)
     {
         //Application.LoadLevel(aLevelName);
+	 	musicManager.MusicChange (aLevelName);
        fade.LoadLevel(aLevelName, aFadeOutTime, aFadeInTime, aColor);
 
     }
