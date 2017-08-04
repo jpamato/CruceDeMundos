@@ -79,7 +79,7 @@ public class LevelButton : MonoBehaviour {
 	public void PlayCutscene(){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Data.Instance.playerData.level = levelNumber;
-		Data.Instance.LoadLevel("Cutscene");
+		Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
 	}
 
 	public void OnPointerEnter(){		

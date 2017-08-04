@@ -7,6 +7,7 @@ using System;
 public class CSDialogManager : MonoBehaviour {
 
 	public CharacterManager chManager;
+	public GameObject dialogUI;
 	public Image charImage;
 	//public Text charName;
 
@@ -46,6 +47,7 @@ public class CSDialogManager : MonoBehaviour {
 	}
 
 	public bool LoadInitialDialog(){
+		dialogUI.SetActive (true);
 		dialog = Data.Instance.csdialogData.dialogs.Find (x => (x.initial == true && x.level == level));
 
 		if (dialog != null) {
@@ -193,7 +195,7 @@ public class CSDialogManager : MonoBehaviour {
 			Game.Instance.toolsManager.DisableFriend(mood.replies [index].friendDisable);
 		chManager.Close ();
 		if (mood.replies [index].exit){
-			Data.Instance.LoadLevel("Game");
+			Data.Instance.LoadLevel ("Game", 1f, 0.5f, Color.black);
 		}else{
 			if (mood.replies [index].dialog != "") {
 				LoadDialog (mood.replies [index].dialog);
