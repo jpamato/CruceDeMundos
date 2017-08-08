@@ -7,7 +7,7 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"background":"interiorHabitacion1",
+					"background":"interiorHabitacion2",
 					"expre":"preocupada2",
 					"prompt":"¡#Manu, el experimento se salió de control y abrió un cruce de dimensiones!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
@@ -17,7 +17,7 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
-					"background":"interiorHabitacion1",
+					"background":"interiorHabitacion2",
 					"expre":"preocupada2",
 					"prompt":"Estoy sola en el laboratorio de la universidad. El edificio fue evacuado.",
 					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Manu"}]
@@ -27,7 +27,7 @@
 		{index:2,
 			moods:[
 				{ 	"mood":"neutral",
-					"background":"interiorHabitacion1",
+					"background":"interiorHabitacion2",
 					"expre":"preocupada2",
 					"prompt":"¡Claro que sí pero tengo que detener el gran vórtice para cerrar el cruce! Necesito tu ayuda, vení cuanto antes y traé al menos a dos personas. La solución requiere de una maniobra en equipo.",
 					replies:[{emoVal:0,exit:false,goTo:3,text:"CONTINUAR",dialog:"Emmanuel"}]

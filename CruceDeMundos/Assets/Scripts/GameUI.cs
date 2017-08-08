@@ -49,6 +49,8 @@ public class GameUI : MonoBehaviour {
 
 	public int playTimes2GiveUp;
 
+	public Image alarm;
+
 	// Use this for initialization
 	void Start () {
 		levelNro.text = "Nivel " + Data.Instance.playerData.level;
@@ -313,5 +315,9 @@ public class GameUI : MonoBehaviour {
 		selfieImage.texture = Data.Instance.avatarData.selfie;
 		Data.Instance.avatarData.SaveAvatarData ();
 		selfieEditor.SetActive (false);
+	}
+
+	public void AlarmEnable(bool enable){
+		alarm.gameObject.SetActive (enable);
 	}
 }

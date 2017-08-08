@@ -22,6 +22,7 @@ public class TimeProgress : MonoBehaviour {
 				time -= Time.deltaTime;
 				if (time < 10f && !alarm) {
 					Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.timeAlarm);
+					Game.Instance.gameUI.AlarmEnable (true);
 					alarm = true;
 				}
 				if (time < 1)
