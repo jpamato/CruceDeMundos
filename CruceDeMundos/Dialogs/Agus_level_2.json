@@ -9,7 +9,7 @@
 				{ 	"mood":"neutral",
 					"expre":"pensativa",
 					"prompt":"¿Qué hacen acá? ¡La ciudad está terrible!",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"¡Por eso te necesitamos! En el camino te explico, ¿estás lista?"}]
+					replies:[{emoVal:0,exit:false,goTo:1,text:"¡Por eso te necesitamos! En el camino te explico, ¿estás lista?",friendAdd:true}]
 				}
 			]
 		},

@@ -39,6 +39,8 @@ public class ToolsManager : MonoBehaviour {
 				healthBar.SetHealth(Mathf.Min(healthBar.currentHealth+charge, 100),3f);
 			}
 		}
+
+		CheckRemoveDamagingObstacle (tType.ToString());
 	}
 
 	void OnAddTool(PlayerData.ToolName tType){
@@ -78,12 +80,8 @@ public class ToolsManager : MonoBehaviour {
 		ft.toolName = toolName;
 		ft.hasCharge = true;
 		ft.toolLevel = tLevel;
-		if (ft.toolName.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.Contains(ShootObstacle.obstacleType.FIRE.ToString()))
-			damagingObstacles.Remove (ShootObstacle.obstacleType.FIRE.ToString());
-		else if (ft.toolName.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.PORTAL.ToString()))
-			damagingObstacles.Remove (ShootObstacle.obstacleType.PORTAL.ToString());
-		else if (ft.toolName.Equals (PlayerData.ToolName.Armonizador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.POLLUTION.ToString()))
-			damagingObstacles.Remove (ShootObstacle.obstacleType.POLLUTION.ToString());
+
+		CheckRemoveDamagingObstacle (ft.toolName);
 	}
 
 	public void SetFriendEmpty(GameObject friend, bool remove){
@@ -101,6 +99,15 @@ public class ToolsManager : MonoBehaviour {
 
 		if (remove)
 			ft.toolName = "";
+	}
+
+	void CheckRemoveDamagingObstacle(string tType){
+		if (tType.Equals (PlayerData.ToolName.Matafuegos.ToString ()) && damagingObstacles.Contains(ShootObstacle.obstacleType.FIRE.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.FIRE.ToString());
+		else if (tType.Equals (PlayerData.ToolName.Restaurador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.PORTAL.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.PORTAL.ToString());
+		else if (tType.Equals (PlayerData.ToolName.Armonizador.ToString ()) && damagingObstacles.Contains (ShootObstacle.obstacleType.POLLUTION.ToString()))
+			damagingObstacles.Remove (ShootObstacle.obstacleType.POLLUTION.ToString());
 	}
 
 	public bool CanDamage(string tag){

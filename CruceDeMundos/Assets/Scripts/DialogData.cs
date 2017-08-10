@@ -222,6 +222,11 @@ public class DialogData : MonoBehaviour {
 					else
 						d.dialogTree [i].moods [j].replies [k].friendDisable = "";
 
+					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["friendAdd"] != null)
+						d.dialogTree [i].moods [j].replies [k].friendAdd = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["friendAdd"].AsBool;
+					else
+						d.dialogTree [i].moods [j].replies [k].friendAdd = false;
+
 					if (sendDialogs2Database) {
 						Debug.Log ("aca");						
 						StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
@@ -296,6 +301,7 @@ public class DialogData : MonoBehaviour {
 			public LevelData.DialogUnlock dUnlock;
 			public string oType;
 			public string friendDisable;
+			public bool friendAdd;
 
 			public enum rType
 			{
