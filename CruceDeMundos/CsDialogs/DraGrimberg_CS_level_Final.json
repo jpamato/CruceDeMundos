@@ -1,0 +1,39 @@
+﻿{
+	name:"Dra Grimberg",
+	level:11,
+	type:"NARRATIVE",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"sonrisa2",
+					"prompt":"¡Chicos, lo lograron! No sé cómo agradecer todo lo que hicieron!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"sonrisa1",
+					"prompt":"Mucho, pero miremos el lado bueno... ¡Descubrimos una dimensión paralela para explorar! Esos seres apreciaron lo que ustedes hicieron y quieren proponerles una nueva hazaña...",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"sonrisa1",
+					"prompt":"¡Esta vez será en su dimensión! ¿No es emocionante? Pronto recibirán instrucciones...",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"CONTINUAR",levelMap:true}]
+				}
+			]
+		}
+
+	]
+}

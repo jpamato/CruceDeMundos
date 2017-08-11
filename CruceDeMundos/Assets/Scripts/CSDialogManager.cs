@@ -195,7 +195,14 @@ public class CSDialogManager : MonoBehaviour {
 			Game.Instance.toolsManager.DisableFriend(mood.replies [index].friendDisable);
 		chManager.Close ();
 		if (mood.replies [index].exit){
-			Data.Instance.LoadLevel ("Game", 1f, 0.5f, Color.black);
+			if (mood.replies [index].levelMap) {
+				Data.Instance.playerData.level = 1;
+				Data.Instance.LoadLevel ("LevelMap", 1f, 0.5f, Color.black);
+			}else if (mood.replies [index].blackout) {
+				Data.Instance.playerData.level = 11;
+				Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
+			}else
+				Data.Instance.LoadLevel ("Game", 1f, 0.5f, Color.black);
 		}else{
 			if (mood.replies [index].dialog != "") {
 				LoadDialog (mood.replies [index].dialog);

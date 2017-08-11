@@ -1,0 +1,29 @@
+﻿{
+	name:"Emmanuel",
+	level:11,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"sonrisa1",
+					"prompt":"¿Capaz dejando de jugar con el tiempo y el espacio, así nos quedamos tranquilos?",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Agustina"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"temeroso",
+					"prompt":"Oh, oh, ¡sonamos!",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+
+	]
+}

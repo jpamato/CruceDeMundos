@@ -1,0 +1,28 @@
+﻿{
+	name:"Agustina",
+	level:10,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"entusiasmada",
+					"prompt":"¡Acá estoy! La doctora usó drones para transmitir nuestras voces y que podamos oírnos.",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"risa",
+					"prompt":"¡Yo también te quiero, #Manu! ¡Pase lo que pase!",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		}
+	]
+}

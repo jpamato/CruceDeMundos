@@ -1,0 +1,28 @@
+﻿{
+	name:"Emmanuel",
+	level:10,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"temeroso",
+					"prompt":"¡Ojalá hubiera usado drones para desconectar las antenas!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"sonrisa",
+					"prompt":"Yo también, amigos. ¡Ahora cerremos ese vórtice de una vez que no doy más del suspenso!",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Manu"}]
+				}
+			]
+		}
+	]
+}

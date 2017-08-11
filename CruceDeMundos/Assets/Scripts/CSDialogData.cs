@@ -222,6 +222,18 @@ public class CSDialogData : MonoBehaviour {
 		else
 		d.dialogTree [i].moods [j].replies [k].friendDisable = "";
 
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["blackout"] != null) {
+		d.dialogTree [i].moods [j].replies [k].blackout = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["blackout"].AsBool;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].blackout = false;
+		}
+
+		if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelMap"] != null) {
+		d.dialogTree [i].moods [j].replies [k].levelMap = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["levelMap"].AsBool;
+		} else {
+		d.dialogTree [i].moods [j].replies [k].levelMap = false;
+		}
+
 		if (sendDialogs2Database) {
 		Debug.Log ("aca");						
 		StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
@@ -294,6 +306,8 @@ public class CSDialogData : MonoBehaviour {
 		public LevelData.DialogUnlock dUnlock;
 		public string oType;
 		public string friendDisable;
+		public bool blackout;
+		public bool levelMap;
 
 		public enum rType
 		{

@@ -20,7 +20,17 @@
 					"background":"exteriorLaboratorio",
 					"expre":"preocupada2",
 					"prompt":"El vórtice se alimenta de la energía de las tres antenas que hay antes de llegar al laboratorio...",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR"}]
+				}
+			]
+		},
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"exteriorLaboratorio",
+					"expre":"preocupada2",
+					"prompt":"Deben desconectar las tres antenas a la vez, y para eso, cada uno de ustedes debe ocuparse de una.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"CONTINUAR"}]
 				}
 			]
 		}

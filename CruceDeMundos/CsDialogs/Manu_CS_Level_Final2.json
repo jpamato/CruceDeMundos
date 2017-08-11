@@ -1,0 +1,30 @@
+﻿{
+	name:"Manu",
+	level:11,
+	type:"NARRATIVE",
+	initial:false,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"contento",
+					"prompt":"¡Ni yo!... Doctora Grimberg, veo que tenemos mucho por corregir de su investigación, ¿no?",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		},
+		
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"confiado",
+					"prompt":"Tranquilo, Emma, la doctora dijo que nos daría instrucciones para llegar.",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+
+	]
+}
