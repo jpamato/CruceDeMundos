@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovePlayer : MonoBehaviour {
+public class MovePlayer : MovingCharacter {
 
 	public GameObject avatar;
 	public float speed=10f;
-	public bool moving;
 	public bool started;
 	Rigidbody2D rb;
 

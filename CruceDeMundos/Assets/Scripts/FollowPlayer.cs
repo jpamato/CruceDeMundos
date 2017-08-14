@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour {
+public class FollowPlayer : MovingCharacter {
 
 	public GameObject player;
 	public GameObject avatar;
@@ -11,13 +11,14 @@ public class FollowPlayer : MonoBehaviour {
 
 	private float rotationOffset = -90f;
 
-	private bool moving;
 	private Animator animator;
-	MovePlayer movePlayer;
+	MovingCharacter movePlayer;
 
 	void Start () {		
 		animator = avatar.GetComponent<Animator> ();
 		movePlayer = player.GetComponent<MovePlayer> ();
+		if(movePlayer==null)
+			movePlayer = player.GetComponent<FollowPlayer> ();
 	}
 
 	void Update () {
