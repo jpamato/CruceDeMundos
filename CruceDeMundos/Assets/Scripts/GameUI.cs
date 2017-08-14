@@ -51,10 +51,14 @@ public class GameUI : MonoBehaviour {
 
 	public Image alarm;
 
+	public Text ingame_levelN;
+
 	// Use this for initialization
 	void Start () {
 		levelNro.text = "Nivel " + Data.Instance.playerData.level;
 		levelTitle.text = Game.Instance.levelManager.leveldata.title;
+
+		ingame_levelN.text = "Nivel " + Data.Instance.playerData.level;
 
 		resourcesProgress.OnRefreshResources (Data.Instance.playerData.resources);
 
