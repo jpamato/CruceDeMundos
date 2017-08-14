@@ -51,7 +51,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"agradecido",
-					"prompt":"Aquí está todo en orden Por ahora.",
+					"prompt":"Aquí está todo en orden... Por ahora.",
 					replies:[						
 						{emoVal:0,exit:true,goTo:4,text:"SALIR"}]
 				}			

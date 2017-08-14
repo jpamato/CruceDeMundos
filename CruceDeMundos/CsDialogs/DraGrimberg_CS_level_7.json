@@ -9,7 +9,7 @@
 				{ 	"mood":"neutral",
 					"background":"exteriorPuente",
 					"expre":"preocupada2",
-					"prompt":"Se están acercando al predio de la universidad, que está repleto de vórtices El mayor está justo encima del laboratorio. ¡Es peligrosísimo!",
+					"prompt":"Se están acercando al predio de la universidad, que está repleto de vórtices... El mayor está justo encima del laboratorio. ¡Es peligrosísimo!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
 				}
 			]

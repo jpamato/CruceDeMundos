@@ -19,7 +19,7 @@
 				{ 	"mood":"neutral",
 					"background":"exteriorLaboratorio",
 					"expre":"preocupado",
-					"prompt":"Llegó el momento. Solamente quiero decirles que fue increíble llegar hasta acá con ustedes ¡Y que los quiero, amigos!",
+					"prompt":"Llegó el momento. Solamente quiero decirles que fue increíble llegar hasta acá con ustedes... ¡Y que los quiero, amigos!",
 					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Agustina"}]
 				}
 			]
@@ -30,7 +30,7 @@
 				{ 	"mood":"neutral",
 					"background":"exteriorLaboratorio",
 					"expre":"preocupado",
-					"prompt":"A la cuenta de tres 1, 2, ¡3!",
+					"prompt":"A la cuenta de tres... 1, 2, ¡3!",
 					replies:[{emoVal:0,exit:true,goTo:3,text:"CONTINUAR",dialog:"Dra Grimberg",blackout:true}]
 				}
 			]
