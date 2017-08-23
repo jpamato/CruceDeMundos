@@ -51,6 +51,11 @@ public class Data : MonoBehaviour
         }
     }
 
+	void OnApplicationFocus(bool hasFocus)
+	{
+		Mute (!hasFocus);
+	}
+
 	public void LoadLevel(string aLevelName)
     {        
 		musicManager.MusicChange (aLevelName);
