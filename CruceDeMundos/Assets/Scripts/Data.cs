@@ -117,6 +117,10 @@ public class Data : MonoBehaviour
 		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName));
 	}
 
+	public void SaveSelfie(string emoji, string estado){		
+		StartCoroutine(dataController.SaveSelfie(userId,SystemInfo.deviceUniqueIdentifier, playerData.level, emoji, estado));
+	}
+
 	public void LoadUserData(){
 		string json = PlayerPrefs.GetString ("UserData");
 		if (!json.Equals ("")) {

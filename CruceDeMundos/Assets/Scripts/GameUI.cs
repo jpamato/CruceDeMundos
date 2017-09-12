@@ -42,7 +42,7 @@ public class GameUI : MonoBehaviour {
 	public GameObject confirm;
 	public GameObject help;
 
-	public GameObject selfieEditor;
+	public SelfieUI selfieUI;
 	public RawImage selfieImage;
 	public Camera selfieCam;
 	public RenderTexture selfieRT;
@@ -306,7 +306,7 @@ public class GameUI : MonoBehaviour {
 
 	public void SelfieEdit(bool on){
 		selfieCam.enabled = on;
-		selfieEditor.SetActive (on);
+		selfieUI.gameObject.SetActive (on);
 		if (on)
 			Game.Instance.gameManager.state = GameManager.states.SELFIE;
 		else
@@ -318,7 +318,8 @@ public class GameUI : MonoBehaviour {
 		Data.Instance.avatarData.CaptureSelfie (selfieRT);
 		selfieImage.texture = Data.Instance.avatarData.selfie;
 		Data.Instance.avatarData.SaveAvatarData ();
-		selfieEditor.SetActive (false);
+		Data.Instance.SaveSelfie (selfieUI.emoji, selfieUI.estado.text);
+		selfieUI.gameObject.SetActive (false);
 	}
 
 	public void AlarmEnable(bool enable){

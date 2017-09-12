@@ -15,6 +15,8 @@ public class SelfieUI : MonoBehaviour {
 
 	Animator animator;
 
+	public string emoji;
+
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +35,8 @@ public class SelfieUI : MonoBehaviour {
 			emojis[i].SetButtonOn (i == index);
 		}
 		Debug.Log (animNames [index]);
-		animator.Play (""+animNames[index]);
+		emoji = "" + animNames [index];
+		animator.Play (emoji);
 		//animator.Play ("contento");
 	}
 

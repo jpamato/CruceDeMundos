@@ -19,6 +19,7 @@ public class DataController : MonoBehaviour {
 	private string addDialog_URL = URL + "dialog/add?";
 	private string addMission_URL = URL + "missions/add?";
 	private string addLevelData_URL = URL + "levelData/add?";
+	private string addSelfie_URL = URL + "selfie/add?";
 
 	private string secretKey = "mondongo";
 	// Use this for initialization
@@ -152,6 +153,25 @@ public class DataController : MonoBehaviour {
 			print ("No pudo agregar mision: " + hs_post.error);
 		else
 			print ("mision agregada: " + hs_post.text);
+
+	}
+
+	public IEnumerator SaveSelfie(string _userid, string _compid, int level, string emoji, string estado)
+	{
+		// username = username.Replace(" ", "_");
+		string hash = Md5Test.Md5Sum(_userid + _compid  + secretKey);
+		//string style = Data.Instance.playerSettings.heroData.styles.style;
+
+		string post_url = addSelfie_URL + "user_id=" + WWW.EscapeURL (_userid) + "&computer_id=" + WWW.EscapeURL (_compid) +
+			"&level_id=" + level + "&emoji=" + WWW.EscapeURL (emoji) + "&estado=" + WWW.EscapeURL (estado) + "&hash="+hash;
+
+		print ("addReply : " + post_url);
+		WWW hs_post = new WWW (post_url);
+		yield return hs_post;
+		if (hs_post.error != null)
+			print ("No pudo agregar reply: " + hs_post.error);
+		else
+			print ("reply agregada: " + hs_post.text);
 
 	}
 }
