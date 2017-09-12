@@ -1,0 +1,17 @@
+﻿{
+	name:"Emmanuel",
+	level:-2,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"sonrisa2",
+					"prompt":"¡Sí! Vamos a buscarla, ¡la necesitamos!",
+					replies:[{emoVal:0,exit:false,goTo:0,text:"Con ella en el equipo no nos para nadie.",dialog:"Dra Grimberg"}]
+				}
+			]
+		}
+
+	]
+}

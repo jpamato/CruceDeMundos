@@ -19,6 +19,7 @@ public class LevelData : MonoBehaviour {
 					m += o + ";";
 				}
 				//StartCoroutine(Data.Instance.dataController.AddMission (l.levelNumber, m));
+				if(l.levelNumber>0)
 				StartCoroutine(Data.Instance.dataController.AddLevelData (l.levelNumber, m,l.portalNumber,l.fireNumber,l.pollutionNumber,l.portalCharge,l.fireCharge,l.pollutionCharge,l.resourcesCharge));
 			}
 		}

@@ -59,7 +59,7 @@
 					replies:[
 					{emoVal:0,exit:true,goTo:0,text:"Necesitamos seguir con lo nuestro, ¡hasta luego!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"},
 					{emoVal:0,exit:true,goTo:0,text:"¡Nos hiciste perder un montón de tiempo, pesado! ¡Chau!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
-					{emoVal:0,exit:false,goTo:4,text:"Somos todo oídos.",rSType:"NEGARSE",indicVal:"no"}
+					{emoVal:0,exit:false,goTo:4,text:"Somos todo oídos.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"}
 					]
 				}							
 			]

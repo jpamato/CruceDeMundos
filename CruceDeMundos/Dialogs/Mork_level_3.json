@@ -1,56 +1,63 @@
 ﻿{
 	name:"Mork",
-	level:2,
-	type:"narrative",
+	level:3,
+	type:"et",
 	dialogTree:[		
 		{index:0,
-			moods:[
-				{ 	"mood":"neutral",
-					"expre":"preocupado",
-					"prompt":"...",
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"aterrorizado",
+					"prompt":"¡Ayuda! ¡Estos portales son peligrosos! ¿Pueden ayudarme a cerrarlos?",
 					replies:[
-						{emoVal:0,exit:false,goTo:1,text:"Hola, ¿podemos ayudarte en algo?",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
-						{emoVal:0,exit:true,goTo:1,text:"(En realidad no es un buen momento para parar.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
-						{emoVal:0,exit:true,goTo:1,text:"Correte, tonto, que queremos seguir.",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
-					]
-				}
+						{emoVal:0,exit:false,goTo:1,text:"Lástima, nos agarrás en mal momento.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:0,text:"¡Ni locos! ¿Qué te pensás?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"},
+						{emoVal:0,exit:false,goTo:1,text:"Podemos, ahí vamos.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"}]
+				}				
 			]
 		},
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"Debo llevar a los míos un solo recurso tecnológico y no sé cómo conseguirlo.",
-					replies:[
-						{emoVal:1,exit:false,goTo:2,text:"Nosotros tenemos RT. Podemos darte un poco.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
-						{emoVal:0,exit:false,goTo:2,text:"Nosotros tenemos RT pero no podemos darte.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
-						{emoVal:0,exit:false,goTo:2,text:"Correte de nuestro camino que queremos seguir.",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - agresivo"}
-					]
-				}
+					"expre":"ansioso",
+					"prompt":"Les daré recursos tecnológicos si lo consiguen",
+					replies:[						
+						{emoVal:0,exit:true,goTo:2,text:"Nos vendrían más que bien"}]
+				}			
 			]
 		},
+
 		{index:2,
-			moods:[				
-				{	"mood":"positive",
-					"expre":"agradecido",
-					"prompt":"¡Eso sería un gesto maravilloso, acepto!",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"Tomá RT, ¡y suerte!",resources:-50}]
-				},
+			moods:[			
 				{	"mood":"neutral",
-					"expre":"deprimido",
-					"prompt":"Oh, qué lástima. Adiós entonces.",
-					replies:[{emoVal:0,exit:true,goTo:0,text:"Adiós."}]
-				}
+					"expre":"ansioso",
+					"prompt":"Sigue habiendo portales abiertos",
+					replies:[						
+						{emoVal:0,exit:true,goTo:2,text:"Ah, sí"}]
+				}			
 			]
 		},
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"alegre",
-					"prompt":"Ya tengo RT. Gracias y buen viaje.",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Bueno!"}]
-				}
+					"prompt":"¡Son unos krakens, lo lograron! Tomen sus recursos.",
+					replies:[						
+						{emoVal:0,exit:true,goTo:4,text:"¡Buena!",resources:50}]
+				}			
+			]
+		},
+
+		{index:4,
+			moods:[				
+				{	"mood":"neutral",
+					"expre":"agradecido",
+					"prompt":"Aquí está todo en orden... Por ahora.",
+					replies:[						
+						{emoVal:0,exit:true,goTo:4,text:"SALIR"}]
+				}			
 			]
 		}
-	]	
+
+	]
 }
+

@@ -1,34 +1,18 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:3,
+	level:4,
 	type:"autoeval",
 	initial:true,
-	final:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"sonrisa1",
-					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ves, #Manu?",
-					replies:[
-						{emoVal:0,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:1,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
-						
-				}
-			]
-		},
-
-		{index:1,
-			moods:[
-				{ 	"mood":"neutral",
 					"expre":"neutra",
-					"prompt":"Equipo, están saliendo de la ciudad. #Manu, ¿qué tal te sentís con lo hecho hasta ahora?",
+					"prompt":"A partir de esta área habrá derrames de plasma. Seguramente encontrarás pronto un dispositivo antiplasma. ¿Creés que podrás limpiar los derrames para seguir adelante?",
 					replies:[
-						{emoVal:0,exit:true,goTo:0,text:"¡Nací para esto!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
-						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
-						{emoVal:0,exit:true,goTo:0,text:"Podría haberlo hecho mucho mejor.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
-						
+						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"No creo que pueda.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

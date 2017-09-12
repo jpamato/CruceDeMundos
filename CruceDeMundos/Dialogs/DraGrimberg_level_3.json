@@ -1,26 +1,34 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:2,
+	level:3,
 	type:"autoeval",
 	initial:true,
+	final:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"neutra",
-					"prompt":"Vienen muy bien, chicos. ¿Necesitan algo?",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"Ahora que lo dice... Creo que estamos cerca de la casa de Agustina...",dialog:"Emmanuel"}]
+					"expre":"sonrisa1",
+					"prompt":"¡Chicos, ya están más cerca! Sólo falta embarcarse hasta la isla. ¿Cómo lo ves, #Manu?",
+					replies:[
+						{emoVal:0,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:1,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+						
 				}
 			]
 		},
+
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"preocupada2",
-					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
-					replies:[						
-						{emoVal:0,exit:false,goTo:0,text:"Afirmativo, doc.",dialog:"Emmanuel"}
-						]
+					"expre":"neutra",
+					"prompt":"Equipo, están saliendo de la ciudad. #Manu, ¿qué tal te sentís con lo hecho hasta ahora?",
+					replies:[
+						{emoVal:0,exit:true,goTo:0,text:"¡Nací para esto!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:true,goTo:0,text:"Podría haberlo hecho mucho mejor.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
+						
 				}
 			]
 		}

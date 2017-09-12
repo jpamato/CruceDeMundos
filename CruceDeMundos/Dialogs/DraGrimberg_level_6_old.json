@@ -1,0 +1,21 @@
+﻿{
+	name:"Dra Grimberg",
+	level:-6,
+	type:"autoeval",
+	initial:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"neutra",
+					"prompt":"La superposición de dimensiones generó una zona laberíntica. ¿Te parece que podrás salir de ella?",
+					replies:[
+						{emoVal:1,exit:true,goTo:0,text:"Claro que sí!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"¿La verdad? ¡No sé!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"Lo veo dificilísimo",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+				}
+			]
+		}
+
+	]
+}

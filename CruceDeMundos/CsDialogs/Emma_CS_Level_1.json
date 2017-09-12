@@ -18,7 +18,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"exteriorCiudad",
-					"expre":"horrorizado",
+					"expre":"temeroso",
 					"prompt":"¡Esto es un infierno y está lleno de vórtices! ¡¿Mirá si nos absorbe uno y aparecemos en otra dimensión?!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
 				}

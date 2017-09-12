@@ -1,18 +1,18 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:4,
+	level:5,
 	type:"autoeval",
-	initial:true,
+	//initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"neutra",
-					"prompt":"A partir de esta área habrá derrames de plasma. Seguramente encontrarás pronto un dispositivo antiplasma. ¿Creés que podrás limpiar los derrames para seguir adelante?",
+					"expre":"preocupada2",
+					"prompt":"Bueno, ¿qué decís, #Manu? ¿Te sentís capaz de salir del nivel en menos de 2 minutos?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:true,goTo:0,text:"No creo que pueda.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+						{emoVal:1,exit:true,goTo:0,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

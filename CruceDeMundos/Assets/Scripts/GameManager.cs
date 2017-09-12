@@ -84,6 +84,11 @@ public class GameManager : MonoBehaviour {
 			state = states.ACTIVE;
 			Events.GameActive ();
 		}
+
+		Invoke ("ResetCharacterCollider", 1f);
+	}
+
+	void ResetCharacterCollider(){
 		Events.ResetCharacterCollider ();
 	}
 

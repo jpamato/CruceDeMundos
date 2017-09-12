@@ -1,6 +1,6 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:-2,
+	level:2,
 	type:"autoeval",
 	initial:true,
 	dialogTree:[
@@ -16,14 +16,14 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"sonrisa1",
-					"prompt":"¡Buena idea! Entonces, ¿crees que podés llegar al final y encontrar a Agus?",
-					replies:[
-						{emoVal:1,exit:true,goTo:1,text:"Claro que sí!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:1,text:"¿La verdad? ¡No sé!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:true,goTo:1,text:"Lo veo dificilísimo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+					"expre":"preocupada2",
+					"prompt":"Recuerden esto: van a necesitar nafta para la lancha. Consíganla antes de llegar al puerto.",
+					replies:[						
+						{emoVal:0,exit:false,goTo:0,text:"Afirmativo, doc.",dialog:"Emmanuel"}
+						]
 				}
 			]
 		}
+
 	]
 }

@@ -1,0 +1,60 @@
+﻿{
+	name:"Murk",
+	level:4,
+	type:"narrative",
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"ansioso",
+					"prompt":"Hola, nunca había visto seres con ruedas incorporadas. ¡Qué práctico!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"En realidad tenemos piernas, pero bueno, estamos un poco ocupados como para explicarte anatomía humana."}]
+				}				
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupado",
+					"prompt":"Ya veo. Yo también estoy ocupado limpiando el plasma con esta herramienta. Tengo otra de repuesto...",
+					replies:[
+					{emoVal:1,exit:false,goTo:2,text:"Ah, nos vendría muy bien si te sobra, ¿nos la darías?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
+					{emoVal:0,exit:false,goTo:2,text:"No creo que la necesitemos.",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"},
+					{emoVal:-1,exit:false,goTo:2,text:"¡Dejate de perder el tiempo y danos una!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"}					
+					]
+				}				
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"positive",
+					"expre":"alegre",
+					"prompt":"Seguro, la van a necesitar si quieren atravesar la isla.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Gracias.",tool:"Armonizador"}]
+				},				
+				{ 	"mood":"neutral",
+					"expre":"alegre",
+					"prompt":"Llévenla. La van a necesitar si quieren atravesar la isla",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Gracias.",tool:"Armonizador"}]
+				},				
+				{ 	"mood":"negative",
+					"expre":"preocupado",
+					"prompt":"Bueno, ¡qué carácter! Aquí la tienen.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Bien. Adiós.",tool:"Armonizador"}]
+				}				
+			]
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"ansioso",
+					"prompt":"Adiós y que lleguen bien. ¡Ojalá este desbarajuste se arregle pronto!",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Lo mismo digo, ¡adiós!"}]
+				}				
+			]
+		},
+	]
+}

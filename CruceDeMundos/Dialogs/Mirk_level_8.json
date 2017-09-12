@@ -1,38 +1,39 @@
 ﻿{
 	name:"Mirk",
-	level:6,
+	level:8,
 	type:"et",
 	dialogTree:[		
 		{index:0,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"Ah, unos humanos. ¿Tuvieron algo que ver con este caos? No hace falta que respondan, solo quiero culpar a alguien por esto.",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"Este... ¿Y eso te llevará mucho?"}]
+					"expre":"alegre",
+					"prompt":"...",
+					replies:[
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás alegre",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"alegre (alegre)"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás aliviado",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"aliviado (alegre)"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que en medio de esta catástrofe estás relajado",rType:"EMPATÍA",rSType:"RECONOCIMIENTO",indicVal:"relajado (alegre)"},
+					]
 				}				
 			]
 		},
 		{index:1,
 			moods:[	
 				{	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"No, apenas unos 40 minutos de culpabilizar a su especie. ¿Están listos?",
-					replies:[
-					{emoVal:0,exit:false,goTo:2,text:"Estamos listos. Decinos",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"},
-					{emoVal:0,exit:true,goTo:0,text:"¿Pero vos qué te pensás? Salí de acá que estamos apurados.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
-					{emoVal:0,exit:true,goTo:0,text:"Nos encantaría pero no va a poder ser. ¡Justamente estamos solucionándolo!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"}
-					]
+					"expre":"alegre",
+					"prompt":"Estoy alegre. Soy un optimista incurable y un fanático de los deportes.",
+					replies:[{emoVal:0,exit:false,goTo:2,text:"Buena combinación."}]
 				}				
 			]
 		},
 		{index:2,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"En primer lugar, se sabe que los humanos son de hacer lío con la ciencia.",
+					"expre":"alegre",
+					"prompt":"Mientras esperamos que todo se solucione, ¿les cuento algunas anécdotas deportivas?",
 					replies:[
-					{emoVal:0,exit:false,goTo:3,text:"Bueno, quién dice lío, dice progreso. Son formas de verlo."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:2,text:"Nada nos gustaría más pero tenemos dos dimensiones que salvar",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"},
+					{emoVal:0,exit:true,goTo:2,text:"¡¿Anécdotas, ahora?! Nos vamos, vos sos más tonto que optimista.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
+					{emoVal:0,exit:false,goTo:3,text:"Contanos, dale.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"},
 					]
 				}							
 			]
@@ -40,11 +41,11 @@
 		{index:3,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¿Qué necesidad había de jugar con las coordenadas de tiempo y espacio? ¿Eh?",
+					"expre":"alegre",
+					"prompt":"En los juegos del 2012, se descalificó al maratonista X-L2 por usar teletransportación para ganar la carrera.",
 					replies:[
-					{emoVal:0,exit:false,goTo:4,text:"No lo sé. Apenas soy el ayudante de la científica."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:false,goTo:4,text:"¡Qué vago!"},
+					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
 					]
 				}							
 			]
@@ -52,11 +53,11 @@
 		{index:4,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"Los ayudantes son los peores. Tiran la mano y esconden la piedra. ¿Se dice así?",
+					"expre":"alegre",
+					"prompt":"Isadorisc, del cuadrante 8, fue el primer ser transmente en ganar una medalla de cuarzo.",
 					replies:[
-					{emoVal:0,exit:false,goTo:5,text:"Algo así. Pero creemos que fue un accidente."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:false,goTo:5,text:"¡Bien por ella! O por él. Bueno, por lo que sea."},
+					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
 					]
 				}							
 			]
@@ -64,11 +65,11 @@
 		{index:5,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¡Claaaro! Un accidente, ajá. ¿Jugamos nosotros con vórtices y saltos de tiempo?",
+					"expre":"alegre",
+					"prompt":"En la competencia de ´Tiro a la tetera´, aún nadie ha superado a la gran Novena Ocho.",
 					replies:[
-					{emoVal:0,exit:false,goTo:6,text:"No sé, ¿lo hacen?"},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:false,goTo:6,text:"Un deporte de alto riesgo para la vajilla."},
+					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
 					]
 				}							
 			]
@@ -77,11 +78,10 @@
 		{index:6,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¡Por supuesto que no! Tenemos una res-pon-sa-bi-li-dad frente al universo.",
+					"expre":"alegre",
+					"prompt":"La final de extremidad - pelota se suspendió este año por una invasión de topos radioactivos que arruinaron la cancha.",
 					replies:[
-					{emoVal:0,exit:false,goTo:7,text:"Entiendo a qué vas con esto."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:7,text:"Un problema realmente topográfico. ¡Gracias por desasnarnos!"},
 					]
 				}							
 			]
@@ -89,22 +89,12 @@
 		{index:7,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¿Ah, sí? ¿Y qué opinás? ¿Tengo razón o no?",
+					"expre":"alegre",
+					"prompt":"Ya verán cómo todo se arregla. A menos que muramos todos, claro.",
 					replies:[
-					{emoVal:0,exit:true,goTo:8,text:"Sí, pero así como hacemos lío, tratamos de arreglarlo. ¡Y es lo que pienso hacer ahora!"}]
+					{emoVal:0,exit:true,goTo:7,text:"...Okey. No esperaba eso último, pero bueno."}]
 				}							
 			]
-		},
-		{index:8,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"No pierdan más tiempo. Vayan y arreglen esto.",
-					replies:[
-					{emoVal:0,exit:true,goTo:8,text:"Ahí vamos."}]
-				}							
-			]
-		}
+		}		
 	]	
 }

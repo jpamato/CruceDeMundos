@@ -228,7 +228,8 @@ public class DialogData : MonoBehaviour {
 						d.dialogTree [i].moods [j].replies [k].friendAdd = false;
 
 					if (sendDialogs2Database) {
-						Debug.Log ("aca");						
+						//Debug.Log ("aca");
+						if(d.level>0)
 						StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
 							d.dialogType.ToString (),d.dialogTree [i].moods [j].mType.ToString(), d.dialogTree [i].moods [j].prompt,
 							k, d.dialogTree [i].moods [j].replies [k].text,rt,rst,iv));

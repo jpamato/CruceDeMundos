@@ -30,6 +30,10 @@ public class MazeGenerator : MonoBehaviour
 	public bool importJson = true;
 	public string jsonName = "maze03";
 
+	float[,] tilesmap;
+
+	PathFind.Grid grid;
+
     void Start ()
     {
 		step = visualCellPrefab.transform.localScale.x;
@@ -165,6 +169,16 @@ public class MazeGenerator : MonoBehaviour
 
 		//Debug.Log (text.text);
 		var N = JSON.Parse(text.text);
+
+		int gridScale = Game.Instance.pathfinder2.gridScale;
+		string nnode = N ["Maze"] [N ["Maze"].Count-1] ["id"];
+		string[] ss = nnode.Split ('_');
+		int size_x = int.Parse (ss [0]) + 1;
+		int size_y = int.Parse (ss [1]) + 1;
+		tilesmap = new float[size_x*gridScale, size_y*gridScale];
+		//SetTileMap (0, 0, size_x * gridScale, size_y * gridScale, true,false);
+		SetAllTileMap(0,0,size_x * gridScale, size_y * gridScale,gridScale);
+
 		//Debug.Log (N ["Maze"][0]["east"].AsBool);
 		_height = N ["height"].AsInt;
 		for (int i = 0; i < N ["Maze"].Count; i++) {
@@ -172,6 +186,7 @@ public class MazeGenerator : MonoBehaviour
 			string[] s = nodeName.Split ('_');
 			int xPos = int.Parse (s [0]);
 			int yPos = int.Parse (s [1]);
+			//print (nodeName);
 
 			visualCellInst = Instantiate (visualCellPrefab, new Vector3 (xPos * step, N ["height"].AsInt * 1f - yPos * step, 0f), Quaternion.identity) as VisualCell;
 			visualCellInst.transform.parent = transform;
@@ -202,9 +217,10 @@ public class MazeGenerator : MonoBehaviour
 				exit.transform.Find ("North").gameObject.SetActive (true);
 				visualCellInst._North.gameObject.AddComponent<OnObjectiveCollider> ();
 				visualCellInst.northState = VisualCell.WallState.OUT;
-			} else if (N ["Maze"] [i] ["north"] + "" == "SOLID") { 				
+			} else if (N ["Maze"] [i] ["north"] + "" == "SOLID") {		
 				visualCellInst._North.gameObject.SetActive (true);
 				visualCellInst.northState = VisualCell.WallState.SOLID;
+				SetTileMap (xPos * 10, yPos * 10, 10, 2, 0,false);
 			} else if (N ["Maze"] [i] ["north"] + "" == "INVISIBLE") { 	
 				AddPathPoint (visualCellInst._North);
 				visualCellInst._North.gameObject.SetActive (false);
@@ -212,6 +228,8 @@ public class MazeGenerator : MonoBehaviour
 			} else {
 				visualCellInst._North.gameObject.SetActive (!N ["Maze"] [i] ["north"].AsBool);
 				visualCellInst.northState = N ["Maze"] [i] ["north"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+				if(visualCellInst.northState==VisualCell.WallState.SOLID)
+					SetTileMap (xPos * 10, yPos * 10, 10, 2, 0,false);
 			}
 
 			if (N ["Maze"] [i] ["south"] + "" == "FIRE") {
@@ -246,6 +264,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["south"] + "" == "SOLID") { 				
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.SOLID;
+				SetTileMap (xPos * 10, (yPos * 10)+8, 10, 2, 0,false);
 			} else if (N ["Maze"] [i] ["south"] + "" == "INVISIBLE") { 	
 				AddPathPoint (visualCellInst._South);
 				visualCellInst._South.gameObject.SetActive (false);
@@ -253,6 +272,8 @@ public class MazeGenerator : MonoBehaviour
 			} else {
 				visualCellInst._South.gameObject.SetActive (!N ["Maze"] [i] ["south"].AsBool);
 				visualCellInst.southState = N ["Maze"] [i] ["south"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+				if(visualCellInst.southState==VisualCell.WallState.SOLID)
+					SetTileMap (xPos * 10, (yPos * 10)+8, 10, 2, 0,false);
 			}
 			
 			if (N ["Maze"] [i] ["east"] + "" == "FIRE") {				
@@ -287,6 +308,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["east"] + "" == "SOLID") { 				
 				visualCellInst._East.gameObject.SetActive (true);
 				visualCellInst.eastState = VisualCell.WallState.SOLID;
+				SetTileMap ((xPos * 10)+8, yPos * 10, 2, 10, 0,false);
 			} else if (N ["Maze"] [i] ["east"] + "" == "INVISIBLE") { 
 				AddPathPoint (visualCellInst._East);
 				visualCellInst._East.gameObject.SetActive (false);
@@ -294,6 +316,8 @@ public class MazeGenerator : MonoBehaviour
 			} else {				
 				visualCellInst._East.gameObject.SetActive (!N ["Maze"] [i] ["east"].AsBool);
 				visualCellInst.eastState = N ["Maze"] [i] ["east"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+				if(visualCellInst.eastState==VisualCell.WallState.SOLID)
+					SetTileMap ((xPos * 10)+8, yPos * 10, 2, 10, 0,false);
 			}
 
 			if (N ["Maze"] [i] ["west"] + "" == "FIRE") {
@@ -328,6 +352,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["west"] + "" == "SOLID") { 				
 				visualCellInst._West.gameObject.SetActive (true);
 				visualCellInst.westState = VisualCell.WallState.SOLID;
+				SetTileMap (xPos * 10, yPos * 10, 2, 10, 0,false);
 			} else if (N ["Maze"] [i] ["west"] + "" == "INVISIBLE") { 
 				AddPathPoint (visualCellInst._West);
 				visualCellInst._West.gameObject.SetActive (false);
@@ -335,6 +360,8 @@ public class MazeGenerator : MonoBehaviour
 			} else {
 				visualCellInst._West.gameObject.SetActive (!N ["Maze"] [i] ["west"].AsBool);
 				visualCellInst.westState = N ["Maze"] [i] ["west"].AsBool ? VisualCell.WallState.INVISIBLE : VisualCell.WallState.SOLID;
+				if(visualCellInst.westState==VisualCell.WallState.SOLID)
+					SetTileMap (xPos * 10, yPos * 10, 2, 10, 0,false);
 			}
 
 			/*if (N ["Maze"] [i] ["wallIn"] != null) {
@@ -378,7 +405,74 @@ public class MazeGenerator : MonoBehaviour
 			visualCells.Add (visualCellInst);
 		}
 	if(Game.Instance!=null)Game.Instance.traceManager.freeTrail = true;
-	}	
+
+	ShowTileMap (size_x*gridScale,size_y*gridScale);
+	Game.Instance.pathfinder2.grid = new PathFind.Grid(size_x*gridScale, size_y*gridScale, tilesmap);
+	Game.Instance.pathfinder2.mazeOffsetY = _height;
+	Game.Instance.pathfinder2.SetMazeScale(step);
+	}
+
+	void SetTileMap(int from_x, int from_y, int size_x, int size_y, float val, bool debug){
+	/*if (from_x > 2)from_x-=3;
+	if (from_y > 2)from_y-=3;
+	if (from_x + size_x < tilesmap.GetLength (0) - 3)size_x+=3;
+	if (from_y + size_y < tilesmap.GetLength (1) - 3)size_y+=3;*/
+	for(int i = from_x; i < from_x+size_x; i++){		
+		for(int j = from_y; j < from_y+size_y; j++){
+				tilesmap [i, j] = val;
+				if (debug)
+					print (i + "," + j + ":" + val);
+			}
+		}
+	}
+
+	void SetAllTileMap(int from_x, int from_y, int size_x, int size_y, int squareSize){
+		float halfSZ = 0.5f*squareSize;
+		float invHalf = 1 / halfSZ;
+		for (int i = from_x; i < from_x + size_x; i++) {		
+			for (int j = from_y; j < from_y + size_y; j++) {			
+			tilesmap [i, j] = 0.001f+new Vector2 (((i % squareSize) - halfSZ)*invHalf, ((j % squareSize) - halfSZ)*invHalf).magnitude;
+			tilesmap [i, j]=tilesmap [i, j]*tilesmap [i, j]*tilesmap [i, j]*tilesmap [i, j];
+			}
+		}
+	}
+
+	void ShowTileMap(int size_x, int size_y){
+
+		Texture2D tex = new Texture2D(size_x, size_y, TextureFormat.RGB24, false);
+		
+		for(int i = 0; i < size_x; i++){		
+			for(int j = 0; j < size_y; j++){
+				
+				/*if (tilesmap [i, j]) {
+					tex.SetPixel (i, j, Color.white);
+				} else {
+					tex.SetPixel (i, j, Color.black);
+				}*/
+
+				float v = tilesmap [i, j];
+				if (v > 0f)
+					tex.SetPixel (i, j, new Color (1f - v, 0, 0));
+				else
+				tex.SetPixel (i, j, Color.black);
+			}
+		}
+
+		tex.Apply ();
+
+		byte[] bytes = tex.EncodeToJPG ();
+
+		System.IO.File.WriteAllBytes ("C:\\Documentos\\Unity\\Proyectos\\navMap.jpg",bytes);
+
+
+		/*using (FileStream fs = new FileStream ("Assets/Resources/Maze/test.txt", FileMode.Create)) {
+			using (StreamWriter writer = new StreamWriter (fs)) {
+				writer.Write (x);
+			}
+		}*/
+
+	}
+
 
     void InitVisualCell ()
     {

@@ -1,17 +1,17 @@
 ﻿{
 	name:"Mork",
-	level:5,
+	level:7,
 	type:"collab",
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"ansioso",
-					"prompt":"No sé qué hacer.",
+					"expre":"confundido",
+					"prompt":"...",
 					replies:[
-						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no - moderado,no"},
-						{emoVal:0,exit:false,goTo:1,text:"Parece que estás en problemas. ¿Podemos ayudarte?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"sí,sí"}
-						{emoVal:0,exit:true,goTo:0,text:"No sé qué te pasa, pero mejor seguimos",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no,no"},
+						{emoVal:0,exit:false,goTo:1,text:"Se te ve confundido, ¿puedo ayudarte en algo?",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:1,text:"(Se lo ve confundido pero yo no pararía ahora.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - moderado"},
+						{emoVal:0,exit:false,goTo:1,text:"(No sé qué le pasa a este bobo pero no es mi problema.)",rType:"ASERTIVIDAD",rSType:"PROACTIVIDAD",indicVal:"no - agresivo"}
 					]
 					
 				}				
@@ -22,35 +22,33 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"ansioso",
-					"prompt":"Ojalá. Mi nave está en llamas y si explota puede abrir un vórtice muy peligroso. ¿Apagarían conmigo el incendio?",
+					"prompt":"¡Estoy perdido y necesito llegar a la biblioteca! ¿Saben dónde es?",
 					replies:[
-					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arreglate!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
+						{emoVal:0,exit:false,goTo:2,text:"El bombero nos dijo que está en el norte. Espero que te sirva el dato.",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"sí"},
+						{emoVal:0,exit:true,goTo:0,text:"(No creo que sirva para algo hablar con el alien)",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"no - moderado"},
+						{emoVal:0,exit:true,goTo:0,text:"Lo sabemos pero no se lo diríamos a un desconocido",rType:"COLABORATIVO",rSType:"COMPARTIR",indicVal:"no"}
 					]
-				}				
+				}
 			]
 		},
 
 		{index:2,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"preocupado",
-					"prompt":"¿Apagamos juntos el incendio de la nave? ¡Si no, puede que se abra un vórtice peligroso!",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo."}]
-				}				
+					"expre":"saludo",
+					"prompt":"¡Me sirve! Debo reunirme allí con mi hermana.",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"¡Que la encuentres, chau!"}]
+				}
 			]
 		},
-
 		{index:3,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"excitado",
-					"prompt":"Gracias por salvar mi nave y evitar mayores desgracias.",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"Todo bien."}]
-				}				
+					"expre":"saludo",
+					"prompt":"",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"SALIR"}]
+				}
 			]
 		}
-		
 	]
 }

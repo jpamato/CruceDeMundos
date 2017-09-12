@@ -29,7 +29,7 @@ public class OnCharacterCollider : MonoBehaviour {
 		if (!trigged&&other.tag == "Player") {
 			Game.Instance.gameManager.state = GameManager.states.DIALOG;
 			Game.Instance.dialogManager.LoadDialog (charName);
-			trigged = true;
+			if(!blocking)trigged = true;
 			Events.GameDialog ();
 		}
 	}

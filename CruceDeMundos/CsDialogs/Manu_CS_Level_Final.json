@@ -18,7 +18,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"exteriorLaboratorio",
-					"expre":"preocupado",
+					"expre":"contento",
 					"prompt":"Llegó el momento. Solamente quiero decirles que fue increíble llegar hasta acá con ustedes... ¡Y que los quiero, amigos!",
 					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Agustina"}]
 				}

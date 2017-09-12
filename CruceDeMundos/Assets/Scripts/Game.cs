@@ -12,6 +12,7 @@ public class Game : MonoBehaviour {
 	public LevelManager levelManager;
 	public ToolsManager toolsManager;
 	public PathFinder pathfinder;
+	public PathFinder2 pathfinder2;
 	public TraceManager traceManager;
 	public LevelMetrics levelMetrics;
 	public IngameMusic ingameMusic;
@@ -60,6 +61,7 @@ public class Game : MonoBehaviour {
 		levelManager = GetComponent<LevelManager>();
 		toolsManager = GetComponent<ToolsManager>();
 		pathfinder = GetComponent<PathFinder>();
+		pathfinder2 = GetComponent<PathFinder2>();
 
 		levelMetrics = GetComponent<LevelMetrics>();
 
