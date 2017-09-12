@@ -8,7 +8,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"exteriorMuelle",
-					"expre":"neutral",
+					"expre":"neutra",
 					"prompt":"¡Qué bien! ¿Pudieron cargar las bicis y las herramientas?",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
 				}

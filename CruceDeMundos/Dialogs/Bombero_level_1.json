@@ -15,7 +15,7 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"expre":"sonriente1",
+					"expre":"sonrisa1",
 					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden ayudar a cerrarlo?",
 					replies:[{emoVal:0,exit:false,goTo:3,text:"¡Claro!",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
 						{emoVal:0,exit:false,goTo:2,text:"Mmm, ¿justo ahora?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"moderado"},

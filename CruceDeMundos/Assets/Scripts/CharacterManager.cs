@@ -22,6 +22,7 @@ public class CharacterManager : MonoBehaviour {
 	}
 
 	public void SetAnimation(string a){
+		//Debug.Log (a);
 		animator.Play (""+a);
 	}
 
