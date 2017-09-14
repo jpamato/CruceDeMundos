@@ -108,6 +108,7 @@ public class CSDialogData : MonoBehaviour {
 		else
 		d.dialogTree [i].moods [j].expre = N ["dialogTree"] [i] ["moods"] [j] ["expre"] = "";
 		d.dialogTree [i].moods [j].background = N ["dialogTree"] [i] ["moods"] [j] ["background"];
+		d.dialogTree [i].moods [j].indicador = N ["dialogTree"] [i] ["moods"] [j] ["indicador"]!=null?N ["dialogTree"] [i] ["moods"] [j] ["indicador"].AsBool:false;
 		d.dialogTree [i].moods [j].replies = new Dialog.Reply[N ["dialogTree"] [i] ["moods"] [j] ["replies"].Count];
 		for (int k = 0; k < d.dialogTree [i].moods [j].replies.Length; k++) {
 		d.dialogTree [i].moods [j].replies [k] = new Dialog.Reply ();
@@ -280,6 +281,7 @@ public class CSDialogData : MonoBehaviour {
 		public moodType mType;
 		public string expre;
 		public string background;
+		public bool indicador;
 		public string prompt;
 		public Reply[] replies;
 

@@ -19,8 +19,8 @@ public class Cutscenes : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		if (Input.GetKey ("n"))
 			csdialogManager.LoadDialog ("Manu");
-	}
+	}*/
 }

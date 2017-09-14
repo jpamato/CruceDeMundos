@@ -16,7 +16,7 @@ public class OnFinal : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {		
-		Data.Instance.playerData.level = 10;
+		Data.Instance.playerData.level=11;
 		Data.Instance.LoadLevel ("Cutscene", 0.2f, 3f, Color.black);
 	}
 }

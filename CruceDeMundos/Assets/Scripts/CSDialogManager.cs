@@ -8,11 +8,17 @@ public class CSDialogManager : MonoBehaviour {
 
 	public CharacterManager chManager;
 	public GameObject dialogUI;
+
+	public GameObject dialogUI_2;
+
 	public Image charImage;
 	//public Text charName;
 
 	public Text charText;
 	public Text[] ansText;
+
+	public Text charText_2;
+	public Text[] ansText_2;
 
 	public List<Background> backgrounds;
 
@@ -109,11 +115,28 @@ public class CSDialogManager : MonoBehaviour {
 		}else if(levelInfo.lastExpre!="")
 			chManager.SetAnimation (levelInfo.lastExpre);
 
-		if(Data.Instance.userName!=null)
-		charText.text = mood.prompt.Replace("#Manu",Data.Instance.userName);
-		for (int i = 0; i < mood.replies.Length; i++) {
-			ansText [i].text = mood.replies [i].text;
-			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
+		if (mood.indicador) {
+			dialogUI.SetActive (false);
+			dialogUI_2.SetActive (true);
+
+			if(Data.Instance.userName!=null)
+				charText_2.text = mood.prompt.Replace("#Manu",Data.Instance.userName);
+			for (int i = 0; i < mood.replies.Length; i++) {
+				ansText_2 [i].text = mood.replies [i].text;
+				ansText_2 [i].transform.parent.GetComponent<Button> ().interactable = true;
+			}
+
+		} else {
+
+			dialogUI.SetActive (true);
+			dialogUI_2.SetActive (false);
+
+			if (Data.Instance.userName != null)
+				charText.text = mood.prompt.Replace ("#Manu", Data.Instance.userName);
+			for (int i = 0; i < mood.replies.Length; i++) {
+				ansText [i].text = mood.replies [i].text;
+				ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
+			}
 		}
 
 		SelectBackground (mood.background);
@@ -133,7 +156,8 @@ public class CSDialogManager : MonoBehaviour {
 
 	public void ReplySelect(int index){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
-		//SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
+		if (mood.indicador)
+			SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -199,7 +223,7 @@ public class CSDialogManager : MonoBehaviour {
 				Data.Instance.playerData.level = 1;
 				Data.Instance.LoadLevel ("LevelMap", 1f, 0.5f, Color.black);
 			}else if (mood.replies [index].blackout) {
-				Data.Instance.playerData.level = 11;
+				Data.Instance.playerData.level++;
 				Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
 			}else
 				Data.Instance.LoadLevel ("Game", 1f, 0.5f, Color.black);

@@ -8,32 +8,58 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"Refinal",
-					"expre":"sonrisa2",
-					"prompt":"¡Chicos, lo lograron! No sé cómo agradecer todo lo que hicieron!",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Emmanuel"}]
+					"expre":"preocupada2",
+					"prompt":"...",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR"}]
 				}
 			]
 		},
+
 		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"sonrisa2",
+					"background":"Refinal",
+					"indicador":true,
+					"prompt":"¡Lo lograron! #Manu, ¿qué tal te sentís con lo que hiciste?",
+					replies:[
+						{emoVal:0,exit:false,goTo:2,text:"¡Me siento genial! Salió todo perfecto.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:false,goTo:2,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:false,goTo:2,text:"Podría haberlo hecho mucho mejor.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
+						
+				}
+			]
+		},
+
+		{index:2,
+			moods:[
+				{ 	"mood":"neutral",
+					"background":"Refinal",
+					"expre":"sonrisa2",
+					"prompt":"¡No sé cómo agradecer todo lo que hicieron!",
+					replies:[{emoVal:0,exit:false,goTo:3,text:"CONTINUAR",dialog:"Emmanuel"}]
+				}
+			]
+		},
+		{index:3,
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"Refinal",
 					"expre":"sonrisa1",
 					"prompt":"Mucho, pero miremos el lado bueno... ¡Descubrimos una dimensión paralela para explorar! Esos seres apreciaron lo que ustedes hicieron y quieren proponerles una nueva hazaña...",
-					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Emmanuel"}]
+					replies:[{emoVal:0,exit:false,goTo:4,text:"CONTINUAR",dialog:"Emmanuel"}]
 				}
 			]
 		},
-		{index:2,
+		{index:4,
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"Refinal",
 					"expre":"sonrisa1",
 					"prompt":"¡Esta vez será en su dimensión! ¿No es emocionante? Pronto recibirán instrucciones...",
-					replies:[{emoVal:0,exit:true,goTo:3,text:"CONTINUAR",levelMap:true}]
+					replies:[{emoVal:0,exit:true,goTo:4,text:"CONTINUAR",levelMap:true}]=
 				}
 			]
 		}
-
 	]
 }

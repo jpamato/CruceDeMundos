@@ -18,7 +18,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"exteriorLaboratorio",
-					"expre":"sonrisa",
+					"expre":"sonrisa1",
 					"prompt":"Yo también, amigos. ¡Ahora cerremos ese vórtice de una vez que no doy más del suspenso!",
 					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Manu"}]
 				}
