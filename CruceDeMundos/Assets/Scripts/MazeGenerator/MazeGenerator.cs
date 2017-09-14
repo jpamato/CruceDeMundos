@@ -170,14 +170,17 @@ public class MazeGenerator : MonoBehaviour
 		//Debug.Log (text.text);
 		var N = JSON.Parse(text.text);
 
-		int gridScale = Game.Instance.pathfinder2.gridScale;
-		string nnode = N ["Maze"] [N ["Maze"].Count-1] ["id"];
+		string nnode = N ["Maze"] [N ["Maze"].Count - 1] ["id"];
 		string[] ss = nnode.Split ('_');
 		int size_x = int.Parse (ss [0]) + 1;
 		int size_y = int.Parse (ss [1]) + 1;
-		tilesmap = new float[size_x*gridScale, size_y*gridScale];
-		//SetTileMap (0, 0, size_x * gridScale, size_y * gridScale, true,false);
-		SetAllTileMap(0,0,size_x * gridScale, size_y * gridScale,gridScale);
+		if (Game.Instance != null) {
+			int gridScale = Game.Instance.pathfinder2.gridScale;
+			tilesmap = new float[size_x * gridScale, size_y * gridScale];
+			//SetTileMap (0, 0, size_x * gridScale, size_y * gridScale, true,false);
+			SetAllTileMap (0, 0, size_x * gridScale, size_y * gridScale, gridScale);
+		}
+
 
 		//Debug.Log (N ["Maze"][0]["east"].AsBool);
 		_height = N ["height"].AsInt;
@@ -406,10 +409,13 @@ public class MazeGenerator : MonoBehaviour
 		}
 	if(Game.Instance!=null)Game.Instance.traceManager.freeTrail = true;
 
-	ShowTileMap (size_x*gridScale,size_y*gridScale);
-	Game.Instance.pathfinder2.grid = new PathFind.Grid(size_x*gridScale, size_y*gridScale, tilesmap);
-	Game.Instance.pathfinder2.mazeOffsetY = _height;
-	Game.Instance.pathfinder2.SetMazeScale(step);
+		if (Game.Instance != null) {
+			int gridScale = Game.Instance.pathfinder2.gridScale;
+			//ShowTileMap (size_x * gridScale, size_y * gridScale);
+			Game.Instance.pathfinder2.grid = new PathFind.Grid (size_x * gridScale, size_y * gridScale, tilesmap);
+			Game.Instance.pathfinder2.mazeOffsetY = _height;
+			Game.Instance.pathfinder2.SetMazeScale (step);
+		}
 	}
 
 	void SetTileMap(int from_x, int from_y, int size_x, int size_y, float val, bool debug){
@@ -417,11 +423,13 @@ public class MazeGenerator : MonoBehaviour
 	if (from_y > 2)from_y-=3;
 	if (from_x + size_x < tilesmap.GetLength (0) - 3)size_x+=3;
 	if (from_y + size_y < tilesmap.GetLength (1) - 3)size_y+=3;*/
-	for(int i = from_x; i < from_x+size_x; i++){		
-		for(int j = from_y; j < from_y+size_y; j++){
-				tilesmap [i, j] = val;
-				if (debug)
-					print (i + "," + j + ":" + val);
+		if (Game.Instance != null) {
+			for (int i = from_x; i < from_x + size_x; i++) {		
+				for (int j = from_y; j < from_y + size_y; j++) {
+					tilesmap [i, j] = val;
+					if (debug)
+						print (i + "," + j + ":" + val);
+				}
 			}
 		}
 	}
