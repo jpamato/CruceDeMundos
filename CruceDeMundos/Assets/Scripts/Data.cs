@@ -176,4 +176,14 @@ public class Data : MonoBehaviour
 			Directory.CreateDirectory(folder);
 		return Path.Combine(folder, fileName);
 	}
+
+	public void Exit(){
+		#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+		#elif UNITY_WEBPLAYER
+		Application.OpenURL(webplayerQuitURL);
+		#else
+		Application.Quit();
+		#endif
+	}
 }
