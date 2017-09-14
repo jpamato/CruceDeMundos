@@ -33,6 +33,7 @@ public class FollowPlayer : MovingCharacter {
 		if(movePlayer==null)
 			movePlayer = player.GetComponent<FollowPlayer> ();
 
+		//Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		//points = new List<GameObject> ();
 	}
 

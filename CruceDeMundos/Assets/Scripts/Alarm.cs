@@ -10,6 +10,8 @@ public class Alarm : MonoBehaviour {
 
 	bool isFadeIn;
 
+	bool enabled;
+
 	// Use this for initialization
 	void Start () {
 		image = GetComponent<Image> ();
@@ -22,7 +24,12 @@ public class Alarm : MonoBehaviour {
 
 	void OnEnable(){
 		image = GetComponent<Image> ();
+		enabled = true;
 		Fade (1.0f);
+	}
+
+	void OnDisable(){
+		enabled = false;
 	}
 
 	public void Fade(float seconds){
@@ -39,14 +46,13 @@ public class Alarm : MonoBehaviour {
 		};
 		fadeInOut.OnEndMethod = () => {			
 			isFadeIn=!isFadeIn;
-			Fade(seconds);
+			if(enabled)Fade(seconds);
 			fadeInOut.Destroy();
 		};
 		if(isFadeIn)
 			fadeInOut.StartFadeOut (seconds);
 		else
 			fadeInOut.StartFadeIn (seconds);
-
 	}
 
 }

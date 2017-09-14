@@ -11,7 +11,7 @@ public class TronWalls : MonoBehaviour {
 		SpriteRenderer sr = GetComponent<SpriteRenderer> ();
 		if (Data.Instance.playerData.level < 4)
 			sr.sprite = areaTron [0];
-		else if(Data.Instance.playerData.level < 7)
+		else if(Data.Instance.playerData.level < 8)
 			sr.sprite = areaTron [1];
 		else
 			sr.sprite = areaTron [2];

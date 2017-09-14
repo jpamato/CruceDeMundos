@@ -2,33 +2,17 @@
 	name:"Dra Grimberg",
 	level:6,
 	type:"autoeval",
-	initial:true,
-	final:true,
+	//initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"preocupada1",
-					"prompt":"Al cruzar el puente llegarás a la universidad. Allí se dará la misión final. ¿Cómo te ves cruzando el puente?",
+					"expre":"preocupada2",
+					"prompt":"Bueno, ¿qué decís, #Manu? ¿Te sentís capaz de salir del nivel en menos de 2 minutos?",
 					replies:[
-						{emoVal:0,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:1,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}
-					]
-				}
-			]
-		},
-
-		{index:1,
-			moods:[
-				{ 	"mood":"neutral",
-					"expre":"concentrada",
-					"prompt":"Estás dejando atrás la isla, ¿qué tal te sentís con lo hecho hasta ahora?",
-					replies:[
-						{emoVal:0,exit:true,goTo:0,text:"¡Nací para esto!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
-						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
-						{emoVal:0,exit:true,goTo:0,text:"Podría haberlo hecho mucho mejor.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
-						
+						{emoVal:1,exit:true,goTo:0,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"Ni ahí",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}

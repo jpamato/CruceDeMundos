@@ -1,6 +1,6 @@
 ﻿{
 	name:"Emmanuel",
-	level:10,
+	level:11,
 	type:"NARRATIVE",
 	initial:false,
 	dialogTree:[

@@ -1,110 +1,31 @@
 ﻿{
 	name:"Mirk",
 	level:6,
-	type:"et",
-	dialogTree:[		
+	type:"collab",
+	dialogTree:[
 		{index:0,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"Ah, unos humanos. ¿Tuvieron algo que ver con este caos? No hace falta que respondan, solo quiero culpar a alguien por esto.",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"Este... ¿Y eso te llevará mucho?"}]
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupado",
+					"prompt":"Los ayudaría a limpiar la zona pero necesitaría algún recurso tecnológico para mi antiplasma. ¿Podrán darme uno de los suyos?",
+					replies:[
+						{emoVal:0,exit:true,goTo:0,text:"Mmmm... No estoy Seguro...",rType:"COLABORATIVO,COLABORATIVO",rSType:"COMPARTIR,TODOS",indicVal:"no,no"},
+						{emoVal:0,exit:false,goTo:1,text:"Sí. Tomá un poco.",rType:"EMPATÍA,COLABORATIVO,COLABORATIVO",rSType:"ACCIÓN,COMPARTIR,TODOS",indicVal:"sí,sí,sí"},
+						{emoVal:0,exit:true,goTo:0,text:"Lo lamento pero no. Puede que los necesitemos más adelante.",rType:"EMPATÍA,COLABORATIVO,COLABORATIVO",rSType:"ACCIÓN,COMPARTIR,TODOS",indicVal:"no - moderado,no,no"}
+					]
+					
 				}				
 			]
 		},
+
 		{index:1,
-			moods:[	
-				{	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"No, apenas unos 40 minutos de culpabilizar a su especie. ¿Están listos?",
-					replies:[
-					{emoVal:0,exit:false,goTo:2,text:"Estamos listos. Decinos",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"},
-					{emoVal:0,exit:true,goTo:0,text:"¿Pero vos qué te pensás? Salí de acá que estamos apurados.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
-					{emoVal:0,exit:true,goTo:0,text:"Nos encantaría pero no va a poder ser. ¡Justamente estamos solucionándolo!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"}
-					]
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"agradecido",
+					"prompt":"Les agradezco. Ya mismo me ocuparé de eso",
+					replies:[{emoVal:1,exit:true,goTo:2,text:"Perfecto. ¡Suerte!",resources:-50,move:1,obstacle:"POLLUTION"}]
 				}				
 			]
-		},
-		{index:2,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"En primer lugar, se sabe que los humanos son de hacer lío con la ciencia.",
-					replies:[
-					{emoVal:0,exit:false,goTo:3,text:"Bueno, quién dice lío, dice progreso. Son formas de verlo."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
-					]
-				}							
-			]
-		},
-		{index:3,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¿Qué necesidad había de jugar con las coordenadas de tiempo y espacio? ¿Eh?",
-					replies:[
-					{emoVal:0,exit:false,goTo:4,text:"No lo sé. Apenas soy el ayudante de la científica."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
-					]
-				}							
-			]
-		},
-		{index:4,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"Los ayudantes son los peores. Tiran la mano y esconden la piedra. ¿Se dice así?",
-					replies:[
-					{emoVal:0,exit:false,goTo:5,text:"Algo así. Pero creemos que fue un accidente."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
-					]
-				}							
-			]
-		},
-		{index:5,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¡Claaaro! Un accidente, ajá. ¿Jugamos nosotros con vórtices y saltos de tiempo?",
-					replies:[
-					{emoVal:0,exit:false,goTo:6,text:"No sé, ¿lo hacen?"},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
-					]
-				}							
-			]
-		},
-		
-		{index:6,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¡Por supuesto que no! Tenemos una res-pon-sa-bi-li-dad frente al universo.",
-					replies:[
-					{emoVal:0,exit:false,goTo:7,text:"Entiendo a qué vas con esto."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
-					]
-				}							
-			]
-		},
-		{index:7,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"¿Ah, sí? ¿Y qué opinás? ¿Tengo razón o no?",
-					replies:[
-					{emoVal:0,exit:true,goTo:8,text:"Sí, pero así como hacemos lío, tratamos de arreglarlo. ¡Y es lo que pienso hacer ahora!"}]
-				}							
-			]
-		},
-		{index:8,
-			moods:[				
-				{	"mood":"neutral",
-					"expre":"irritado",
-					"prompt":"No pierdan más tiempo. Vayan y arreglen esto.",
-					replies:[
-					{emoVal:0,exit:true,goTo:8,text:"Ahí vamos."}]
-				}							
-			]
-		}
-	]	
+		}		
+	]
 }

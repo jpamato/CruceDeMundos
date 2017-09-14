@@ -2,19 +2,30 @@
 	name:"Dra Grimberg",
 	level:8,
 	type:"autoeval",
-	//initial:true,
+	initial:true,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"preocupada1",
-					"prompt":"¡Solo te queda atravesar el campo de deportes y llegarás al laboratorio! ¿Te sentís capaz?",
+					"expre":"sonrisa1",
+					"prompt":"¡Ya estás en el predio de la universidad!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"¿Vio, doc? Uff, esta zona está llena de derrumbes. ¿Cree que la entrada esté libre?"}]
+				}
+			]
+		},
+
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupada2",
+					"prompt":"No lo sé. Tal vez debas encontrar una entrada alternativa para llegar al laboratorio. ¿Crees poder hacerlo?",
 					replies:[
-						{emoVal:1,exit:true,goTo:0,text:"De una!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:0,exit:true,goTo:0,text:"Más o menos.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
-						{emoVal:-1,exit:true,goTo:0,text:"Ni ahí.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+						{emoVal:1,exit:true,goTo:0,text:"¡Seguro, doctora!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:0,text:"Haré lo posible.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:0,text:"No creo que pueda.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
 				}
 			]
 		}
+
 	]
 }

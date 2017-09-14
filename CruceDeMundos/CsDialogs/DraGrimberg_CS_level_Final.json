@@ -1,6 +1,6 @@
 ﻿{
 	name:"Dra Grimberg",
-	level:11,
+	level:12,
 	type:"NARRATIVE",
 	initial:true,
 	dialogTree:[

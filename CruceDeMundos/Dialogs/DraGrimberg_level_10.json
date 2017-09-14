@@ -1,0 +1,34 @@
+﻿{
+	name:"Dra Grimberg",
+	level:10,
+	type:"autoeval",
+	initial:true,
+	final:true,
+	dialogTree:[
+		{index:0,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"preocupada2",
+					"prompt":"Deben desconectar las tres antenas a la vez, y para eso, cada uno de ustedes debe ocuparse de una. #Manu, ¿cómo te ves cerrando el vórtice?",
+					replies:[
+						{emoVal:1,exit:true,goTo:1,text:"¡Súper!",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:0,exit:true,goTo:1,text:"Mmmm, complicado.",rType:"AUTOEFICACIA",rSType:"JUICIO"},
+						{emoVal:-1,exit:true,goTo:1,text:"No lo veo.",rType:"AUTOEFICACIA",rSType:"JUICIO"}]
+				}
+			]
+		},
+		{index:1,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"sonrisa2",
+					"prompt":"¡Lo lograron! #Manu, ¿qué tal te sentís con lo que hiciste?",
+					replies:[
+						{emoVal:0,exit:true,goTo:0,text:"¡Me siento genial! Salió todo perfecto.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:true,goTo:0,text:"Creo que lo hice bastante bien!",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"},
+						{emoVal:0,exit:true,goTo:0,text:"Podría haberlo hecho mucho mejor.",levelEnd:true,rType:"AUTOEFICACIA",rSType:"AUTOPERCEPCIÓN"}]
+						
+				}
+			]
+		}
+	]
+}

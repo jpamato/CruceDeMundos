@@ -6,12 +6,12 @@
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"Hola. Si colaboran conmigo limpiando los plasmas de este sector, será mejor para todos.",
+					"expre":"ansioso",
+					"prompt":"No sé qué hacer.",
 					replies:[
-						{emoVal:0,exit:false,goTo:1,text:"No podemos ahora.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"},
-						{emoVal:0,exit:false,goTo:1,text:"De acuerdo.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"}
-						{emoVal:0,exit:false,goTo:1,text:"Mmmm No estoy seguro",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"},
+						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no - moderado,no"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que estás en problemas. ¿Podemos ayudarte?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"sí,sí"}
+						{emoVal:0,exit:true,goTo:0,text:"No sé qué te pasa, pero mejor seguimos",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no,no"},
 					]
 					
 				}				
@@ -21,12 +21,12 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"confundido",
-					"prompt":"Si limpian dos plasmas, confíen en que me ocuparé del resto, ¿sí?",
+					"expre":"ansioso",
+					"prompt":"Ojalá. Mi nave está en llamas y si explota puede abrir un vórtice muy peligroso. ¿Apagarían conmigo el incendio?",
 					replies:[
-					{emoVal:0,exit:false,goTo:2,text:"No estoy muy de acuerdo.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}			
-					{emoVal:1,exit:false,goTo:2,text:"¡Perfecto! Limpiaremos solo dos.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
-					{emoVal:0,exit:false,goTo:2,text:"No confío en que puedas hacerlo.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}			
+					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
+					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arreglate!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
 					]
 				}				
 			]
@@ -35,17 +35,22 @@
 		{index:2,
 			moods:[
 				{ 	"mood":"neutral",
-					"expre":"saludo",
-					"prompt":"Es sorprendente lo que se consigue uniendo fuerzas.",
-					replies:[{emoVal:0,exit:true,goTo:2,text:"Si vos lo decís..."}]
-				},
-
-				{ 	"mood":"positive",
-					"expre":"saludo",
-					"prompt":"Es sorprendente lo que se consigue uniendo fuerzas.",
-					replies:[{emoVal:1,exit:true,goTo:2,text:"¡Sí, adiós!"}]
-				}
+					"expre":"preocupado",
+					"prompt":"¿Apagamos juntos el incendio de la nave? ¡Si no, puede que se abra un vórtice peligroso!",
+					replies:[{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo."}]
+				}				
 			]
-		}		
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"excitado",
+					"prompt":"Gracias por salvar mi nave y evitar mayores desgracias.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"Todo bien."}]
+				}				
+			]
+		}
+		
 	]
 }

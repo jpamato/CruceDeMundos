@@ -1,6 +1,6 @@
 ﻿{
-	name:"Emmanuel",
-	level:7,
+	name:"Manu",
+	level:8,
 	type:"NARRATIVE",
 	initial:false,
 	dialogTree:[
@@ -8,12 +8,11 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"background":"exteriorPuente",
-					"expre":"horrorizado",
-					"prompt":"Este, digo yo... ¿No hay alguna manera de resolver esto a control remoto, o algo así?",
+					"expre":"preocupado",
+					"prompt":"¡Pero, doctora Grimberg, usted sigue en el laboratorio! ¡Salga ya mismo de ahí!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
 				}
 			]
 		}
-
 	]
 }

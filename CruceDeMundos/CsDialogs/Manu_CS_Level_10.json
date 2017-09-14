@@ -1,15 +1,15 @@
 ﻿{
 	name:"Manu",
-	level:7,
+	level:10,
 	type:"NARRATIVE",
 	initial:false,
 	dialogTree:[
 		{index:0,
 			moods:[
 				{ 	"mood":"neutral",
-					"background":"exteriorPuente",
+					"background":"exteriorLaboratorio",
 					"expre":"preocupado",
-					"prompt":"¡Pero, doctora Grimberg, usted sigue en el laboratorio! ¡Salga ya mismo de ahí!",
+					"prompt":"¡¿Cómo lo cerramos, doctora?!",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Dra Grimberg"}]
 				}
 			]

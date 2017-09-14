@@ -266,6 +266,7 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void SetSummary(){
+		AlarmEnable (false);
 		Game.Instance.gameManager.state = GameManager.states.ENDED;
 		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
 		Stars s2 = stars2.GetComponent<Stars> ();
