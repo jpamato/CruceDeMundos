@@ -229,6 +229,7 @@ public class DialogData : MonoBehaviour {
 
 					if (sendDialogs2Database) {
 						//Debug.Log ("aca");
+						yield return new WaitForSeconds(1f);
 						if(d.level>0)
 						StartCoroutine(Data.Instance.dataController.AddDialog (d.name, d.level, d.dialogTree [i].index,
 							d.dialogType.ToString (),d.dialogTree [i].moods [j].mType.ToString(), d.dialogTree [i].moods [j].prompt,

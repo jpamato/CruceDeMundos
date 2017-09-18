@@ -103,8 +103,6 @@ public class DataController : MonoBehaviour {
 	public IEnumerator AddDialog(string character, int level, int index, string dType, string mood, string prompt, int answerId,
 		string answer, string replyType, string replySubType, string indicVal)
 	{
-
-		yield return new WaitForSeconds(1f);
 		string hash = Md5Test.Md5Sum(secretKey);
 
 		string post_url = addDialog_URL + "&character_name=" + WWW.EscapeURL (character) + "&level_id=" + level +
