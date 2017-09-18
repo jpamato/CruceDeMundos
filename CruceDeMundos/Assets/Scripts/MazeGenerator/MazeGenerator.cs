@@ -224,6 +224,11 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst._North.gameObject.SetActive (true);
 				visualCellInst.northState = VisualCell.WallState.SOLID;
 				SetTileMap (xPos * 10, yPos * 10, 10, 2, 0,false);
+			} else if (N ["Maze"] [i] ["north"] + "" == "OBSTACLE") {		
+				visualCellInst._North.gameObject.SetActive (true);
+				visualCellInst.northState = VisualCell.WallState.OBSTACLE;
+				visualCellInst.SetObstacle (visualCellInst._North);
+				SetTileMap (xPos * 10, yPos * 10, 10, 2, 0,false);
 			} else if (N ["Maze"] [i] ["north"] + "" == "INVISIBLE") { 	
 				AddPathPoint (visualCellInst._North);
 				visualCellInst._North.gameObject.SetActive (false);
@@ -243,11 +248,11 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst._South.Find ("portal").gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.PORTAL;
-			}else if (N ["Maze"] [i] ["south"] + "" == "IN") { 
+			} else if (N ["Maze"] [i] ["south"] + "" == "IN") { 
 				player.transform.position = visualCellInst.transform.position;
 				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
 				r.material = wallIn;*/
-				visualCellInst._South.Find("tronWall").gameObject.SetActive(false);
+				visualCellInst._South.Find ("tronWall").gameObject.SetActive (false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("North").gameObject.SetActive (true);
@@ -257,7 +262,7 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["south"] + "" == "OUT") { 				
 				/*Renderer r = visualCellInst._South.GetComponent<Renderer> ();
 				r.material = wallOut;*/
-				visualCellInst._South.Find("tronWall").gameObject.SetActive(false);
+				visualCellInst._South.Find ("tronWall").gameObject.SetActive (false);
 				GameObject exit = visualCellInst.transform.Find ("exit").gameObject;
 				exit.SetActive (true);
 				exit.transform.Find ("South").gameObject.SetActive (true);
@@ -267,7 +272,12 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["south"] + "" == "SOLID") { 				
 				visualCellInst._South.gameObject.SetActive (true);
 				visualCellInst.southState = VisualCell.WallState.SOLID;
-				SetTileMap (xPos * 10, (yPos * 10)+8, 10, 2, 0,false);
+				SetTileMap (xPos * 10, (yPos * 10) + 8, 10, 2, 0, false);
+			} else if (N ["Maze"] [i] ["south"] + "" == "OBSTACLE") {		
+				visualCellInst._South.gameObject.SetActive (true);
+				visualCellInst.southState = VisualCell.WallState.OBSTACLE;
+				visualCellInst.SetObstacle (visualCellInst._South);
+				SetTileMap (xPos * 10, (yPos * 10) + 8, 10, 2, 0, false);
 			} else if (N ["Maze"] [i] ["south"] + "" == "INVISIBLE") { 	
 				AddPathPoint (visualCellInst._South);
 				visualCellInst._South.gameObject.SetActive (false);
@@ -312,6 +322,11 @@ public class MazeGenerator : MonoBehaviour
 				visualCellInst._East.gameObject.SetActive (true);
 				visualCellInst.eastState = VisualCell.WallState.SOLID;
 				SetTileMap ((xPos * 10)+8, yPos * 10, 2, 10, 0,false);
+			} else if (N ["Maze"] [i] ["east"] + "" == "OBSTACLE") {		
+				visualCellInst._East.gameObject.SetActive (true);
+				visualCellInst.eastState = VisualCell.WallState.OBSTACLE;
+				visualCellInst.SetObstacle (visualCellInst._East);
+				SetTileMap ((xPos * 10)+8, yPos * 10, 2, 10, 0,false);
 			} else if (N ["Maze"] [i] ["east"] + "" == "INVISIBLE") { 
 				AddPathPoint (visualCellInst._East);
 				visualCellInst._East.gameObject.SetActive (false);
@@ -355,6 +370,11 @@ public class MazeGenerator : MonoBehaviour
 			} else if (N ["Maze"] [i] ["west"] + "" == "SOLID") { 				
 				visualCellInst._West.gameObject.SetActive (true);
 				visualCellInst.westState = VisualCell.WallState.SOLID;
+				SetTileMap (xPos * 10, yPos * 10, 2, 10, 0,false);
+			} else if (N ["Maze"] [i] ["west"] + "" == "OBSTACLE") {		
+				visualCellInst._West.gameObject.SetActive (true);
+				visualCellInst.westState = VisualCell.WallState.OBSTACLE;
+				visualCellInst.SetObstacle (visualCellInst._West);
 				SetTileMap (xPos * 10, yPos * 10, 2, 10, 0,false);
 			} else if (N ["Maze"] [i] ["west"] + "" == "INVISIBLE") { 
 				AddPathPoint (visualCellInst._West);

@@ -12,6 +12,7 @@ public class VisualCell : MonoBehaviour
 	public enum WallState{
 		INVISIBLE,
 		SOLID,
+		OBSTACLE,
 		FIRE,
 		PORTAL,
 		IN,
@@ -115,6 +116,9 @@ public class VisualCell : MonoBehaviour
 		} else if (state == WallState.OUT) {
 			MakeOut (wall);
 			MuteNeighbor (wall);
+		} else if (state == WallState.OBSTACLE) {
+			MakeObstacle (wall);
+			MuteNeighbor (wall);
 		}
 	}
 
@@ -122,6 +126,7 @@ public class VisualCell : MonoBehaviour
 		wall.gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = true;
 		//wall.GetComponent<Renderer> ().material.color = Color.white;
+		wall.transform.Find ("tronWall").gameObject.SetActive (true);
 		wall.transform.Find ("fire").gameObject.SetActive (false);
 		wall.transform.Find ("portal").gameObject.SetActive (false);
 
@@ -153,6 +158,13 @@ public class VisualCell : MonoBehaviour
 		exit.SetActive (true);
 		exit.transform.Find (wall.name).gameObject.SetActive (true);
 		//wall.gameObject.GetComponent<Renderer> ().enabled = false;
+	}
+
+	void MakeObstacle(Transform wall){
+		wall.gameObject.SetActive (true);
+		//wall.gameObject.GetComponent<Renderer> ().enabled = true;
+		//wall.GetComponent<Renderer> ().material.color = Color.white;
+		wall.transform.Find ("tronWall").gameObject.SetActive (false);
 	}
 
 	void MuteNeighbor(Transform source){
@@ -187,4 +199,9 @@ public class VisualCell : MonoBehaviour
 		}
 	}
 
+
+	public void SetObstacle(Transform wall){
+		wall.parent.Find ("tronWall").gameObject.SetActive(false);
+
+	}
 }
