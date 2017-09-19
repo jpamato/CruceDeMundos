@@ -201,7 +201,6 @@ public class VisualCell : MonoBehaviour
 
 
 	public void SetObstacle(Transform wall){
-		wall.parent.Find ("tronWall").gameObject.SetActive(false);
-
+		wall.Find ("tronWall").gameObject.SetActive(false);
 	}
 }
