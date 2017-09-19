@@ -3,14 +3,14 @@ using System.Collections;
 
 public class DataController : MonoBehaviour {
 
-	string[] test1 = {"020121600","2","1","tarde"};
-	string[] test2 = { "020088300", "2", "1", "tarde" };
+	//string[] test1 = {"020121600","2","1","tarde"};
+	//string[] test2 = { "020088300", "2", "1", "tarde" };
 
 	//const string URL = "http://127.0.0.1:8000/";
-	//const string URL = "http://cdm.com.ar/";
+	const string URL = "http://cdm.com.ar/";
 	//const string URL = "http://yaguar.alwaysdata.net/";
 	//const string URL = "http://10.9.5.223/";
-	const string URL = "http://crucemundos.dev.gcba.gob.ar/";
+	//const string URL = "http://crucemundos.dev.gcba.gob.ar/";
 
 
 	private string createUser_URL = URL + "users/create?";
@@ -20,6 +20,8 @@ public class DataController : MonoBehaviour {
 	private string addMission_URL = URL + "missions/add?";
 	private string addLevelData_URL = URL + "levelData/add?";
 	private string addSelfie_URL = URL + "selfie/add?";
+
+	private string getCursos_URL = URL + "cursos";
 
 	private string secretKey = "mondongo";
 	// Use this for initialization
@@ -32,15 +34,16 @@ public class DataController : MonoBehaviour {
 	
 	}
 
-	public IEnumerator CreateUserRoutine(string _userid, string _compid, string _username)
+	public IEnumerator CreateUserRoutine(string _userid, string _compid, string _username, string cue,
+		 string grado, string division, string turno)
 	{
 		// username = username.Replace(" ", "_");
 		string hash = Md5Test.Md5Sum(secretKey);
 		//string style = Data.Instance.playerSettings.heroData.styles.style;
 		if (_userid != "" && _compid != "") {
 			string post_url = createUser_URL + "userid=" + WWW.EscapeURL (_userid) + "&computerid=" + WWW.EscapeURL (_compid) +
-				"&username=" + WWW.EscapeURL (_username) + "&cue=" + WWW.EscapeURL (test1[0]) + "&grado=" + WWW.EscapeURL (test1[1]) + 
-				"&division=" + WWW.EscapeURL (test1[2]) + "&turno=" + WWW.EscapeURL (test1[3]) + "&hash="+hash;
+				"&username=" + WWW.EscapeURL (_username) + "&cue=" + WWW.EscapeURL (cue) + "&grado=" + WWW.EscapeURL (grado) + 
+				"&division=" + WWW.EscapeURL (division) + "&turno=" + WWW.EscapeURL (turno) + "&hash="+hash;
 			print ("CreateUser : " + post_url);
 			WWW hs_post = new WWW (post_url);
 			yield return hs_post;
@@ -49,8 +52,8 @@ public class DataController : MonoBehaviour {
 			else {
 				print ("user agregado: " + hs_post.text);
 				string json = "{";
-				json += "userId:" + _userid + ",";
-				json += "userName:" + _username + "}";
+				json += "userId:" + WWW.EscapeURL (_userid) + ",";
+				json += "userName:" + WWW.EscapeURL (_username) + "}";
 				PlayerPrefs.SetString ("UserData", json);
 			}
 		}
@@ -171,5 +174,19 @@ public class DataController : MonoBehaviour {
 		else
 			print ("reply agregada: " + hs_post.text);
 
+	}
+
+	public IEnumerator GetCursos(System.Action<string> result){
+		string post_url = getCursos_URL;
+
+		print ("getCursos : " + post_url);
+		WWW hs_post = new WWW (post_url);
+		yield return hs_post;
+		if (hs_post.error != null)
+			print ("No se pueden obtener los cursos: " + hs_post.error);
+		else {
+			//print ("cursos: " + hs_post.text);
+			result(hs_post.text);
+		}
 	}
 }

@@ -113,8 +113,8 @@ public class Data : MonoBehaviour
 			poCharge, rtCharge, giveup));
 	}
 
-	public void SaveUserData(){		
-		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName));
+	public void SaveUserData(string cue, string grado, string division, string turno){		
+		StartCoroutine(dataController.CreateUserRoutine(userId,SystemInfo.deviceUniqueIdentifier, userName, cue, grado, division, turno));
 	}
 
 	public void SaveSelfie(string emoji, string estado){		
@@ -125,8 +125,8 @@ public class Data : MonoBehaviour
 		string json = PlayerPrefs.GetString ("UserData");
 		if (!json.Equals ("")) {
 			var N = JSON.Parse (json);
-			userId = N ["userId"];
-			userName = N ["userName"];
+			userId = WWW.UnEscapeURL (N ["userId"]);
+			userName = WWW.UnEscapeURL (N ["userName"]);
 		} /*else {
 			userId = "";
 			userName = "";
