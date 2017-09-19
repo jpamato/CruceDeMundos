@@ -9,7 +9,7 @@
 				{ 	"mood":"neutral",
 					"background":"interiorHabitacion2",
 					"expre":"periodista",
-					"prompt":"Incendios, extraños vórtices o remolinos, y la aparición de seres que vendrían de otra dimensión. ¿Qué está sucediendo? La respuesta parece estar en un experimento fallido de la universidad tecnocrática",
+					"prompt":"Incendios, extraños vórtices o remolinos, y la aparición de seres que vendrían de otra dimensión. ¿Qué está sucediendo? La respuesta parece estar en un experimento fallido de la universidad tecnocrática...",
 					replies:[{emoVal:0,exit:false,goTo:0,text:"CONTINUAR",dialog:"Manu"}]
 				}
 			]
