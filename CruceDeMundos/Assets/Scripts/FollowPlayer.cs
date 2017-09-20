@@ -56,7 +56,10 @@ public class FollowPlayer : MovingCharacter {
 			Vector3 direction = Vector3.zero;
 			if (lost) {
 				transform.position = Vector3.MoveTowards (transform.position, pathList [pathCount], movementDistance * lostSpeedFactor);
-				direction = transform.position - pathList [pathCount];
+				if(pathCount>0)
+					direction = pathList [pathCount-1] - pathList [pathCount];
+				else
+					direction = gameObject.transform.position - player.transform.position;
 			} else {
 				transform.position = Vector3.MoveTowards (transform.position, player.transform.position, movementDistance);
 				direction = gameObject.transform.position - player.transform.position;
@@ -69,10 +72,15 @@ public class FollowPlayer : MovingCharacter {
 					Quaternion.FromToRotation (Vector3.down, direction), 
 					rotationSpeed * Time.deltaTime);
 			avatar.transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, avatar.transform.rotation.eulerAngles.z));
+
+			if(vectorToTarget.magnitude > moveDistance * 3)
+				StartCoroutine (CheckLostDistance());
 		} else if (lost) {
 			pathCount++;
-			if (pathCount >= pathList.Count)
+			if (pathCount >= pathList.Count) {
 				lost = false;
+				//print ("lost: " + lost);
+			}
 		}
 
 		if (movePlayer.moving && !moving) {
@@ -80,16 +88,20 @@ public class FollowPlayer : MovingCharacter {
 			animator.Play ("start");
 			if(lost){
 				pathCount++;
-				if (pathCount >= pathList.Count)
+				if (pathCount >= pathList.Count) {
 					lost = false;
+					//print ("lost: " + lost);
+				}
 			}
 		} else if (!movePlayer.moving && moving) {
 			moving = false;
 			animator.Play ("stop");
 			if(lost){
 				pathCount++;
-				if (pathCount >= pathList.Count)
+				if (pathCount >= pathList.Count) {
 					lost = false;
+					//print ("lost: " + lost);
+				}
 			}
 		}
 
@@ -112,13 +124,14 @@ public class FollowPlayer : MovingCharacter {
 	IEnumerator CheckLostDistance(){
 		yield return new WaitForSeconds (0.2f);
 		float d = Vector3.Distance (transform.position, player.transform.position);
-		if (d > moveDistance) {
+		if (d > moveDistance * 1.5f ) {
 			lost = false;
 			pathList = Game.Instance.pathfinder2.FindPath (transform.position, player.transform.position);
 			pathCount = 0;
 			yield return new WaitForSeconds (0.2f);
 			if (pathList.Count > 0) {
 				lost = true;
+				//print ("lost: " + lost);
 				nextPoint = pathList [pathCount];
 				//points.Clear ();
 				/*foreach (Vector3 p in pathList) {					
@@ -130,7 +143,13 @@ public class FollowPlayer : MovingCharacter {
 			yield return new WaitForSeconds (4.6f);
 			StartCoroutine (CheckLostDistance ());
 		} else if (d < moveDistance){
-			lost = false;
+			yield return new WaitForSeconds (2.0f);
+			if (Vector3.Distance (transform.position, player.transform.position) > lostDistance) {
+				StartCoroutine (CheckLostDistance ());
+			} else {
+				lost = false;
+				//print ("lost: " + lost);
+			}
 		}else if (lost) {
 			yield return new WaitForSeconds (4);
 			StartCoroutine (CheckLostDistance());
