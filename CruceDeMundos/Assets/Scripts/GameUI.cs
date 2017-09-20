@@ -289,6 +289,23 @@ public class GameUI : MonoBehaviour {
 		Data.Instance.SaveGameData ();
 	}
 
+	public void Final(){		
+		
+		Data.Instance.playerData.resources += Game.Instance.levelManager.leveldata.resourceWin;
+		Events.OnRefreshResources (Data.Instance.playerData.resources);
+		Game.Instance.gameManager.state = GameManager.states.ENDED;
+		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;
+		string misions = "";
+		for (int i = 0; i < Game.Instance.levelManager.objectivesDone.Length; i++) {
+			Game.Instance.levelManager.objectivesDone [i] = true;
+			if(i<Game.Instance.levelManager.leveldata.objectives.Count)
+				misions += Game.Instance.levelManager.objectivesDone [i] + ";";
+		}
+		Game.Instance.levelMetrics.SaveLevelData (misions);
+		Data.Instance.playerData.SetSummary ();
+		Data.Instance.SaveGameData ();
+	}
+
 	public void SoundToggle(bool on){
 		btnSound.SetButtonOn (on);
 		Data.Instance.Mute (!on);
