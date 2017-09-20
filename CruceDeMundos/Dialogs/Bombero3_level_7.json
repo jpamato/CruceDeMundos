@@ -63,7 +63,7 @@
 				{	"mood":"neutral",
 					"expre":"sonrisa2",
 					"prompt":"¡Gracias por ayudar con los incendios!",
-					replies:[{emoVal:0,exit:true,goTo:4,text:"No Hay problema."}]
+					replies:[{emoVal:0,exit:true,goTo:4,text:"No Hay problema.",move:0,block:0}]
 				}				
 			]
 		}

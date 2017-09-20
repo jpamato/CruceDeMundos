@@ -99,9 +99,9 @@ public class Game : MonoBehaviour {
 		OnGamePaused(false);
 		Data.Instance.playerData.level++;
 
-		if (Data.Instance.playerData.level == 4 || Data.Instance.playerData.level == 7 || Data.Instance.playerData.level == 9) 
+		if (Data.Instance.playerData.level == 4 || Data.Instance.playerData.level == 8 || Data.Instance.playerData.level == 10) 
 			Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
-		else if (Data.Instance.playerData.level > 9) {
+		else if (Data.Instance.playerData.level > 10) {
 			/*Data.Instance.dialogData.ResetAllAtLevel (1);
 			Data.Instance.playerData.level = 1;
 			Data.Instance.playerData.resources = 50;
