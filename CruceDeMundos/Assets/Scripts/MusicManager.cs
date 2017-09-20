@@ -30,7 +30,10 @@ public class MusicManager : MonoBehaviour {
 			source.clip = introMusic;
 			source.volume = introVol;
 			source.Play ();
-		}			
+		} else if (scene.Equals ("Fin")) {
+			ingame = true;
+			source.Stop ();
+		}
 	}
 	
 	// Update is called once per frame

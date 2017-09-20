@@ -221,7 +221,7 @@ public class CSDialogManager : MonoBehaviour {
 		if (mood.replies [index].exit){
 			if (mood.replies [index].levelMap) {
 				Data.Instance.playerData.level = 1;
-				Data.Instance.LoadLevel ("LevelMap", 1f, 0.5f, Color.black);
+				Data.Instance.LoadLevel ("Fin", 1f, 3f, Color.black);
 			}else if (mood.replies [index].blackout) {
 				Data.Instance.playerData.level++;
 				Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);

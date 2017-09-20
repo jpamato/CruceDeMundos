@@ -78,6 +78,7 @@ public class LevelButton : MonoBehaviour {
 
 	public void PlayCutscene(){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
+		Data.Instance.csdialogData.ResetAllAtLevel (levelNumber);
 		Data.Instance.playerData.level = levelNumber;
 		Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
 	}

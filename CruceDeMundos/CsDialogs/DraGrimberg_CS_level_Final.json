@@ -57,7 +57,7 @@
 					"background":"Refinal",
 					"expre":"sonrisa1",
 					"prompt":"¡Esta vez será en su dimensión! ¿No es emocionante? Pronto recibirán instrucciones...",
-					replies:[{emoVal:0,exit:true,goTo:4,text:"CONTINUAR",levelMap:true}]=
+					replies:[{emoVal:0,exit:true,goTo:4,text:"CONTINUAR",levelMap:true}]
 				}
 			]
 		}
