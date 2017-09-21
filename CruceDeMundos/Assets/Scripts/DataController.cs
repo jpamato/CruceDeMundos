@@ -7,8 +7,8 @@ public class DataController : MonoBehaviour {
 	//string[] test2 = { "020088300", "2", "1", "tarde" };
 
 	//const string URL = "http://127.0.0.1:8000/";
-	const string URL = "http://cdm.com.ar/";
-	//const string URL = "http://yaguar.alwaysdata.net/";
+	//const string URL = "http://cdm.com.ar/";
+	const string URL = "http://yaguar.alwaysdata.net/";
 	//const string URL = "http://10.9.5.223/";
 	//const string URL = "http://crucemundos.dev.gcba.gob.ar/";
 
