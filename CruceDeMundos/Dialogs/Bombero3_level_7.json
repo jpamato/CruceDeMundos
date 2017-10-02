@@ -39,7 +39,7 @@
 				},
 				{	"mood":"positive",
 					"expre":"sonrisa1",
-					"prompt":"Entonces, ¿aceptarías que te de una carga extra de matafuegos?",
+					"prompt":"Entonces, ¿aceptarías que te dé una carga extra de matafuegos?",
 					replies:[
 					{emoVal:0,exit:true,goTo:3,text:"No sé si da.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no",move:1,block:1}
 					{emoVal:0,exit:true,goTo:3,text:"¡Seguro!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí",fireCharge:50,move:1,block:1},
