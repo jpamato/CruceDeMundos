@@ -8,7 +8,7 @@
 				{	"mood":"neutral",
 					"expre":"confundido",
 					"prompt":"Ah, unos humanos. ¿Tuvieron algo que ver con este caos? No hace falta que respondan, solo quiero culpar a alguien por esto.",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"Este... ¿Y eso te llevará mucho?"}]
+					replies:[{emoVal:0,exit:false,goTo:1,text:"¿Te va a llevar mucho?"}]
 				}				
 			]
 		},

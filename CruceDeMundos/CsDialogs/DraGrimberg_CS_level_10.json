@@ -9,7 +9,7 @@
 				{ 	"mood":"neutral",
 					"background":"exteriorLaboratorio",
 					"expre":"preocupada2",
-					"prompt":"¡Chicos, el vórtice creció masivamente y está a punto de absorber el laboratorio y todo lo que lo rodea! Pero ya sé qué hacer.",
+					"prompt":"¡El vórtice creció masivamente y está a punto de absorber el laboratorio y todo lo que lo rodea! Pero ya sé qué hacer.",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"CONTINUAR",dialog:"Manu"}]
 				}
 			]

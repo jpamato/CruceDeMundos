@@ -26,7 +26,7 @@
 					replies:[
 					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
 					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arreglate!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arregláte!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
 					]
 				}				
 			]

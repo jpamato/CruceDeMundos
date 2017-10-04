@@ -139,7 +139,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"alegre",
-					"prompt":"Ha sido un placer conocerlos, heroicos seres sonrosados.",
+					"prompt":"Ha sido un placer conocerlos, heroicos seres.",
 					replies:[
 					{emoVal:0,exit:true,goTo:10,text:"Igualmente, ¡hasta luego!"}
 					]

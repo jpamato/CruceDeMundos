@@ -19,7 +19,7 @@
 				{ 	"mood":"neutral",
 					"background":"interiorHabitacion2",
 					"expre":"preocupado",
-					"prompt":"¿La universidad tecnocrática? ¡Allí es donde trabajo ayudando a la doctora Grimberg! Ella está investigando coordenadas de tiempo y espacio ¡Justo me está llamando!",
+					"prompt":"¿La universidad? ¡Allí es donde trabajo ayudando a la doctora Grimberg! Ella está investigando coordenadas de tiempo y espacio ¡Justo me está llamando!",
 					replies:[{emoVal:0,exit:false,goTo:2,text:"CONTINUAR",dialog:"Dra Grimberg"}]
 				}
 			]

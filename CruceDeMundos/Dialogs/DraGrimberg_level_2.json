@@ -8,7 +8,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"neutra",
-					"prompt":"Vienen muy bien, chicos. ¿Necesitan algo?",
+					"prompt":"Vienen muy bien. ¿Necesitan algo?",
 					replies:[{emoVal:0,exit:false,goTo:1,text:"Ahora que lo dice... Creo que estamos cerca de la casa de Agustina...",dialog:"Emmanuel"}]
 				}
 			]

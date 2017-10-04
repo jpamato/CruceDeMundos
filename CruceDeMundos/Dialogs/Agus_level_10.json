@@ -7,7 +7,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"entusiasmada",
-					"prompt":"Yo me ocupo de esta antena. ¡Vamos chicos, nosotros podemos!",
+					"prompt":"Yo me ocupo de esta antena. ¡Vamos, nosotros podemos!",
 					replies:[{emoVal:0,exit:true,goTo:0,text:"¡Vamos, sí!",friendDisable:"Agus"}]
 				}
 			]

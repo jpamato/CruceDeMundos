@@ -33,7 +33,7 @@
 					replies:[
 					{emoVal:0,exit:true,goTo:2,text:"Nada nos gustaría más pero tenemos dos dimensiones que salvar",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"},
 					{emoVal:0,exit:true,goTo:2,text:"¡¿Anécdotas, ahora?! Nos vamos, vos sos más tonto que optimista.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
-					{emoVal:0,exit:false,goTo:3,text:"Contanos, dale.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"},
+					{emoVal:0,exit:false,goTo:3,text:"Contános, dale.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"},
 					]
 				}							
 			]
