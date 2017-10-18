@@ -15,6 +15,7 @@
 		{index:1,
 			moods:[
 				{ 	"mood":"neutral",
+					"expre":"temeroso",
 					"prompt":"Pero gente, ¿no será peligroso eso?",
 					replies:[{emoVal:0,exit:true,goTo:0,text:"Dale, Emma, si apagamos incendios, ¡más vale que podemos rastrear un bidón!"}]
 				}
