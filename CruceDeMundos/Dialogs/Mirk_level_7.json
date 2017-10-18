@@ -32,7 +32,7 @@
 					"prompt":"En primer lugar, se sabe que los humanos son de hacer lío con la ciencia.",
 					replies:[
 					{emoVal:0,exit:false,goTo:3,text:"Bueno, quién dice lío, dice progreso. Son formas de verlo."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}							
 			]
@@ -44,7 +44,7 @@
 					"prompt":"¿Qué necesidad había de jugar con las coordenadas de tiempo y espacio? ¿Eh?",
 					replies:[
 					{emoVal:0,exit:false,goTo:4,text:"No lo sé. Apenas soy el ayudante de la científica."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}							
 			]
@@ -56,7 +56,7 @@
 					"prompt":"Los ayudantes son los peores. Tiran la mano y esconden la piedra. ¿Se dice así?",
 					replies:[
 					{emoVal:0,exit:false,goTo:5,text:"Algo así. Pero creemos que fue un accidente."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}							
 			]
@@ -68,7 +68,7 @@
 					"prompt":"¡Claaaro! Un accidente, ajá. ¿Jugamos nosotros con vórtices y saltos de tiempo?",
 					replies:[
 					{emoVal:0,exit:false,goTo:6,text:"No sé, ¿lo hacen?"},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}							
 			]
@@ -81,7 +81,7 @@
 					"prompt":"¡Por supuesto que no! Tenemos una res-pon-sa-bi-li-dad frente al universo.",
 					replies:[
 					{emoVal:0,exit:false,goTo:7,text:"Entiendo a qué vas con esto."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}							
 			]

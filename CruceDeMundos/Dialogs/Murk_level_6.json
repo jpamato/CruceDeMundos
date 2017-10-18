@@ -35,7 +35,7 @@
 					"prompt":"Que le dijo una impresora a otra? ¿Ese papel es tuyo o es impresión mía? Jiu, jiu.",
 					replies:[
 					{emoVal:0,exit:false,goTo:3,text:"No está nada mal."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}				
 			]
@@ -48,7 +48,7 @@
 					"prompt":"¿Cómo declara su amor una chinche a la otra? Te amo chincheramente. Jiu, jiu.",
 					replies:[
 					{emoVal:0,exit:false,goTo:4,text:"Simpático, sí."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}				
 			]
@@ -61,7 +61,7 @@
 					"prompt":"¿Que le dice un perro arrepentido a otro? Perroname. Jiu, jiu.",
 					replies:[
 					{emoVal:0,exit:false,goTo:5,text:"Je, je, ¡está bien!"},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}				
 			]
@@ -74,7 +74,7 @@
 					"prompt":"Uno de mi dimensión: ¿Qué le dijo un swampampón constipado a otro? Driblitz inodoris quiront. Jiu, jiu.",
 					replies:[
 					{emoVal:0,exit:false,goTo:6,text:"Ah, ese no lo cacé del todo."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}				
 			]
@@ -87,7 +87,7 @@
 					"prompt":"Una cuchara llama a la otra: ¡Cuchara, cuchara! Oh, parece que no es - cuchara. Jiu, Jiu",
 					replies:[
 					{emoVal:0,exit:false,goTo:7,text:"Jiu, jiu. Ay, ya me contagió su risa."},
-					{emoVal:0,exit:true,goTo:0,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:0,text:"Salir"}
 					]
 				}				
 			]

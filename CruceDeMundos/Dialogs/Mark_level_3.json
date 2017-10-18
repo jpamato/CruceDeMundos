@@ -71,7 +71,7 @@
 					"prompt":"Looooo, roliloooooooo...",
 					replies:[
 					{emoVal:0,exit:false,goTo:5,text:"Conmovedor..."},
-					{emoVal:0,exit:true,goTo:10,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:10,text:"Salir"}
 					]
 				}							
 			]
@@ -83,7 +83,7 @@
 					"prompt":"Liiiiiii, ralaliiiiiiiiiiii...",
 					replies:[
 					{emoVal:0,exit:false,goTo:6,text:"Bien ahí..."},
-					{emoVal:0,exit:true,goTo:10,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:10,text:"Salir"}
 					]
 				}							
 			]
@@ -95,7 +95,7 @@
 					"prompt":"Po, poropopóóóóóoóó...",
 					replies:[
 					{emoVal:0,exit:false,goTo:7,text:"Esa melodía me suena de algún lado."},
-					{emoVal:0,exit:true,goTo:10,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:10,text:"Salir"}
 					]
 				}							
 			]
@@ -107,7 +107,7 @@
 					"prompt":"Cuaaaaa, lalán truliiiiip...",
 					replies:[
 					{emoVal:0,exit:false,goTo:8,text:"¿Una que sepamos todos?"},
-					{emoVal:0,exit:true,goTo:10,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:10,text:"Salir"}
 					]
 				}							
 			]
@@ -119,7 +119,7 @@
 					"prompt":"Oh, singarinlááááááá...",
 					replies:[
 					{emoVal:0,exit:false,goTo:9,text:"¡Qué voz! ¡Y qué insistencia!"},
-					{emoVal:0,exit:true,goTo:10,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:10,text:"Salir"}
 					]
 				}							
 			]

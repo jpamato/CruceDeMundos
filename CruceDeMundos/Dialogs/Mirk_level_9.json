@@ -45,7 +45,7 @@
 					"prompt":"En los juegos del 2012, se descalificó al maratonista X-L2 por usar teletransportación para ganar la carrera.",
 					replies:[
 					{emoVal:0,exit:false,goTo:4,text:"¡Qué vago!"},
-					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:2,text:"Salir"}
 					]
 				}							
 			]
@@ -57,7 +57,7 @@
 					"prompt":"Isadorisc, del cuadrante 8, fue el primer ser transmente en ganar una medalla de cuarzo.",
 					replies:[
 					{emoVal:0,exit:false,goTo:5,text:"¡Bien por ella! O por él. Bueno, por lo que sea."},
-					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:2,text:"Salir"}
 					]
 				}							
 			]
@@ -69,7 +69,7 @@
 					"prompt":"En la competencia de ´Tiro a la tetera´, aún nadie ha superado a la gran Novena Ocho.",
 					replies:[
 					{emoVal:0,exit:false,goTo:6,text:"Un deporte de alto riesgo para la vajilla."},
-					{emoVal:0,exit:true,goTo:2,text:"SALIR"}
+					{emoVal:0,exit:true,goTo:2,text:"Salir"}
 					]
 				}							
 			]
