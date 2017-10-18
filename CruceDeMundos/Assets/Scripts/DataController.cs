@@ -8,10 +8,13 @@ public class DataController : MonoBehaviour {
 
 	//const string URL = "http://127.0.0.1:8000/";
 	//const string URL = "http://cdm.com.ar/";
-	const string URL = "http://yaguar.alwaysdata.net/";
+	//const string URL = "http://yaguar.alwaysdata.net/";
 	//const string URL = "http://10.9.5.223/";
 	//const string URL = "http://crucemundos.dev.gcba.gob.ar/";
-
+	//const string URL = "http://crucemundos.dev.gcba.gob.ar/"; //DESA
+	const string URL = "http://crucedemundos-qa.gcba.gob.ar/";//QA
+	//const string URL = "http://crucedemundos.hml.gcba.gob.ar/";//HML
+	//const string URL = "http://crucedemundos.buenosaires.gob.ar/";//PRD
 
 	private string createUser_URL = URL + "users/create?";
 	private string addLevel_URL = URL + "level/add?";
