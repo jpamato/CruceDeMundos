@@ -22,10 +22,10 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"confundido",
-					"prompt":"Si limpian dos plasmas, confíen en que me ocuparé del resto, ¿sí?",
+					"prompt":"Si limpian cuatro plasmas, confíen en que me ocuparé del resto, ¿sí?",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"No estoy muy de acuerdo.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}			
-					{emoVal:1,exit:false,goTo:2,text:"¡Perfecto! Limpiaremos solo dos.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
+					{emoVal:1,exit:false,goTo:2,text:"¡Perfecto! Limpiaremos solo cuatro.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí",obstacle:"POLLUTION"},
 					{emoVal:0,exit:false,goTo:2,text:"No confío en que puedas hacerlo.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}			
 					]
 				}				
@@ -43,7 +43,7 @@
 				{ 	"mood":"positive",
 					"expre":"saludo",
 					"prompt":"Es sorprendente lo que se consigue uniendo fuerzas.",
-					replies:[{emoVal:1,exit:true,goTo:2,text:"¡Sí, adiós!"}]
+					replies:[{emoVal:1,exit:true,goTo:2,text:"¡Sí, adiós!",obstacle:"POLLUTION"}]
 				}
 			]
 		}		
