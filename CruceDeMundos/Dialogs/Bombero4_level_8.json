@@ -17,7 +17,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"sonrisa1",
-					"prompt":"Me comunicaré con mi compañero del norte para que despeje el camino. Ustedes están colaborando mucho, ¿aceptan que los ayudemos?",
+					"prompt":"Nos comunicaremos con nuestro compañero del norte para que despeje el camino. Ustedes están colaborando mucho, ¿aceptan que los ayudemos?",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"¡Aceptamos, claro!",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"sí"},
 					{emoVal:0,exit:false,goTo:2,text:"No, nos gusta arreglarnos solos.",rType:"COLABORATIVO",rSType:"ACEPTAR",indicVal:"no"},

@@ -17,9 +17,9 @@
 				{	"mood":"neutral",
 					"expre":"sonrisa1",
 					"prompt":"¡Ah, ella nos habló de ustedes! En la próxima cuadra hay uno de esos portales, ¿pueden ayudar a cerrarlo?",
-					replies:[{emoVal:0,exit:false,goTo:3,text:"¡Claro!",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"},
-						{emoVal:0,exit:false,goTo:2,text:"Mmm, ¿justo ahora?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"moderado"},
-						{emoVal:0,exit:false,goTo:2,text:"No",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no"}
+					replies:[{emoVal:0,exit:false,goTo:3,text:"¡Claro!",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
+						{emoVal:0,exit:false,goTo:2,text:"Mmm, ¿justo ahora?",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"moderado"},
+						{emoVal:0,exit:false,goTo:2,text:"No",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"}
 					]
 				}
 			]
@@ -27,7 +27,7 @@
 		{index:2,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"No lo pediría si no fuera necesario.",
+					"prompt":"No lo pediríamos si no fuera necesario.",
 					replies:[{emoVal:0,exit:false,goTo:3,text:"Está bien."}]
 				}
 			]
@@ -36,8 +36,8 @@
 			moods:[				
 				{	"mood":"neutral",
 					"prompt":"El único tema es que en el camino encontrarán incendios...",
-					replies:[{emoVal:1,exit:false,goTo:4,text:"¿Entonces nos darías un matafuegos, por favor?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
-						{emoVal:-1,exit:false,goTo:4,text:"Dame ya un matafuegos que estamos apurados, ¡¿no ves?!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
+					replies:[{emoVal:1,exit:false,goTo:4,text:"¿Entonces nos darían un matafuegos, por favor?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
+						{emoVal:-1,exit:false,goTo:4,text:"Dame ya un matafuegos que estamos apurados, ¡¿no ven?!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"},
 						{emoVal:0,exit:false,goTo:4,text:"¿Incendios? Uff, qué mala suerte",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"}
 					]
 				}
@@ -76,7 +76,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"prompt":"Eso es todo. Cuídense mucho.",
-					replies:[{emoVal:0,exit:true,goTo:6,text:"Vos también"}]
+					replies:[{emoVal:0,exit:true,goTo:6,text:"Ustedes también."}]
 				}				
 			]
 		}		

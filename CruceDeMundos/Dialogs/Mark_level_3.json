@@ -11,7 +11,7 @@
 					replies:[
 					{emoVal:1,exit:false,goTo:1,text:"El bombero dijo que ellos se ocuparán por ahora y le creemos.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
 					{emoVal:0,exit:false,goTo:1,text:"No sabemos si el bombero dijo la verdad pero nuestra prioridad son los portales",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"moderado"},
-					{emoVal:-1,exit:false,goTo:1,text:"Seguro que el bombero no los apaga, pero ya fue...",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}]
+					{emoVal:-1,exit:false,goTo:1,text:"Seguro que los bomberos no los apagan, pero ya fue...",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"}]
 				}				
 			]
 		},
@@ -58,7 +58,7 @@
 					"prompt":"Ahora que extinguieron los fuegos, cantaré alabanzas para ustedes Llevará su tiempo pero son realmente hermosas.",
 					replies:[
 					{emoVal:0,exit:true,goTo:0,text:"Necesitamos seguir con lo nuestro, ¡hasta luego!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí"},
-					{emoVal:0,exit:true,goTo:0,text:"¡Nos hiciste perder un montón de tiempo, pesado! ¡Chau!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
+					{emoVal:0,exit:true,goTo:0,text:"¡Nos hicieron perder un montón de tiempo, pesados! ¡Chau!",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"sí - agresivo"},
 					{emoVal:0,exit:false,goTo:4,text:"Somos todo oídos.",rType:"ASERTIVIDAD",rSType:"NEGARSE",indicVal:"no"}
 					]
 				}							

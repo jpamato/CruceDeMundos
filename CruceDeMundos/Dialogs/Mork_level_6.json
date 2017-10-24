@@ -9,9 +9,9 @@
 					"expre":"ansioso",
 					"prompt":"No sé qué hacer.",
 					replies:[
-						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no - moderado,no"},
-						{emoVal:0,exit:false,goTo:1,text:"Parece que estás en problemas. ¿Podemos ayudarte?",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"sí,sí"}
-						{emoVal:0,exit:true,goTo:0,text:"No sé qué te pasa, pero mejor seguimos",rType:"EMPATÍA,ASERTIVIDAD",rSType:"ACCIÓN,PROACTIVIDAD",indicVal:"no,no"},
+						{emoVal:0,exit:true,goTo:0,text:"(Parece estar en problemas pero mejor sigo de largo.)",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no - moderado"},
+						{emoVal:0,exit:false,goTo:1,text:"Parece que estás en problemas. ¿Podemos ayudarte?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"}
+						{emoVal:0,exit:true,goTo:0,text:"No sé qué te pasa, pero mejor seguimos",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no"},
 					]
 					
 				}				
@@ -24,9 +24,9 @@
 					"expre":"ansioso",
 					"prompt":"Ojalá. Mi nave está en llamas y si explota puede abrir un vórtice muy peligroso. ¿Apagarían conmigo el incendio?",
 					replies:[
-					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"},
-					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arregláte!",rType:"EMPATÍA,COLABORATIVO",rSType:"ACCIÓN,TODOS",indicVal:"sí,sí"}
+					{emoVal:0,exit:true,goTo:2,text:"Sí, ya mismo.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
+					{emoVal:0,exit:false,goTo:2,text:"No podemos en este momento. Lo lamento de verdad.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - moderado"},
+					{emoVal:0,exit:false,goTo:2,text:"¿Qué te crees que somos? ¿Una sociedad de beneficencia? ¡Arregláte!",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - agresivo"}
 					]
 				}				
 			]

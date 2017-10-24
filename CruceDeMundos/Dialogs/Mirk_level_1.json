@@ -20,8 +20,8 @@
 				{	"mood":"neutral",
 					"prompt":"No, estoy triste como un swampapón perdido en el espacio.",
 					replies:[						
-						{emoVal:0,exit:false,goTo:3,text:"¿Triste? ¡Andáááá, salame!",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no"},
-						{emoVal:0,exit:false,goTo:2,text:"(...No me interesa, mejor sigo)",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"moderado"},
+						{emoVal:0,exit:false,goTo:3,text:"¿Triste? ¡Andáááá, salame!",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no agresivo"},
+						{emoVal:0,exit:false,goTo:2,text:"(...No me interesa, mejor sigo)",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"no moderado"},
 						{emoVal:1,exit:false,goTo:2,text:"¿Por qué estás triste?",rType:"EMPATÍA",rSType:"ACCIÓN",indicVal:"sí"}]
 				},
 				{	"mood":"positive",

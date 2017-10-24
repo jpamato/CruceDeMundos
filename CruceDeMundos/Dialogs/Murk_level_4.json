@@ -7,8 +7,8 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"ansioso",
-					"prompt":"Hola, nunca había visto seres con ruedas incorporadas. ¡Qué práctico!",
-					replies:[{emoVal:0,exit:false,goTo:1,text:"En realidad tenemos piernas, pero bueno, estamos un poco ocupados como para explicarte anatomía humana."}]
+					"prompt":"Hola, nunca habíamos visto seres con ruedas incorporadas. ¡Qué práctico!",
+					replies:[{emoVal:0,exit:false,goTo:1,text:"En realidad tenemos piernas, pero bueno, estamos un poco ocupados como para explicarles anatomía humana."}]
 				}				
 			]
 		},
@@ -17,11 +17,11 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"preocupado",
-					"prompt":"Ya veo. Yo también estoy ocupado limpiando el plasma con esta herramienta. Tengo otra de repuesto...",
+					"prompt":"Ya vemos. Nosotros también estamos ocupados limpiando el plasma con esta herramienta. Tenemos otra de repuesto...",
 					replies:[
-					{emoVal:1,exit:false,goTo:2,text:"Ah, nos vendría muy bien si te sobra, ¿nos la darías?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
+					{emoVal:1,exit:false,goTo:2,text:"Ah, nos vendría muy bien si les sobra, ¿nos la darían?",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - buen modo"},
 					{emoVal:0,exit:false,goTo:2,text:"No creo que la necesitemos.",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"no pedir"},
-					{emoVal:-1,exit:false,goTo:2,text:"¡Dejate de perder el tiempo y danos una!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"}					
+					{emoVal:-1,exit:false,goTo:2,text:"¡Déjense de perder el tiempo y dennos una!",rType:"ASERTIVIDAD",rSType:"PEDIDO",indicVal:"sí - agresivo"}					
 					]
 				}				
 			]

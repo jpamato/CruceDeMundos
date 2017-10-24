@@ -7,7 +7,7 @@
 			moods:[
 				{ 	"mood":"neutral",
 					"expre":"excitado",
-					"prompt":"Aunque ahora mismo esto sea un desastre, me encanta saber que hay seres de otras dimensiones.",
+					"prompt":"Aunque ahora mismo esto sea un desastre, nos encanta saber que hay seres de otras dimensiones.",
 					replies:[						
 						{emoVal:0,exit:true,goTo:1,text:"¡A mí también!",rType:"NARRATIVO",rSType:"NARRATIVO"},
 						{emoVal:0,exit:true,goTo:1,text:"Estaría más encantado si el mundo no estuviera patas arriba.",rType:"NARRATIVO",rSType:"NARRATIVO"},
@@ -19,7 +19,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"prompt":"No tengo nada más para decir por ahora.",
-					replies:[{emoVal:0,exit:true,goTo:1,text:"SALIR",rType:"NARRATIVO",rSType:"NARRATIVO"}]
+					replies:[{emoVal:0,exit:true,goTo:1,text:"Salir",rType:"NARRATIVO",rSType:"NARRATIVO"}]
 				}
 		}
 	]	

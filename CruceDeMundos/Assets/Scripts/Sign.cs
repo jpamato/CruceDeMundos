@@ -14,6 +14,8 @@ public class Sign : MonoBehaviour {
 	public Dropdown dropdown;
 	string cursosJson;
 
+	bool nombreDone,apodoDone,cursoDone;
+
 	void Start () {
 		StartCoroutine(GetCursos());
 	}
@@ -58,11 +60,26 @@ public class Sign : MonoBehaviour {
 		Data.Instance.LoadLevel ("LevelMap");
 	}
 
-	public void SetContinue(string s){
-		if (s == "") {
-			continuar.interactable = false;
-		} else {
+	public void SetApodo(string s){
+		apodoDone = s == "" ? false : true;
+		SetContinue ();
+	}
+
+	public void SetNombre(string s){
+		nombreDone = s == "" ? false : true;
+		SetContinue ();
+	}
+
+	public void SetCurso(int i){
+		cursoDone=dropdown.value>0?true:false;
+		SetContinue ();
+	}
+
+	void SetContinue(){
+		if (nombreDone&&apodoDone&&cursoDone) {
 			continuar.interactable = true;
+		} else {
+			continuar.interactable = false;
 		}
 	}
 }

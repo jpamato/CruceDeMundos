@@ -56,16 +56,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Tools(){
-		Game.Instance.levelMetrics.objectivesEndTime = Time.realtimeSinceStartup;
-		Game.Instance.levelMetrics.toolsBeginTime = Game.Instance.levelMetrics.objectivesEndTime;
+		//Game.Instance.levelMetrics.objectivesEndTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.toolsBeginTime = Time.realtimeSinceStartup;
 		state = states.TOOLS;
 		Events.GameTools ();
 	}
 
 	public void AutoEval(){
-		Game.Instance.toolsManager.SelectedToolsData ();
+		/*Game.Instance.toolsManager.SelectedToolsData ();
 		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
-		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;
+		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;*/
+		Game.Instance.levelMetrics.objectivesEndTime = Time.realtimeSinceStartup;
+
 		if (Game.Instance.dialogManager.LoadInitialDialog ()){			
 			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 			state = states.AUTOEVAL;
@@ -73,13 +75,15 @@ public class GameManager : MonoBehaviour {
 				Game.Instance.dialogManager.LoadDialog ("Dra Grimberg");*/
 			Events.GameAutoeval ();
 		}else{
-			Events.GameReady ();
+			//Events.GameReady ();
+			Tools();
 		}
 	}
 
 	void DialogDone(){		
 		if (!gameStarted) {
-			Events.GameReady ();
+			//Events.GameReady ();
+			Tools();
 		} else {
 			state = states.ACTIVE;
 			Events.GameActive ();
@@ -88,11 +92,20 @@ public class GameManager : MonoBehaviour {
 		Invoke ("ResetCharacterCollider", 2f);
 	}
 
+	public void GameReady(){
+		Game.Instance.toolsManager.SelectedToolsData ();
+		Game.Instance.levelMetrics.toolsEndTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.map2BeginTime = Time.realtimeSinceStartup;
+		Game.Instance.levelMetrics.rtPostTools = Data.Instance.playerData.resources;
+		Events.GameReady ();
+	}
+
 	void ResetCharacterCollider(){
 		Events.ResetCharacterCollider ();
 	}
 
 	public void StartGame(){
+		Game.Instance.levelMetrics.map1EndTime += Time.realtimeSinceStartup-Game.Instance.levelMetrics.map2BeginTime;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Events.StartGame ();
 		gameStarted=true;
@@ -100,10 +113,12 @@ public class GameManager : MonoBehaviour {
 
 	public void Phone(){
 		if (state == states.MAP) {
+			Game.Instance.levelMetrics.map1EndTime += Time.realtimeSinceStartup-Game.Instance.levelMetrics.map2BeginTime;
 			state = states.ACTIVE;
 			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.phoneClose);
 			Events.GameActive ();
 		} else {
+			Game.Instance.levelMetrics.map2BeginTime = Time.realtimeSinceStartup;
 			state = states.MAP;
 			Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.phoneOpen);
 			Events.GameMap();

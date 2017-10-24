@@ -150,7 +150,8 @@ public class GameUI : MonoBehaviour {
 	public void CloseMision(){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		if (Game.Instance.gameManager.state == GameManager.states.MISION) {
-			Game.Instance.gameManager.Tools ();
+			//Game.Instance.gameManager.Tools ();
+			Game.Instance.gameManager.AutoEval ();
 		} else {
 			mision.SetActive (false);
 			btnObjetivos.SetButtonOn (false);
@@ -158,12 +159,14 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void GameTools(){
-		mision.SetActive (false);
+		//mision.SetActive (false);
 		tools.SetActive (true);
+		dialog.SetActive (false);
 	}
 
-	void GameAutoeval(){		
-		tools.SetActive (false);
+	void GameAutoeval(){
+		mision.SetActive (false);
+		//tools.SetActive (false);
 		dialog.SetActive (true);
 	}
 

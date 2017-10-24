@@ -36,6 +36,8 @@ public class LevelMetrics : MonoBehaviour {
 	public int pollutionCharge;
 	public int resourcesCharge;
 
+	public float map2BeginTime;
+
 	// Use this for initialization
 	void Start () {
 		Events.OnObstacleDestroy += OnObstacleDestroy;		

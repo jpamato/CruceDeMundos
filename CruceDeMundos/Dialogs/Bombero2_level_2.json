@@ -16,9 +16,9 @@
 		{index:1,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Les buscaría un bidón pero estoy ocupado con los incendios. ¿Capaz podemos trabajar juntos?",
+					"prompt":"Les buscaríamos un bidón pero estamos ocupados con los incendios. ¿Capaz podemos trabajar juntos?",
 					replies:[
-						{emoVal:1,exit:false,goTo:2,text:"Sí, nosotros podemos ocuparnos de un incendio y vos del bidón.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
+						{emoVal:1,exit:false,goTo:2,text:"Sí, nosotros podemos ocuparnos de un incendio y ustedes del bidón.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"sí"},
 						{emoVal:0,exit:false,goTo:2,text:"No, trabajar juntos nos demoraría.",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no"},
 						{emoVal:0,exit:false,goTo:2,text:"No creo que sea buena esa idea...",rType:"COLABORATIVO",rSType:"TODOS",indicVal:"no - moderado"}
 					]
@@ -60,11 +60,11 @@
 		{index:5,
 			moods:[				
 				{	"mood":"neutral",
-					"prompt":"Ahora sigan, y hasta que lleguen al puerto despreocúpense de los incendios que yo los iré apagando.",
+					"prompt":"Ahora sigan, y hasta que lleguen al puerto despreocúpense de los incendios que nosotros los iremos apagando.",
 					replies:[
 					{emoVal:0,exit:true,goTo:6,text:"Qué bien, un tema menos. ¡Saludos a toda la banda!",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"sí"},
-					{emoVal:0,exit:true,goTo:6,text:"No confío en que puedas solo. Si encuentro uno, lo apago.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"},
-					{emoVal:0,exit:true,goTo:6,text:"Mmm no sé si confiar en que puedas solo... Veo si apago alguno.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no - moderado"}
+					{emoVal:0,exit:true,goTo:6,text:"No confío en que puedan solos. Si encuentro uno, lo apago.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no"},
+					{emoVal:0,exit:true,goTo:6,text:"Mmm no sé si confiar en que puedan solos... Veo si apago alguno.",rType:"COLABORATIVO",rSType:"CONFIANZA",indicVal:"no - moderado"}
 					]
 				}				
 			]
