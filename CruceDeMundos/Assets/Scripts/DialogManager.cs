@@ -166,7 +166,7 @@ public class DialogManager : MonoBehaviour {
 
 		if (mood.replies [index].oType != "") {
 			GameObject[] go = GameObject.FindGameObjectsWithTag (mood.replies [index].oType);
-			if (go != null) {
+			if (go != null && go.Length>0) {
 				Destroy (go[go.Length-1]);
 				Events.OnObstacleDestroy (mood.replies [index].oType);
 			}

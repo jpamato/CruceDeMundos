@@ -19,21 +19,21 @@
 			moods:[	
 				{	"mood":"negative",
 					"expre":"irritado",
-					"prompt":"Opino que igual ustedes deberían apagar algunos incendios.",
+					"prompt":"Opino que igual ustedes deberían apagar al menos tres incendios.",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"Repito, no podemos hacer nada."}
 					]
 				},
 				{	"mood":"positive",
 					"expre":"irritado",
-					"prompt":"Opino que igual deberían apagar algunos incendios.",
+					"prompt":"Opino que igual deberían apagar al menos tres incendios.",
 					replies:[
 					{emoVal:0,exit:false,goTo:2,text:"Ellos mismos nos dijeron que nos despreocupemos."}
 					]
 				},
 				{	"mood":"neutral",
 					"expre":"irritado",
-					"prompt":"Opino que igual deberían apagar algunos incendios.",
+					"prompt":"Opino que igual deberían apagar al menos tres incendios.",
 					replies:[
 					{emoVal:0,exit:true,goTo:0,text:"Bueno, capaz que tenés razón."}
 					]
@@ -44,7 +44,7 @@
 			moods:[				
 				{	"mood":"neutral",
 					"expre":"irritado",
-					"prompt":"Insisto, deberían apagar algunos incendios, pero ustedes hagan lo que les parezca.",
+					"prompt":"Insisto, deberían apagar al menos tres incendios, pero ustedes hagan lo que les parezca.",
 					replies:[
 					{emoVal:0,exit:true,goTo:2,text:"Eso haremos."}
 					]

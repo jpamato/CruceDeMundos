@@ -43,9 +43,19 @@
 				{ 	"mood":"positive",
 					"expre":"saludo",
 					"prompt":"Es sorprendente lo que se consigue uniendo fuerzas.",
-					replies:[{emoVal:1,exit:true,goTo:2,text:"¡Sí, adiós!",obstacle:"POLLUTION"}]
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Sí, adiós!",obstacle:"POLLUTION"}]
 				}
 			]
-		}		
+		},
+
+		{index:3,
+			moods:[
+				{ 	"mood":"neutral",
+					"expre":"saludo",
+					"prompt":"Es sorprendente lo que se consigue uniendo fuerzas.",
+					replies:[{emoVal:0,exit:true,goTo:3,text:"¡Sí, adiós!"}]
+				}
+			]
+		}
 	]
 }
