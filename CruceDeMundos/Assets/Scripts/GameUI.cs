@@ -28,6 +28,7 @@ public class GameUI : MonoBehaviour {
 
 	public GameObject[] objectives_summary;
 	public Button nextLevel;
+	public Button replay;
 
 	public GameObject stars2;
 	public GameObject stars3;
@@ -48,6 +49,7 @@ public class GameUI : MonoBehaviour {
 	public RenderTexture selfieRT;
 
 	public int playTimes2GiveUp;
+	public int playTimes2Continue;
 
 	public Image alarm;
 
@@ -269,6 +271,10 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void SetSummary(){
+		if (Game.Instance.levelManager.leveldata.isImposible && Data.Instance.playerData.GetLevelPlayedTimes () >= playTimes2Continue-1) {
+			replay.interactable = false;
+			nextLevel.interactable = true;
+		}
 		AlarmEnable (false);
 		Game.Instance.gameManager.state = GameManager.states.ENDED;
 		Game.Instance.levelMetrics.levelEndTime = Time.realtimeSinceStartup;

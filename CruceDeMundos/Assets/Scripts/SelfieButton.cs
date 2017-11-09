@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Alarm : MonoBehaviour {
+public class SelfieButton : MonoBehaviour {
 
-	Image image;
 	public GameObject fade;
 
 	bool isFadeIn;
@@ -14,7 +13,6 @@ public class Alarm : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		image = GetComponent<Image> ();
 	}
 	
 	// Update is called once per frame
@@ -23,9 +21,8 @@ public class Alarm : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		image = GetComponent<Image> ();
 		enabled = true;
-		Fade (1.0f);
+		Fade (0.5f);
 	}
 
 	void OnDisable(){
@@ -36,13 +33,13 @@ public class Alarm : MonoBehaviour {
 		GameObject f = Instantiate (fade);
 		f.transform.SetParent(Data.Instance.gameObject.transform);
 		Fade fadeInOut = f.GetComponent<Fade> ();
-		Color c = image.color;
 
 		fadeInOut.OnBeginMethod = () => {			
 		};
 		fadeInOut.OnLoopMethod = () => {
-			float val = Mathf.Lerp (0, 1, fadeInOut.time);
-			image.color = new Color (c.r,c.g,c.b,val * 0.4f);
+			float val = Mathf.Lerp (1.0f,0.95f, fadeInOut.time);
+			//image.color = new Color (c.r,c.g,c.b,val * 0.4f);
+			transform.localScale = new Vector3(val,val,val);
 		};
 		fadeInOut.OnEndMethod = () => {			
 			isFadeIn=!isFadeIn;
