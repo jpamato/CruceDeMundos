@@ -120,7 +120,7 @@ public class DialogData : MonoBehaviour {
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"] != null) {
 						d.dialogTree [i].moods [j].replies [k].replyType = CastReplyType (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"]);
 						rt = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rType"];
-						rt = rt.Replace (",", ";\n");
+						rt = rt.Replace (",", ";");
 					}
 					/*else
 						d.dialogTree [i].moods [j].replies [k].replyType = Dialog.Reply.rType.NARRATIVO;*/
@@ -129,7 +129,7 @@ public class DialogData : MonoBehaviour {
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"] != null) {
 						d.dialogTree [i].moods [j].replies [k].replySubType = CastReplySubType (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"]);
 						rst = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["rSType"];
-						rst = rst.Replace (",", ";\n");
+						rst = rst.Replace (",", ";");
 					}
 					/*else
 						d.dialogTree [i].moods [j].replies [k].replySubType = Dialog.Reply.rSubType.NARRATIVO;*/
@@ -138,7 +138,7 @@ public class DialogData : MonoBehaviour {
 					if (N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"] != null) {
 						iv = N ["dialogTree"] [i] ["moods"] [j] ["replies"] [k] ["indicVal"];
 						d.dialogTree [i].moods [j].replies [k].indicadorVal = iv.Split(',');
-						iv = iv.Replace (",", ";\n");
+						iv = iv.Replace (",", ";");
 					}/*else
 						d.dialogTree [i].moods [j].replies [k].indicadorVal ="";*/
 				
