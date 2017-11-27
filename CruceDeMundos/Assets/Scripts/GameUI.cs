@@ -50,6 +50,7 @@ public class GameUI : MonoBehaviour {
 
 	public int playTimes2GiveUp;
 	public int playTimes2Continue;
+	public int GiveUpHints;
 
 	public Image alarm;
 
@@ -246,8 +247,15 @@ public class GameUI : MonoBehaviour {
 		Game.Instance.levelManager.objectivesDone [0] = false;
 		Game.Instance.gameManager.state = GameManager.states.LOSE;
 		Game.Instance.ingameMusic.MusicTimeOut ();
-		if (Game.Instance.levelManager.leveldata.isImposible)
+		if (Game.Instance.levelManager.leveldata.isImposible) {
+			if (Data.Instance.playerData.GetLevelPlayedTimes () < GiveUpHints) {
+				summaryTitle.text = "SE ACABÓ EL TIEMPO";
+			} else {
+				summaryTitle.fontSize = 30;
+				summaryTitle.text = "SE ACABÓ EL TIEMPO, PODÉS PASAR AL PRÓXIMO NIVEL CUANDO QUIERAS";
+			}
 			Game.Instance.levelMetrics.saltearNivel = 0;
+		}
 		SetSummary ();
 	}
 
@@ -271,9 +279,13 @@ public class GameUI : MonoBehaviour {
 	}
 
 	void SetSummary(){
-		if (Game.Instance.levelManager.leveldata.isImposible && Data.Instance.playerData.GetLevelPlayedTimes () >= playTimes2Continue-1) {
-			replay.interactable = false;
-			nextLevel.interactable = true;
+		if (Game.Instance.levelManager.leveldata.isImposible){
+			if (Data.Instance.playerData.GetLevelPlayedTimes () >= GiveUpHints && Data.Instance.playerData.GetLevelPlayedTimes () < playTimes2Continue) {
+				nextLevel.interactable = true;
+			}else if (Data.Instance.playerData.GetLevelPlayedTimes () >= playTimes2Continue - 1){
+				replay.interactable = false;
+				nextLevel.interactable = true;
+			}
 		}
 		AlarmEnable (false);
 		Game.Instance.gameManager.state = GameManager.states.ENDED;

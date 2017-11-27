@@ -99,6 +99,9 @@ public class Game : MonoBehaviour {
 		OnGamePaused(false);
 		Data.Instance.playerData.level++;
 
+		if (Game.Instance.levelManager.leveldata.isImposible)
+			Game.Instance.levelMetrics.saltearNivel = 1;
+
 		if (Data.Instance.playerData.level == 4 || Data.Instance.playerData.level == 8 || Data.Instance.playerData.level == 10) 
 			Data.Instance.LoadLevel ("Cutscene", 1f, 3f, Color.black);
 		else if (Data.Instance.playerData.level > 10) {
