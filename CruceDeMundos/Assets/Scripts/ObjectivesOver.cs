@@ -8,6 +8,7 @@ public class ObjectivesOver : MonoBehaviour {
 	public Text title;
 	public Text[] objectives;
 	public LevelData.Level leveldata;
+	public GameObject resetButton;
 
 	bool over;
 
@@ -15,6 +16,15 @@ public class ObjectivesOver : MonoBehaviour {
 	void Start () {
 		Events.OnLevelButtonEnter += OnLevelButtonEnter;
 		Events.OnLevelButtonExit += OnLevelButtonExit;
+	}
+
+	void Update()
+	{
+		if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.R))
+		{
+			// CTRL + R
+			resetButton.SetActive(!resetButton.activeSelf);
+		}
 	}
 
 	void OnDestroy(){

@@ -7,12 +7,12 @@ public class DataController : MonoBehaviour {
 	//string[] test2 = { "020088300", "2", "1", "tarde" };
 
 	//const string URL = "http://127.0.0.1:8000/";
-	//const string URL = "http://cdm.com.ar/";
+	const string URL = "http://cdm.com.ar/";
 	//const string URL = "http://yaguar.alwaysdata.net/";
 	//const string URL = "http://10.9.5.223/";
 	//const string URL = "http://crucemundos.dev.gcba.gob.ar/";
 	//const string URL = "http://crucemundos.dev.gcba.gob.ar/"; //DESA
-	const string URL = "http://crucedemundos-qa.gcba.gob.ar/";//QA
+	//const string URL = "http://crucedemundos-qa.gcba.gob.ar/";//QA
 	//const string URL = "http://crucedemundos.hml.gcba.gob.ar/";//HML
 	//const string URL = "http://crucedemundos.buenosaires.gob.ar/";//PRD
 
@@ -50,14 +50,18 @@ public class DataController : MonoBehaviour {
 			print ("CreateUser : " + post_url);
 			WWW hs_post = new WWW (post_url);
 			yield return hs_post;
-			if (hs_post.error != null)
+			if (hs_post.error != null) {
 				print ("No pudo crear el nuevo user: " + hs_post.error);
-			else {
+			}else {
 				print ("user agregado: " + hs_post.text);
-				string json = "{";
-				json += "userId:" + WWW.EscapeURL (_userid) + ",";
-				json += "userName:" + WWW.EscapeURL (_username) + "}";
-				PlayerPrefs.SetString ("UserData", json);
+				if (hs_post.text == "FORBIDDEN ACCESS") {
+					Data.Instance.Reset ();
+				} else {
+					string json = "{";
+					json += "userId:" + WWW.EscapeURL (_userid) + ",";
+					json += "userName:" + WWW.EscapeURL (_username) + "}";
+					PlayerPrefs.SetString ("UserData", json);
+				}
 			}
 		}
 	}
@@ -86,7 +90,7 @@ public class DataController : MonoBehaviour {
 			
 	}
 
-	public IEnumerator SaveDialogData(string _userid, string _compid, string character, int level, int index, string mood, int answerId)
+	public IEnumerator SaveDialogData(string _userid, string _compid, string character, int level, int index, string mood, int answerId, float time)
 	{
 		// username = username.Replace(" ", "_");
 		string hash = Md5Test.Md5Sum(_userid + _compid  + secretKey);
@@ -94,7 +98,7 @@ public class DataController : MonoBehaviour {
 
 		string post_url = addReply_URL + "user_id=" + WWW.EscapeURL (_userid) + "&computer_id=" + WWW.EscapeURL (_compid) +
             "&character_name=" + WWW.EscapeURL (character) + "&level_id=" + level + "&dialog_index=" + index +
-			"&dialog_mood=" + WWW.EscapeURL (mood) + "&answer_id=" + answerId + "&hash="+hash;
+			"&dialog_mood=" + WWW.EscapeURL (mood) + "&answer_id=" + answerId + "&dialog_time=" + time + "&hash="+hash;
 
 		print ("addReply : " + post_url);
 		WWW hs_post = new WWW (post_url);

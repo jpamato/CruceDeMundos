@@ -20,6 +20,8 @@ public class DialogManager : MonoBehaviour {
 	DialogData.Dialog.DialogTree dTree;
 	DialogData.Dialog.Mood mood;
 
+	public float dialogBeginTime;
+
 	// Use this for initialization
 	void Start () {
 		level = Data.Instance.playerData.level;
@@ -100,6 +102,7 @@ public class DialogManager : MonoBehaviour {
 		}
 
 		Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.dialog);
+		dialogBeginTime = Time.realtimeSinceStartup;
 	}
 
 	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level, DialogData.Dialog.dType dialogType){
@@ -114,7 +117,7 @@ public class DialogManager : MonoBehaviour {
 
 	public void ReplySelect(int index){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
-		SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
+		SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index, Time.realtimeSinceStartup-dialogBeginTime);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -200,7 +203,7 @@ public class DialogManager : MonoBehaviour {
 		levelInfo.goTo = goTo;
 	}
 
-	public void SendDialogData(string charName, int index, string mood, int answerId){
-		Data.Instance.SaveDialogData (charName, level, index, mood, answerId);
+	public void SendDialogData(string charName, int index, string mood, int answerId, float time){
+		Data.Instance.SaveDialogData (charName, level, index, mood, answerId, time);
 	}
 }

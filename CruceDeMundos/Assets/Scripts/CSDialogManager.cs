@@ -157,7 +157,7 @@ public class CSDialogManager : MonoBehaviour {
 	public void ReplySelect(int index){
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click2);
 		if (mood.indicador)
-			SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), index);
+			SendDialogData (character.name, levelInfo.goTo, mood.mType.ToString (), -1, index);
 		levelInfo.emoval = mood.replies [index].emoVal;
 		levelInfo.goTo = mood.replies [index].goTo;
 
@@ -247,7 +247,7 @@ public class CSDialogManager : MonoBehaviour {
 		levelInfo.goTo = goTo;
 	}
 
-	public void SendDialogData(string charName, int index, string mood, int answerId){
-		Data.Instance.SaveDialogData (charName, level, index, mood, answerId);
+	public void SendDialogData(string charName, int index, string mood, int answerId, float time){
+		Data.Instance.SaveDialogData (charName, level, index, mood, answerId, time);
 	}
 }

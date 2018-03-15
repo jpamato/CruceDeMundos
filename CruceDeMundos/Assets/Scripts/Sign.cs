@@ -34,6 +34,7 @@ public class Sign : MonoBehaviour {
 	}
 
 	public void Continue(){
+		selfieCam.transform.position = new Vector3 (46f,2.5f,-9f);
 		selfieCam.enabled = true;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Data.Instance.userId = userID.text;

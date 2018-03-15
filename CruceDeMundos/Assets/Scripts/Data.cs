@@ -101,8 +101,8 @@ public class Data : MonoBehaviour
         
     }
 
-	public void SaveDialogData(string character, int level, int index, string mood, int answerId){		
-		StartCoroutine(dataController.SaveDialogData(userId,SystemInfo.deviceUniqueIdentifier, character, level, index, mood, answerId));
+	public void SaveDialogData(string character, int level, int index, string mood, int answerId, float time){		
+		StartCoroutine(dataController.SaveDialogData(userId,SystemInfo.deviceUniqueIdentifier, character, level, index, mood, answerId, time));
 	}
 
 	public void SaveLevelData(string tools, string toolsEnd, string misions, int portalDone, int fireDone, int pollutionDone, int mapchecks,
@@ -154,7 +154,8 @@ public class Data : MonoBehaviour
 
     public void Reset(){
 		PlayerPrefs.DeleteAll ();
-		Data.Instance.LoadLevel("LevelMap");
+		Data.Instance.Exit ();
+		//Data.Instance.LoadLevel("0_Splash");
     }
 
 	public void SendData(){
