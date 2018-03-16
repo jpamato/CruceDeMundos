@@ -10,14 +10,31 @@ public class Sign : MonoBehaviour {
 	public Camera selfieCam;
 	public RenderTexture selfieRT;
 	public Button continuar;
+	public RawImage avatarImage;
 
 	public Dropdown dropdown;
 	string cursosJson;
 
-	bool nombreDone,apodoDone,cursoDone;
+	bool nombreDone,apodoDone,cursoDone, screenshot, nextScene;
 
 	void Start () {
 		StartCoroutine(GetCursos());
+	}
+
+	void Update(){
+		if (screenshot) {
+			avatarImage.enabled = false;
+			selfieCam.enabled = true;
+			nextScene = true;
+			screenshot = false;
+		} else if (nextScene) {
+			if (nextScene) {
+				selfieCam.enabled = false;
+				Data.Instance.avatarData.CaptureSelfie (selfieRT);
+				Data.Instance.LoadLevel ("LevelMap");
+				nextScene = false;
+			}
+		}
 	}
 
 	IEnumerator GetCursos(){
@@ -33,15 +50,13 @@ public class Sign : MonoBehaviour {
 		}
 	}
 
+
+
 	public void Continue(){
 		selfieCam.transform.position = new Vector3 (46f,2.5f,-9f);
-		selfieCam.enabled = true;
 		Data.Instance.interfaceSfx.PlaySfx (Data.Instance.interfaceSfx.click1);
 		Data.Instance.userId = userID.text;
 		Data.Instance.userName = userName.text;
-		selfieCam.enabled = false;
-
-		Data.Instance.avatarData.CaptureSelfie (selfieRT);
 
 		string cue = "";
 		string grado = "";
@@ -58,7 +73,7 @@ public class Sign : MonoBehaviour {
 
 		Data.Instance.SaveUserData (cue, grado, division, turno);
 		Data.Instance.avatarData.SaveAvatarData ();
-		Data.Instance.LoadLevel ("LevelMap");
+		screenshot = true;
 	}
 
 	public void SetApodo(string s){
