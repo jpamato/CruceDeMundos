@@ -45,7 +45,7 @@ public class Sign : MonoBehaviour {
 			var N = JSON.Parse (cursosJson);
 
 			for (int i = 0; i < N.Count; i++) {
-				dropdown.options.Add (new Dropdown.OptionData (){ text = "Escuela: " + N [i] ["nombre"] + " Grado " + N [i] ["grado"] + " División " + N [i] ["division"] + " Turno " + N [i] ["turno"] });
+				dropdown.options.Add (new Dropdown.OptionData (){ text = "" + N [i] ["nombre"] + " Año " + N [i] ["grado"] + " División " + N [i] ["division"] + " Turno " + N [i] ["turno"] });
 			}
 		}
 	}
