@@ -12,6 +12,8 @@ public class DialogManager : MonoBehaviour {
 	public Text charText;
 	public Text[] ansText;
 
+	public Transform buttonsContainer;
+
 	int level;
 
 	DialogData.DialogCharacter character;
@@ -96,10 +98,12 @@ public class DialogManager : MonoBehaviour {
 		}else if(levelInfo.lastExpre!="")
 			chManager.SetAnimation (levelInfo.lastExpre);
 
+		ShuffleChildOrder (buttonsContainer);
 
 		charText.text = mood.prompt.Replace("#Manu",Data.Instance.userName);
 		for (int i = 0; i < mood.replies.Length; i++) {
 			ansText [i].text = mood.replies [i].text;
+			ansText [i].color = new Color (0.8f, 0.8f, 0.8f);
 			//ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
 		}
 		Invoke ("EnableReplies", 4f);
@@ -197,6 +201,7 @@ public class DialogManager : MonoBehaviour {
 
 	void EnableReplies(){
 		for (int i = 0; i < mood.replies.Length; i++) {
+			ansText [i].color = new Color (0.2f, 0.2f, 0.2f);
 			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
 		}
 		dialogBeginTime = Time.realtimeSinceStartup;
@@ -214,5 +219,15 @@ public class DialogManager : MonoBehaviour {
 
 	public void SendDialogData(string charName, int index, string mood, int answerId, float time){
 		Data.Instance.SaveDialogData (charName, level, index, mood, answerId, time);
+	}
+
+	public void ShuffleChildOrder(Transform container){
+		for (int i = 0; i < container.childCount; i++) {			
+			Transform t = container.GetChild (i);
+			if (UnityEngine.Random.value < 0.3f)
+				t.transform.SetAsFirstSibling ();
+			else if (UnityEngine.Random.value < 0.6)
+				t.transform.SetAsLastSibling ();
+		}
 	}
 }
