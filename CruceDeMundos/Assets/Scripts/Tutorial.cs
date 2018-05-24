@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Tutorial : MonoBehaviour {
 
 	void OnEnable(){
 		Invoke ("ShowNext", 0.25f);
+		Invoke ("SkipButtonEnable", 5.0f);
 	}
 
 	public void ShowNext(){
@@ -34,6 +36,10 @@ public class Tutorial : MonoBehaviour {
 			step [index].SetActive (false);		
 			skipButton.SetActive (false);
 		}
+	}
+
+	void SkipButtonEnable(){
+		skipButton.GetComponent<Button> ().interactable = true;
 	}
 
 	public void ShowPrev(){

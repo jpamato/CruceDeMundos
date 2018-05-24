@@ -22,6 +22,8 @@ public class DialogManager : MonoBehaviour {
 
 	public float dialogBeginTime;
 
+	public float replyWaitTime;
+
 	// Use this for initialization
 	void Start () {
 		level = Data.Instance.playerData.level;
@@ -98,11 +100,11 @@ public class DialogManager : MonoBehaviour {
 		charText.text = mood.prompt.Replace("#Manu",Data.Instance.userName);
 		for (int i = 0; i < mood.replies.Length; i++) {
 			ansText [i].text = mood.replies [i].text;
-			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
+			//ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
 		}
+		Invoke ("EnableReplies", 4f);
 
 		Game.Instance.ingameSfx.PlaySfx (Game.Instance.ingameSfx.dialog);
-		dialogBeginTime = Time.realtimeSinceStartup;
 	}
 
 	DialogData.DialogCharacter.LevelInfo AddNewLevelInfo(DialogData.DialogCharacter character, int level, DialogData.Dialog.dType dialogType){
@@ -191,6 +193,13 @@ public class DialogManager : MonoBehaviour {
 			}
 		}
 
+	}
+
+	void EnableReplies(){
+		for (int i = 0; i < mood.replies.Length; i++) {
+			ansText [i].transform.parent.GetComponent<Button> ().interactable = true;
+		}
+		dialogBeginTime = Time.realtimeSinceStartup;
 	}
 
 	public void UnlockDialog(string characterName, int level_, int goTo){
